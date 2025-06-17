@@ -42,3 +42,45 @@ h1, h2, h3, h4 {
     background-color: var(--brown);
     color: white;
 }
+
+.featured-section {
+    background-color: var(--cream);
+    border-top: 4px solid var(--orange);
+    border-bottom: 4px solid var(--orange);
+}
+
+.card-title {
+    font-family: 'Brexon', serif;
+    color: var(--brown);
+}
+
+.card-text {
+    color: var(--text-color);
+}
+
+.card img {
+    object-fit: cover;
+    height: 200px;
+}
+
+.category-section {
+    background-color: var(--peach);
+    border-top: 4px solid var(--brown);
+}
+
+.category-tile {
+    background-color: var(--cream);
+    color: var(--text-color);
+    text-decoration: none;
+    transition: transform 0.2s ease;
+}
+
+.category-tile:hover {
+    transform: scale(1.05);
+    background-color: var(--orange);
+    color: white;
+}
+
+.category-icon {
+    font-size: 2rem;
+}
