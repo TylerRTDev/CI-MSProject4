@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block title %}Browse Products - Real Legacy Media{% endblock %}
+
+{% block content %}
+<section class="py-5">
+    <div class="container">
+        <h2 class="text-center mb-4">Browse Our Collection</h2>
+
+        <div class="row g-4">
+            {% for product in products %}
+            <div class="col-md-6 col-lg-3">
+                <div class="card h-100 text-center shadow-sm">
+                    <img src="{{ product.images.first.image.url|default:'/static/images/vinyl-hero.jpg' }}" 
+                        class="card-img-top" alt="{{ product.name }}">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ product.name }}</h5>
+                        <p class="card-text fw-bold">${{ product.price }}</p>
+                        <a href="{{ product.get_absolute_url }}" class="btn btn-retro">View</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock %}
