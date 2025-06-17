@@ -1,0 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=Kodchasan&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Brexon&display=swap');
+
+:root {
+    --brown: #A86523;
+    --orange: #E9A319;
+    --peach: #FAD59A;
+    --cream: #FCEFCB;
+    --text-color: #000000;
+}
+
+body {
+    font-family: 'Kodchasan', sans-serif;
+    color: var(--text-color);
+    background-color: var(--cream);
+}
+
+h1, h2, h3, h4 {
+    font-family: 'Brexon', serif;
+    color: var(--brown);
+}
