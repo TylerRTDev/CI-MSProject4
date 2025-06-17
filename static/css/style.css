@@ -2,6 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Brexon&display=swap');
 
 :root {
+    --black: #000000;
     --brown: #A86523;
     --orange: #E9A319;
     --peach: #FAD59A;
@@ -16,6 +17,6 @@ body {
 }
 
 h1, h2, h3, h4 {
-    font-family: 'Brexon', serif;
+    font-family: 'Brexon', sans-serif;
     color: var(--brown);
 }
