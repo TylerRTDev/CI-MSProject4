@@ -14,10 +14,14 @@ class ProductAdmin(admin.ModelAdmin):
     inlines = [ProductImageInline]
 
 admin.site.register(Genre)
+class GenreAdmin(admin.ModelAdmin):
+    list_display = ('name', 'slug')
+    prepopulated_fields = {'slug': ('name',)}
 
 admin.site.register(MediaType)
 class MediaTypeAdmin(admin.ModelAdmin):
     list_display = ('name',)
+    prepopulated_fields = {'slug': ('name',)}
 
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):

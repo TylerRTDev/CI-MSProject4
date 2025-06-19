@@ -16,9 +16,15 @@ class Genre(models.Model):
 
 class MediaType(models.Model):
     name = models.CharField(max_length=100)
+    slug = models.SlugField(unique=True, null=True, blank=True)
     
     def __str__(self):
         return self.name
+    
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(self.name)
+        super().save(*args, **kwargs)
 
 class Category(models.Model):
     name = models.CharField(max_length=100)
