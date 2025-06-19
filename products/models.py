@@ -1,10 +1,18 @@
 from django.db import models
+from django.utils.text import slugify
 
 class Genre(models.Model):
     name = models.CharField(max_length=100)
+    slug = models.SlugField(unique=True)
     
     def __str__(self):
         return self.name
+    
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            
+            self.slug = slugify(self.name)
+        super().save(*args, **kwargs)
 
 class MediaType(models.Model):
     name = models.CharField(max_length=100)
@@ -21,7 +29,6 @@ class Category(models.Model):
 
     def save(self, *args, **kwargs):
         if not self.slug:
-            from django.utils.text import slugify
             self.slug = slugify(self.name)
         super().save(*args, **kwargs)
 class Product(models.Model):
