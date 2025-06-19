@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Genre, MediaType, Product, ProductImage
+from .models import Genre, MediaType, Product, ProductImage, Category
 
 class ProductImageInline(admin.TabularInline):
     model = ProductImage
@@ -14,9 +14,10 @@ class ProductAdmin(admin.ModelAdmin):
     inlines = [ProductImageInline]
 
 admin.site.register(Genre)
-admin.site.register(MediaType)
 
-from .models import Category
+admin.site.register(MediaType)
+class MediaTypeAdmin(admin.ModelAdmin):
+    list_display = ('name',)
 
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
