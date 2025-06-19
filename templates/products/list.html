@@ -12,9 +12,23 @@
                 {% for cat in categories %}
                 <a href="?{% if current_genre %}genre={{ current_genre }}&{% endif %}
                         {% if current_media %}media={{ current_media }}&{% endif %}
-                        category={{ cat.slug }}"
-                class="btn {% if current_category == cat.slug %}btn-retro{% else %}btn-outline-secondary{% endif %}">
+                        category={{ cat.slug }} "class="btn {% if current_category == cat.slug %}btn-retro{% else %}btn-outline-secondary{% endif %}">
                     {{ cat.name }}
+                </a>
+                {% endfor %}
+            </div>
+        </div>
+
+        <!-- Filter by Media Type -->
+        <div class="mb-4">
+            <h5>Media Type</h5>
+            <div class="d-flex flex-wrap gap-2">
+                {% for type in media_types %}
+                <a href="?{% if current_genre %}genre={{ current_genre }}&{% endif %}
+                        {% if current_category %}category={{ current_category }}&{% endif %}
+                        media={{ type.slug }} "
+                        class="btn {% if current_media_slug == type.slug %}btn-retro{% else %}btn-outline-secondary{% endif %}">
+                    {{ type.name }}
                 </a>
                 {% endfor %}
             </div>
