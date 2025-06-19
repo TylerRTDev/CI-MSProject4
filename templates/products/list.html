@@ -20,6 +20,16 @@
             </div>
         </div>
 
+                <!-- Clear Filters -->
+        <div class="mb-4 text-end">
+            {% if current_genre or current_media or current_category %}
+            <a href="{% url 'products:list' %}" class="btn btn-outline-danger">
+                <i class="bi bi-x-circle me-1"></i> Clear Filters
+            </a>
+            {% endif %}
+        </div>
+
+
         <div class="row g-4">
             {% for product in products %}
             <div class="col-md-6 col-lg-3">
