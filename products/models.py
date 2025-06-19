@@ -27,7 +27,7 @@ class Category(models.Model):
 class Product(models.Model):
     name = models.CharField(max_length=200)
     slug = models.SlugField(unique=True)
-    category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='products')
+    category = models.ForeignKey(Category, on_delete=models.CASCADE, null=True, blank=True)
     description = models.TextField()
     genre = models.ForeignKey(Genre, on_delete=models.SET_NULL, null=True)
     media_type = models.ForeignKey(MediaType, on_delete=models.SET_NULL, null=True)
