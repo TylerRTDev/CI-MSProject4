@@ -34,7 +34,22 @@
             </div>
         </div>
 
-                <!-- Clear Filters -->
+        <!-- Filter by Genre -->
+        <div class="mb-4">
+            <h5>Music Genre</h5>
+            <div class="d-flex flex-wrap gap-2">
+                {% for genre in genres %}
+                <a href="?{% if current_category %}category={{ current_category }}&{% endif %}
+                        {% if current_media_slug %}media={{ current_media_slug }}&{% endif %}
+                        genre={{ genre.slug }}"
+                class="btn {% if current_genre == genre.slug %}btn-retro{% else %}btn-outline-secondary{% endif %}">
+                    {{ genre.name }}
+                </a>
+                {% endfor %}
+            </div>
+        </div>
+
+        <!-- Clear Filters -->
         <div class="mb-4 text-end">
             {% if current_genre or current_media or current_category %}
             <a href="{% url 'products:list' %}" class="btn btn-outline-danger">
@@ -43,7 +58,41 @@
             {% endif %}
         </div>
 
+        <!-- Active Filter Badges -->
+        {% if current_genre or current_media_slug or current_category %}
+        <div class="mb-4">
+            <strong>Filtering by:</strong>
 
+            {% if current_genre %}
+                <span class="badge bg-warning text-dark me-2">
+                    Genre: {{ current_genre|capfirst }}
+                    <a href="?{% if current_media_slug %}media={{ current_media_slug }}&{% endif %}
+                            {% if current_category %}category={{ current_category }}{% endif %}"
+                    class="text-dark text-decoration-none ms-2">×</a>
+                </span>
+            {% endif %}
+
+            {% if current_media_slug %}
+                <span class="badge bg-warning text-dark me-2">
+                    Media: {{ current_media_slug|capfirst }}
+                    <a href="?{% if current_genre %}genre={{ current_genre }}&{% endif %}
+                            {% if current_category %}category={{ current_category }}{% endif %}"
+                    class="text-dark text-decoration-none ms-2">×</a>
+                </span>
+            {% endif %}
+
+            {% if current_category %}
+                <span class="badge bg-warning me-2">
+                    Type: {{ current_category|capfirst }}
+                    <a href="?{% if current_genre %}genre={{ current_genre }}&{% endif %}
+                            {% if current_media_slug %}media={{ current_media_slug }}{% endif %}"
+                    class="text-white text-decoration-none ms-2">×</a>
+                </span>
+            {% endif %}
+        </div>
+        {% endif %}
+
+        <!-- Product Grid -->
         <div class="row g-4">
             {% if products %}
             {% for product in products %}

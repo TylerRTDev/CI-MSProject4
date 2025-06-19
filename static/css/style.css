@@ -84,3 +84,11 @@ h1, h2, h3, h4 {
 .category-icon {
     font-size: 2rem;
 }
+
+.badge-retro {
+    background-color: var(--orange);
+    color: var(--text-color);
+    font-weight: bold;
+    padding: 0.5em 0.75em;
+    border-radius: 12px;
+}
