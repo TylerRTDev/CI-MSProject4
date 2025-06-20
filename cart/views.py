@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.shortcuts import redirect
 
 def view_cart(request):
     cart = request.session.get('cart', {})
@@ -23,3 +24,11 @@ def view_cart(request):
     }
 
     return render(request, 'cart/cart.html', context)
+
+def remove_from_cart(request, item_id):
+    cart = request.session.get('cart', {})
+    if item_id in cart:
+        del cart[item_id]
+        request.session['cart'] = cart
+        request.session.modified = True
+    return redirect('cart:view_cart')

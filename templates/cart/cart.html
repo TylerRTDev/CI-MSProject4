@@ -22,9 +22,12 @@
                 <tr>
                     <td>{{ item.name }}</td>
                     <td>{{ item.size|default:"-" }}</td>
-                    <td>${{ item.price }}</td>
+                    <td>£{{ item.price }}</td>
                     <td>{{ item.quantity }}</td>
-                    <td>${{ item.subtotal }}</td>
+                    <td>£{{ item.subtotal }}</td>
+                    <td>
+                        <a href="{% url 'cart:remove_from_cart' item.id %}" class="btn btn-sm btn-outline-danger">Remove</a>
+                    </td>
                 </tr>
                 {% endfor %}
             </tbody>
