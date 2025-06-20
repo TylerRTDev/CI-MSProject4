@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Product, Genre, MediaType
+from .models import Product, Genre, MediaType, ProductVariant
 from django.shortcuts import get_object_or_404
 
 def product_list(request):
@@ -52,4 +52,8 @@ def product_list(request):
 
 def product_detail(request, slug):
     product = get_object_or_404(Product, slug=slug)
-    return render(request, 'products/detail.html', {'product': product})
+    variants = product.variants.filter(stock__gt=0)
+    return render(request, 'products/detail.html', {
+        'product': product, 
+        'variants': variants
+    })

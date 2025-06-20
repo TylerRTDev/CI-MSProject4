@@ -42,10 +42,10 @@ class Category(models.Model):
 class Product(models.Model):
     name = models.CharField(max_length=200)
     slug = models.SlugField(unique=True)
-    category = models.ForeignKey(Category, on_delete=models.CASCADE, null=True, blank=True)
+    category = models.ForeignKey(Category, on_delete=models.CASCADE, null=True)
     description = models.TextField()
-    genre = models.ForeignKey(Genre, on_delete=models.SET_NULL, null=True)
-    media_type = models.ForeignKey(MediaType, on_delete=models.SET_NULL, null=True)
+    genre = models.ForeignKey(Genre, on_delete=models.SET_NULL, null=True, blank=True)
+    media_type = models.ForeignKey(MediaType, on_delete=models.SET_NULL, null=True, blank=True)
     price = models.DecimalField(max_digits=10, decimal_places=2)
     stock = models.PositiveIntegerField()
     is_featured = models.BooleanField(default=False)
