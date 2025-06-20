@@ -40,6 +40,13 @@ class Category(models.Model):
         super().save(*args, **kwargs)
         
 class Product(models.Model):
+    SIZE_CHOICES = [
+        ('S', 'Small'),
+        ('M', 'Medium'),
+        ('L', 'Large'),
+        ('XL', 'Extra Large'),
+        ('XXL', 'Double Extra Large'),
+    ]
     name = models.CharField(max_length=200)
     slug = models.SlugField(unique=True)
     category = models.ForeignKey(Category, on_delete=models.CASCADE, null=True)
@@ -48,9 +55,11 @@ class Product(models.Model):
     media_type = models.ForeignKey(MediaType, on_delete=models.SET_NULL, null=True, blank=True)
     price = models.DecimalField(max_digits=10, decimal_places=2)
     stock = models.PositiveIntegerField()
+    size = models.CharField(max_length=3, choices=SIZE_CHOICES, blank=True, null=True)
     is_featured = models.BooleanField(default=False)
     is_limited_edition = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
+    
     
     def get_absolute_url(self):
         return reverse('products:detail', kwargs={'slug': self.slug})

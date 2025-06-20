@@ -11,7 +11,7 @@
             </div>
             <div class="col-md-6">
                 <h1 class="mb-3">{{ product.name }}</h1>
-                <p class="fs-4 fw-bold mb-2">${{ product.price }}</p>
+                <p class="fs-4 fw-bold mb-2">£{{ product.price }}</p>
                 <p class="mb-4">{{ product.description }}</p>
 
                 <!-- Dynamic variant form will go here next -->
@@ -22,8 +22,18 @@
                     <!-- Optional: Show static info -->
                     <div class="mb-3">
                         {% if product.category.name == "Clothing" %}
-                        <p class="mb-1"><strong>Size:</strong> M / L / XL</p>  <!-- placeholder for now -->
+                        <div class="mb-3">
+                            <label for="size" class="form-label">Select Size</label>
+                            <select name="size" id="size" class="form-select" required>
+                                <option value="">Select</option>
+                                <option value="S">Small</option>
+                                <option value="M">Medium</option>
+                                <option value="L">Large</option>
+                                <option value="XL">X-Large</option>
+                            </select>
+                        </div>
                         {% endif %}
+
                         <p class="text-muted">{{ product.stock }} in stock</p>
                     </div>
 
