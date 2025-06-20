@@ -15,22 +15,33 @@
 <body>
 
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container">
-            <a class="navbar-brand fw-bold" href="#">Real Legacy Media</a>
+    <nav class="navbar nav-link">
+    <div class="container">
+            <!-- Brand -->
+            <a class="navbar-brand mx-auto" href="{% url 'core:home' %}">Real Legacy Media</a>
+
+            <!-- Hamburger Button for Mobile -->
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Browse</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Cart</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Login</a></li>
-                </ul>
-            </div>
+        
+
+        <!-- Nav Links -->
+        <div class="navbar-open collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'products:list' %}">Shop</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Cart</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Login</a>
+                </li>
+            </ul>
         </div>
-    </nav>
+    </div>
+</nav>
 
     <!-- Flash Messages -->
     <div class="container mt-3">
@@ -51,7 +62,7 @@
 
     <!-- Footer -->
     <footer class="bg-dark text-white text-center py-3">
-        <small>&copy; 2024 Real Legacy Media. All rights reserved.</small>
+        <small>&copy; 2025 Real Legacy Media. All rights reserved.</small>
     </footer>
 
     <!-- Bootstrap JS -->

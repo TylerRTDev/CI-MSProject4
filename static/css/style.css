@@ -21,6 +21,39 @@ h1, h2, h3, h4 {
     color: var(--brown);
 }
 
+.nav-container {
+    margin-bottom: 0.5rem;
+}
+
+
+.navbar {
+    background-color: var(--peach);
+    box-shadow: 10px 10px 1px var(--orange);
+    width: 80%;
+    margin: auto;
+    margin-top: 1rem;
+}
+
+.navbar-nav .nav-link {
+    font-weight: 600;
+    padding: 0.5rem 1rem;
+    transition: color 0.2s ease;
+}
+
+.navbar-nav .nav-link:hover {
+    color: var(--orange);
+    text-decoration: underline;
+}
+
+.navbar-brand {
+    font-family: 'Brexon', serif;
+    font-size: 1.5rem;
+    letter-spacing: 3px;
+    color: var(--brown);
+    display: flex;
+}
+
+
 .hero-section {
     background-color: var(--peach);
     padding: 4rem 0;
