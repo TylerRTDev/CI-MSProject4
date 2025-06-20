@@ -23,7 +23,14 @@
                     <td>{{ item.name }}</td>
                     <td>{{ item.size|default:"-" }}</td>
                     <td>£{{ item.price }}</td>
-                    <td>{{ item.quantity }}</td>
+                    <td>
+                        <form method="POST" action="{% url 'cart:update_cart' %}" class="d-flex align-items-center">
+                            {% csrf_token %}
+                            <input type="hidden" name="item_id" value="{{ item.id }}">
+                            <input type="number" name="quantity" value="{{ item.quantity }}" min="1" max="99" class="form-control form-control-sm me-2" style="width: 80px;">
+                            <button type="submit" class="btn btn-sm btn-outline-primary">Update</button>
+                        </form>
+                    </td>
                     <td>£{{ item.subtotal }}</td>
                     <td>
                         <a href="{% url 'cart:remove_from_cart' item.id %}" class="btn btn-sm btn-outline-danger">Remove</a>
