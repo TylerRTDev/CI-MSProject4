@@ -16,7 +16,7 @@
 
                 <!-- Dynamic variant form will go here next -->
                 {% if product.stock > 0 %}
-                <form method="POST" action="#">
+                <form method="POST" action="{% url 'products:add_to_cart' product.id %}">
                     {% csrf_token %}
 
                     <!-- Optional: Show static info -->

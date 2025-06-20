@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import Product, Genre, MediaType, ProductVariant
 from django.shortcuts import get_object_or_404
 
@@ -57,3 +57,36 @@ def product_detail(request, slug):
         'product': product, 
         'variants': variants
     })
+
+def add_to_cart(request, product_id):
+    if request.method == 'POST':
+        quantity = int(request.POST.get('quantity', 1))
+        size = request.POST.get('size', None)  # optional
+
+        product = get_object_or_404(Product, id=product_id)
+
+        cart = request.session.get('cart', {})
+
+        key = f"{product_id}"
+        if size:
+            key = f"{product_id}_{size.lower()}"
+
+        # Update or add to cart
+        if key in cart:
+            cart[key]['quantity'] += quantity
+        else:
+            cart[key] = {
+                'product_id': product.id,
+                'quantity': quantity,
+                'size': size,
+                'name': product.name,
+                'price': float(product.price),
+            }
+
+        request.session['cart'] = cart
+        request.session.modified = True
+        print(f"Your Basket: {request.session['cart']}")
+        return redirect('products:detail', slug=product.slug)
+    
+
+
