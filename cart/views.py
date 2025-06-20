@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.shortcuts import redirect
 from django.views.decorators.http import require_POST
 
+
 def view_cart(request):
     cart = request.session.get('cart', {})
     cart_items = []

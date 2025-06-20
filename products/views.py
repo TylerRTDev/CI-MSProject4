@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from .models import Product, Genre, MediaType, ProductVariant
 from django.shortcuts import get_object_or_404
+from django.contrib import messages
 
 def product_list(request):
     products = Product.objects.all()
@@ -86,6 +87,8 @@ def add_to_cart(request, product_id):
         request.session['cart'] = cart
         request.session.modified = True
         print(f"Your Basket: {request.session['cart']}")
+        # Display a success message in terminal
+        messages.success(request, f"'{product.name}' has been added to your basket.")
         return redirect('products:detail', slug=product.slug)
     
 
