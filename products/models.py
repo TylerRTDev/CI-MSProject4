@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils.text import slugify
+from django.urls import reverse
 
 class Genre(models.Model):
     name = models.CharField(max_length=100)
@@ -50,6 +51,18 @@ class Product(models.Model):
     is_featured = models.BooleanField(default=False)
     is_limited_edition = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
+    
+    def get_absolute_url(self):
+        return reverse('products:detail', kwargs={'slug': self.slug})
+
+class ProductVariant(models.Model):
+    product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='variants')
+    media_type = models.ForeignKey(MediaType, on_delete=models.SET_NULL, null=True, blank=True)
+    size = models.CharField(max_length=10, blank=True, null=True)
+    stock = models.PositiveIntegerField(default=0)
+
+    def __str__(self):
+        return f"{self.product.name} - {self.media_type.name if self.media_type else ''} {self.size or ''}"
 
 class ProductImage(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='images')

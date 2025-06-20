@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from .models import Product, Genre, MediaType
+from django.shortcuts import get_object_or_404
 
 def product_list(request):
     products = Product.objects.all()
@@ -48,3 +49,7 @@ def product_list(request):
         'current_media_slug': media_slug,
         'current_category': category_slug,
     })
+
+def product_detail(request, slug):
+    product = get_object_or_404(Product, slug=slug)
+    return render(request, 'products/detail.html', {'product': product})

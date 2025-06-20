@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block title %}{{ product.name }} - Real Legacy Media{% endblock %}
+
+{% block content %}
+<section class="py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <img src="{{ product.images.first.image.url|default:'/static/images/vinyl-hero.jpg' }}"
+                    class="img-fluid rounded" alt="{{ product.name }}">
+            </div>
+            <div class="col-md-6">
+                <h1 class="mb-3">{{ product.name }}</h1>
+                <p class="fs-4 fw-bold mb-2">${{ product.price }}</p>
+                <p class="mb-4">{{ product.description }}</p>
+
+                <!-- Dynamic variant form will go here next -->
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
