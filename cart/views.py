@@ -51,3 +51,9 @@ def update_cart_quantity(request):
         request.session.modified = True
 
     return redirect('cart:view_cart')
+
+@require_POST
+def clear_cart(request):
+    request.session['cart'] = {}
+    request.session.modified = True
+    return redirect('cart:view_cart')

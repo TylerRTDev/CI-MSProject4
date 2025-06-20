@@ -40,6 +40,14 @@
             </tbody>
         </table>
 
+        <form method="POST" action="{% url 'cart:clear_cart' %}">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-outline-danger btn-sm mt-3">
+                Clear Cart
+            </button>
+        </form>
+
+
         <div class="text-end mt-3">
             <h5>Total: <strong>${{ total }}</strong></h5>
         </div>
