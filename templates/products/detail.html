@@ -13,6 +13,11 @@
                 <h1 class="mb-3">{{ product.name }}</h1>
                 <p class="fs-4 fw-bold mb-2">£{{ product.price }}</p>
                 <p class="mb-4">{{ product.description }}</p>
+                <div class="text-start mt-3">
+                    <a href="{% url 'products:list' %}" class="btn btn-outline-secondary">
+                        ← Back to Products
+                    </a>
+                </div>
 
                 <!-- Dynamic variant form will go here next -->
                 {% if product.stock > 0 %}
