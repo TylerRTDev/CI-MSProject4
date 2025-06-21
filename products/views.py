@@ -65,6 +65,10 @@ def add_to_cart(request, product_id):
         size = request.POST.get('size', None)  # optional
 
         product = get_object_or_404(Product, id=product_id)
+        
+        if quantity > product.stock:
+            messages.error(request, f"Only {product.stock} units available for {product.name}.")
+            return redirect('products:detail', slug=product.slug)
 
         cart = request.session.get('cart', {})
 
