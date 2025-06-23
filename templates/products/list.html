@@ -89,13 +89,13 @@
             {% if products %}
             {% for product in products %}
             <div class="col-md-6 col-lg-3">
-                <div class="card h-100 text-center shadow-sm">
+                <div class="">
                     <img src="{{ product.images.first.image.url|default:'/static/images/vinyl-hero.jpg' }}"
                         class="card-img-top" style="height: 200px; object-fit: cover;" alt="{{ product.name }}">
                     <div class="card-body">
                         <h5 class="card-title">{{ product.name }}</h5>
-                        <p class="card-text fw-bold mb-2">${{ product.price }}</p>
-                        <a href="{{ product.get_absolute_url|default:'#' }}" class="btn btn-retro btn-sm">View Product</a>
+                        <p class="card-text fw-bold mb-2">£{{ product.price }}</p>
+                        <a href="{{ product.get_absolute_url|default:'#' }}" class="btn-retro">View Product</a>
                     </div>
                 </div>
             </div>

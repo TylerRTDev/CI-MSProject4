@@ -5,7 +5,7 @@
     --black: #000000;
     --brown: #A86523;
     --orange: #E9A319;
-    --peach: #FAD59A;
+    --peach: #fad59a;
     --cream: #FCEFCB;
     --text-color: #000000;
 }
@@ -21,10 +21,15 @@ h1, h2, h3, h4 {
     color: var(--brown);
 }
 
+h1 {
+    font-size: 2.5rem;
+    letter-spacing: 3px;
+    text-shadow: #000000 6px 6px 2px;
+}
+
 .nav-container {
     margin-bottom: 0.5rem;
 }
-
 
 .navbar {
     background-color: var(--peach);
@@ -32,6 +37,12 @@ h1, h2, h3, h4 {
     width: 80%;
     margin: auto;
     margin-top: 1rem;
+}
+
+.navbar-nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
 }
 
 .navbar-nav .nav-link {
@@ -42,44 +53,93 @@ h1, h2, h3, h4 {
 
 .navbar-nav .nav-link:hover {
     color: var(--orange);
-    text-decoration: underline;
+    text-decoration: none;
+    background-color: var(--peach);
 }
 
 .navbar-brand {
     font-family: 'Brexon', serif;
-    font-size: 1.5rem;
-    letter-spacing: -1px;
+    font-size: 2rem;
+    letter-spacing: 4px;
+    line-height: 2.5rem;
     color: var(--brown);
+    text-shadow: #000000 7px 5px 1px;
     display: flex;
 }
 
+.hero-section{
+    background: url('/static/images/cassette-bg.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 50vh;
+    position: relative;
+}
 
-.hero-section {
+.hero-section .overlay {
+    opacity: 90%;
     background-color: var(--peach);
-    padding: 4rem 0;
-    border-bottom: 4px solid var(--orange);
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 50vh;
+    z-index: -1;
+}
+
+.title-container {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    padding: 2rem;
 }
 
 .btn-retro {
-    background-color: var(--orange);
     border: none;
     color: var(--text-color);
+    border-radius: 0px;
     font-weight: bold;
+    text-decoration: none;
     padding: 0.75rem 2rem;
-    border-radius: 8px;
-    text-transform: uppercase;
-    transition: all 0.3s ease-in-out;
+    background-color: var(--peach);
+    transition: 0.5s;
 }
 
 .btn-retro:hover {
     background-color: var(--brown);
     color: white;
+    box-shadow: 10px 10px 1px var(--orange);
+    transition: .5s;
+    animation: pulse 1s infinite;
 }
 
-.featured-section {
+.featured-section, .category-section, .media-type-section {
     background-color: var(--cream);
-    border-top: 4px solid var(--orange);
-    border-bottom: 4px solid var(--orange);
+}
+
+.featured-title-container, .category-title-container, .media-type-title-container {
+    background-color: var(--peach);
+    transition: 0.5s;
+}
+
+.featured-container:hover .featured-title-container, .category-container:hover .category-title-container, .media-type-container:hover .media-type-title-container {
+    transition: 0.5s;
+    box-shadow: 10px 10px 1px var(--orange);
+}
+
+.card {
+    border: 0px solid var(--brown);
+    border-radius: 0px;
+    background-color: rgba(255, 255, 255, 0);
+    padding: 1rem;
+    margin: 1rem;
+    transition: transform 0.5s ease;
+    box-shadow: 0px 20px 25px rgba(0, 0, 0, 0.2);
+}
+
+.card:hover {
+    transform: translateY(-10px);
 }
 
 .card-title {
@@ -94,11 +154,8 @@ h1, h2, h3, h4 {
 .card img {
     object-fit: cover;
     height: 200px;
-}
-
-.category-section {
-    background-color: var(--peach);
-    border-top: 4px solid var(--brown);
+    border-radius: 0px;
+    box-shadow: inset 5px 5px 40px rgba(0, 0, 0, 0.28);
 }
 
 .category-tile {
