@@ -1,11 +1,11 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth.decorators import login_required
 from django.contrib import messages
-from .forms import OrderForm
+from django.core.validators import validate_email
+from django.core.exceptions import ValidationError
+from .forms import OrderForm, GuestEmailForm
 from .models import CheckoutOrder, CheckoutItem
 from products.models import Product
 
-@login_required
 def checkout_view(request):
     cart = request.session.get('cart', {})
     if not cart:
@@ -20,6 +20,18 @@ def checkout_view(request):
             order = form.save(commit=False)
             order.user = request.user
             order.total_amount = total
+            
+            if request.user.is_authenticated:
+                order.user = request.user
+            else:
+                guest_email = request.POST.get('email')
+                try:
+                    validate_email(guest_email)
+                    order.guest_email = guest_email
+                except ValidationError:
+                    messages.error(request, "Please enter a valid email for guest checkout.")
+                    return redirect('checkout:checkout_view')
+
             order.save()
 
             for item in cart.values():
@@ -46,13 +58,28 @@ def checkout_view(request):
             messages.success(request, "Order placed successfully!")
             return redirect('core:home')
     else:
-        form = OrderForm(initial={
-            'user': request.user,
+        initial_data = {
             'total_amount': total,
-        })
+        }
+        if request.user.is_authenticated:
+            initial_data['user'] = request.user
+
+        form = OrderForm(initial=initial_data)
 
     return render(request, 'checkout/checkout.html', {
         'form': form,
         'cart': cart,
         'total': total,
+    })
+
+def guest_email_view(request):
+    form = GuestEmailForm(request.POST or None)
+    if form.is_valid():
+        email = form.cleaned_data['email']
+        request.session['guest_email'] = email  # Store in session
+        messages.success(request, "Guest email accepted. Please complete checkout.")
+        return redirect('checkout:checkout')
+    
+    return render(request, 'checkout/guest_email.html', {
+        'form': form
     })

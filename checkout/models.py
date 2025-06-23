@@ -9,7 +9,7 @@ class CheckoutOrder(models.Model):
         ('delivered', 'Delivered'),
     ]
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    email = models.EmailField(null=True, blank=True)
+    guest_email = models.EmailField(blank=True, null=True)
     address = models.TextField(null=True, blank=True)
     city = models.CharField(max_length=50, null=True, blank=True)
     postcode = models.CharField(max_length=20, null=True, blank=True)

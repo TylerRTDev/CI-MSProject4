@@ -9,3 +9,6 @@ class OrderForm(forms.ModelForm):
             'user': forms.HiddenInput(),
             'total_amount': forms.HiddenInput(),
         }
+        
+class GuestEmailForm(forms.Form):
+    email = forms.EmailField(label="Your email", max_length=254)
