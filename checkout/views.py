@@ -15,39 +15,29 @@ def checkout_view(request):
     total = sum(item['quantity'] * item['price'] for item in cart.values())
 
     if request.method == 'POST':
-        form = OrderForm(request.POST)
+        # Always treat user as guest for now
+        form = GuestEmailForm(request.POST)
         if form.is_valid():
-            order = form.save(commit=False)
-            order.user = request.user
-            order.total_amount = total
-            
-            if request.user.is_authenticated:
-                order.user = request.user
-            else:
-                guest_email = request.POST.get('email')
-                try:
-                    validate_email(guest_email)
-                    order.guest_email = guest_email
-                except ValidationError:
-                    messages.error(request, "Please enter a valid email for guest checkout.")
-                    return redirect('checkout:checkout_view')
-
-            order.save()
+            guest_email = form.cleaned_data['email']
+            order = CheckoutOrder.objects.create(
+                guest_email=guest_email,
+                total_amount=total
+            )
 
             for item in cart.values():
                 product = Product.objects.get(id=item['product_id'])
 
-                # Prevent overselling
                 if product.stock < item['quantity']:
                     messages.error(request, f"Not enough stock for {product.name}.")
-                    order.delete()  # Cleanup
+                    order.delete()
                     return redirect('cart:view_cart')
 
                 CheckoutItem.objects.create(
                     order=order,
                     product=product,
                     quantity=item['quantity'],
-                    price=item['price']
+                    price=item['price'],
+                    size=item.get('size', '')
                 )
 
                 product.stock -= item['quantity']
@@ -58,13 +48,7 @@ def checkout_view(request):
             messages.success(request, "Order placed successfully!")
             return redirect('core:home')
     else:
-        initial_data = {
-            'total_amount': total,
-        }
-        if request.user.is_authenticated:
-            initial_data['user'] = request.user
-
-        form = OrderForm(initial=initial_data)
+        form = GuestEmailForm()
 
     return render(request, 'checkout/checkout.html', {
         'form': form,
