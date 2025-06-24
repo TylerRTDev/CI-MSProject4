@@ -29,15 +29,33 @@
         <!-- Nav Links -->
         <div class="navbar-open collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto">
-                <li class="nav-item">
+                {% if user.is_authenticated %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'accounts:profile' %}">Account</a>
+                    </li>
+                    <li class="nav-item">
                     <a class="nav-link" href="{% url 'products:list' %}">Shop</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'cart:view_cart' %}">Cart</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Login</a>
-                </li>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'cart:view_cart' %}">Cart</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'accounts:logout' %}">Logout</a>
+                    </li>
+                    {% else %}
+                    <li class="nav-item">
+                    <a class="nav-link" href="{% url 'products:list' %}">Shop</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'cart:view_cart' %}">Cart</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'accounts:login' %}">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'accounts:register' %}">Register</a>
+                    </li>
+                {% endif %}
             </ul>
         </div>
     </div>
