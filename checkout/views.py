@@ -46,7 +46,7 @@ def checkout_view(request):
             request.session['cart'] = {}
             request.session.modified = True
             messages.success(request, "Order placed successfully!")
-            return redirect('core:home')
+            return redirect('checkout:order_success')
     else:
         form = GuestEmailForm()
 
@@ -67,3 +67,6 @@ def guest_email_view(request):
     return render(request, 'checkout/guest_email.html', {
         'form': form
     })
+    
+def order_success(request):
+    return render(request, 'checkout/order_success.html')

@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container text-center py-5">
+    <h2 class="text-retro mb-4">🎉 Order Confirmed!</h2>
+    <p class="lead">Thank you for your purchase. A confirmation email has been sent.</p>
+    <a href="{% url 'products:list' %}" class="btn btn-retro mt-4">Back to Products</a>
+</div>
+{% endblock %}

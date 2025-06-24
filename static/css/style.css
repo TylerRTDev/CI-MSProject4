@@ -23,8 +23,8 @@ h1, h2, h3, h4 {
 
 h1 {
     font-size: 2.5rem;
-    letter-spacing: 3px;
-    text-shadow: #000000 6px 6px 2px;
+    letter-spacing: 7px;
+    text-shadow: var(--peach) 6px 5px 2px;
 }
 
 .nav-container {
@@ -46,25 +46,40 @@ h1 {
 }
 
 .navbar-nav .nav-link {
-    font-weight: 600;
+    color: var(--orange);
+    opacity: 35%;
+    font-family: 'Brexon', sans-serif;
+    font-size: 2.5rem;
     padding: 0.5rem 1rem;
-    transition: color 0.2s ease;
+    transition: 0.3s;
+    padding: 5rem;
+    letter-spacing: -5px;
 }
 
-.navbar-nav .nav-link:hover {
-    color: var(--orange);
+.nav-link:hover {
+    opacity: 100%;
+    color: var(--brown);
     text-decoration: none;
     background-color: var(--peach);
+    transition: 0.5s;
+    letter-spacing: 0px;
 }
 
 .navbar-brand {
-    font-family: 'Brexon', serif;
-    font-size: 2rem;
-    letter-spacing: 4px;
-    line-height: 2.5rem;
-    color: var(--brown);
-    text-shadow: #000000 7px 5px 1px;
-    display: flex;
+    font-family: Brexon, sans-serif;
+    color: #00000017;
+    font-size: 1.5rem;
+    transition: 0.7s;
+    letter-spacing: -5px;
+}
+
+.navbar-brand:hover {
+    letter-spacing: 0px;
+    color: #a86523e4;
+    text-decoration: none;
+    transition: 0.5s;
+    text-shadow: #E9A319 6px 6px 2px;
+    font-size: 2.5rem;
 }
 
 .hero-section{
@@ -74,6 +89,7 @@ h1 {
     background-repeat: no-repeat;
     height: 50vh;
     position: relative;
+    border-radius: 30px;
 }
 
 .hero-section .overlay {
@@ -90,9 +106,12 @@ h1 {
 
 .title-container {
     position: relative;
-    z-index: 2;
     text-align: center;
     padding: 2rem;
+    border: none;
+    border-radius: 30px;
+    padding: 5rem;
+    box-shadow: rgba(255, 255, 255, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.612) 0px 18px 36px -18px inset;
 }
 
 .btn-retro {
@@ -106,12 +125,22 @@ h1 {
     transition: 0.5s;
 }
 
-.btn-retro:hover {
+.btn-retro:hover, .btn-retro-hero:hover {
     background-color: var(--brown);
     color: white;
     box-shadow: 10px 10px 1px var(--orange);
     transition: .5s;
     animation: pulse 1s infinite;
+}
+
+.btn-retro-hero {
+    border-radius: 30px;
+    color: var(--text-color);
+    font-weight: bold;
+    text-decoration: none;
+    padding: 0.75rem 2rem;
+    background-color: var(--peach);
+    transition: 0.5s;
 }
 
 .featured-section, .category-section, .media-type-section {
@@ -181,4 +210,17 @@ h1 {
     font-weight: bold;
     padding: 0.5em 0.75em;
     border-radius: 12px;
+}
+
+.text-retro {
+    font-family: 'Brexon', sans-serif;
+    font-size: 2rem;
+    color: var(--brown);
+}
+
+.checkout-card {
+    background-color: var(--cream);
+    max-width: 700px;
+    margin: 0 auto;
+    border: 1px solid var(--peach);
 }
