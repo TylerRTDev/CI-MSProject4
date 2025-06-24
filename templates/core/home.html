@@ -54,6 +54,29 @@
     </div>
 </section>
 
+<section class="featured-section py-5">
+    <div class="featured-container">
+        <div class="featured-title-container">
+        <h2 class="text-center m-4 p-2">Featured Picks</h2>
+        </div>
+        <div class="row g-4">
+            {% for product in featured %}
+            <div class="col-md-6 col-lg-3">
+                <div class="card">
+                    <img src="{{ product.images.first.image.url|default:'/static/images/logo-avatar.png' }}" 
+                        class="card-img-top" alt="{{ product.name }}">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ product.name }}</h5>
+                        <p class="card-text fw-bold">£{{ product.price }}</p>
+                        <a href="{{ product.get_absolute_url }}" class="btn-retro">View Product</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
 <section class="media-type-section py-5">
     <div class="media-type-container">
         <div class="media-type-title-container">
@@ -66,6 +89,29 @@
                     <div class="category-icon mb-2">💽</div>
                     <strong>{{ type.name }}</strong>
                 </a>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<section class="featured-section py-5">
+    <div class="featured-container">
+        <div class="featured-title-container">
+        <h2 class="text-center m-4 p-2">Featured Picks</h2>
+        </div>
+        <div class="row g-4">
+            {% for product in featured %}
+            <div class="col-md-6 col-lg-3">
+                <div class="card">
+                    <img src="{{ product.images.first.image.url|default:'/static/images/logo-avatar.png' }}" 
+                        class="card-img-top" alt="{{ product.name }}">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ product.name }}</h5>
+                        <p class="card-text fw-bold">£{{ product.price }}</p>
+                        <a href="{{ product.get_absolute_url }}" class="btn-retro">View Product</a>
+                    </div>
+                </div>
             </div>
             {% endfor %}
         </div>
