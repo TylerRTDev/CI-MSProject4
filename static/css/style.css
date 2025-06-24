@@ -34,7 +34,7 @@ h1 {
 .navbar {
     background-color: var(--peach);
     box-shadow: 10px 10px 1px var(--orange);
-    width: 80%;
+    width: 60%;
     margin: auto;
     margin-top: 1rem;
 }
@@ -87,15 +87,14 @@ h1 {
     background-color: none ;
     border-radius: 0;
     opacity: 50%;
-    transition: 0.5s;
+    transition: 0.8s;
 }
 
 .navbar-toggler:hover {
-    border: none;
-    box-shadow: #E9A319 inset 8px 10px 2px;
-    background-color: var(--orange);
+    box-shadow: #E9A319 inset 8px 8px 2px;
     border-radius: 0;
-    opacity: 50%;
+    transition: 0.7s;
+    opacity: 100%;
 }
 
 

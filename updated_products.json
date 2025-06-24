@@ -1,0 +1,852 @@
+[
+    {
+        "model": "products.product",
+        "pk": 100,
+        "fields": {
+            "name": "Hip-Hop Cassette Vol. 5",
+            "slug": "hip-hop-cassette-vol-5",
+            "category": 1,
+            "description": "Hip-Hop Cassette Vol. 5 is a premium product crafted for fans of retro style and bold anime culture.",
+            "genre": 2,
+            "media_type": 3,
+            "price": "64.03",
+            "stock": 28,
+            "is_featured": false,
+            "is_limited_edition": false,
+            "created_at": "2025-02-16T19:29:34.353451"
+        }
+    },
+    {
+        "model": "products.product",
+        "pk": 101,
+        "fields": {
+            "name": "Pop Vinyl Vol. 18",
+            "slug": "pop-vinyl-vol-18",
+            "category": 1,
+            "description": "Pop Vinyl Vol. 18 is a premium product crafted for fans of retro style and bold anime culture.",
+            "genre": 5,
+            "media_type": 1,
+            "price": "102.74",
+            "stock": 72,
+            "is_featured": true,
+            "is_limited_edition": false,
+            "created_at": "2024-12-03T19:29:34.353496"
+        }
+    },
+    {
+        "model": "products.product",
+        "pk": 102,
+        "fields": {
+            "name": "Indie Cassette Vol. 8",
+            "slug": "indie-cassette-vol-8",
+            "category": 1,
+            "description": "Indie Cassette Vol. 8 is a premium product crafted for fans of retro style and bold anime culture.",
+            "genre": 7,
+            "media_type": 3,
+            "price": "26.68",
+            "stock": 67,
+            "is_featured": true,
+            "is_limited_edition": false,
+            "created_at": "2025-03-24T19:29:34.353526"
+        }
+    },
+    {
+        "model": "products.product",
+        "pk": 103,
+        "fields": {
+            "name": "Sweatpants - Pop",
+            "slug": "sweatpants---pop",
+            "category": 2,
+            "description": "Sweatpants - Pop is a premium product crafted for fans of retro style and bold anime culture.",
+            "genre": 5,
+            "media_type": null,
+            "price": "149.46",
+            "stock": 33,
+            "is_featured": false,
+            "is_limited_edition": true,
+            "created_at": "2024-09-10T19:29:34.353553"
+        }
+    },
+    {
+        "model": "products.product",
+        "pk": 104,
+        "fields": {
+            "name": "Jazz Digital Vol. 17",
+            "slug": "jazz-digital-vol-17",
+            "category": 1,
+            "description": "Jazz Digital Vol. 17 is a premium product crafted for fans of retro style and bold anime culture.",
+            "genre": 4,
+            "media_type": 4,
+            "price": "31.00",
+            "stock": 21,
+            "is_featured": true,
+            "is_limited_edition": true,
+            "created_at": "2025-05-23T19:29:34.353582"
+        }
+    },
+    {
+        "model": "products.product",
+        "pk": 105,
+        "fields": {
+            "name": "Hoodie - Rock",
+            "slug": "hoodie---rock",
+            "category": 2,
+            "description": "Hoodie - Rock is a premium product crafted for fans of retro style and bold anime culture.",
+            "genre": 3,
+            "media_type": null,
+            "price": "113.42",
+            "stock": 58,
+            "is_featured": true,
+            "is_limited_edition": false,
+            "created_at": "2024-11-16T19:29:34.353605"
+        }
+    },
+    {
+        "model": "products.product",
+        "pk": 106,
+        "fields": {
+            "name": "Indie CD Vol. 5",
+            "slug": "indie-cd-vol-5",
+            "category": 1,
+            "description": "Indie CD Vol. 5 is a premium product crafted for fans of retro style and bold anime culture.",
+            "genre": 7,
+            "media_type": 2,
+            "price": "104.04",
+            "stock": 58,
+            "is_featured": true,
+            "is_limited_edition": false,
+            "created_at": "2025-02-13T19:29:34.353621"
+        }
+    },
+    {
+        "model": "products.product",
+        "pk": 107,
+        "fields": {
+            "name": "Sticker Pack - Electronic",
+            "slug": "sticker-pack---electronic",
+            "category": 3,
+            "description": "Sticker Pack - Electronic is a premium product crafted for fans of retro style and bold anime culture.",
+            "genre": 6,
+            "media_type": null,
+            "price": "15.66",
+            "stock": 74,
+            "is_featured": false,
+            "is_limited_edition": true,
+            "created_at": "2024-11-07T19:29:34.353645"
+        }
+    },
+    {
+        "model": "products.product",
+        "pk": 108,
+        "fields": {
+            "name": "Pop DVD Vol. 7",
+            "slug": "pop-dvd-vol-7",
+            "category": 1,
+            "description": "Pop DVD Vol. 7 is a premium product crafted for fans of retro style and bold anime culture.",
+            "genre": 5,
+            "media_type": 5,
+            "price": "68.73",
+            "stock": 63,
+            "is_featured": true,
+            "is_limited_edition": true,
+            "created_at": "2025-06-04T19:29:34.353678"
+        }
+    },
+    {
+        "model": "products.product",
+        "pk": 109,
+        "fields": {
+            "name": "Phone Case - Indie",
+            "slug": "phone-case---indie",
+            "category": 3,
+            "description": "Phone Case - Indie is a premium product crafted for fans of retro style and bold anime culture.",
+            "genre": 7,
+            "media_type": null,
+            "price": "87.18",
+            "stock": 29,
+            "is_featured": false,
+            "is_limited_edition": false,
+            "created_at": "2025-06-14T19:29:34.353700"
+        }
+    },
+    {
+        "model": "products.product",
+        "pk": 110,
+        "fields": {
+            "name": "Hip-Hop Digital Vol. 19",
+            "slug": "hip-hop-digital-vol-19",
+            "category": 1,
+            "description": "Hip-Hop Digital Vol. 19 is a premium product crafted for fans of retro style and bold anime culture.",
+            "genre": 2,
+            "media_type": 4,
+            "price": "97.37",
+            "stock": 33,
+            "is_featured": false,
+            "is_limited_edition": true,
+            "created_at": "2024-09-01T19:29:34.353726"
+        }
+    },
+    {
+        "model": "products.product",
+        "pk": 111,
+        "fields": {
+            "name": "Long Sleeve - Jazz",
+            "slug": "long-sleeve---jazz",
+            "category": 2,
+            "description": "Long Sleeve - Jazz is a premium product crafted for fans of retro style and bold anime culture.",
+            "genre": 4,
+            "media_type": null,
+            "price": "71.17",
+            "stock": 98,
+            "is_featured": true,
+            "is_limited_edition": true,
+            "created_at": "2025-01-24T19:29:34.353878"
+        }
+    },
+    {
+        "model": "products.product",
+        "pk": 112,
+        "fields": {
+            "name": "Sweatpants - Jazz",
+            "slug": "sweatpants---jazz",
+            "category": 2,
+            "description": "Sweatpants - Jazz is a premium product crafted for fans of retro style and bold anime culture.",
+            "genre": 4,
+            "media_type": null,
+            "price": "67.60",
+            "stock": 54,
+            "is_featured": false,
+            "is_limited_edition": false,
+            "created_at": "2024-07-24T19:29:34.353902"
+        }
+    },
+    {
+        "model": "products.product",
+        "pk": 113,
+        "fields": {
+            "name": "Beanie - Pop",
+            "slug": "beanie---pop",
+            "category": 3,
+            "description": "Beanie - Pop is a premium product crafted for fans of retro style and bold anime culture.",
+            "genre": 5,
+            "media_type": null,
+            "price": "148.34",
+            "stock": 7,
+            "is_featured": true,
+            "is_limited_edition": true,
+            "created_at": "2025-04-03T19:29:34.353932"
+        }
+    },
+    {
+        "model": "products.product",
+        "pk": 114,
+        "fields": {
+            "name": "Jacket - Indie",
+            "slug": "jacket---indie",
+            "category": 2,
+            "description": "Jacket - Indie is a premium product crafted for fans of retro style and bold anime culture.",
+            "genre": 7,
+            "media_type": null,
+            "price": "134.24",
+            "stock": 22,
+            "is_featured": true,
+            "is_limited_edition": false,
+            "created_at": "2024-12-16T19:29:34.353945"
+        }
+    },
+    {
+        "model": "products.product",
+        "pk": 115,
+        "fields": {
+            "name": "Rock DVD Vol. 2",
+            "slug": "rock-dvd-vol-2",
+            "category": 1,
+            "description": "Rock DVD Vol. 2 is a premium product crafted for fans of retro style and bold anime culture.",
+            "genre": 3,
+            "media_type": 5,
+            "price": "89.04",
+            "stock": 19,
+            "is_featured": false,
+            "is_limited_edition": false,
+            "created_at": "2024-07-03T19:29:34.353958"
+        }
+    },
+    {
+        "model": "products.product",
+        "pk": 116,
+        "fields": {
+            "name": "Keychain - Rock",
+            "slug": "keychain---rock",
+            "category": 3,
+            "description": "Keychain - Rock is a premium product crafted for fans of retro style and bold anime culture.",
+            "genre": 3,
+            "media_type": null,
+            "price": "146.60",
+            "stock": 70,
+            "is_featured": false,
+            "is_limited_edition": false,
+            "created_at": "2024-08-07T19:29:34.353979"
+        }
+    },
+    {
+        "model": "products.product",
+        "pk": 117,
+        "fields": {
+            "name": "Hoodie - Jazz",
+            "slug": "hoodie---jazz",
+            "category": 2,
+            "description": "Hoodie - Jazz is a premium product crafted for fans of retro style and bold anime culture.",
+            "genre": 4,
+            "media_type": null,
+            "price": "26.10",
+            "stock": 42,
+            "is_featured": false,
+            "is_limited_edition": true,
+            "created_at": "2024-11-27T19:29:34.354000"
+        }
+    },
+    {
+        "model": "products.product",
+        "pk": 118,
+        "fields": {
+            "name": "Jacket - Jazz",
+            "slug": "jacket---jazz",
+            "category": 2,
+            "description": "Jacket - Jazz is a premium product crafted for fans of retro style and bold anime culture.",
+            "genre": 4,
+            "media_type": null,
+            "price": "67.14",
+            "stock": 75,
+            "is_featured": false,
+            "is_limited_edition": false,
+            "created_at": "2024-12-29T19:29:34.354026"
+        }
+    },
+    {
+        "model": "products.product",
+        "pk": 119,
+        "fields": {
+            "name": "Cap - Pop",
+            "slug": "cap---pop",
+            "category": 3,
+            "description": "Cap - Pop is a premium product crafted for fans of retro style and bold anime culture.",
+            "genre": 5,
+            "media_type": null,
+            "price": "20.01",
+            "stock": 76,
+            "is_featured": false,
+            "is_limited_edition": true,
+            "created_at": "2025-02-03T19:29:34.354041"
+        }
+    },
+    {
+        "model": "products.product",
+        "pk": 120,
+        "fields": {
+            "name": "Long Sleeve - Pop",
+            "slug": "long-sleeve---pop",
+            "category": 2,
+            "description": "Long Sleeve - Pop is a premium product crafted for fans of retro style and bold anime culture.",
+            "genre": 5,
+            "media_type": null,
+            "price": "33.18",
+            "stock": 98,
+            "is_featured": false,
+            "is_limited_edition": false,
+            "created_at": "2024-12-29T19:29:34.354052"
+        }
+    },
+    {
+        "model": "products.product",
+        "pk": 121,
+        "fields": {
+            "name": "T-Shirt - Hip-Hop",
+            "slug": "t-shirt---hip-hop",
+            "category": 2,
+            "description": "T-Shirt - Hip-Hop is a premium product crafted for fans of retro style and bold anime culture.",
+            "genre": 2,
+            "media_type": null,
+            "price": "145.77",
+            "stock": 83,
+            "is_featured": true,
+            "is_limited_edition": true,
+            "created_at": "2025-04-10T19:29:34.354063"
+        }
+    },
+    {
+        "model": "products.product",
+        "pk": 122,
+        "fields": {
+            "name": "Long Sleeve - Hip-Hop",
+            "slug": "long-sleeve---hip-hop",
+            "category": 2,
+            "description": "Long Sleeve - Hip-Hop is a premium product crafted for fans of retro style and bold anime culture.",
+            "genre": 2,
+            "media_type": null,
+            "price": "87.18",
+            "stock": 13,
+            "is_featured": false,
+            "is_limited_edition": true,
+            "created_at": "2025-03-04T19:29:34.354073"
+        }
+    },
+    {
+        "model": "products.product",
+        "pk": 123,
+        "fields": {
+            "name": "Jacket - Indie",
+            "slug": "jacket---indie",
+            "category": 2,
+            "description": "Jacket - Indie is a premium product crafted for fans of retro style and bold anime culture.",
+            "genre": 7,
+            "media_type": null,
+            "price": "15.68",
+            "stock": 81,
+            "is_featured": false,
+            "is_limited_edition": true,
+            "created_at": "2025-01-13T19:29:34.354083"
+        }
+    },
+    {
+        "model": "products.product",
+        "pk": 124,
+        "fields": {
+            "name": "Jacket - Jazz",
+            "slug": "jacket---jazz",
+            "category": 2,
+            "description": "Jacket - Jazz is a premium product crafted for fans of retro style and bold anime culture.",
+            "genre": 4,
+            "media_type": null,
+            "price": "100.25",
+            "stock": 56,
+            "is_featured": true,
+            "is_limited_edition": false,
+            "created_at": "2025-06-14T19:29:34.354094"
+        }
+    },
+    {
+        "model": "products.product",
+        "pk": 125,
+        "fields": {
+            "name": "Phone Case - Indie",
+            "slug": "phone-case---indie",
+            "category": 3,
+            "description": "Phone Case - Indie is a premium product crafted for fans of retro style and bold anime culture.",
+            "genre": 7,
+            "media_type": null,
+            "price": "59.16",
+            "stock": 9,
+            "is_featured": false,
+            "is_limited_edition": true,
+            "created_at": "2025-01-27T19:29:34.354105"
+        }
+    },
+    {
+        "model": "products.product",
+        "pk": 126,
+        "fields": {
+            "name": "Beanie - Indie",
+            "slug": "beanie---indie",
+            "category": 3,
+            "description": "Beanie - Indie is a premium product crafted for fans of retro style and bold anime culture.",
+            "genre": 7,
+            "media_type": null,
+            "price": "66.21",
+            "stock": 94,
+            "is_featured": true,
+            "is_limited_edition": true,
+            "created_at": "2025-04-26T19:29:34.354115"
+        }
+    },
+    {
+        "model": "products.product",
+        "pk": 127,
+        "fields": {
+            "name": "Phone Case - Hip-Hop",
+            "slug": "phone-case---hip-hop",
+            "category": 3,
+            "description": "Phone Case - Hip-Hop is a premium product crafted for fans of retro style and bold anime culture.",
+            "genre": 2,
+            "media_type": null,
+            "price": "24.41",
+            "stock": 47,
+            "is_featured": false,
+            "is_limited_edition": false,
+            "created_at": "2025-01-16T19:29:34.354126"
+        }
+    },
+    {
+        "model": "products.product",
+        "pk": 128,
+        "fields": {
+            "name": "Sticker Pack - Electronic",
+            "slug": "sticker-pack---electronic",
+            "category": 3,
+            "description": "Sticker Pack - Electronic is a premium product crafted for fans of retro style and bold anime culture.",
+            "genre": 6,
+            "media_type": null,
+            "price": "29.54",
+            "stock": 89,
+            "is_featured": false,
+            "is_limited_edition": true,
+            "created_at": "2025-06-01T19:29:34.354136"
+        }
+    },
+    {
+        "model": "products.product",
+        "pk": 129,
+        "fields": {
+            "name": "Beanie - Hip-Hop",
+            "slug": "beanie---hip-hop",
+            "category": 3,
+            "description": "Beanie - Hip-Hop is a premium product crafted for fans of retro style and bold anime culture.",
+            "genre": 2,
+            "media_type": null,
+            "price": "100.24",
+            "stock": 86,
+            "is_featured": true,
+            "is_limited_edition": false,
+            "created_at": "2024-11-06T19:29:34.354145"
+        }
+    },
+    {
+        "model": "products.product",
+        "pk": 130,
+        "fields": {
+            "name": "T-Shirt - Jazz",
+            "slug": "t-shirt---jazz",
+            "category": 2,
+            "description": "T-Shirt - Jazz is a premium product crafted for fans of retro style and bold anime culture.",
+            "genre": 4,
+            "media_type": null,
+            "price": "86.66",
+            "stock": 94,
+            "is_featured": true,
+            "is_limited_edition": false,
+            "created_at": "2024-11-06T19:29:34.354162"
+        }
+    },
+    {
+        "model": "products.product",
+        "pk": 131,
+        "fields": {
+            "name": "Pop Vinyl Vol. 4",
+            "slug": "pop-vinyl-vol-4",
+            "category": 1,
+            "description": "Pop Vinyl Vol. 4 is a premium product crafted for fans of retro style and bold anime culture.",
+            "genre": 5,
+            "media_type": 1,
+            "price": "31.93",
+            "stock": 87,
+            "is_featured": true,
+            "is_limited_edition": false,
+            "created_at": "2024-06-28T19:29:34.354188"
+        }
+    },
+    {
+        "model": "products.product",
+        "pk": 132,
+        "fields": {
+            "name": "Keychain - Hip-Hop",
+            "slug": "keychain---hip-hop",
+            "category": 3,
+            "description": "Keychain - Hip-Hop is a premium product crafted for fans of retro style and bold anime culture.",
+            "genre": 2,
+            "media_type": null,
+            "price": "131.29",
+            "stock": 24,
+            "is_featured": true,
+            "is_limited_edition": false,
+            "created_at": "2024-09-16T19:29:34.354237"
+        }
+    },
+    {
+        "model": "products.product",
+        "pk": 133,
+        "fields": {
+            "name": "Jacket - Rock",
+            "slug": "jacket---rock",
+            "category": 2,
+            "description": "Jacket - Rock is a premium product crafted for fans of retro style and bold anime culture.",
+            "genre": 3,
+            "media_type": null,
+            "price": "78.94",
+            "stock": 16,
+            "is_featured": true,
+            "is_limited_edition": true,
+            "created_at": "2024-10-01T19:29:34.354263"
+        }
+    },
+    {
+        "model": "products.product",
+        "pk": 134,
+        "fields": {
+            "name": "T-Shirt - Hip-Hop",
+            "slug": "t-shirt---hip-hop",
+            "category": 2,
+            "description": "T-Shirt - Hip-Hop is a premium product crafted for fans of retro style and bold anime culture.",
+            "genre": 2,
+            "media_type": null,
+            "price": "72.68",
+            "stock": 27,
+            "is_featured": true,
+            "is_limited_edition": true,
+            "created_at": "2025-01-19T19:29:34.354287"
+        }
+    },
+    {
+        "model": "products.product",
+        "pk": 135,
+        "fields": {
+            "name": "Indie Digital Vol. 14",
+            "slug": "indie-digital-vol-14",
+            "category": 1,
+            "description": "Indie Digital Vol. 14 is a premium product crafted for fans of retro style and bold anime culture.",
+            "genre": 7,
+            "media_type": 4,
+            "price": "132.41",
+            "stock": 3,
+            "is_featured": true,
+            "is_limited_edition": true,
+            "created_at": "2024-12-06T19:29:34.354314"
+        }
+    },
+    {
+        "model": "products.product",
+        "pk": 136,
+        "fields": {
+            "name": "Electronic Vinyl Vol. 13",
+            "slug": "electronic-vinyl-vol-13",
+            "category": 1,
+            "description": "Electronic Vinyl Vol. 13 is a premium product crafted for fans of retro style and bold anime culture.",
+            "genre": 6,
+            "media_type": 1,
+            "price": "94.79",
+            "stock": 68,
+            "is_featured": false,
+            "is_limited_edition": false,
+            "created_at": "2025-02-10T19:29:34.354337"
+        }
+    },
+    {
+        "model": "products.product",
+        "pk": 137,
+        "fields": {
+            "name": "Hoodie - Hip-Hop",
+            "slug": "hoodie---hip-hop",
+            "category": 2,
+            "description": "Hoodie - Hip-Hop is a premium product crafted for fans of retro style and bold anime culture.",
+            "genre": 2,
+            "media_type": null,
+            "price": "91.44",
+            "stock": 68,
+            "is_featured": false,
+            "is_limited_edition": false,
+            "created_at": "2025-03-12T19:29:34.354358"
+        }
+    },
+    {
+        "model": "products.product",
+        "pk": 138,
+        "fields": {
+            "name": "Sweatpants - Rock",
+            "slug": "sweatpants---rock",
+            "category": 2,
+            "description": "Sweatpants - Rock is a premium product crafted for fans of retro style and bold anime culture.",
+            "genre": 3,
+            "media_type": null,
+            "price": "52.40",
+            "stock": 30,
+            "is_featured": false,
+            "is_limited_edition": true,
+            "created_at": "2024-07-09T19:29:34.354379"
+        }
+    },
+    {
+        "model": "products.product",
+        "pk": 139,
+        "fields": {
+            "name": "Beanie - Jazz",
+            "slug": "beanie---jazz",
+            "category": 3,
+            "description": "Beanie - Jazz is a premium product crafted for fans of retro style and bold anime culture.",
+            "genre": 4,
+            "media_type": null,
+            "price": "103.12",
+            "stock": 17,
+            "is_featured": true,
+            "is_limited_edition": true,
+            "created_at": "2024-08-19T19:29:34.354399"
+        }
+    },
+    {
+        "model": "products.product",
+        "pk": 140,
+        "fields": {
+            "name": "Cap - Rock",
+            "slug": "cap---rock",
+            "category": 3,
+            "description": "Cap - Rock is a premium product crafted for fans of retro style and bold anime culture.",
+            "genre": 3,
+            "media_type": null,
+            "price": "92.10",
+            "stock": 94,
+            "is_featured": true,
+            "is_limited_edition": false,
+            "created_at": "2025-01-01T19:29:34.354421"
+        }
+    },
+    {
+        "model": "products.product",
+        "pk": 141,
+        "fields": {
+            "name": "Sticker Pack - Electronic",
+            "slug": "sticker-pack---electronic",
+            "category": 3,
+            "description": "Sticker Pack - Electronic is a premium product crafted for fans of retro style and bold anime culture.",
+            "genre": 6,
+            "media_type": null,
+            "price": "28.83",
+            "stock": 15,
+            "is_featured": false,
+            "is_limited_edition": false,
+            "created_at": "2024-12-26T19:29:34.354446"
+        }
+    },
+    {
+        "model": "products.product",
+        "pk": 142,
+        "fields": {
+            "name": "Long Sleeve - Jazz",
+            "slug": "long-sleeve---jazz",
+            "category": 2,
+            "description": "Long Sleeve - Jazz is a premium product crafted for fans of retro style and bold anime culture.",
+            "genre": 4,
+            "media_type": null,
+            "price": "109.87",
+            "stock": 56,
+            "is_featured": false,
+            "is_limited_edition": false,
+            "created_at": "2025-04-21T19:29:34.354456"
+        }
+    },
+    {
+        "model": "products.product",
+        "pk": 143,
+        "fields": {
+            "name": "Rock Digital Vol. 19",
+            "slug": "rock-digital-vol-19",
+            "category": 1,
+            "description": "Rock Digital Vol. 19 is a premium product crafted for fans of retro style and bold anime culture.",
+            "genre": 3,
+            "media_type": 4,
+            "price": "59.92",
+            "stock": 56,
+            "is_featured": true,
+            "is_limited_edition": false,
+            "created_at": "2025-01-23T19:29:34.354467"
+        }
+    },
+    {
+        "model": "products.product",
+        "pk": 144,
+        "fields": {
+            "name": "Beanie - Pop",
+            "slug": "beanie---pop",
+            "category": 3,
+            "description": "Beanie - Pop is a premium product crafted for fans of retro style and bold anime culture.",
+            "genre": 5,
+            "media_type": null,
+            "price": "115.84",
+            "stock": 25,
+            "is_featured": true,
+            "is_limited_edition": true,
+            "created_at": "2024-09-30T19:29:34.354485"
+        }
+    },
+    {
+        "model": "products.product",
+        "pk": 145,
+        "fields": {
+            "name": "Long Sleeve - Hip-Hop",
+            "slug": "long-sleeve---hip-hop",
+            "category": 2,
+            "description": "Long Sleeve - Hip-Hop is a premium product crafted for fans of retro style and bold anime culture.",
+            "genre": 2,
+            "media_type": null,
+            "price": "118.74",
+            "stock": 5,
+            "is_featured": true,
+            "is_limited_edition": true,
+            "created_at": "2025-06-06T19:29:34.354506"
+        }
+    },
+    {
+        "model": "products.product",
+        "pk": 146,
+        "fields": {
+            "name": "Pop Digital Vol. 10",
+            "slug": "pop-digital-vol-10",
+            "category": 1,
+            "description": "Pop Digital Vol. 10 is a premium product crafted for fans of retro style and bold anime culture.",
+            "genre": 5,
+            "media_type": 4,
+            "price": "26.44",
+            "stock": 67,
+            "is_featured": false,
+            "is_limited_edition": true,
+            "created_at": "2025-05-01T19:29:34.354523"
+        }
+    },
+    {
+        "model": "products.product",
+        "pk": 147,
+        "fields": {
+            "name": "Hoodie - Pop",
+            "slug": "hoodie---pop",
+            "category": 2,
+            "description": "Hoodie - Pop is a premium product crafted for fans of retro style and bold anime culture.",
+            "genre": 5,
+            "media_type": null,
+            "price": "98.55",
+            "stock": 70,
+            "is_featured": true,
+            "is_limited_edition": false,
+            "created_at": "2024-10-16T19:29:34.354534"
+        }
+    },
+    {
+        "model": "products.product",
+        "pk": 148,
+        "fields": {
+            "name": "Jacket - Rock",
+            "slug": "jacket---rock",
+            "category": 2,
+            "description": "Jacket - Rock is a premium product crafted for fans of retro style and bold anime culture.",
+            "genre": 3,
+            "media_type": null,
+            "price": "47.19",
+            "stock": 29,
+            "is_featured": false,
+            "is_limited_edition": true,
+            "created_at": "2024-10-15T19:29:34.354544"
+        }
+    },
+    {
+        "model": "products.product",
+        "pk": 149,
+        "fields": {
+            "name": "Pop Cassette Vol. 3",
+            "slug": "pop-cassette-vol-3",
+            "category": 1,
+            "description": "Pop Cassette Vol. 3 is a premium product crafted for fans of retro style and bold anime culture.",
+            "genre": 5,
+            "media_type": 3,
+            "price": "60.09",
+            "stock": 55,
+            "is_featured": false,
+            "is_limited_edition": true,
+            "created_at": "2025-05-16T19:29:34.354555"
+        }
+    }
+]
