@@ -94,7 +94,8 @@
                         class="card-img-top" style="height: 200px; object-fit: cover;" alt="{{ product.name }}">
                     <div class="card-body">
                         <h5 class="card-title">{{ product.name }}</h5>
-                        <p class="card-text fw-bold mb-2">£{{ product.price }}</p>
+                        {% comment %} <p class="card-text fw-bold">> {{ product.description }}</p> {% endcomment %}
+                        <p class="card-text fw-bold">£{{ product.price }}</p>
                         <a href="{{ product.get_absolute_url|default:'#' }}" class="btn-retro">View Product</a>
                     </div>
                 </div>

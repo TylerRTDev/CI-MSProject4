@@ -1,852 +1,722 @@
 [
     {
         "model": "products.product",
-        "pk": 100,
+        "pk": 13,
         "fields": {
-            "name": "Hip-Hop Cassette Vol. 5",
-            "slug": "hip-hop-cassette-vol-5",
+            "name": "Shadow Shades",
+            "slug": "shadow-shades",
             "category": 1,
-            "description": "Hip-Hop Cassette Vol. 5 is a premium product crafted for fans of retro style and bold anime culture.",
+            "description": "This is a placeholder description for Shadow Shades.",
+            "genre": null,
+            "media_type": null,
+            "price": "74.90",
+            "stock": 46,
+            "size": null,
+            "is_featured": true,
+            "is_limited_edition": false,
+            "created_at": "2025-06-21T18:54:57.878Z"
+        }
+    },
+    {
+        "model": "products.product",
+        "pk": 14,
+        "fields": {
+            "name": "Synthwave Beanie",
+            "slug": "synthwave-beanie",
+            "category": 2,
+            "description": "This is a placeholder description for Synthwave Beanie.",
+            "genre": null,
+            "media_type": null,
+            "price": "45.00",
+            "stock": 32,
+            "size": null,
+            "is_featured": false,
+            "is_limited_edition": true,
+            "created_at": "2025-06-20T14:23:12.456Z"
+        }
+    },
+    {
+        "model": "products.product",
+        "pk": 15,
+        "fields": {
+            "name": "Neon Dreams Album",
+            "slug": "neon-dreams-album",
+            "category": 3,
+            "description": "This is a placeholder description for Neon Dreams Album.",
+            "genre": 4,
+            "media_type": 2,
+            "price": "89.99",
+            "stock": 75,
+            "size": null,
+            "is_featured": true,
+            "is_limited_edition": false,
+            "created_at": "2025-06-19T09:15:33.789Z"
+        }
+    },
+    {
+        "model": "products.product",
+        "pk": 16,
+        "fields": {
+            "name": "Vintage Poster Pack",
+            "slug": "vintage-poster-pack",
+            "category": 1,
+            "description": "This is a placeholder description for Vintage Poster Pack.",
+            "genre": null,
+            "media_type": null,
+            "price": "36.50",
+            "stock": 58,
+            "size": null,
+            "is_featured": false,
+            "is_limited_edition": false,
+            "created_at": "2025-06-18T16:42:18.234Z"
+        }
+    },
+    {
+        "model": "products.product",
+        "pk": 17,
+        "fields": {
+            "name": "Midnight Hoodie",
+            "slug": "midnight-hoodie",
+            "category": 2,
+            "description": "This is a placeholder description for Midnight Hoodie.",
+            "genre": null,
+            "media_type": null,
+            "price": "125.00",
+            "stock": 24,
+            "size": null,
+            "is_featured": true,
+            "is_limited_edition": true,
+            "created_at": "2025-06-17T11:28:45.123Z"
+        }
+    },
+    {
+        "model": "products.product",
+        "pk": 18,
+        "fields": {
+            "name": "Electric Beats Vinyl",
+            "slug": "electric-beats-vinyl",
+            "category": 3,
+            "description": "This is a placeholder description for Electric Beats Vinyl.",
+            "genre": 6,
+            "media_type": 1,
+            "price": "156.75",
+            "stock": 19,
+            "size": null,
+            "is_featured": false,
+            "is_limited_edition": true,
+            "created_at": "2025-06-16T22:17:29.567Z"
+        }
+    },
+    {
+        "model": "products.product",
+        "pk": 19,
+        "fields": {
+            "name": "Chrome Necklace",
+            "slug": "chrome-necklace",
+            "category": 1,
+            "description": "This is a placeholder description for Chrome Necklace.",
+            "genre": null,
+            "media_type": null,
+            "price": "67.20",
+            "stock": 41,
+            "size": null,
+            "is_featured": true,
+            "is_limited_edition": false,
+            "created_at": "2025-06-15T08:39:14.890Z"
+        }
+    },
+    {
+        "model": "products.product",
+        "pk": 20,
+        "fields": {
+            "name": "Retro Wave T-Shirt",
+            "slug": "retro-wave-t-shirt",
+            "category": 2,
+            "description": "This is a placeholder description for Retro Wave T-Shirt.",
+            "genre": null,
+            "media_type": null,
+            "price": "42.99",
+            "stock": 67,
+            "size": null,
+            "is_featured": false,
+            "is_limited_edition": false,
+            "created_at": "2025-06-14T19:56:03.445Z"
+        }
+    },
+    {
+        "model": "products.product",
+        "pk": 21,
+        "fields": {
+            "name": "Cosmic Journey CD",
+            "slug": "cosmic-journey-cd",
+            "category": 3,
+            "description": "This is a placeholder description for Cosmic Journey CD.",
+            "genre": 3,
+            "media_type": 2,
+            "price": "78.50",
+            "stock": 53,
+            "size": null,
+            "is_featured": true,
+            "is_limited_edition": false,
+            "created_at": "2025-06-13T13:22:37.678Z"
+        }
+    },
+    {
+        "model": "products.product",
+        "pk": 22,
+        "fields": {
+            "name": "Neon Gloves",
+            "slug": "neon-gloves",
+            "category": 1,
+            "description": "This is a placeholder description for Neon Gloves.",
+            "genre": null,
+            "media_type": null,
+            "price": "31.75",
+            "stock": 88,
+            "size": null,
+            "is_featured": false,
+            "is_limited_edition": true,
+            "created_at": "2025-06-12T07:45:51.234Z"
+        }
+    },
+    {
+        "model": "products.product",
+        "pk": 23,
+        "fields": {
+            "name": "Cyberpunk Jumper",
+            "slug": "cyberpunk-jumper",
+            "category": 2,
+            "description": "This is a placeholder description for Cyberpunk Jumper.",
+            "genre": null,
+            "media_type": null,
+            "price": "98.00",
+            "stock": 35,
+            "size": null,
+            "is_featured": true,
+            "is_limited_edition": false,
+            "created_at": "2025-06-11T20:33:26.789Z"
+        }
+    },
+    {
+        "model": "products.product",
+        "pk": 24,
+        "fields": {
+            "name": "Digital Dimensions DVD",
+            "slug": "digital-dimensions-dvd",
+            "category": 1,
+            "description": "This is a placeholder description for Digital Dimensions DVD.",
+            "genre": null,
+            "media_type": null,
+            "price": "52.30",
+            "stock": 72,
+            "size": null,
+            "is_featured": false,
+            "is_limited_edition": false,
+            "created_at": "2025-06-10T15:18:42.123Z"
+        }
+    },
+    {
+        "model": "products.product",
+        "pk": 25,
+        "fields": {
+            "name": "Starlight Symphony",
+            "slug": "starlight-symphony",
+            "category": 3,
+            "description": "This is a placeholder description for Starlight Symphony.",
+            "genre": 2,
+            "media_type": 4,
+            "price": "134.99",
+            "stock": 28,
+            "size": null,
+            "is_featured": true,
+            "is_limited_edition": true,
+            "created_at": "2025-06-09T04:27:15.456Z"
+        }
+    },
+    {
+        "model": "products.product",
+        "pk": 26,
+        "fields": {
+            "name": "Laser Grid Hat",
+            "slug": "laser-grid-hat",
+            "category": 2,
+            "description": "This is a placeholder description for Laser Grid Hat.",
+            "genre": null,
+            "media_type": null,
+            "price": "59.95",
+            "stock": 44,
+            "size": null,
+            "is_featured": false,
+            "is_limited_edition": false,
+            "created_at": "2025-06-08T12:51:08.789Z"
+        }
+    },
+    {
+        "model": "products.product",
+        "pk": 27,
+        "fields": {
+            "name": "Holographic Bracelet",
+            "slug": "holographic-bracelet",
+            "category": 1,
+            "description": "This is a placeholder description for Holographic Bracelet.",
+            "genre": null,
+            "media_type": null,
+            "price": "83.40",
+            "stock": 61,
+            "size": null,
+            "is_featured": true,
+            "is_limited_edition": false,
+            "created_at": "2025-06-07T18:14:33.234Z"
+        }
+    },
+    {
+        "model": "products.product",
+        "pk": 28,
+        "fields": {
+            "name": "Future Bass Collection",
+            "slug": "future-bass-collection",
+            "category": 3,
+            "description": "This is a placeholder description for Future Bass Collection.",
+            "genre": 5,
+            "media_type": 3,
+            "price": "167.25",
+            "stock": 16,
+            "size": null,
+            "is_featured": false,
+            "is_limited_edition": true,
+            "created_at": "2025-06-06T23:36:47.567Z"
+        }
+    },
+    {
+        "model": "products.product",
+        "pk": 29,
+        "fields": {
+            "name": "Vaporwave Jacket",
+            "slug": "vaporwave-jacket",
+            "category": 2,
+            "description": "This is a placeholder description for Vaporwave Jacket.",
+            "genre": null,
+            "media_type": null,
+            "price": "187.50",
+            "stock": 22,
+            "size": null,
+            "is_featured": true,
+            "is_limited_edition": true,
+            "created_at": "2025-06-05T10:29:19.890Z"
+        }
+    },
+    {
+        "model": "products.product",
+        "pk": 30,
+        "fields": {
+            "name": "Circuit Board Keychain",
+            "slug": "circuit-board-keychain",
+            "category": 1,
+            "description": "This is a placeholder description for Circuit Board Keychain.",
+            "genre": null,
+            "media_type": null,
+            "price": "29.99",
+            "stock": 95,
+            "size": null,
+            "is_featured": false,
+            "is_limited_edition": false,
+            "created_at": "2025-06-04T06:42:55.123Z"
+        }
+    },
+    {
+        "model": "products.product",
+        "pk": 31,
+        "fields": {
+            "name": "Synthpop Classics",
+            "slug": "synthpop-classics",
+            "category": 3,
+            "description": "This is a placeholder description for Synthpop Classics.",
+            "genre": 4,
+            "media_type": 1,
+            "price": "142.80",
+            "stock": 37,
+            "size": null,
+            "is_featured": true,
+            "is_limited_edition": false,
+            "created_at": "2025-06-03T17:15:28.456Z"
+        }
+    },
+    {
+        "model": "products.product",
+        "pk": 32,
+        "fields": {
+            "name": "Pixel Art Socks",
+            "slug": "pixel-art-socks",
+            "category": 2,
+            "description": "This is a placeholder description for Pixel Art Socks.",
+            "genre": null,
+            "media_type": null,
+            "price": "38.25",
+            "stock": 79,
+            "size": null,
+            "is_featured": false,
+            "is_limited_edition": false,
+            "created_at": "2025-06-02T21:58:14.789Z"
+        }
+    },
+    {
+        "model": "products.product",
+        "pk": 33,
+        "fields": {
+            "name": "Retro Gaming Mug",
+            "slug": "retro-gaming-mug",
+            "category": 1,
+            "description": "This is a placeholder description for Retro Gaming Mug.",
+            "genre": null,
+            "media_type": null,
+            "price": "41.60",
+            "stock": 66,
+            "size": null,
+            "is_featured": true,
+            "is_limited_edition": false,
+            "created_at": "2025-06-01T14:31:49.234Z"
+        }
+    },
+    {
+        "model": "products.product",
+        "pk": 34,
+        "fields": {
+            "name": "Ambient Dreamscapes",
+            "slug": "ambient-dreamscapes",
+            "category": 3,
+            "description": "This is a placeholder description for Ambient Dreamscapes.",
+            "genre": 7,
+            "media_type": 5,
+            "price": "91.75",
+            "stock": 48,
+            "size": null,
+            "is_featured": false,
+            "is_limited_edition": true,
+            "created_at": "2025-05-31T08:17:22.567Z"
+        }
+    },
+    {
+        "model": "products.product",
+        "pk": 35,
+        "fields": {
+            "name": "Neon City Scarf",
+            "slug": "neon-city-scarf",
+            "category": 2,
+            "description": "This is a placeholder description for Neon City Scarf.",
+            "genre": null,
+            "media_type": null,
+            "price": "64.50",
+            "stock": 56,
+            "size": null,
+            "is_featured": true,
+            "is_limited_edition": false,
+            "created_at": "2025-05-30T19:44:36.890Z"
+        }
+    },
+    {
+        "model": "products.product",
+        "pk": 36,
+        "fields": {
+            "name": "Digital Pulse Sticker Set",
+            "slug": "digital-pulse-sticker-set",
+            "category": 1,
+            "description": "This is a placeholder description for Digital Pulse Sticker Set.",
+            "genre": null,
+            "media_type": null,
+            "price": "34.95",
+            "stock": 87,
+            "size": null,
+            "is_featured": false,
+            "is_limited_edition": false,
+            "created_at": "2025-05-29T03:26:13.123Z"
+        }
+    },
+    {
+        "model": "products.product",
+        "pk": 37,
+        "fields": {
+            "name": "Techno Horizons",
+            "slug": "techno-horizons",
+            "category": 3,
+            "description": "This is a placeholder description for Techno Horizons.",
+            "genre": 6,
+            "media_type": 2,
+            "price": "118.30",
+            "stock": 31,
+            "size": null,
+            "is_featured": true,
+            "is_limited_edition": true,
+            "created_at": "2025-05-28T11:52:47.456Z"
+        }
+    },
+    {
+        "model": "products.product",
+        "pk": 38,
+        "fields": {
+            "name": "Cyberwear Pants",
+            "slug": "cyberwear-pants",
+            "category": 2,
+            "description": "This is a placeholder description for Cyberwear Pants.",
+            "genre": null,
+            "media_type": null,
+            "price": "156.00",
+            "stock": 29,
+            "size": null,
+            "is_featured": false,
+            "is_limited_edition": false,
+            "created_at": "2025-05-27T16:38:21.789Z"
+        }
+    },
+    {
+        "model": "products.product",
+        "pk": 39,
+        "fields": {
+            "name": "LED Pin Badge",
+            "slug": "led-pin-badge",
+            "category": 1,
+            "description": "This is a placeholder description for LED Pin Badge.",
+            "genre": null,
+            "media_type": null,
+            "price": "47.85",
+            "stock": 73,
+            "size": null,
+            "is_featured": true,
+            "is_limited_edition": false,
+            "created_at": "2025-05-26T22:09:35.234Z"
+        }
+    },
+    {
+        "model": "products.product",
+        "pk": 40,
+        "fields": {
+            "name": "Electronic Odyssey",
+            "slug": "electronic-odyssey",
+            "category": 3,
+            "description": "This is a placeholder description for Electronic Odyssey.",
+            "genre": 3,
+            "media_type": 6,
+            "price": "173.99",
+            "stock": 21,
+            "size": null,
+            "is_featured": false,
+            "is_limited_edition": true,
+            "created_at": "2025-05-25T05:45:18.567Z"
+        }
+    },
+    {
+        "model": "products.product",
+        "pk": 41,
+        "fields": {
+            "name": "Matrix Code Tank Top",
+            "slug": "matrix-code-tank-top",
+            "category": 2,
+            "description": "This is a placeholder description for Matrix Code Tank Top.",
+            "genre": null,
+            "media_type": null,
+            "price": "52.75",
+            "stock": 62,
+            "size": null,
+            "is_featured": true,
+            "is_limited_edition": false,
+            "created_at": "2025-05-24T12:21:44.890Z"
+        }
+    },
+    {
+        "model": "products.product",
+        "pk": 42,
+        "fields": {
+            "name": "Hologram Wallet",
+            "slug": "hologram-wallet",
+            "category": 1,
+            "description": "This is a placeholder description for Hologram Wallet.",
+            "genre": null,
+            "media_type": null,
+            "price": "76.20",
+            "stock": 45,
+            "size": null,
+            "is_featured": false,
+            "is_limited_edition": true,
+            "created_at": "2025-05-23T18:57:29.123Z"
+        }
+    },
+    {
+        "model": "products.product",
+        "pk": 43,
+        "fields": {
+            "name": "Synthwave Anthology",
+            "slug": "synthwave-anthology",
+            "category": 3,
+            "description": "This is a placeholder description for Synthwave Anthology.",
+            "genre": 4,
+            "media_type": 1,
+            "price": "189.50",
+            "stock": 14,
+            "size": null,
+            "is_featured": true,
+            "is_limited_edition": true,
+            "created_at": "2025-05-22T07:33:56.456Z"
+        }
+    },
+    {
+        "model": "products.product",
+        "pk": 44,
+        "fields": {
+            "name": "Retro Visor Cap",
+            "slug": "retro-visor-cap",
+            "category": 2,
+            "description": "This is a placeholder description for Retro Visor Cap.",
+            "genre": null,
+            "media_type": null,
+            "price": "68.95",
+            "stock": 51,
+            "size": null,
+            "is_featured": false,
+            "is_limited_edition": false,
+            "created_at": "2025-05-21T15:16:12.789Z"
+        }
+    },
+    {
+        "model": "products.product",
+        "pk": 45,
+        "fields": {
+            "name": "Neon Phone Case",
+            "slug": "neon-phone-case",
+            "category": 1,
+            "description": "This is a placeholder description for Neon Phone Case.",
+            "genre": null,
+            "media_type": null,
+            "price": "39.40",
+            "stock": 84,
+            "size": null,
+            "is_featured": true,
+            "is_limited_edition": false,
+            "created_at": "2025-05-20T23:48:37.234Z"
+        }
+    },
+    {
+        "model": "products.product",
+        "pk": 46,
+        "fields": {
+            "name": "Chiptune Memories",
+            "slug": "chiptune-memories",
+            "category": 3,
+            "description": "This is a placeholder description for Chiptune Memories.",
             "genre": 2,
             "media_type": 3,
-            "price": "64.03",
-            "stock": 28,
+            "price": "105.75",
+            "stock": 39,
+            "size": null,
             "is_featured": false,
             "is_limited_edition": false,
-            "created_at": "2025-02-16T19:29:34.353451"
+            "created_at": "2025-05-19T09:24:51.567Z"
         }
     },
     {
         "model": "products.product",
-        "pk": 101,
+        "pk": 47,
         "fields": {
-            "name": "Pop Vinyl Vol. 18",
-            "slug": "pop-vinyl-vol-18",
-            "category": 1,
-            "description": "Pop Vinyl Vol. 18 is a premium product crafted for fans of retro style and bold anime culture.",
-            "genre": 5,
-            "media_type": 1,
-            "price": "102.74",
-            "stock": 72,
-            "is_featured": true,
-            "is_limited_edition": false,
-            "created_at": "2024-12-03T19:29:34.353496"
-        }
-    },
-    {
-        "model": "products.product",
-        "pk": 102,
-        "fields": {
-            "name": "Indie Cassette Vol. 8",
-            "slug": "indie-cassette-vol-8",
-            "category": 1,
-            "description": "Indie Cassette Vol. 8 is a premium product crafted for fans of retro style and bold anime culture.",
-            "genre": 7,
-            "media_type": 3,
-            "price": "26.68",
-            "stock": 67,
-            "is_featured": true,
-            "is_limited_edition": false,
-            "created_at": "2025-03-24T19:29:34.353526"
-        }
-    },
-    {
-        "model": "products.product",
-        "pk": 103,
-        "fields": {
-            "name": "Sweatpants - Pop",
-            "slug": "sweatpants---pop",
+            "name": "Cyber Punk Boots",
+            "slug": "cyber-punk-boots",
             "category": 2,
-            "description": "Sweatpants - Pop is a premium product crafted for fans of retro style and bold anime culture.",
-            "genre": 5,
+            "description": "This is a placeholder description for Cyber Punk Boots.",
+            "genre": null,
             "media_type": null,
-            "price": "149.46",
-            "stock": 33,
-            "is_featured": false,
+            "price": "174.99",
+            "stock": 18,
+            "size": null,
+            "is_featured": true,
             "is_limited_edition": true,
-            "created_at": "2024-09-10T19:29:34.353553"
+            "created_at": "2025-05-18T20:41:26.890Z"
         }
     },
     {
         "model": "products.product",
-        "pk": 104,
+        "pk": 48,
         "fields": {
-            "name": "Jazz Digital Vol. 17",
-            "slug": "jazz-digital-vol-17",
+            "name": "Retro Arcade Poster",
+            "slug": "retro-arcade-poster",
             "category": 1,
-            "description": "Jazz Digital Vol. 17 is a premium product crafted for fans of retro style and bold anime culture.",
-            "genre": 4,
+            "description": "This is a placeholder description for Retro Arcade Poster.",
+            "genre": null,
+            "media_type": null,
+            "price": "55.60",
+            "stock": 69,
+            "size": null,
+            "is_featured": false,
+            "is_limited_edition": false,
+            "created_at": "2025-05-17T14:07:43.123Z"
+        }
+    },
+    {
+        "model": "products.product",
+        "pk": 49,
+        "fields": {
+            "name": "Darkwave Chronicles",
+            "slug": "darkwave-chronicles",
+            "category": 3,
+            "description": "This is a placeholder description for Darkwave Chronicles.",
+            "genre": 5,
             "media_type": 4,
-            "price": "31.00",
-            "stock": 21,
-            "is_featured": true,
-            "is_limited_edition": true,
-            "created_at": "2025-05-23T19:29:34.353582"
-        }
-    },
-    {
-        "model": "products.product",
-        "pk": 105,
-        "fields": {
-            "name": "Hoodie - Rock",
-            "slug": "hoodie---rock",
-            "category": 2,
-            "description": "Hoodie - Rock is a premium product crafted for fans of retro style and bold anime culture.",
-            "genre": 3,
-            "media_type": null,
-            "price": "113.42",
-            "stock": 58,
+            "price": "127.85",
+            "stock": 26,
+            "size": null,
             "is_featured": true,
             "is_limited_edition": false,
-            "created_at": "2024-11-16T19:29:34.353605"
+            "created_at": "2025-05-16T04:53:17.456Z"
         }
     },
     {
         "model": "products.product",
-        "pk": 106,
+        "pk": 50,
         "fields": {
-            "name": "Indie CD Vol. 5",
-            "slug": "indie-cd-vol-5",
+            "name": "Gradient Mesh Shirt",
+            "slug": "gradient-mesh-shirt",
+            "category": 2,
+            "description": "This is a placeholder description for Gradient Mesh Shirt.",
+            "genre": null,
+            "media_type": null,
+            "price": "89.30",
+            "stock": 43,
+            "size": null,
+            "is_featured": false,
+            "is_limited_edition": true,
+            "created_at": "2025-05-15T11:36:28.789Z"
+        }
+    },
+    {
+        "model": "products.product",
+        "pk": 51,
+        "fields": {
+            "name": "Digital Dreams Mousepad",
+            "slug": "digital-dreams-mousepad",
             "category": 1,
-            "description": "Indie CD Vol. 5 is a premium product crafted for fans of retro style and bold anime culture.",
+            "description": "This is a placeholder description for Digital Dreams Mousepad.",
+            "genre": null,
+            "media_type": null,
+            "price": "32.15",
+            "stock": 91,
+            "size": null,
+            "is_featured": true,
+            "is_limited_edition": false,
+            "created_at": "2025-05-14T17:19:54.234Z"
+        }
+    },
+    {
+        "model": "products.product",
+        "pk": 52,
+        "fields": {
+            "name": "Analog Synth Sessions",
+            "slug": "analog-synth-sessions",
+            "category": 3,
+            "description": "This is a placeholder description for Analog Synth Sessions.",
             "genre": 7,
             "media_type": 2,
-            "price": "104.04",
-            "stock": 58,
-            "is_featured": true,
-            "is_limited_edition": false,
-            "created_at": "2025-02-13T19:29:34.353621"
-        }
-    },
-    {
-        "model": "products.product",
-        "pk": 107,
-        "fields": {
-            "name": "Sticker Pack - Electronic",
-            "slug": "sticker-pack---electronic",
-            "category": 3,
-            "description": "Sticker Pack - Electronic is a premium product crafted for fans of retro style and bold anime culture.",
-            "genre": 6,
-            "media_type": null,
-            "price": "15.66",
-            "stock": 74,
-            "is_featured": false,
-            "is_limited_edition": true,
-            "created_at": "2024-11-07T19:29:34.353645"
-        }
-    },
-    {
-        "model": "products.product",
-        "pk": 108,
-        "fields": {
-            "name": "Pop DVD Vol. 7",
-            "slug": "pop-dvd-vol-7",
-            "category": 1,
-            "description": "Pop DVD Vol. 7 is a premium product crafted for fans of retro style and bold anime culture.",
-            "genre": 5,
-            "media_type": 5,
-            "price": "68.73",
-            "stock": 63,
-            "is_featured": true,
-            "is_limited_edition": true,
-            "created_at": "2025-06-04T19:29:34.353678"
-        }
-    },
-    {
-        "model": "products.product",
-        "pk": 109,
-        "fields": {
-            "name": "Phone Case - Indie",
-            "slug": "phone-case---indie",
-            "category": 3,
-            "description": "Phone Case - Indie is a premium product crafted for fans of retro style and bold anime culture.",
-            "genre": 7,
-            "media_type": null,
-            "price": "87.18",
-            "stock": 29,
-            "is_featured": false,
-            "is_limited_edition": false,
-            "created_at": "2025-06-14T19:29:34.353700"
-        }
-    },
-    {
-        "model": "products.product",
-        "pk": 110,
-        "fields": {
-            "name": "Hip-Hop Digital Vol. 19",
-            "slug": "hip-hop-digital-vol-19",
-            "category": 1,
-            "description": "Hip-Hop Digital Vol. 19 is a premium product crafted for fans of retro style and bold anime culture.",
-            "genre": 2,
-            "media_type": 4,
-            "price": "97.37",
+            "price": "158.40",
             "stock": 33,
+            "size": null,
             "is_featured": false,
             "is_limited_edition": true,
-            "created_at": "2024-09-01T19:29:34.353726"
-        }
-    },
-    {
-        "model": "products.product",
-        "pk": 111,
-        "fields": {
-            "name": "Long Sleeve - Jazz",
-            "slug": "long-sleeve---jazz",
-            "category": 2,
-            "description": "Long Sleeve - Jazz is a premium product crafted for fans of retro style and bold anime culture.",
-            "genre": 4,
-            "media_type": null,
-            "price": "71.17",
-            "stock": 98,
-            "is_featured": true,
-            "is_limited_edition": true,
-            "created_at": "2025-01-24T19:29:34.353878"
-        }
-    },
-    {
-        "model": "products.product",
-        "pk": 112,
-        "fields": {
-            "name": "Sweatpants - Jazz",
-            "slug": "sweatpants---jazz",
-            "category": 2,
-            "description": "Sweatpants - Jazz is a premium product crafted for fans of retro style and bold anime culture.",
-            "genre": 4,
-            "media_type": null,
-            "price": "67.60",
-            "stock": 54,
-            "is_featured": false,
-            "is_limited_edition": false,
-            "created_at": "2024-07-24T19:29:34.353902"
-        }
-    },
-    {
-        "model": "products.product",
-        "pk": 113,
-        "fields": {
-            "name": "Beanie - Pop",
-            "slug": "beanie---pop",
-            "category": 3,
-            "description": "Beanie - Pop is a premium product crafted for fans of retro style and bold anime culture.",
-            "genre": 5,
-            "media_type": null,
-            "price": "148.34",
-            "stock": 7,
-            "is_featured": true,
-            "is_limited_edition": true,
-            "created_at": "2025-04-03T19:29:34.353932"
-        }
-    },
-    {
-        "model": "products.product",
-        "pk": 114,
-        "fields": {
-            "name": "Jacket - Indie",
-            "slug": "jacket---indie",
-            "category": 2,
-            "description": "Jacket - Indie is a premium product crafted for fans of retro style and bold anime culture.",
-            "genre": 7,
-            "media_type": null,
-            "price": "134.24",
-            "stock": 22,
-            "is_featured": true,
-            "is_limited_edition": false,
-            "created_at": "2024-12-16T19:29:34.353945"
-        }
-    },
-    {
-        "model": "products.product",
-        "pk": 115,
-        "fields": {
-            "name": "Rock DVD Vol. 2",
-            "slug": "rock-dvd-vol-2",
-            "category": 1,
-            "description": "Rock DVD Vol. 2 is a premium product crafted for fans of retro style and bold anime culture.",
-            "genre": 3,
-            "media_type": 5,
-            "price": "89.04",
-            "stock": 19,
-            "is_featured": false,
-            "is_limited_edition": false,
-            "created_at": "2024-07-03T19:29:34.353958"
-        }
-    },
-    {
-        "model": "products.product",
-        "pk": 116,
-        "fields": {
-            "name": "Keychain - Rock",
-            "slug": "keychain---rock",
-            "category": 3,
-            "description": "Keychain - Rock is a premium product crafted for fans of retro style and bold anime culture.",
-            "genre": 3,
-            "media_type": null,
-            "price": "146.60",
-            "stock": 70,
-            "is_featured": false,
-            "is_limited_edition": false,
-            "created_at": "2024-08-07T19:29:34.353979"
-        }
-    },
-    {
-        "model": "products.product",
-        "pk": 117,
-        "fields": {
-            "name": "Hoodie - Jazz",
-            "slug": "hoodie---jazz",
-            "category": 2,
-            "description": "Hoodie - Jazz is a premium product crafted for fans of retro style and bold anime culture.",
-            "genre": 4,
-            "media_type": null,
-            "price": "26.10",
-            "stock": 42,
-            "is_featured": false,
-            "is_limited_edition": true,
-            "created_at": "2024-11-27T19:29:34.354000"
-        }
-    },
-    {
-        "model": "products.product",
-        "pk": 118,
-        "fields": {
-            "name": "Jacket - Jazz",
-            "slug": "jacket---jazz",
-            "category": 2,
-            "description": "Jacket - Jazz is a premium product crafted for fans of retro style and bold anime culture.",
-            "genre": 4,
-            "media_type": null,
-            "price": "67.14",
-            "stock": 75,
-            "is_featured": false,
-            "is_limited_edition": false,
-            "created_at": "2024-12-29T19:29:34.354026"
-        }
-    },
-    {
-        "model": "products.product",
-        "pk": 119,
-        "fields": {
-            "name": "Cap - Pop",
-            "slug": "cap---pop",
-            "category": 3,
-            "description": "Cap - Pop is a premium product crafted for fans of retro style and bold anime culture.",
-            "genre": 5,
-            "media_type": null,
-            "price": "20.01",
-            "stock": 76,
-            "is_featured": false,
-            "is_limited_edition": true,
-            "created_at": "2025-02-03T19:29:34.354041"
-        }
-    },
-    {
-        "model": "products.product",
-        "pk": 120,
-        "fields": {
-            "name": "Long Sleeve - Pop",
-            "slug": "long-sleeve---pop",
-            "category": 2,
-            "description": "Long Sleeve - Pop is a premium product crafted for fans of retro style and bold anime culture.",
-            "genre": 5,
-            "media_type": null,
-            "price": "33.18",
-            "stock": 98,
-            "is_featured": false,
-            "is_limited_edition": false,
-            "created_at": "2024-12-29T19:29:34.354052"
-        }
-    },
-    {
-        "model": "products.product",
-        "pk": 121,
-        "fields": {
-            "name": "T-Shirt - Hip-Hop",
-            "slug": "t-shirt---hip-hop",
-            "category": 2,
-            "description": "T-Shirt - Hip-Hop is a premium product crafted for fans of retro style and bold anime culture.",
-            "genre": 2,
-            "media_type": null,
-            "price": "145.77",
-            "stock": 83,
-            "is_featured": true,
-            "is_limited_edition": true,
-            "created_at": "2025-04-10T19:29:34.354063"
-        }
-    },
-    {
-        "model": "products.product",
-        "pk": 122,
-        "fields": {
-            "name": "Long Sleeve - Hip-Hop",
-            "slug": "long-sleeve---hip-hop",
-            "category": 2,
-            "description": "Long Sleeve - Hip-Hop is a premium product crafted for fans of retro style and bold anime culture.",
-            "genre": 2,
-            "media_type": null,
-            "price": "87.18",
-            "stock": 13,
-            "is_featured": false,
-            "is_limited_edition": true,
-            "created_at": "2025-03-04T19:29:34.354073"
-        }
-    },
-    {
-        "model": "products.product",
-        "pk": 123,
-        "fields": {
-            "name": "Jacket - Indie",
-            "slug": "jacket---indie",
-            "category": 2,
-            "description": "Jacket - Indie is a premium product crafted for fans of retro style and bold anime culture.",
-            "genre": 7,
-            "media_type": null,
-            "price": "15.68",
-            "stock": 81,
-            "is_featured": false,
-            "is_limited_edition": true,
-            "created_at": "2025-01-13T19:29:34.354083"
-        }
-    },
-    {
-        "model": "products.product",
-        "pk": 124,
-        "fields": {
-            "name": "Jacket - Jazz",
-            "slug": "jacket---jazz",
-            "category": 2,
-            "description": "Jacket - Jazz is a premium product crafted for fans of retro style and bold anime culture.",
-            "genre": 4,
-            "media_type": null,
-            "price": "100.25",
-            "stock": 56,
-            "is_featured": true,
-            "is_limited_edition": false,
-            "created_at": "2025-06-14T19:29:34.354094"
-        }
-    },
-    {
-        "model": "products.product",
-        "pk": 125,
-        "fields": {
-            "name": "Phone Case - Indie",
-            "slug": "phone-case---indie",
-            "category": 3,
-            "description": "Phone Case - Indie is a premium product crafted for fans of retro style and bold anime culture.",
-            "genre": 7,
-            "media_type": null,
-            "price": "59.16",
-            "stock": 9,
-            "is_featured": false,
-            "is_limited_edition": true,
-            "created_at": "2025-01-27T19:29:34.354105"
-        }
-    },
-    {
-        "model": "products.product",
-        "pk": 126,
-        "fields": {
-            "name": "Beanie - Indie",
-            "slug": "beanie---indie",
-            "category": 3,
-            "description": "Beanie - Indie is a premium product crafted for fans of retro style and bold anime culture.",
-            "genre": 7,
-            "media_type": null,
-            "price": "66.21",
-            "stock": 94,
-            "is_featured": true,
-            "is_limited_edition": true,
-            "created_at": "2025-04-26T19:29:34.354115"
-        }
-    },
-    {
-        "model": "products.product",
-        "pk": 127,
-        "fields": {
-            "name": "Phone Case - Hip-Hop",
-            "slug": "phone-case---hip-hop",
-            "category": 3,
-            "description": "Phone Case - Hip-Hop is a premium product crafted for fans of retro style and bold anime culture.",
-            "genre": 2,
-            "media_type": null,
-            "price": "24.41",
-            "stock": 47,
-            "is_featured": false,
-            "is_limited_edition": false,
-            "created_at": "2025-01-16T19:29:34.354126"
-        }
-    },
-    {
-        "model": "products.product",
-        "pk": 128,
-        "fields": {
-            "name": "Sticker Pack - Electronic",
-            "slug": "sticker-pack---electronic",
-            "category": 3,
-            "description": "Sticker Pack - Electronic is a premium product crafted for fans of retro style and bold anime culture.",
-            "genre": 6,
-            "media_type": null,
-            "price": "29.54",
-            "stock": 89,
-            "is_featured": false,
-            "is_limited_edition": true,
-            "created_at": "2025-06-01T19:29:34.354136"
-        }
-    },
-    {
-        "model": "products.product",
-        "pk": 129,
-        "fields": {
-            "name": "Beanie - Hip-Hop",
-            "slug": "beanie---hip-hop",
-            "category": 3,
-            "description": "Beanie - Hip-Hop is a premium product crafted for fans of retro style and bold anime culture.",
-            "genre": 2,
-            "media_type": null,
-            "price": "100.24",
-            "stock": 86,
-            "is_featured": true,
-            "is_limited_edition": false,
-            "created_at": "2024-11-06T19:29:34.354145"
-        }
-    },
-    {
-        "model": "products.product",
-        "pk": 130,
-        "fields": {
-            "name": "T-Shirt - Jazz",
-            "slug": "t-shirt---jazz",
-            "category": 2,
-            "description": "T-Shirt - Jazz is a premium product crafted for fans of retro style and bold anime culture.",
-            "genre": 4,
-            "media_type": null,
-            "price": "86.66",
-            "stock": 94,
-            "is_featured": true,
-            "is_limited_edition": false,
-            "created_at": "2024-11-06T19:29:34.354162"
-        }
-    },
-    {
-        "model": "products.product",
-        "pk": 131,
-        "fields": {
-            "name": "Pop Vinyl Vol. 4",
-            "slug": "pop-vinyl-vol-4",
-            "category": 1,
-            "description": "Pop Vinyl Vol. 4 is a premium product crafted for fans of retro style and bold anime culture.",
-            "genre": 5,
-            "media_type": 1,
-            "price": "31.93",
-            "stock": 87,
-            "is_featured": true,
-            "is_limited_edition": false,
-            "created_at": "2024-06-28T19:29:34.354188"
-        }
-    },
-    {
-        "model": "products.product",
-        "pk": 132,
-        "fields": {
-            "name": "Keychain - Hip-Hop",
-            "slug": "keychain---hip-hop",
-            "category": 3,
-            "description": "Keychain - Hip-Hop is a premium product crafted for fans of retro style and bold anime culture.",
-            "genre": 2,
-            "media_type": null,
-            "price": "131.29",
-            "stock": 24,
-            "is_featured": true,
-            "is_limited_edition": false,
-            "created_at": "2024-09-16T19:29:34.354237"
-        }
-    },
-    {
-        "model": "products.product",
-        "pk": 133,
-        "fields": {
-            "name": "Jacket - Rock",
-            "slug": "jacket---rock",
-            "category": 2,
-            "description": "Jacket - Rock is a premium product crafted for fans of retro style and bold anime culture.",
-            "genre": 3,
-            "media_type": null,
-            "price": "78.94",
-            "stock": 16,
-            "is_featured": true,
-            "is_limited_edition": true,
-            "created_at": "2024-10-01T19:29:34.354263"
-        }
-    },
-    {
-        "model": "products.product",
-        "pk": 134,
-        "fields": {
-            "name": "T-Shirt - Hip-Hop",
-            "slug": "t-shirt---hip-hop",
-            "category": 2,
-            "description": "T-Shirt - Hip-Hop is a premium product crafted for fans of retro style and bold anime culture.",
-            "genre": 2,
-            "media_type": null,
-            "price": "72.68",
-            "stock": 27,
-            "is_featured": true,
-            "is_limited_edition": true,
-            "created_at": "2025-01-19T19:29:34.354287"
-        }
-    },
-    {
-        "model": "products.product",
-        "pk": 135,
-        "fields": {
-            "name": "Indie Digital Vol. 14",
-            "slug": "indie-digital-vol-14",
-            "category": 1,
-            "description": "Indie Digital Vol. 14 is a premium product crafted for fans of retro style and bold anime culture.",
-            "genre": 7,
-            "media_type": 4,
-            "price": "132.41",
-            "stock": 3,
-            "is_featured": true,
-            "is_limited_edition": true,
-            "created_at": "2024-12-06T19:29:34.354314"
-        }
-    },
-    {
-        "model": "products.product",
-        "pk": 136,
-        "fields": {
-            "name": "Electronic Vinyl Vol. 13",
-            "slug": "electronic-vinyl-vol-13",
-            "category": 1,
-            "description": "Electronic Vinyl Vol. 13 is a premium product crafted for fans of retro style and bold anime culture.",
-            "genre": 6,
-            "media_type": 1,
-            "price": "94.79",
-            "stock": 68,
-            "is_featured": false,
-            "is_limited_edition": false,
-            "created_at": "2025-02-10T19:29:34.354337"
-        }
-    },
-    {
-        "model": "products.product",
-        "pk": 137,
-        "fields": {
-            "name": "Hoodie - Hip-Hop",
-            "slug": "hoodie---hip-hop",
-            "category": 2,
-            "description": "Hoodie - Hip-Hop is a premium product crafted for fans of retro style and bold anime culture.",
-            "genre": 2,
-            "media_type": null,
-            "price": "91.44",
-            "stock": 68,
-            "is_featured": false,
-            "is_limited_edition": false,
-            "created_at": "2025-03-12T19:29:34.354358"
-        }
-    },
-    {
-        "model": "products.product",
-        "pk": 138,
-        "fields": {
-            "name": "Sweatpants - Rock",
-            "slug": "sweatpants---rock",
-            "category": 2,
-            "description": "Sweatpants - Rock is a premium product crafted for fans of retro style and bold anime culture.",
-            "genre": 3,
-            "media_type": null,
-            "price": "52.40",
-            "stock": 30,
-            "is_featured": false,
-            "is_limited_edition": true,
-            "created_at": "2024-07-09T19:29:34.354379"
-        }
-    },
-    {
-        "model": "products.product",
-        "pk": 139,
-        "fields": {
-            "name": "Beanie - Jazz",
-            "slug": "beanie---jazz",
-            "category": 3,
-            "description": "Beanie - Jazz is a premium product crafted for fans of retro style and bold anime culture.",
-            "genre": 4,
-            "media_type": null,
-            "price": "103.12",
-            "stock": 17,
-            "is_featured": true,
-            "is_limited_edition": true,
-            "created_at": "2024-08-19T19:29:34.354399"
-        }
-    },
-    {
-        "model": "products.product",
-        "pk": 140,
-        "fields": {
-            "name": "Cap - Rock",
-            "slug": "cap---rock",
-            "category": 3,
-            "description": "Cap - Rock is a premium product crafted for fans of retro style and bold anime culture.",
-            "genre": 3,
-            "media_type": null,
-            "price": "92.10",
-            "stock": 94,
-            "is_featured": true,
-            "is_limited_edition": false,
-            "created_at": "2025-01-01T19:29:34.354421"
-        }
-    },
-    {
-        "model": "products.product",
-        "pk": 141,
-        "fields": {
-            "name": "Sticker Pack - Electronic",
-            "slug": "sticker-pack---electronic",
-            "category": 3,
-            "description": "Sticker Pack - Electronic is a premium product crafted for fans of retro style and bold anime culture.",
-            "genre": 6,
-            "media_type": null,
-            "price": "28.83",
-            "stock": 15,
-            "is_featured": false,
-            "is_limited_edition": false,
-            "created_at": "2024-12-26T19:29:34.354446"
-        }
-    },
-    {
-        "model": "products.product",
-        "pk": 142,
-        "fields": {
-            "name": "Long Sleeve - Jazz",
-            "slug": "long-sleeve---jazz",
-            "category": 2,
-            "description": "Long Sleeve - Jazz is a premium product crafted for fans of retro style and bold anime culture.",
-            "genre": 4,
-            "media_type": null,
-            "price": "109.87",
-            "stock": 56,
-            "is_featured": false,
-            "is_limited_edition": false,
-            "created_at": "2025-04-21T19:29:34.354456"
-        }
-    },
-    {
-        "model": "products.product",
-        "pk": 143,
-        "fields": {
-            "name": "Rock Digital Vol. 19",
-            "slug": "rock-digital-vol-19",
-            "category": 1,
-            "description": "Rock Digital Vol. 19 is a premium product crafted for fans of retro style and bold anime culture.",
-            "genre": 3,
-            "media_type": 4,
-            "price": "59.92",
-            "stock": 56,
-            "is_featured": true,
-            "is_limited_edition": false,
-            "created_at": "2025-01-23T19:29:34.354467"
-        }
-    },
-    {
-        "model": "products.product",
-        "pk": 144,
-        "fields": {
-            "name": "Beanie - Pop",
-            "slug": "beanie---pop",
-            "category": 3,
-            "description": "Beanie - Pop is a premium product crafted for fans of retro style and bold anime culture.",
-            "genre": 5,
-            "media_type": null,
-            "price": "115.84",
-            "stock": 25,
-            "is_featured": true,
-            "is_limited_edition": true,
-            "created_at": "2024-09-30T19:29:34.354485"
-        }
-    },
-    {
-        "model": "products.product",
-        "pk": 145,
-        "fields": {
-            "name": "Long Sleeve - Hip-Hop",
-            "slug": "long-sleeve---hip-hop",
-            "category": 2,
-            "description": "Long Sleeve - Hip-Hop is a premium product crafted for fans of retro style and bold anime culture.",
-            "genre": 2,
-            "media_type": null,
-            "price": "118.74",
-            "stock": 5,
-            "is_featured": true,
-            "is_limited_edition": true,
-            "created_at": "2025-06-06T19:29:34.354506"
-        }
-    },
-    {
-        "model": "products.product",
-        "pk": 146,
-        "fields": {
-            "name": "Pop Digital Vol. 10",
-            "slug": "pop-digital-vol-10",
-            "category": 1,
-            "description": "Pop Digital Vol. 10 is a premium product crafted for fans of retro style and bold anime culture.",
-            "genre": 5,
-            "media_type": 4,
-            "price": "26.44",
-            "stock": 67,
-            "is_featured": false,
-            "is_limited_edition": true,
-            "created_at": "2025-05-01T19:29:34.354523"
-        }
-    },
-    {
-        "model": "products.product",
-        "pk": 147,
-        "fields": {
-            "name": "Hoodie - Pop",
-            "slug": "hoodie---pop",
-            "category": 2,
-            "description": "Hoodie - Pop is a premium product crafted for fans of retro style and bold anime culture.",
-            "genre": 5,
-            "media_type": null,
-            "price": "98.55",
-            "stock": 70,
-            "is_featured": true,
-            "is_limited_edition": false,
-            "created_at": "2024-10-16T19:29:34.354534"
-        }
-    },
-    {
-        "model": "products.product",
-        "pk": 148,
-        "fields": {
-            "name": "Jacket - Rock",
-            "slug": "jacket---rock",
-            "category": 2,
-            "description": "Jacket - Rock is a premium product crafted for fans of retro style and bold anime culture.",
-            "genre": 3,
-            "media_type": null,
-            "price": "47.19",
-            "stock": 29,
-            "is_featured": false,
-            "is_limited_edition": true,
-            "created_at": "2024-10-15T19:29:34.354544"
-        }
-    },
-    {
-        "model": "products.product",
-        "pk": 149,
-        "fields": {
-            "name": "Pop Cassette Vol. 3",
-            "slug": "pop-cassette-vol-3",
-            "category": 1,
-            "description": "Pop Cassette Vol. 3 is a premium product crafted for fans of retro style and bold anime culture.",
-            "genre": 5,
-            "media_type": 3,
-            "price": "60.09",
-            "stock": 55,
-            "is_featured": false,
-            "is_limited_edition": true,
-            "created_at": "2025-05-16T19:29:34.354555"
+            "created_at": "2025-05-13T22:42:11.567Z"
         }
     }
 ]
