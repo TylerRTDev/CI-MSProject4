@@ -8,7 +8,7 @@ class Order(models.Model):
         ('shipped', 'Shipped'),
         ('delivered', 'Delivered'),
     ]
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
     email = models.EmailField(null=True, blank=True)
     address = models.TextField(null=True, blank=True)
     city = models.CharField(max_length=50, null=True, blank=True)

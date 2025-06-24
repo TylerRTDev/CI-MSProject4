@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from django.shortcuts import get_object_or_404
 from django.contrib import messages
 from django.core.validators import validate_email
 from django.core.exceptions import ValidationError
@@ -46,7 +47,7 @@ def checkout_view(request):
             request.session['cart'] = {}
             request.session.modified = True
             messages.success(request, "Order placed successfully!")
-            return redirect('checkout:order_success')
+            return redirect('checkout:order_confirmation', order_id=order.id)
     else:
         form = GuestEmailForm()
 
@@ -70,3 +71,7 @@ def guest_email_view(request):
     
 def order_success(request):
     return render(request, 'checkout/order_success.html')
+
+def order_confirmation(request, order_id):
+    order = get_object_or_404(CheckoutOrder, id=order_id)
+    return render(request, 'checkout/confirmation.html', {'order': order})
