@@ -82,6 +82,23 @@ h1 {
     font-size: 2.5rem;
 }
 
+.navbar-toggler {
+    border: none;
+    background-color: none ;
+    border-radius: 0;
+    opacity: 50%;
+    transition: 0.5s;
+}
+
+.navbar-toggler:hover {
+    border: none;
+    box-shadow: #E9A319 inset 8px 10px 2px;
+    background-color: var(--orange);
+    border-radius: 0;
+    opacity: 50%;
+}
+
+
 .hero-section{
     background: url('/static/images/cassette-bg.jpg');
     background-size: cover;
