@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth import login, logout
 from django.contrib.auth.decorators import login_required
+from checkout.models import CheckoutOrder
 
 def register_view(request):
     if request.method == 'POST':
@@ -31,3 +32,8 @@ def logout_view(request):
 @login_required
 def profile_view(request):
     return render(request, 'accounts/profile.html')
+
+@login_required
+def order_history_view(request):
+    orders = CheckoutOrder.objects.filter(user=request.user).order_by('-created_at')
+    return render(request, 'accounts/order_history.html', {'orders': orders})

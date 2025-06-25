@@ -20,10 +20,17 @@ def checkout_view(request):
         form = GuestEmailForm(request.POST)
         if form.is_valid():
             guest_email = form.cleaned_data['email']
-            order = CheckoutOrder.objects.create(
-                guest_email=guest_email,
-                total_amount=total
-            )
+            
+            if request.user.is_authenticated:
+                order = CheckoutOrder.objects.create(
+                    user=request.user,
+                    total_amount=total
+                )
+            else:
+                order = CheckoutOrder.objects.create(
+                    guest_email=guest_email,
+                    total_amount=total
+                )
 
             for item in cart.values():
                 product = Product.objects.get(id=item['product_id'])
