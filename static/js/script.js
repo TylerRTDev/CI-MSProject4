@@ -52,4 +52,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 });
+<<<<<<< HEAD
 
+=======
+>>>>>>> aec3183 (Update: Add new model attributes to checkout for shipping and billing for orders.)
