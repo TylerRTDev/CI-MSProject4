@@ -3,6 +3,22 @@
 <div class="container py-5">
     <h2>Welcome, {{ user.username }}</h2>
     <p>Your account dashboard.</p>
-    <a class="btn btn-outline-dark" href="{% url 'accounts:order_history' %}">View Your Orders</a>
+    <a class="btn-retro" href="{% url 'accounts:order_history' %}">View Your Orders</a>
+
+    <div class="row mt-4">
+    <div class="col-md-6">
+      <h4>Update Email</h4>
+      <form method="post" action="{% url 'accounts:update_email' %}">
+        {% csrf_token %}
+        <input type="email" name="email" class="form-control mb-2" value="{{ user.email }}" required>
+        <button class="btn btn-retro">Update Email</button>
+      </form>
+    </div>
+
+    <div class="col-md-6">
+      <h4>Change Password</h4>
+      <a href="{% url 'accounts:change_password' %}" class="btn btn-outline-secondary">Change Password</a>
+    </div>
+  </div>
 </div>
 {% endblock %}

@@ -1,5 +1,9 @@
+from django.contrib import messages
 from django.shortcuts import render, redirect
+from django.http import Http404
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
+from django.contrib.auth.forms import PasswordChangeForm
+from django.contrib.auth import update_session_auth_hash
 from django.contrib.auth import login, logout
 from django.contrib.auth.decorators import login_required
 from checkout.models import CheckoutOrder
@@ -37,3 +41,37 @@ def profile_view(request):
 def order_history_view(request):
     orders = CheckoutOrder.objects.filter(user=request.user).order_by('-created_at')
     return render(request, 'accounts/order_history.html', {'orders': orders})
+
+@login_required
+def order_detail_view(request, order_id):
+    try:
+        order = CheckoutOrder.objects.get(id=order_id, user=request.user)
+    except CheckoutOrder.DoesNotExist:
+        raise Http404("Order not found.")
+
+    return render(request, 'accounts/order_detail.html', {'order': order})
+
+@login_required
+def update_email_view(request):
+    if request.method == 'POST':
+        new_email = request.POST.get('email')
+        if new_email:
+            request.user.email = new_email
+            request.user.save()
+            messages.success(request, 'Email updated successfully.')
+    return redirect('accounts:profile')
+
+
+@login_required
+def change_password_view(request):
+    if request.method == 'POST':
+        form = PasswordChangeForm(user=request.user, data=request.POST)
+        if form.is_valid():
+            user = form.save()
+            update_session_auth_hash(request, user)
+            messages.success(request, "Your password was successfully updated.")
+            return redirect('accounts:profile')
+    else:
+        form = PasswordChangeForm(user=request.user)
+
+    return render(request, 'accounts/change_password.html', {'form': form})
