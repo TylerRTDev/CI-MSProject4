@@ -2,7 +2,7 @@
 {% block title %}Checkout{% endblock %}
 
 {% block content %}
-<div class="checkout-card p-4 shadow-sm rounded">
+<div class="checkout-card p-4 shadow-sm rounded container py-5">
     <h2 class="mb-4 text-retro">Checkout</h2>
 
     <h4 class="mb-3">Items You're Purchasing</h4>
@@ -10,28 +10,72 @@
         {% for key, item in cart.items %}
         <li class="list-group-item d-flex justify-content-between align-items-center">
             <span>{{ item.name }}</span>
-            <span>{{ item.quantity }} × ${{ item.price }}</span>
+            <span>{{ item.quantity }} × £{{ item.price }}</span>
         </li>
         {% endfor %}
     </ul>
 
     <form method="post">
         {% csrf_token %}
-        {% if form.email%}
-        <div class="mb-3">
-            {{ form.email.label_tag }}
-            {{ form.email }}
-        </div>
-        {% endif %}
-        {{ form.user }}
-        {{ form.total_amount }}
+        <div class="row g-3">
 
-        <div class="mb-4">
-            <label for="confirm" class="form-label">Confirm Order Total:</label>
-            <p class="fw-bold">${{ total }}</p>
-        </div>
+            <!-- Contact -->
+            <div class="col-md-6">
+                <label class="form-label">Full Name</label>
+                {{ form.full_name }}
+            </div>
+            <div class="col-md-6">
+                <label class="form-label">Email</label>
+                {{ form.email }}
+            </div>
 
-        <button type="submit" class="btn-retro">Place Order</button>
+            <!-- Shipping Address -->
+            <div class="col-12 mt-4">
+                <h5>Shipping Address</h5>
+            </div>
+            <div class="col-md-6">
+                <label class="form-label">Street</label>
+                {{ form.shipping_address }}
+            </div>
+            <div class="col-md-3">
+                <label class="form-label">City</label>
+                {{ form.shipping_city }}
+            </div>
+            <div class="col-md-3">
+                <label class="form-label">Postcode</label>
+                {{ form.shipping_postcode }}
+            </div>
+
+            <!-- Billing Address -->
+            <div class="col-12 mt-4">
+                <h5>Billing Address</h5>
+            </div>
+            <div class="col-12">
+                <div class="form-check">
+                {{ form.same_as_shipping }} 
+                <label class="form-check-label">Same as shipping</label>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <label class="form-label">Street</label>
+                {{ form.billing_address }}
+            </div>
+            <div class="col-md-3">
+                <label class="form-label">City</label>
+                {{ form.billing_city }}
+            </div>
+            <div class="col-md-3">
+                <label class="form-label">Postcode</label>
+                {{ form.billing_postcode }}
+            </div>
+
+            <div class="mb-4">
+                <label for="confirm" class="form-label">Confirm Order Total:</label>
+                <p class="fw-bold">£{{ total }}</p>
+            </div>
+
+            <button type="submit" class="btn-retro">Place Order</button>
+        </div>
     </form>
 </div>
 {% endblock %}
