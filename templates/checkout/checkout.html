@@ -74,8 +74,26 @@
                 <p class="fw-bold">£{{ total }}</p>
             </div>
 
-            <button type="submit" class="btn-retro">Place Order</button>
+            <button type="submit" id="checkout-button" class="btn-retro">Place Order</button>
         </div>
     </form>
+    <script src="https://js.stripe.com/v3/"></script>
+    <script>
+        const stripe = Stripe("{{ STRIPE_SECRET_KEY }}");
+
+        document.getElementById("checkout-button").addEventListener("click", function () {
+            fetch("{% url 'checkout:create_checkout_session' %}", {
+                method: "POST",
+                headers: {
+                    'X-CSRFToken': '{{ csrf_token }}'
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                return stripe.redirectToCheckout({ sessionId: data.id });
+            })
+            .catch(error => console.error('Error:', error));
+        });
+    </script>
 </div>
 {% endblock %}

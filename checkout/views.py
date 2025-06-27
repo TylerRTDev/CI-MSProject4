@@ -1,3 +1,8 @@
+import stripe
+import os
+from dotenv import load_dotenv
+from django.conf import settings
+from django.http import JsonResponse, HttpResponseBadRequest
 from django.shortcuts import render, redirect
 from django.shortcuts import get_object_or_404
 from django.contrib import messages
@@ -6,6 +11,8 @@ from django.core.exceptions import ValidationError
 from .forms import OrderForm, GuestCheckoutForm, GuestEmailForm
 from .models import CheckoutOrder, CheckoutItem
 from products.models import Product
+
+stripe.api_key = os.getenv('STRIPE_SECRET_KEY')
 
 def checkout_view(request):
     cart = request.session.get('cart', {})
@@ -114,6 +121,8 @@ def checkout_view(request):
         'form': form,
         'cart': cart,
         'total': total,
+        'stripe_secret_key': settings.STRIPE_SECRET_KEY,
+        'stripe_secret_key': settings.STRIPE_SECRET_KEY,
     })
 
 def guest_email_view(request):
@@ -127,6 +136,62 @@ def guest_email_view(request):
     return render(request, 'checkout/guest_email.html', {
         'form': form
     })
+    
+def create_checkout_session(request):
+    cart = request.session.get('cart', {})
+    if not cart:
+        return HttpResponseBadRequest("Cart is empty")
+
+    line_items = []
+    for item in cart.values():
+        line_items.append({
+            'price_data': {
+                'currency': 'gbp',
+                'product_data': {
+                    'name': item['name'],
+                },
+                'unit_amount': int(float(item['price']) * 100),
+            },
+            'quantity': item['quantity'],
+        })
+
+    session = stripe.checkout.Session.create(
+        payment_method_types=['card'],
+        line_items=line_items,
+        mode='payment',
+        success_url=request.build_absolute_uri('/checkout/success/'),
+        cancel_url=request.build_absolute_uri('/cart/'),
+    )
+
+    return JsonResponse({'id': session.id})
+    
+def create_checkout_session(request):
+    cart = request.session.get('cart', {})
+    if not cart:
+        return HttpResponseBadRequest("Cart is empty")
+
+    line_items = []
+    for item in cart.values():
+        line_items.append({
+            'price_data': {
+                'currency': 'gbp',
+                'product_data': {
+                    'name': item['name'],
+                },
+                'unit_amount': int(float(item['price']) * 100),
+            },
+            'quantity': item['quantity'],
+        })
+
+    session = stripe.checkout.Session.create(
+        payment_method_types=['card'],
+        line_items=line_items,
+        mode='payment',
+        success_url=request.build_absolute_uri('/checkout/success/'),
+        cancel_url=request.build_absolute_uri('/cart/'),
+    )
+
+    return JsonResponse({'id': session.id})
     
 def order_success(request):
     return render(request, 'checkout/order_success.html')

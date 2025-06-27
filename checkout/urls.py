@@ -6,6 +6,7 @@ app_name = 'checkout'
 
 urlpatterns = [
     path('', checkout_view, name='checkout'),
+    path('create-checkout-session/', views.create_checkout_session, name='create_checkout_session'),
     path('success/', views.order_success, name='order_success'),
     path('confirmation/<int:order_id>/', order_confirmation, name='order_confirmation'),
 ]
