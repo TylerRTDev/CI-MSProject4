@@ -12,7 +12,7 @@ from .forms import OrderForm, GuestCheckoutForm, GuestEmailForm
 from .models import CheckoutOrder, CheckoutItem
 from products.models import Product
 
-stripe.api_key = os.getenv('STRIPE_SECRET_KEY')
+# stripe.api_key = os.getenv('STRIPE_SECRET_KEY')
 
 def checkout_view(request):
     cart = request.session.get('cart', {})
@@ -121,8 +121,7 @@ def checkout_view(request):
         'form': form,
         'cart': cart,
         'total': total,
-        'stripe_secret_key': settings.STRIPE_SECRET_KEY,
-        'stripe_secret_key': settings.STRIPE_SECRET_KEY,
+        # 'stripe_secret_key': settings.STRIPE_SECRET_KEY,
     })
 
 def guest_email_view(request):
