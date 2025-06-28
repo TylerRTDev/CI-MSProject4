@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block title %}Account Details{% endblock %}
+{% block content %}
+<div class="container py-5">
+  <h2 class="mb-4">Update Account Info</h2>
+  <!-- Profile Update Form -->
+<form method="post">
+  {% csrf_token %}
+  <h5 class="mb-3">Update Account Details</h5>
+  {{ profile_form.as_p }}
+  <button type="submit" name="update_profile" class="btn btn-retro">Update Info</button>
+</form>
+
+<hr class="my-4">
+
+<!-- Password Change Form -->
+<form method="post">
+  {% csrf_token %}
+  <h5 class="mb-3">Change Password</h5>
+  {{ password_form.as_p }}
+  <button type="submit" name="change_password" class="btn btn-outline-secondary">Change Password</button>
+</form>
+</div>
+{% endblock %}

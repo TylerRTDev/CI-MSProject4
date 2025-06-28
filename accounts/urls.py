@@ -12,4 +12,6 @@ urlpatterns = [
     path('orders/<int:order_id>/', views.order_detail_view, name='order_detail'),
     path('profile/update-email/', views.update_email_view, name='update_email'),
     path('profile/change-password/', views.change_password_view, name='change_password'),
+    path('details/', views.account_detail_view, name='account_detail'),
+
 ]

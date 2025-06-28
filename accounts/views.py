@@ -1,8 +1,9 @@
 from django.contrib import messages
 from django.shortcuts import render, redirect
 from django.http import Http404
-from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
-from django.contrib.auth.forms import PasswordChangeForm
+from django.contrib.auth.decorators import login_required
+from .forms import AccountUpdateForm
+from django.contrib.auth.forms import UserCreationForm, AuthenticationForm, PasswordChangeForm
 from django.contrib.auth import update_session_auth_hash
 from django.contrib.auth import login, logout
 from django.contrib.auth.decorators import login_required
@@ -75,3 +76,33 @@ def change_password_view(request):
         form = PasswordChangeForm(user=request.user)
 
     return render(request, 'accounts/change_password.html', {'form': form})
+
+@login_required
+def account_detail_view(request):
+    user = request.user
+    profile_form = AccountUpdateForm(instance=user)
+    password_form = PasswordChangeForm(user)
+    
+    if request.method == 'POST':
+        if 'update_profile' in request.POST:
+            profile_form = AccountUpdateForm(request.POST, instance=user)
+            if profile_form.is_valid() and password_form.is_valid():
+                profile_form.save()
+            update_session_auth_hash(request, user)
+            messages.success(request, "Your details were updated successfully.")
+            return redirect('accounts:account_detail')
+        elif 'change_password' in request.POST:
+            password_form = PasswordChangeForm(user, request.POST)
+            if password_form.is_valid():
+                user = password_form.save()
+                update_session_auth_hash(request, user)
+                messages.success(request, "Your password was successfully updated.")
+                return redirect('accounts:account_detail')
+            else:
+                messages.error(request, "Password does not meet criteria, please try again.")
+                return redirect('accounts:account_detail')
+
+    return render(request, 'accounts/account_detail.html', {
+        'profile_form': profile_form,
+        'password_form': password_form
+    })
