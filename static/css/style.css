@@ -25,6 +25,7 @@ h1 {
     font-size: 2.5rem;
     letter-spacing: 7px;
     text-shadow: var(--peach) 6px 5px 2px;
+    text-align: center;
 }
 
 .nav-container {
@@ -247,6 +248,72 @@ h1 {
     max-width: 700px;
     margin: 0 auto;
     border: 1px solid var(--peach);
+}
+
+.form-title-container {
+    padding-top: 1rem;
+    padding-bottom: 0.5rem;
+    background-color: var(--peach);
+    transition: 0.5s;
+    text-align: center;
+}
+
+.form-container {
+    display: flex;
+    justify-content: center;
+}
+
+.container form {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--cream);
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+    margin-top: 2rem;
+    align-items: center;
+    max-width: 350px;
+    display: inline-flex;
+}
+
+.container form input{
+    border: none;
+    border-bottom: solid 5px var(--brown);
+    background-color: transparent;
+    padding: 0.5rem;
+    margin-top: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+    align-items: stretch;
+}
+
+.container form label {
+    font-size: 1.2rem;
+    font-weight: bold;
+    display: flex;
+}
+
+.container form button {
+    width: 92%;
+}
+
+.container form p {
+    font-weight: bold;
+    color: var(--orange);
+}
+
+.container form ul {
+    color: red;
+    font-style: italic;
+    font-weight: bold;
+
+}
+
+.container form ul li {
+    margin-bottom: 0.5rem;
+    padding: 0.5rem;
+    font-size: small;
+    text-decoration: underline;
 }
 
 /* .list-group-item {
