@@ -1,7 +1,9 @@
 {% extends 'base.html' %}
 {% block content %}
 <div class="order-history container py-5 ">
-    <h2>Your Orders</h2>
+    <div class="account-orders-title">
+        <h2>Your Orders</h2>
+    </div>
     {% if orders %}
         <ul class="list-group">
         {% for order in orders %}
