@@ -245,9 +245,13 @@ h1 {
 
 .checkout-card {
     background-color: var(--cream);
-    max-width: 700px;
-    margin: 0 auto;
     border: 1px solid var(--peach);
+    min-width: 350px;
+    width: 40%;
+}
+
+.checkout-card h4 {
+    text-align: center;
 }
 
 .form-title-container {
@@ -256,6 +260,8 @@ h1 {
     background-color: var(--peach);
     transition: 0.5s;
     text-align: center;
+    min-width: 350px;
+    width: 40%;
 }
 
 .form-container {
@@ -263,7 +269,40 @@ h1 {
     justify-content: center;
 }
 
-.container form {
+.form-container form {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--cream);
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+    margin-top: 2rem;
+    align-items: left;
+    min-width: 350px;
+    width: 40%;
+}
+
+.form-container form h3 {
+    text-align: center;
+    color: var(--brown);
+}
+
+.form-container form span {
+    display: flex;
+    font-style: italic;
+    font-weight: small;
+    font-size: 85%;
+    color: red;
+}
+
+.account-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.account-container form {
     display: flex;
     flex-direction: column;
     background-color: var(--cream);
@@ -276,7 +315,18 @@ h1 {
     display: inline-flex;
 }
 
-.container form input{
+.form-container-checkout form h4 {
+    text-align: left;
+}
+
+.checkout-billing-checkbox-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 1rem;
+}
+
+.form-container form input, .form-container-checkout form input, textarea {
     border: none;
     border-bottom: solid 5px var(--brown);
     background-color: transparent;
@@ -287,35 +337,53 @@ h1 {
     align-items: stretch;
 }
 
-.container form label {
+.form-container form label, .form-container-checkout form label {
     font-size: 1.2rem;
     font-weight: bold;
     display: flex;
+    color: var(--orange);
 }
 
-.container form button {
+.form-container form button {
     width: 92%;
+    align-self: center;
 }
 
-.container form p {
+.form-container form p, .form-container-checkout form p {
     font-weight: bold;
     color: var(--orange);
 }
 
-.container form ul {
+.form-container form ul {
     color: red;
     font-style: italic;
     font-weight: bold;
-
 }
 
-.container form ul li {
+.form-container form ul li {
     margin-bottom: 0.5rem;
     padding: 0.5rem;
     font-size: small;
     text-decoration: underline;
 }
 
+.cart-form {
+    border: none;
+    padding: none;
+}
+
+.cart-form input[type="number"] {
+    background-color: transparent;
+    
+}
 /* .list-group-item {
     padding: 30px;
 } */
+
+.login-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
