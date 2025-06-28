@@ -1,24 +1,54 @@
 {% extends 'base.html' %}
 {% block content %}
 <div class="container py-5">
-    <h2>Welcome, {{ user.username }}</h2>
+    <h2>Welcome, {{ user.username|default:user.username }}</h2>
     <p>Your account dashboard.</p>
-    <a class="btn-retro" href="{% url 'accounts:order_history' %}">View Your Orders</a>
 
-    <div class="row mt-4">
+    {% comment %} <div class="row mt-4">
+        <div class="col-md-6">
+          <h4>Update Email</h4>
+          <form method="post" action="{% url 'accounts:update_email' %}">
+            {% csrf_token %}
+            <input type="email" name="email" class="form-control mb-2" value="{{ user.email }}" required>
+            <button class="btn btn-retro">Update Email</button>
+          </form>
+        </div>
+
+        <div class="col-md-6">
+          <h4>Change Password</h4>
+          <a href="{% url 'accounts:change_password' %}" class="btn btn-outline-secondary">Change Password</a>
+        </div>
+    </div> {% endcomment %}
+
+  <div class="row g-4">
+    <!-- My Orders -->
     <div class="col-md-6">
-      <h4>Update Email</h4>
-      <form method="post" action="{% url 'accounts:update_email' %}">
-        {% csrf_token %}
-        <input type="email" name="email" class="form-control mb-2" value="{{ user.email }}" required>
-        <button class="btn btn-retro">Update Email</button>
-      </form>
+      <div class="card p-4 shadow-sm h-100">
+        <h5 class="card-title">My Orders</h5>
+        <p class="card-text">View your past purchases and track order status.</p>
+        <a href="{% url 'accounts:order_history' %}" class="btn btn-retro btn-sm">View Orders</a>
+      </div>
     </div>
 
+    <!-- Account Details -->
     <div class="col-md-6">
-      <h4>Change Password</h4>
-      <a href="{% url 'accounts:change_password' %}" class="btn btn-outline-secondary">Change Password</a>
+      <div class="card p-4 shadow-sm h-100">
+        <h5 class="card-title">Account Details</h5>
+        <p class="card-text">Update your account information.</p>
+        <a href="" class="btn btn-retro btn-sm">View Details</a>
+        </form>
+      </div>
     </div>
+
+    <!-- Addresses -->
+    <div class="col-md-6">
+      <div class="card p-4 shadow-sm h-100">
+        <h5 class="card-title">My Addresses</h5>
+        <p class="card-text">Manage your shipping and billing addresses.</p>
+        <a href="#" class="btn btn-retro btn-sm">Coming Soon</a>
+      </div>
+    </div>
+
   </div>
 </div>
 {% endblock %}
