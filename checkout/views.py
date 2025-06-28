@@ -2,6 +2,8 @@ import stripe
 import os
 from dotenv import load_dotenv
 from django.conf import settings
+from django.urls import reverse
+from django.views.decorators.csrf import csrf_exempt
 from django.http import JsonResponse, HttpResponseBadRequest
 from django.shortcuts import render, redirect
 from django.shortcuts import get_object_or_404
@@ -12,7 +14,7 @@ from .forms import OrderForm, GuestCheckoutForm, GuestEmailForm
 from .models import CheckoutOrder, CheckoutItem
 from products.models import Product
 
-# stripe.api_key = os.getenv('STRIPE_SECRET_KEY')
+stripe.api_key = settings.STRIPE_SECRET_KEY
 
 def checkout_view(request):
     cart = request.session.get('cart', {})
@@ -113,7 +115,7 @@ def checkout_view(request):
             request.session['cart'] = {}
             request.session.modified = True
             messages.success(request, "Order placed successfully!")
-            return redirect('checkout:order_confirmation', order_id=order.id)
+            return redirect('checkout:payment', order_id=order.id)
     else:
         form = GuestCheckoutForm()
 
@@ -121,7 +123,7 @@ def checkout_view(request):
         'form': form,
         'cart': cart,
         'total': total,
-        # 'stripe_secret_key': settings.STRIPE_SECRET_KEY,
+        'stripe_secret_key': settings.STRIPE_PUBLISHABLE_KEY,
     })
 
 def guest_email_view(request):
@@ -191,6 +193,38 @@ def create_checkout_session(request):
     )
 
     return JsonResponse({'id': session.id})
+
+@csrf_exempt
+def payment_view(request, order_id):
+    order = get_object_or_404(CheckoutOrder, id=order_id)
+
+    amount_cents = int(order.total_amount * 100)
+
+    session = stripe.checkout.Session.create(
+        payment_method_types=['card'],
+        line_items=[{
+            'price_data': {
+                'currency': 'usd',
+                'product_data': {
+                    'name': f'Order #{order.order_number}',
+                },
+                'unit_amount': amount_cents,
+            },
+            'quantity': 1,
+        }],
+        mode='payment',
+        success_url=request.build_absolute_uri(
+            reverse('checkout:order_success')
+        ),
+        cancel_url=request.build_absolute_uri(
+            reverse('checkout:checkout')
+        ),
+        metadata={
+            'order_id': order.id
+        }
+    )
+
+    return redirect(session.url, code=303)
     
 def order_success(request):
     return render(request, 'checkout/order_success.html')

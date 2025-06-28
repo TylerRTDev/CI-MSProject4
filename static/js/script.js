@@ -1,19 +1,3 @@
-// const stripe = Stripe("{{ STRIPE_PUBLIC_KEY }}");
-
-//     document.getElementById("checkout-button").addEventListener("click", function () {
-//         fetch("{% url 'checkout:create_checkout_session' %}", {
-//             method: "POST",
-//             headers: {
-//                 'X-CSRFToken': '{{ csrf_token }}'
-//             }
-//         })
-//         .then(response => response.json())
-//         .then(data => {
-//             return stripe.redirectToCheckout({ sessionId: data.id });
-//         })
-//         .catch(error => console.error('Error:', error));
-//     });
-
 document.addEventListener("DOMContentLoaded", function () {
     const toastElList = [].slice.call(document.querySelectorAll('.toast'))
     toastElList.map(function (toastEl) {
@@ -52,7 +36,3 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 });
-<<<<<<< HEAD
-
-=======
->>>>>>> aec3183 (Update: Add new model attributes to checkout for shipping and billing for orders.)
