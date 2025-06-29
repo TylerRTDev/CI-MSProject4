@@ -7,13 +7,12 @@
         <h2 class="text-center mb-4">Browse Our Collection</h2>
         <!-- Filter by Category -->
         <div class="mb-4">
-            <h5>Type</h5>
+            <h5>Category</h5>
             <div class="d-flex flex-wrap gap-2">
                 {% for cat in categories %}
-                <a href="?{% if current_genre %}genre={{ current_genre }}&{% endif %}
-                        {% if current_media %}media={{ current_media }}&{% endif %}
-                        category={{ cat.slug }} "class="btn {% if current_category == cat.slug %}btn-retro{% else %}btn-outline-secondary{% endif %}">
-                    {{ cat.name }}
+                <a href="?{% if current_genre %}genre={{ current_genre }}&{% endif %}{% if current_media_slug %}media={{ current_media_slug }}&{% endif %}category={{ cat.slug }}
+                "class="btn {% if current_category == cat.slug %}btn-retro{% else %}btn-outline-secondary{% endif %}">
+                {{ cat.name }}
                 </a>
                 {% endfor %}
             </div>
@@ -24,17 +23,28 @@
             <h5>Media Type</h5>
             <div class="d-flex flex-wrap gap-2">
                 {% for type in media_types %}
-                <a href="?{% if current_genre %}genre={{ current_genre }}&{% endif %}
-                        {% if current_category %}category={{ current_category }}&{% endif %}
-                        media={{ type.slug }} "
-                        class="btn {% if current_media_slug == type.slug %}btn-retro{% else %}btn-outline-secondary{% endif %}">
-                    {{ type.name }}
+                <a href="?{% if current_genre %}genre={{ current_genre }}&{% endif %}{% if current_category %}category={{ current_category }}&{% endif %}media={{ type.slug }}"
+                class="btn {% if current_media_slug == type.slug %}btn-retro{% else %}btn-outline-secondary{% endif %}">
+                {{ type.name }}
                 </a>
                 {% endfor %}
             </div>
         </div>
 
-                <!-- Clear Filters -->
+        <!-- Filter by Genre -->
+        <div class="mb-4">
+            <h5>Music Genre</h5>
+            <div class="d-flex flex-wrap gap-2">
+                {% for genre in genres %}
+                <a href="?{% if current_category %}category={{ current_category }}&{% endif %}{% if current_media_slug %}media={{ current_media_slug }}&{% endif %}genre={{ genre.slug }}"
+                class="btn {% if current_genre == genre.slug %}btn-retro{% else %}btn-outline-secondary{% endif %}">
+                {{ genre.name }}
+                </a>
+                {% endfor %}
+            </div>
+        </div>
+
+        <!-- Clear Filters -->
         <div class="mb-4 text-end">
             {% if current_genre or current_media or current_category %}
             <a href="{% url 'products:list' %}" class="btn btn-outline-danger">
@@ -43,18 +53,54 @@
             {% endif %}
         </div>
 
+        <!-- Active Filter Badges -->
+        {% if current_genre or current_media_slug or current_category %}
+        <div class="mb-4">
+            <strong>Filtering by:</strong>
 
+            {% if current_genre %}
+                <span class="badge bg-warning text-dark me-2">
+                    Genre: {{ current_genre|capfirst }}
+                    <a href="?{% if current_media_slug %}media={{ current_media_slug }}{% endif %}{% if current_category %}{% if current_media_slug %}&{% endif %}category={{ current_category }}{% endif %}"
+                    class="text-dark text-decoration-none ms-2">×</a>
+                </span>
+            {% endif %}
+
+            {% if current_media_slug %}
+                <span class="badge bg-warning text-dark me-2">
+                    Media: {{ current_media_slug|capfirst }}
+                    <a href="?{% if current_genre %}genre={{ current_genre }}{% endif %}{% if current_category %}{% if current_genre %}&{% endif %}category={{ current_category }}{% endif %}"
+                    class="text-dark text-decoration-none ms-2">×</a>
+                </span>
+            {% endif %}
+
+            {% if current_category %}
+                <span class="badge bg-warning me-2">
+                    Type: {{ current_category|capfirst }}
+                    <a href="?{% if current_genre %}genre={{ current_genre }}{% endif %}{% if current_media_slug %}{% if current_genre %}&{% endif %}media={{ current_media_slug }}{% endif %}"
+                    class="text-white text-decoration-none ms-2">×</a>
+                </span>
+            {% endif %}
+        </div>
+        {% endif %}
+
+        <!-- Product Grid -->
         <div class="row g-4">
             {% if products %}
             {% for product in products %}
             <div class="col-md-6 col-lg-3">
-                <div class="card h-100 text-center shadow-sm">
-                    <img src="{{ product.images.first.image.url|default:'/static/images/vinyl-hero.jpg' }}"
-                        class="card-img-top" style="height: 200px; object-fit: cover;" alt="{{ product.name }}">
-                    <div class="card-body">
-                        <h5 class="card-title">{{ product.name }}</h5>
-                        <p class="card-text fw-bold mb-2">${{ product.price }}</p>
-                        <a href="{{ product.get_absolute_url|default:'#' }}" class="btn btn-retro btn-sm">View Product</a>
+                <div class="product-card">
+                    <img src="{{ product.images.first.image.url|default:'/static/images/logo-avatar.png' }}"
+                        class="card-img-top" style="height: 150px; object-fit: cover;" alt="{{ product.name }}">
+                    <div class="product-card-body">
+                        <div class="product-card-title">
+                            <h4>{{ product.name }}</h4>
+                        </div>
+                        <div class="product-card-description">
+                            <p> {{ product.description }}</p>
+                        </div>
+                        <p class="product-card-text fw-bold">£{{ product.price }}</p>
+                        <a href="{{ product.get_absolute_url|default:'#' }}" class="btn-retro">View Product</a>
                     </div>
                 </div>
             </div>

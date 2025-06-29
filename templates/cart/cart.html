@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+{% block title %}Your Cart{% endblock %}
+
+{% block content %}
+<section class="py-5">
+    <div class="table-container container">
+        <h2 class="mb-4 text-center">Your Cart</h2>
+
+        {% if cart_items %}
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Product</th>
+                    <th>Size</th>
+                    <th>Price</th>
+                    <th>Qty</th>
+                    <th>Subtotal</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in cart_items %}
+                <tr>
+                    <td>{{ item.name }}</td>
+                    <td class="cart-size">{{ item.size|default:"-" }}</td>
+                    <td class="cart-price">£{{ item.price }}</td>
+                    <td>
+                        <form class="cart-form"method="POST" action="{% url 'cart:update_cart' %}" class="d-flex align-items-center">
+                            {% csrf_token %}
+                            <input type="hidden" name="item_id" value="{{ item.id }}">
+                            <div class="update-btn-container">
+                                <input type="number" name="quantity" value="{{ item.quantity }}" min="1" max="99" class="form-control form-control-sm me-2" style="width: 80px;">
+                                <button type="submit" class="ml-1 btn btn-sm btn-outline-primary">Update</button>
+                            </div>
+                        </form>
+                    </td>
+                    <td class="cart-total">£{{ item.subtotal }}</td>
+                    <div class="remove-btn-container">
+                        
+                        <td>
+                            <a href="{% url 'cart:remove_from_cart' item.id %}" class="btn btn-sm btn-outline-danger">Remove</a>
+                        </td>
+                    </div>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <form method="POST" action="{% url 'cart:clear_cart' %}">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-outline-danger btn-sm mt-3">
+                Clear Cart
+            </button>
+        </form>
+        
+        <div class="checkout-total-container">
+            <form method="POST" action="{% url 'checkout:checkout' %}" class="mt-3">
+                {% csrf_token %}
+                <div class="text-end mt-3">
+                    <h4>Total: <strong>£{{ total }}</strong></h4>
+                </div>
+                <button type="submit" class="btn btn-success btn-lg">
+                    Proceed to Checkout
+                </button>
+            </form>
+        </div>
+        {% else %}
+        <p>Your cart is empty.</p>
+        {% endif %}
+    </div>
+</section>
+{% endblock %}

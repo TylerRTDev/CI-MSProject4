@@ -1,3 +1,4 @@
+.env
 myenv/pyvenv.cfg
 myenv/Lib/site-packages/pip/__init__.py
 myenv/Lib/site-packages/pip/__main__.py
@@ -6361,3 +6362,4 @@ myenv/Lib/site-packages/pillow-11.2.1.dist-info/top_level.txt
 myenv/Lib/site-packages/pillow-11.2.1.dist-info/WHEEL
 myenv/Lib/site-packages/pillow-11.2.1.dist-info/zip-safe
 myenv/Lib/site-packages/pillow-11.2.1.dist-info/licenses/LICENSE
+real_legacy_media/.env

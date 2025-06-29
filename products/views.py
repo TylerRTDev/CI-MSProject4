@@ -1,5 +1,7 @@
-from django.shortcuts import render
-from .models import Product, Genre, MediaType
+from django.shortcuts import render, redirect
+from .models import Product, Genre, MediaType, ProductVariant
+from django.shortcuts import get_object_or_404
+from django.contrib import messages
 
 def product_list(request):
     products = Product.objects.all()
@@ -48,3 +50,50 @@ def product_list(request):
         'current_media_slug': media_slug,
         'current_category': category_slug,
     })
+
+def product_detail(request, slug):
+    product = get_object_or_404(Product, slug=slug)
+    variants = product.variants.filter(stock__gt=0)
+    return render(request, 'products/detail.html', {
+        'product': product, 
+        'variants': variants
+    })
+
+def add_to_cart(request, product_id):
+    if request.method == 'POST':
+        quantity = int(request.POST.get('quantity', 1))
+        size = request.POST.get('size', None)  # optional
+
+        product = get_object_or_404(Product, id=product_id)
+        
+        if quantity > product.stock:
+            messages.error(request, f"Only {product.stock} units available for {product.name}.")
+            return redirect('products:detail', slug=product.slug)
+
+        cart = request.session.get('cart', {})
+
+        key = f"{product_id}"
+        if size:
+            key = f"{product_id}_{size.lower()}"
+
+        # Update or add to cart
+        if key in cart:
+            cart[key]['quantity'] += quantity
+        else:
+            cart[key] = {
+                'product_id': product.id,
+                'quantity': quantity,
+                'size': size,
+                'name': product.name,
+                'price': float(product.price),
+            }
+
+        request.session['cart'] = cart
+        request.session.modified = True
+        print(f"Your Basket: {request.session['cart']}")
+        # Display a success message in terminal
+        messages.success(request, f"'{product.name}' has been added to your basket.")
+        return redirect('products:detail', slug=product.slug)
+    
+
+

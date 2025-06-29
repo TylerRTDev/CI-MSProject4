@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %}Order Confirmation{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <h2 class="mb-4 text-center">Thank You for Your Order!</h2>
+    <p><strong>Order Number:</strong> {{ order.order_number }}</p>
+    <p><strong>Order Status:</strong> {{ order.status }}</p>
+
+    {% if order.guest_email %}
+        <p><strong>Email Confirmation:</strong> {{ order.guest_email }}</p>
+    {% endif %}
+    <p><strong>Order Total:</strong> ${{ order.total_amount }}</p>
+    <p class="mt-4">We'll be in touch soon regarding your shipment.</p>
+</div>
+{% endblock %}
