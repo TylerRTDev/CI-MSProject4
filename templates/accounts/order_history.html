@@ -1,24 +1,26 @@
 {% extends 'base.html' %}
 {% block content %}
-<div class="order-history container py-5 ">
-    <div class="account-orders-title">
-        <h2>Your Orders</h2>
+<div class="order-history-container">
+    <div class="order-history container py-5 ">
+        <div class="account-orders-title">
+            <h2>Your Orders</h2>
+        </div>
+        {% if orders %}
+            <ul class="list-group">
+            {% for order in orders %}
+                <li class="list-group-item p-4">
+                    <div class="d-flex justify-content-end justify-content-between align-items-center">
+                <strong>Order #{{ order.order_number }}</strong>{{ order.created_at|date:"M d, Y" }}
+                <br>
+                Total: £{{ order.total_amount }} | Status: {{ order.status }}
+                    <a href="{% url 'accounts:order_detail' order.id %}" class="btn-retro">View Details</a>
+                </div>
+            </li>
+            {% endfor %}
+            </ul>
+        {% else %}
+            <p>You haven't placed any orders yet.</p>
+        {% endif %}
     </div>
-    {% if orders %}
-        <ul class="list-group">
-        {% for order in orders %}
-            <li class="list-group-item p-4">
-                <div class="d-flex justify-content-end justify-content-between align-items-center">
-            <strong>Order #{{ order.order_number }}</strong>{{ order.created_at|date:"M d, Y" }}
-            <br>
-            Total: £{{ order.total_amount }} | Status: {{ order.status }}
-                <a href="{% url 'accounts:order_detail' order.id %}" class="btn-retro">View Details</a>
-            </div>
-        </li>
-        {% endfor %}
-        </ul>
-    {% else %}
-        <p>You haven't placed any orders yet.</p>
-    {% endif %}
 </div>
 {% endblock %}

@@ -50,10 +50,8 @@ h1 {
     color: var(--orange);
     opacity: 35%;
     font-family: 'Brexon', sans-serif;
-    font-size: 2.5rem;
-    padding: 0.5rem 1rem;
+    font-size: 1.5rem;
     transition: 0.3s;
-    padding: 5rem;
     letter-spacing: -5px;
 }
 
@@ -65,6 +63,18 @@ h1 {
     transition: 0.5s;
     letter-spacing: 0px;
 }
+
+.nav-item {
+    -webkit-text-fill-color: var(--orange);
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: var(--brown);
+}
+
+.nav-item:hover {
+    text-shadow: 5px 5px 5px var(--brown);
+
+}
+
 
 .navbar-brand {
     font-family: Brexon, sans-serif;
@@ -267,7 +277,7 @@ h1 {
     color: var(--brown);
     letter-spacing: -1px;
     text-shadow: 5px 5px 5px var(--brown);
-    -webkit-text-fill-color: var(--orange); /* Will override color (regardless of order) */
+    -webkit-text-fill-color: var(--orange);
     -webkit-text-stroke-width: 1px;
     -webkit-text-stroke-color: var(--brown);
 }
@@ -515,10 +525,6 @@ h1 {
     margin-top: -5rem;
 }
 
-.order-history {
-    height: 100vh;
-}
-
 .list-group {
     border-radius: 0px;
 }
@@ -539,4 +545,8 @@ h1 {
 
 .order-history ul li div strong {
     color: var(--orange);
+}
+
+footer {
+    bottom: 0px;
 }
