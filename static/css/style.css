@@ -212,6 +212,63 @@ h1 {
     box-shadow: 10px 10px 1px var(--orange);
 }
 
+.back-button {
+    display: flex;
+    align-self: flex-end;
+    margin-bottom: 2rem;
+    justify-content: space-around;
+}
+
+.product-container {
+    height: 100vh;
+}
+
+.product-info-container {
+    background-color: var(--cream);
+    display: flex;
+    border: solid 3px var(--brown);
+    border-radius: 0px 0px 30px 0px;
+    box-shadow: 10px 10px 1px var(--orange);
+    flex-direction: column;
+    align-items: flex-start;
+    height: 50%;
+    padding: 2rem;
+}
+
+.product-container div img {
+box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;}
+
+.product-info-container h1 {
+    color: var(--brown);
+    letter-spacing: 2px;
+    text-shadow: 5px 5px 5px var(--brown);
+    -webkit-text-fill-color: var(--peach);
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: var(--brown);
+}
+
+.product-info-container p {
+    padding-left: auto;
+    color: var(--orange);
+    letter-spacing: 1px;
+}
+
+.product-info-container .product-description, label {
+    color: var(--brown);
+}
+
+.product-info-container div input {
+    border: none;
+    border-bottom: solid 3px var(--brown);
+    background-color: transparent;
+    padding: 0.5rem;
+    border-radius: 0px;
+    margin-top: 0.5rem;
+    margin-bottom: 2rem;
+    font-size: 1.2rem;
+    align-items: stretch;
+}
+
 .product-card {
     border: 0px solid var(--brown);
     border-radius: 0px 0px 30px 0px;
@@ -227,20 +284,21 @@ h1 {
 
 }
 
-.card {
-    border: 0px solid var(--brown);
-    border-radius: 0px;
-    background-color: var(--cream);
-    padding: 1rem;
-    margin: 1rem;
-    transition: transform 0.5s ease-in-out;
-}
-
 .product-card-body {
     border-radius: 0px;
     transition: transform 0.5s ease-in-out;
     padding-top: 1rem;
     padding-bottom: 1rem;
+}
+
+.product-card-title {
+    font-family: 'Brexon', serif;
+    color: var(--brown);
+    letter-spacing: 2px;
+    text-shadow: 5px 5px 5px var(--brown);
+    -webkit-text-fill-color: var(--peach);
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: var(--brown);
 }
 
 .product-card-description {
@@ -258,6 +316,15 @@ h1 {
     letter-spacing: 1px;
 }
 
+.card {
+    border: 0px solid var(--brown);
+    border-radius: 0px;
+    background-color: var(--cream);
+    padding: 1rem;
+    margin: 1rem;
+    transition: transform 0.5s ease-in-out;
+}
+
 .card:hover, .product-card:hover {
     transform: translateY(-10px);
     box-shadow:
@@ -273,16 +340,6 @@ h1 {
     font-family: 'Brexon', serif;
     color: var(--brown);
     letter-spacing: -1px;
-}
-
-.product-card-title {
-    font-family: 'Brexon', serif;
-    color: var(--brown);
-    letter-spacing: 2px;
-    text-shadow: 5px 5px 5px var(--brown);
-    -webkit-text-fill-color: var(--peach);
-    -webkit-text-stroke-width: 1px;
-    -webkit-text-stroke-color: var(--brown);
 }
 
 .card-text {
@@ -453,8 +510,6 @@ h1 {
     -webkit-text-stroke-width: 1px;
     -webkit-text-stroke-color: var(--brown);
 }
-
-
 
 .form-container-checkout form h4 {
     text-align: left;
