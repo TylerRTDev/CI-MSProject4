@@ -78,19 +78,21 @@ h1 {
 
 .navbar-brand {
     font-family: Brexon, sans-serif;
-    color: #00000017;
-    font-size: 1.5rem;
-    transition: 0.7s;
-    letter-spacing: -5px;
+    text-shadow: #E9A319 6px 6px 2px;
+    font-size: 2rem;
+    transition: 0.5s ease-in;
+    -webkit-text-fill-color: var(--peach);
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: var(--orange);
 }
 
 .navbar-brand:hover {
     letter-spacing: 0px;
-    color: #a86523e4;
     text-decoration: none;
-    transition: 0.5s;
-    text-shadow: #E9A319 6px 6px 2px;
-    font-size: 2.5rem;
+    transition: 1s ease-out;
+    font-size: 2rem;
+    text-shadow: var(--brown) 0px 6px 12px;
+    /* letter-spacing: 3px; */
 }
 
 .navbar-toggler {
@@ -104,7 +106,8 @@ h1 {
 .navbar-toggler:hover {
     box-shadow: #E9A319 inset 8px 8px 2px;
     border-radius: 0;
-    transition: 0.7s ease-in-out;
+    border: var(--peach);
+    transition: 1s ease-in;
     opacity: 100%;
 }
 
@@ -275,9 +278,9 @@ h1 {
 .product-card-title {
     font-family: 'Brexon', serif;
     color: var(--brown);
-    letter-spacing: -1px;
+    letter-spacing: 2px;
     text-shadow: 5px 5px 5px var(--brown);
-    -webkit-text-fill-color: var(--orange);
+    -webkit-text-fill-color: var(--peach);
     -webkit-text-stroke-width: 1px;
     -webkit-text-stroke-color: var(--brown);
 }
