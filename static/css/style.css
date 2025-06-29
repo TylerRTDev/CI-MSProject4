@@ -75,7 +75,6 @@ h1 {
 
 }
 
-
 .navbar-brand {
     font-family: Brexon, sans-serif;
     text-shadow: #E9A319 6px 6px 2px;
@@ -92,7 +91,11 @@ h1 {
     transition: 1s ease-out;
     font-size: 2rem;
     text-shadow: var(--brown) 0px 6px 12px;
-    /* letter-spacing: 3px; */
+}
+
+.navbar-brand:active {
+    text-shadow: var(--brown) 0px 6px 22px;
+    transition: 0.5s ease-in-out;
 }
 
 .navbar-toggler {
@@ -400,8 +403,8 @@ box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
     width: 40%;
 }
 
-.form-title-container h2 {
-    -webkit-text-fill-color: var(--orange); /* Will override color (regardless of order) */
+.form-title-container h2, .table-container h2 {
+    -webkit-text-fill-color: var(--orange);
     -webkit-text-stroke-width: 1px;
     -webkit-text-stroke-color: var(--brown);
 }
@@ -541,7 +544,7 @@ box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
     align-self: center;
 }
 
-.form-container form p, .form-container-checkout form p {
+.form-container form p, .form-container-checkout form p, .table-container .cart-price, .table-container .cart-size, .table-container .cart-total {
     font-weight: bold;
     color: var(--orange);
 }
@@ -559,16 +562,12 @@ box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
 
 .cart-form {
     border: none;
-    padding: none;
 }
 
 .cart-form input[type="number"] {
     background-color: transparent;
     
 }
-/* .list-group-item {
-    padding: 30px;
-} */
 
 .login-container {
     display: flex;
@@ -599,6 +598,58 @@ box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
 
 .order-history ul li div strong {
     color: var(--orange);
+}
+
+.table-container thead th {
+    text-decoration: underline solid 1px;
+}
+
+.table-container th, .table-container td {
+    color: var(--brown);
+    background-color: var(--cream);
+    border: none;
+    padding-left: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: solid 5px var(--peach);
+}
+
+.table-container .remove-btn-container {
+    background-color: transparent;
+}
+
+.table-container h4 {
+    color: var(--orange);
+    letter-spacing: 2px;
+    padding: 1rem;
+    font-weight: bold;
+    text-shadow: #E9A319 6px 6px 2px;
+    -webkit-text-fill-color: var(--cream);
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: var(--orange);
+}
+
+.update-btn-container {
+    display: flex;
+}
+
+.update-btn-container input {
+    margin-right: 2rem;
+}
+
+.cart-form input {
+    border: none;
+    background-color: var(--cream);
+    border-bottom: solid 3px var(--brown);
+    border-radius: 0px;
+}
+
+.cart-form button {
+    align-items: flex-end;
+}
+
+.checkout-total-container {
+    display: flex;
+    justify-content: flex-end;
 }
 
 footer {
