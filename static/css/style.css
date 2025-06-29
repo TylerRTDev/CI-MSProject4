@@ -109,7 +109,19 @@ h1 {
     background-position: center;
     background-repeat: no-repeat;
     z-index: -1000;
-    opacity: 50%;
+}
+
+.dashboard-bg-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    background-image: url('/static/images/dashboard-bg.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: -1000;
 }
 
 .hero-section{
@@ -187,31 +199,77 @@ h1 {
     box-shadow: 10px 10px 1px var(--orange);
 }
 
-.card {
+.product-card {
     border: 0px solid var(--brown);
-    border-radius: 0px;
-    background-color: rgba(255, 255, 255, 0);
+    border-radius: 0px 0px 30px 0px;
+    background-color: var(--cream);
     padding: 1rem;
     margin: 1rem;
     transition: transform 0.5s ease-in-out;
 }
 
-.card:hover {
+.product-card img {
+    box-shadow: rgba(0, 0, 0, 0.45) 0px 25px 20px -20px;
+    border-radius: 0px 0px 30px 0px;
+
+}
+
+.card {
+    border: 0px solid var(--brown);
+    border-radius: 0px;
+    background-color: var(--cream);
+    padding: 1rem;
+    margin: 1rem;
+    transition: transform 0.5s ease-in-out;
+}
+
+.product-card-body {
+    border-radius: 0px;
+    transition: transform 0.5s ease-in-out;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+.product-card-description {
+    color: var(--brown);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 70%;
+    opacity: 70%;
+}
+
+.product-card-text {
+    padding-left: auto;
+    color: var(--orange);
+    letter-spacing: 1px;
+}
+
+.card:hover, .product-card:hover {
     transform: translateY(-10px);
     box-shadow:
-    rgba(233, 163, 25, 0.4) 0px 5px,
-    rgba(233, 163, 25, 0.3) 0px 10px,
-    rgba(233, 163, 25, 0.2) 0px 15px,
-    rgba(233, 163, 25, 0.1) 0px 20px,
-    rgba(233, 163, 25, 0.05) 0px 25px;
+    rgba(233, 163, 25, 0.495) 0px 5px,
+    rgba(233, 163, 25, 0.395) 0px 10px,
+    rgba(233, 163, 25, 0.295) 0px 15px,
+    rgba(233, 163, 25, 0.195) 0px 20px,
+    rgba(233, 163, 25, 0.1) 0px 25px;
     transition: transform 0.5s ease-in-out, box-shadow 0.6s ease-in-out;
-    border-radius: 5px;
-
 }
 
 .card-title {
     font-family: 'Brexon', serif;
     color: var(--brown);
+    letter-spacing: -1px;
+}
+
+.product-card-title {
+    font-family: 'Brexon', serif;
+    color: var(--brown);
+    letter-spacing: -1px;
+    text-shadow: 5px 5px 5px var(--brown);
+    -webkit-text-fill-color: var(--orange); /* Will override color (regardless of order) */
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: var(--brown);
 }
 
 .card-text {
@@ -271,10 +329,15 @@ h1 {
     padding-top: 1rem;
     padding-bottom: 0.5rem;
     background-color: var(--peach);
-    transition: 0.5s;
     text-align: center;
     min-width: 350px;
     width: 40%;
+}
+
+.form-title-container h2 {
+    -webkit-text-fill-color: var(--orange); /* Will override color (regardless of order) */
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: var(--brown);
 }
 
 .form-container {
@@ -287,7 +350,6 @@ h1 {
     flex-direction: column;
     background-color: var(--cream);
     padding: 2rem;
-    border-radius: 10px;
     box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
     margin-top: 2rem;
     align-items: left;
@@ -309,6 +371,45 @@ h1 {
     color: red;
 }
 
+.profile-dashboard-container {
+    height: 100vh;
+}
+
+.profile-container {
+    padding: 1rem;
+    background-color: var(--peach);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    box-shadow: rgba(0, 0, 0, 0.733) 10px 25px 20px -20px, rgba(0, 0, 0, 0.733) 1px 25px 20px 20px;
+    margin: 3rem auto;
+}
+
+.profile-container h2 {
+    color: var(--brown);
+    text-align: center;
+}
+
+.profile-container h2 span {
+    color: var(--orange);
+    text-shadow: 5px 5px 5px var(--brown);
+    letter-spacing: 1px;
+    -webkit-text-fill-color: var(--orange); 
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: var(--brown);
+}
+
+.profile-container h4 {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    letter-spacing: -1px;
+}
+
+.profile-container p {
+    color: var(--orange);
+    font-weight: bold;
+}
+
 .account-container {
     display: flex;
     flex-direction: column;
@@ -321,7 +422,6 @@ h1 {
     flex-direction: column;
     background-color: var(--cream);
     padding: 2rem;
-    border-radius: 10px;
     box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
     margin-top: 2rem;
     align-items: center;
@@ -333,11 +433,15 @@ h1 {
     padding-top: 1rem;
     padding-bottom: 0.5rem;
     background-color: var(--peach);
-    transition: 0.5s;
-    text-align: center;
     min-width: 350px;
+    text-align: center;
     margin-bottom: 1rem;
+    -webkit-text-fill-color: var(--orange); /* Will override color (regardless of order) */
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: var(--brown);
 }
+
+
 
 .form-container-checkout form h4 {
     text-align: left;
@@ -352,7 +456,7 @@ h1 {
 
 .form-container form input, .form-container-checkout form input, textarea {
     border: none;
-    border-bottom: solid 5px var(--brown);
+    border-bottom: solid 3px var(--brown);
     background-color: transparent;
     padding: 0.5rem;
     margin-top: 0.5rem;
