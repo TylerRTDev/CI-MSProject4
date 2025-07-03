@@ -3,11 +3,11 @@
 {% comment %} <div class="dashboard-bg-container"></div> {% endcomment %}
 <div class="profile-dashboard-container">
   <div class="profile-container container py-5">
-      <h2>Welcome, <span>{{ user.username|default:user.username }}<span></h2>
+    <h2>Welcome, <span>{{ user.username|default:user.username }}<span></h2>
 
     <div class="row g-">
       <!-- My Orders -->
-      <div class="col-md-6">
+      <div class="account-tile">
         <div class="card p-4 shadow-sm h-100">
           <h5 class="card-title">My Orders</h5>
           <p class="card-text">View your past purchases and track order status.</p>
@@ -16,7 +16,7 @@
       </div>
 
       <!-- Account Details -->
-      <div class="col-md-6">
+      <div class="account-tile">
         <div class="card p-4 shadow-sm h-100">
           <h5 class="card-title">Account Details</h5>
           <p class="card-text">Update your account information.</p>
@@ -26,7 +26,7 @@
       </div>
 
       <!-- Addresses -->
-      <div class="col-md-6">
+      <div class="account-tile">
         <div class="card p-4 shadow-sm h-100">
           <h5 class="card-title">My Addresses</h5>
           <p class="card-text">Manage your shipping and billing addresses.</p>
