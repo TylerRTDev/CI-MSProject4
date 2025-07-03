@@ -192,6 +192,10 @@ h1 {
     animation: pulse 1s infinite;
 }
 
+.btn-retro:active, .btn-retro-hero:active {
+    color: var(--brown);
+}
+
 .btn-retro-hero {
     border-radius: 30px;
     color: var(--text-color);
@@ -236,7 +240,9 @@ h1 {
 }
 
 .product-container div img {
-box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;}
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+    border: solid 3px var(--brown);
+}
 
 .product-info-container h1 {
     color: var(--brown);
@@ -281,7 +287,7 @@ box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
 .product-card img {
     box-shadow: rgba(0, 0, 0, 0.45) 0px 25px 20px -20px;
     border-radius: 0px 0px 30px 0px;
-
+    border: solid 3px var(--brown)
 }
 
 .product-card-body {
@@ -516,6 +522,10 @@ box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
     text-align: left;
 }
 
+.form-container-checkout p {
+    font-size: 150%;
+}
+
 .checkout-billing-checkbox-container {
     display: flex;
     flex-direction: column;
@@ -584,6 +594,19 @@ box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
     border-radius: 0px;
 }
 
+.checkout-card ul li {
+    border: none;
+    border-bottom: 2px solid var(--brown);
+    background: var(--cream);
+    margin-bottom: 1rem;
+    transition: 0.7s ease;
+    color: var(--brown);
+}
+
+.checkout-item-quantity-cost {
+    color: var(--orange);
+}
+
 .order-history ul li {
     border: none;
     border-bottom: 5px solid var(--brown);
@@ -604,6 +627,7 @@ box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
 
 .table-container thead th {
     text-decoration: underline solid 1px;
+    border-bottom: none;
 }
 
 .table-container th, .table-container td {
