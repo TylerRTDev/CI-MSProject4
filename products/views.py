@@ -2,6 +2,8 @@ from django.shortcuts import render, redirect
 from .models import Product, Genre, MediaType, ProductVariant
 from django.shortcuts import get_object_or_404
 from django.contrib import messages
+from .models import Product, Genre, MediaType, Category
+
 
 def product_list(request):
     products = Product.objects.all()
@@ -13,8 +15,6 @@ def product_list(request):
         'genres': genres,
         'media_types': media_types,
     })
-
-from .models import Product, Genre, MediaType, Category
 
 def product_list(request):
     genre_slug = request.GET.get('genre')
