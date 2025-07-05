@@ -16,10 +16,10 @@
 <section class="featured-section py-5">
     <div class="featured-container">
         <div class="featured-title-container">
-        <h2 class="text-center m-4 p-2">Featured Picks</h2>
+        <h2 class="text-center m-4 p-2">Featured Music</h2>
         </div>
         <div class="row g-4">
-            {% for product in featured %}
+            {% for product in featured_music %}
             <div class="col-md-6 col-lg-3">
                 <div class="product-card">
                     <img src="{{ product.images.first.image.url|default:'/static/images/stock-image.jpg' }}" 
@@ -41,17 +41,35 @@
     </div>
 </section>
 
-<section class="category-section py-5">
+{% comment %} <section class="category-section py-5">
     <div class="category-container">
         <div class="category-title-container">
             <h2 class="text-center p-2">Browse by Genre</h2>
         </div>
         <div class="m-4 row g-4 justify-content-center">
             {% for genre in genres %}
-            <div class="col-6 col-md-4 col-lg-2">
+            <div class="col-6 col-md-4 col-lg-4">
                 <a href="#" class="category-tile text-center p-3 d-block rounded shadow-sm">
                     <div class="category-icon mb-2">🎵</div>
                     <strong>{{ genre.name }}</strong>
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section> {% endcomment %}
+
+<section class="category-section py-5">
+    <div class="category-container">
+        <div class="category-title-container">
+            <h2 class="text-center m-4 p-2">Available Media</h2>
+        </div>
+        <div class="m-4 row g-4 justify-content-center">
+            {% for type in media_types %}
+            <div class="col-6 col-md-4 col-lg-4">
+                <a href="?{% if current_genre %}genre={{ current_genre }}&{% endif %}{% if current_category %}category={{ current_category }}&{% endif %}media={{ type.slug }}" class="category-tile text-center p-3 d-block rounded shadow-sm">
+                    <div class="category-icon mb-2">🎵</div>
+                    <strong>{{ type.name }}</strong>
                 </a>
             </div>
             {% endfor %}
@@ -62,61 +80,25 @@
 <section class="featured-section py-5">
     <div class="featured-container">
         <div class="featured-title-container">
-        <h2 class="text-center m-4 p-2">Media</h2>
+        <h2 class="text-center m-4 p-2">Feqatured Merch</h2>
         </div>
         <div class="row g-4">
-            {% for product in featured %}
+            {% for product in featured_clothing %}
             <div class="col-md-6 col-lg-3">
-                <div class="card">
-                    <img src="{{ product.images.first.image.url|default:'/static/images/logo-avatar.png' }}" 
+                <div class="product-card">
+                    <img src="{{ product.images.first.image.url|default:'/static/images/stock-image.jpg' }}" 
                         class="card-img-top" alt="{{ product.name }}">
-                    <div class="card-body">
-                        <h5 class="card-title">{{ product.name }}</h5>
-                        <p class="card-text fw-bold">£{{ product.price }}</p>
+                    <div class="product-card-body">
+                        <div class="product-card-title">
+                            <h4>{{ product.name }}</h4>
+                        </div>
+                        <div class="product-card-description">
+                            <p> {{ product.description }}</p>
+                        </div>
+                        <p class="product-card-text fw-bold">£{{ product.price }}</p>
                         <a href="{{ product.get_absolute_url }}" class="btn-retro">View Product</a>
                     </div>
                 </div>
-            </div>
-            {% endfor %}
-        </div>
-    </div>
-</section>
-
-<section class="featured-section py-5">
-    <div class="featured-container">
-        <div class="featured-title-container">
-        <h2 class="text-center m-4 p-2">Merch</h2>
-        </div>
-        <div class="row g-4">
-            {% for product in featured %}
-            <div class="col-md-6 col-lg-3">
-                <div class="card">
-                    <img src="{{ product.images.first.image.url|default:'/static/images/logo-avatar.png' }}" 
-                        class="card-img-top" alt="{{ product.name }}">
-                    <div class="card-body">
-                        <h5 class="card-title">{{ product.name }}</h5>
-                        <p class="card-text fw-bold">£{{ product.price }}</p>
-                        <a href="{{ product.get_absolute_url }}" class="btn-retro">View Product</a>
-                    </div>
-                </div>
-            </div>
-            {% endfor %}
-        </div>
-    </div>
-</section>
-
-<section class="category-section py-5">
-    <div class="category-container">
-        <div class="category-title-container">
-            <h2 class="text-center p-2">Browse by Genre</h2>
-        </div>
-        <div class="m-4 row g-4 justify-content-center">
-            {% for genre in genres %}
-            <div class="col-6 col-md-4 col-lg-2">
-                <a href="#" class="category-tile text-center p-3 d-block rounded shadow-sm">
-                    <div class="category-icon mb-2">🎵</div>
-                    <strong>{{ genre.name }}</strong>
-                </a>
             </div>
             {% endfor %}
         </div>

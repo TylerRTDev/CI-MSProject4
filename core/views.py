@@ -1,12 +1,15 @@
 from django.shortcuts import render
-from products.models import Genre, MediaType, Product
+from products.models import Product, Genre, MediaType
 
 def home(request):
-    featured = Product.objects.filter(is_featured=True)[:4]
     genres = Genre.objects.all()
     media_types = MediaType.objects.all()
+    featured_clothing = Product.objects.filter(is_featured=True, category=2)[:4]
+    featured_music = Product.objects.filter(is_featured=True, media_type__in=range(1, 7))[:4]
+    
     return render(request, 'core/home.html', {
-        'featured': featured,
         'genres': genres,
         'media_types': media_types,
+        'featured_clothing': featured_clothing,
+        'featured_music': featured_music,
     })
