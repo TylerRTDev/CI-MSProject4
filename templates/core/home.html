@@ -6,7 +6,7 @@
 <div class="overlay"></div>
 <section class="hero-section d-flex align-items-center justify-content-center text-center">
     <div class="title-container">
-        <h1 class="display-1">Real Legacy Media</h1>
+        <h1 class="hero-title">● Real Legacy Media ●</h1>
         <div class="d-flex justify-content-center mt-3">
         <a href="{% url 'products:list' %}" class="btn-retro-hero">Browse Collection</a>
         </div>
@@ -15,6 +15,7 @@
 
 <section class="featured-section py-5">
     <div class="featured-container">
+        <h1>All your favourite music, in any format!</h1>
         <div class="featured-title-container">
         <h2 class="text-center m-4 p-2">Featured Music</h2>
         </div>
@@ -62,7 +63,7 @@
 <section class="category-section py-5">
     <div class="category-container">
         <div class="category-title-container">
-            <h2 class="text-center m-4 p-2">Available Media</h2>
+            <h2 class="text-center m-4 p-2">Media Format</h2>
         </div>
         <div class="m-4 row g-4 justify-content-center">
             {% for type in media_types %}
@@ -80,7 +81,7 @@
 <section class="featured-section py-5">
     <div class="featured-container">
         <div class="featured-title-container">
-        <h2 class="text-center m-4 p-2">Feqatured Merch</h2>
+        <h2 class="text-center m-4 p-2">Featured Merch</h2>
         </div>
         <div class="row g-4">
             {% for product in featured_clothing %}

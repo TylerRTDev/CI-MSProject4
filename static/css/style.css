@@ -21,13 +21,6 @@ h1, h2, h3, h4 {
     color: var(--brown);
 }
 
-h1 {
-    font-size: 2.5rem;
-    letter-spacing: 7px;
-    text-shadow: var(--peach) 6px 5px 2px;
-    text-align: center;
-}
-
 .nav-container {
     margin-bottom: 0.5rem;
 }
@@ -146,9 +139,14 @@ h1 {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    height: 50vh;
+    height: 75vh;
     position: relative;
-    border-radius: 30px;
+    box-shadow:
+    rgba(233, 163, 25, 0.495) 0px 5px,
+    rgba(233, 163, 25, 0.395) 0px 10px,
+    rgba(233, 163, 25, 0.295) 0px 15px,
+    rgba(233, 163, 25, 0.195) 0px 20px,
+    rgba(233, 163, 25, 0.1) 0px 25px;
 }
 
 .hero-section .overlay {
@@ -163,15 +161,17 @@ h1 {
     z-index: -1;
 }
 
-.title-container {
-    position: relative;
+.hero-title {
+    font-size: 5.5rem;
+    letter-spacing: 7px;
+    text-shadow: var(--peach) 6px 5px 2px;
     text-align: center;
-    padding: 2rem;
-    border: none;
-    border-radius: 30px;
-    padding: 5rem;
-    box-shadow: rgba(255, 255, 255, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.612) 0px 18px 36px -18px inset;
+    text-shadow: #E9A319 6px 6px 2px;
+    -webkit-text-fill-color: var(--peach);
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: var(--orange);
 }
+
 
 .btn-retro {
     border: none;
@@ -197,7 +197,7 @@ h1 {
 }
 
 .btn-retro-hero {
-    border-radius: 30px;
+    border: solid 3px var(--orange);
     color: var(--text-color);
     font-weight: bold;
     text-decoration: none;
@@ -209,6 +209,21 @@ h1 {
 .featured-title-container, .category-title-container, .media-type-title-container {
     background-color: var(--peach);
     transition: 0.5s;
+}
+
+.featured-title-container h2, .category-title-container h2, .media-type-title-container h2 {
+    -webkit-text-fill-color: var(--orange); 
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: var(--brown);
+}
+
+.featured-container h1 {
+    text-align: center;
+    -webkit-text-fill-color: var(--orange); 
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: var(--brown);
+    margin-top: 1rem;
+    margin-bottom: 2rem;
 }
 
 .featured-container:hover .featured-title-container, .category-container:hover .category-title-container, .media-type-container:hover .media-type-title-container {
@@ -346,6 +361,9 @@ h1 {
     font-family: 'Brexon', serif;
     color: var(--brown);
     letter-spacing: -1px;
+    -webkit-text-fill-color: var(--orange); 
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: var(--brown);
 }
 
 .card-text {
@@ -457,8 +475,8 @@ h1 {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    box-shadow: rgba(0, 0, 0, 0.733) 10px 25px 20px -20px, rgba(0, 0, 0, 0.733) 1px 25px 20px 20px;
-    margin: 3rem auto;
+    border: solid 3px var(--orange);
+    margin: 2rem auto;
     min-width: 340px;
     max-width: 1000px;
 }
@@ -485,7 +503,7 @@ h1 {
 }
 
 .profile-container p {
-    color: var(--orange);
+    color: var(--brown);
     font-weight: bold;
 }
 
@@ -703,4 +721,71 @@ h1 {
 
 footer {
     bottom: 0px;
+    background-color: var(--brown);
+    color: var(--cream);
+    text-align: center;
+    padding: 1rem;
+    margin: 0 auto;
+    border-top: solid 3px var(--orange);
 }
+
+.footer-content {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    justify-content: space-between;
+}
+
+.footer-text p {
+    font-size: 1.2rem;
+    letter-spacing: 2.5px;
+    color: var(--peach);
+}
+
+.social-icons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: var(--orange) solid 3.5px;
+    margin: 1rem 0;
+    padding: 1rem;
+    border-radius: 10px;
+    background-color: var(--peach);
+}
+
+.social-icons a {
+    margin: 0 0.5rem;
+    display: inline-block;
+}
+
+.social-icons img {
+    width: 24px;
+    height: 24px;
+    vertical-align: middle;
+}
+
+@media screen and (max-width: 480px) {
+
+    .footer-content {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .social-icons {
+        margin: 1rem 0;
+    }
+
+}
+
+@media (max-width: 1024px) {
+
+    .footer-content {
+        flex-direction: column;
+    }
+
+    .social-icons {
+        margin: 1rem;
+    }
+}
+
+/* ========== End Responsive Font Scaling ========== */
