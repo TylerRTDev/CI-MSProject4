@@ -40,6 +40,10 @@
             {% endfor %}
         </div>
     </div>
+    <h5>For the music lovers, find featured and all other music here.</h5>
+    <div class="text-center mt-4">
+        <a href="{% url 'products:list' %}" class="btn-retro">Browse Music</a>
+    </div>
 </section>
 
 {% comment %} <section class="category-section py-5">
@@ -67,14 +71,18 @@
         </div>
         <div class="m-4 row g-4 justify-content-center">
             {% for type in media_types %}
-            <div class="col-6 col-md-4 col-lg-4">
-                <a href="?{% if current_genre %}genre={{ current_genre }}&{% endif %}{% if current_category %}category={{ current_category }}&{% endif %}media={{ type.slug }}" class="category-tile text-center p-3 d-block rounded shadow-sm">
-                    <div class="category-icon mb-2">🎵</div>
+            <div class="category-tile-container col-6 col-md-4 col-lg-4">
+                <a href="?{% if current_genre %}genre={{ current_genre }}&{% endif %}{% if current_category %}category={{ current_category }}&{% endif %}media={{ type.slug }}" class="category-tile text-center p-3 d-block fw-bold">
+                    <div class="category-icon mb-2"><img src="/static/images/icons/media.png"></div>
                     <strong>{{ type.name }}</strong>
                 </a>
             </div>
             {% endfor %}
         </div>
+    </div>
+    <h5>All available media formats can be found here.</h5>
+    <div class="text-center mt-4">
+        <a href="{% url 'products:list' %}" class="btn-retro">Browse Media</a>
     </div>
 </section>
 
@@ -103,6 +111,10 @@
             </div>
             {% endfor %}
         </div>
+    </div>
+    <h5>If you want to support the RLM brand grab some of our exclusive items here.</h5>
+    <div class="text-center mt-4">
+        <a href="{% url 'products:list' %}" class="btn-retro">Browse Merch</a>
     </div>
 </section>
 
