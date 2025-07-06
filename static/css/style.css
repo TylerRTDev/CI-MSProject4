@@ -206,6 +206,8 @@ section h5 {
 .featured-title-container, .category-title-container, .media-type-title-container {
     background-color: var(--peach);
     transition: 0.5s;
+    border: solid 3px var(--orange);
+    margin-bottom: 2rem;
 }
 
 .featured-title-container h2, .category-title-container h2, .media-type-title-container h2 {
@@ -223,6 +225,19 @@ section h5 {
     -webkit-text-stroke-color: var(--brown);
     margin-top: 1rem;
     margin-bottom: 3rem;
+}
+
+.category-icons {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.category-icons img {
+    width: 50px;
+    height: 50px;
+    vertical-align: middle;
 }
 
 .featured-container:hover .featured-title-container, .category-container:hover .category-title-container, .media-type-container:hover .media-type-title-container {
@@ -745,6 +760,8 @@ footer {
     align-items: center;
     padding: 1rem;
     justify-content: space-between;
+    flex-direction: column;
+
 }
 
 .footer-text p {
@@ -789,10 +806,6 @@ footer {
 }
 
 @media (max-width: 1024px) {
-
-    .footer-content {
-        flex-direction: column;
-    }
 
     .social-icons {
         margin: 1rem;

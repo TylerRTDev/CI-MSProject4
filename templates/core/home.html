@@ -16,8 +16,16 @@
 <section class="featured-section py-5">
     <div class="featured-container">
         <h1>All your favourite music, in any format!</h1>
+        <div class="category-icons text-center mb-4">
+            <img src="/static/images/icons/cassette-tape.png" alt="Cassette Icon" class="category-icon mb-2">
+            <img src="/static/images/icons/compact-disk.png" alt="CD Icon" class="category-icon mb-2">
+            <img src="/static/images/icons/dvd-player.png" alt="DVD Icon" class="category-icon mb-2">
+            <img src="/static/images/icons/music-player.png" alt="Music Player Icon" class="category-icon mb-2">
+            <img src="/static/images/icons/vinyl.png" alt="Vinyl Icon" class="category-icon mb-2">
+            <img src="/static/images/icons/vhs.png" alt="VHS Icon" class="category-icon mb-2">
+        </div>
         <div class="featured-title-container">
-        <h2 class="text-center m-4 p-2">Featured Music</h2>
+        <h2 class="text-center m-1 p-2">Featured Music</h2>
         </div>
         <div class="row g-4">
             {% for product in featured_music %}
@@ -42,32 +50,14 @@
     </div>
     <h5>For the music lovers, find featured and all other music here.</h5>
     <div class="text-center mt-4">
-        <a href="{% url 'products:list' %}" class="btn-retro">Browse Music</a>
+        <a href="{% url 'products:list' %}" class="btn-retro-hero">Browse Music</a>
     </div>
 </section>
-
-{% comment %} <section class="category-section py-5">
-    <div class="category-container">
-        <div class="category-title-container">
-            <h2 class="text-center p-2">Browse by Genre</h2>
-        </div>
-        <div class="m-4 row g-4 justify-content-center">
-            {% for genre in genres %}
-            <div class="col-6 col-md-4 col-lg-4">
-                <a href="#" class="category-tile text-center p-3 d-block rounded shadow-sm">
-                    <div class="category-icon mb-2">🎵</div>
-                    <strong>{{ genre.name }}</strong>
-                </a>
-            </div>
-            {% endfor %}
-        </div>
-    </div>
-</section> {% endcomment %}
 
 <section class="category-section py-5">
     <div class="category-container">
         <div class="category-title-container">
-            <h2 class="text-center m-4 p-2">Media Format</h2>
+            <h2 class="text-center m-1 p-2">Media Format</h2>
         </div>
         <div class="m-4 row g-4 justify-content-center">
             {% for type in media_types %}
@@ -82,14 +72,14 @@
     </div>
     <h5>All available media formats can be found here.</h5>
     <div class="text-center mt-4">
-        <a href="{% url 'products:list' %}" class="btn-retro">Browse Media</a>
+        <a href="{% url 'products:list' %}" class="btn-retro-hero">Browse Media</a>
     </div>
 </section>
 
 <section class="featured-section py-5">
     <div class="featured-container">
         <div class="featured-title-container">
-        <h2 class="text-center m-4 p-2">Featured Merch</h2>
+        <h2 class="text-center m-1 p-2">Featured Merch</h2>
         </div>
         <div class="row g-4">
             {% for product in featured_clothing %}
@@ -114,7 +104,7 @@
     </div>
     <h5>If you want to support the RLM brand grab some of our exclusive items here.</h5>
     <div class="text-center mt-4">
-        <a href="{% url 'products:list' %}" class="btn-retro">Browse Merch</a>
+        <a href="{% url 'products:list' %}" class="btn-retro-hero">Browse Merch</a>
     </div>
 </section>
 
