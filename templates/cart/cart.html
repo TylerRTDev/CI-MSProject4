@@ -3,8 +3,8 @@
 
 {% block content %}
 <section class="py-5">
-    <div class="table-container container">
-        <h2 class="mb-4 text-center">Your Cart</h2>
+    <div class="cart-table-container container">
+        <h1 class="mb-4 text-center">Shopping Cart</h1>
 
         {% if cart_items %}
         <table class="table">
@@ -59,13 +59,17 @@
                 <div class="text-end mt-3">
                     <h4>Total: <strong>£{{ total }}</strong></h4>
                 </div>
-                <button type="submit" class="btn-retro">
+                <button type="submit" class="btn-retro-hero">
                     Proceed to Checkout
                 </button>
             </form>
         </div>
         {% else %}
-        <p>Your cart is empty.</p>
+        <div class="empty-basket text-center mt-5">
+            <img src="/static/images/icons/alert-circle-Stroke-Rounded.png" alt="Empty Cart">
+            <h5>Your cart is empty.</h5>
+            <a href="{% url 'products:list' %}" class="btn-retro-hero">Browse Products</a>
+        </div>            
         {% endif %}
     </div>
 </section>

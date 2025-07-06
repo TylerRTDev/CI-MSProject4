@@ -234,7 +234,7 @@ section h5 {
     margin-bottom: 1.5rem;
 }
 
-.category-icons img {
+.category-icons img, .empty-basket img {
     width: 50px;
     height: 50px;
     vertical-align: middle;
@@ -252,7 +252,7 @@ section h5 {
     justify-content: space-around;
 }
 
-.product-container {
+.product-container, .cart-table-container {
     height: 100vh;
 }
 
@@ -454,7 +454,7 @@ section h5 {
     width: 40%;
 }
 
-.form-title-container h2, .table-container h2, .order-detail-container h2, .order-detail-container h4 {
+.form-title-container h2, .cart-table-container h1, .order-detail-container h2, .order-detail-container h4 {
     -webkit-text-fill-color: var(--orange);
     -webkit-text-stroke-width: 1px;
     -webkit-text-stroke-color: var(--brown);
@@ -606,7 +606,7 @@ section h5 {
     align-self: center;
 }
 
-.form-container form p, .form-container-checkout form p, .table-container .cart-price, .table-container .cart-size, .table-container .cart-total {
+.form-container form p, .form-container-checkout form p, .cart-table-container .cart-price, .cart-table-container .cart-size, .cart-table-container .cart-total {
     font-weight: bold;
     color: var(--orange);
 }
@@ -629,6 +629,19 @@ section h5 {
 .cart-form input[type="number"] {
     background-color: transparent;
     
+}
+
+.empty-basket {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.empty-basket h5 {
+    color: var(--brown);
+    font-weight: bold;
+    margin-top: -1rem;
 }
 
 .login-container {
@@ -692,12 +705,12 @@ section h5 {
     border-bottom: solid 1px var(--brown);
 }
 
-.table-container thead th {
+.cart-table-container thead th {
     text-decoration: underline solid 1px;
     border-bottom: none;
 }
 
-.table-container th, .table-container td {
+.cart-table-container th, .cart-table-container td {
     color: var(--brown);
     background-color: var(--cream);
     border: none;
@@ -706,11 +719,11 @@ section h5 {
     border-bottom: solid 5px var(--peach);
 }
 
-.table-container .remove-btn-container {
+.cart-table-container .remove-btn-container {
     background-color: transparent;
 }
 
-.table-container h4 {
+.cart-table-container h4 {
     color: var(--orange);
     letter-spacing: 2px;
     padding: 1rem;
