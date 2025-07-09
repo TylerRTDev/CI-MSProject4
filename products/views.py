@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .models import Product, Genre, MediaType, ProductVariant
+from .models import Product, Genre, MediaType
 from django.shortcuts import get_object_or_404
 from django.contrib import messages
 from .models import Product, Genre, MediaType, Category

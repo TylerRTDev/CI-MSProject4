@@ -375,6 +375,7 @@ section h5 {
     font-family: 'Brexon', serif;
     color: var(--brown);
     letter-spacing: -1px;
+    text-shadow: 5px 5px 5px var(--brown);
     -webkit-text-fill-color: var(--orange); 
     -webkit-text-stroke-width: 1px;
     -webkit-text-stroke-color: var(--brown);
@@ -492,7 +493,7 @@ section h5 {
 }
 
 .profile-dashboard-container, .order-detail-container {
-    height: 100vh;
+    height: 120vh;
 }
 
 .profile-container {
