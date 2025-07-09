@@ -170,6 +170,18 @@ section h5 {
     text-shadow: 3px 5px 5px var(--orange);
 }
 
+.back-btn-retro {
+    border: solid 3px var(--orange);
+    color: var(--brown);
+    border-radius: 0px;
+    font-weight: bold;
+    text-decoration: none;
+    padding: 0.75rem 2rem;
+    background-color: var(--peach);
+    transition: 0.5s;
+
+}
+
 .btn-retro {
     border: none;
     color: var(--brown);
@@ -181,12 +193,38 @@ section h5 {
     transition: 0.5s;
 }
 
+.category-filter-btn {
+    border: solid 3px var(--brown);
+    color: var(--cream);
+    font-weight: bold;
+    text-decoration: none;
+    padding: 0.75rem 1rem;
+}
+
+.category-filter-btn-on {
+    border: solid 3px var(--brown);
+    color: var(--brown);
+    border-radius: 0px;
+    font-weight: bold;
+    text-decoration: none;
+    padding: 0.75rem 2rem;
+    background-color: var(--peach);
+}
+
 .btn-retro:hover, .btn-retro-hero:hover {
     background-color: var(--brown);
     color: white;
     box-shadow: 10px 10px 1px var(--orange);
     transition: .5s;
     animation: pulse 1s infinite;
+}
+
+.back-btn-retro:hover {
+    background-color: var(--brown);
+    color: white;
+    transition: .5s;
+    animation: pulse 1s infinite;
+    border: 3px solid var(--brown);
 }
 
 .btn-retro:active, .btn-retro-hero:active {
@@ -250,6 +288,10 @@ section h5 {
     align-self: flex-end;
     margin-bottom: 2rem;
     justify-content: space-around;
+}
+
+.back-btn-retro {
+    border-radius: 3px var(--brown);
 }
 
 .product-container, .cart-table-container {
@@ -514,7 +556,22 @@ section h5 {
     margin-bottom: 1.5rem;
 }
 
-.profile-container h2 span {
+.catalogue-header {
+    background: url('/static/images/catalogue-background.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding: 4rem;
+    position: relative;
+    box-shadow:
+    rgba(233, 163, 25, 0.495) 0px 5px,
+    rgba(233, 163, 25, 0.395) 0px 10px,
+    rgba(233, 163, 25, 0.295) 0px 15px,
+    rgba(233, 163, 25, 0.195) 0px 20px,
+    rgba(233, 163, 25, 0.1) 0px 25px;
+}
+
+.profile-container h2 span, .catalogue-header h1 {
     color: var(--orange);
     text-shadow: 5px 5px 5px var(--brown);
     letter-spacing: 1px;
@@ -643,6 +700,12 @@ section h5 {
     color: var(--brown);
     font-weight: bold;
     margin-top: -1rem;
+}
+
+.empty-product-filter {
+    color: var(--brown);
+    font-weight: bold;
+    margin-top: 2rem;
 }
 
 .login-container {

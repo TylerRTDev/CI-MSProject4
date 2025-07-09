@@ -6,13 +6,13 @@
     <div class="product-container container">
         <div class="row align-items-center justify-content-center">
             <div class="back-button text-start">
-                <a href="{% url 'products:list' %}" class="btn-retro">
+                <a href="{% url 'products:list' %}" class="back-btn-retro">
                     ← Back to Products
                 </a>
             </div>
 
             <div class="col-md-6">
-                <img src="{{ product.images.first.image.url|default:'/static/images/logo-avatar.png' }}"
+                <img src="{{ product.images.first.image.url|default:'/static/images/stock-image.jpg' }}"
                     class="img-fluid" alt="{{ product.name }}">
             </div>
 
