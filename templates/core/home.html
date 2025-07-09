@@ -62,7 +62,7 @@
         <div class="m-4 row g-4 justify-content-center">
             {% for type in media_types %}
             <div class="category-tile-container col-6 col-md-4 col-lg-4">
-                <a href="?{% if current_genre %}genre={{ current_genre }}&{% endif %}{% if current_category %}category={{ current_category }}&{% endif %}media={{ type.slug }}" class="category-tile text-center p-3 d-block fw-bold">
+                <a href="{% url 'products:list' %}?{% if current_genre %}genre={{ current_genre }}&{% endif %}{% if current_category %}category={{ current_category }}&{% endif %}media={{ type.slug }}" class="category-tile text-center p-3 d-block fw-bold">
                     <div class="category-icon mb-2"><img src="/static/images/icons/media.png"></div>
                     <strong>{{ type.name }}</strong>
                 </a>
@@ -104,7 +104,7 @@
     </div>
     <h5>If you want to support the RLM brand grab some of our exclusive items here.</h5>
     <div class="text-center mt-4">
-        <a href="{% url 'products:list' %}?category=clothing&category=accessories" class="btn-retro-hero">Browse Merch</a>
+        <a href="{% url 'products:list' %}?category=clothing" class="btn-retro-hero">Browse Merch</a>
     </div>
 </section>
 
