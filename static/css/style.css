@@ -160,7 +160,7 @@ h1, h2, h3, h4 {
     -webkit-text-stroke-color: var(--orange);
 }
 
-section h5 {
+.empty-product-filter-container h5 {
     text-align: center;
     color: var(--brown);
     font-weight: bold;
@@ -383,7 +383,6 @@ section h5 {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-    width: 220px;
     opacity: 70%;
 }
 
