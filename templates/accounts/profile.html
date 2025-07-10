@@ -15,8 +15,10 @@
   </div>
   </div>
   <div class="profile-container container py-5">
-    <h2>Welcome, <span>{{ user.username|default:user.username }}<span></h2>
-
+    <h2><span>{{ user.username|default:user.username }}'s</span> Profile...</h2>
+    <div class="profile-info mb-4">
+      <h5 class="text-center">Here you can manage your account settings, view your orders, and more.</h5>
+    </div>
     <div class="row g-">
       <!-- My Orders -->
       <div class="account-tile">

@@ -611,7 +611,7 @@ h1, h2, h3, h4 {
     box-shadow: 10px 10px 1px var(--orange);
 }
 
-.catalogue-description h5 {
+.catalogue-description h5, .profile-info h5 {
     color: var(--brown);
     font-weight: bold;
     text-shadow: 5px 5px 5px var(--orange);
