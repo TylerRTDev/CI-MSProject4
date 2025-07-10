@@ -497,7 +497,17 @@ section h5 {
     width: 40%;
 }
 
-.form-title-container h2, .cart-table-container h1, .order-detail-container h2, .order-detail-container h4 {
+.form-title h3 {
+    color: var(--orange);
+    letter-spacing: 2px;
+    text-shadow: 5px 5px 5px var(--brown);
+    -webkit-text-fill-color: var(--orange); 
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: var(--brown);
+}
+
+.form-title-container h2, .cart-table-container h1, .order-detail-container h2, .order-detail-container h4, .login-container h1, .register-container h1 {
+    text-shadow: 5px 5px 5px var(--brown);
     -webkit-text-fill-color: var(--orange);
     -webkit-text-stroke-width: 1px;
     -webkit-text-stroke-color: var(--brown);
@@ -511,6 +521,7 @@ section h5 {
 .form-container form {
     display: flex;
     flex-direction: column;
+    border: solid 3px var(--orange);
     background-color: var(--cream);
     padding: 2rem;
     box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
@@ -532,6 +543,23 @@ section h5 {
     font-weight: small;
     font-size: 85%;
     color: red;
+}
+
+.form-container form a {
+    color: var(--orange);
+    text-decoration: none;
+    font-weight: bold;
+    margin-top: 1.5rem;
+    text-align: center;
+    text-decoration: underline;
+    transition: 0.3s ease;
+}
+
+.form-container form a:hover {
+    color: var(--brown);
+    text-decoration: none;
+    background-color: var(--peach);
+    transition: 0.5s;
 }
 
 .profile-dashboard-container, .order-detail-container {

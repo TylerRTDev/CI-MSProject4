@@ -1,15 +1,16 @@
 {% extends 'base.html' %}
 {% block content %}
 <div class="login-container container">
-    <h1 class="mb-4">Welcome back</h1>
+    <h1 class="mb-4">Welcome back...</h1>
     <div class="form-container">
         <form method="post">
-            <div class="form-title mb-2">
-                <h3>Your Login Details</h3>
+            <div class="form-title mb-4">
+                <h3>Login</h3>
             </div>
             {% csrf_token %}
             {{ form.as_p }}
             <button class="btn btn-retro" type="submit">Login</button>
+            <a class="" href="{% url 'accounts:register' %}">Not signed up? Register here.</a>
         </form>
     </div>    
 </div>
