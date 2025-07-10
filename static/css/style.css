@@ -610,7 +610,7 @@ h1, h2, h3, h4 {
     box-shadow: 10px 10px 1px var(--orange);
 }
 
-.catalogue-description h5, .profile-info h5, .account-orders-subtitle h5, .featured-section h5, .featured-container h5, .category-section h5 {
+.catalogue-description h5, .profile-info h5, .account-orders-subtitle h5, .featured-section h5, .featured-container h5, .category-section h5, .empty-basket h5 {
     color: var(--brown);
     font-weight: bold;
     text-shadow: 5px 5px 5px var(--orange);
@@ -732,12 +732,6 @@ h1, h2, h3, h4 {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-}
-
-.empty-basket h5 {
-    color: var(--brown);
-    font-weight: bold;
-    margin-top: -1rem;
 }
 
 .empty-product-filter {
