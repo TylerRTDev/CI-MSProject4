@@ -1,6 +1,11 @@
 {% extends 'base.html' %}
 {% block content %}
 <div class="order-detail-container container py-5">
+  <div class="back-button d-flex justify-content-end mb-4">
+      <a href="{% url 'accounts:order_history' %}" class="back-btn-retro">
+      ← Back to Orders
+      </a>
+  </div>
   <h2>Order #{{ order.order_number }}</h2>
   <p><strong>Date:</strong> {{ order.created_at|date:"M d, Y" }}</p>
   <p><strong>Status:</strong> {{ order.status }}</p>

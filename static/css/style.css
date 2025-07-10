@@ -241,7 +241,7 @@ h1, h2, h3, h4 {
     transition: 0.5s;
 }
 
-.featured-title-container, .category-title-container, .media-type-title-container {
+.featured-title-container, .category-title-container, .media-type-title-container, .catalogue-subtitle {
     background-color: var(--peach);
     transition: 0.5s;
     border: solid 3px var(--orange);
@@ -596,15 +596,27 @@ h1, h2, h3, h4 {
     rgba(233, 163, 25, 0.295) 0px 15px,
     rgba(233, 163, 25, 0.195) 0px 20px,
     rgba(233, 163, 25, 0.1) 0px 25px;
-}
+} 
 
-.profile-container h2 span, .catalogue-header h1 {
+.profile-container h2 span, .catalogue-header h1, .catalogue-subtitle h3 {
     color: var(--orange);
     text-shadow: 5px 5px 5px var(--brown);
     letter-spacing: 1px;
     -webkit-text-fill-color: var(--orange); 
     -webkit-text-stroke-width: 1px;
     -webkit-text-stroke-color: var(--brown);
+}
+
+.catalogue-subtitle {
+    box-shadow: 10px 10px 1px var(--orange);
+}
+
+.catalogue-description h5 {
+    color: var(--brown);
+    font-weight: bold;
+    text-shadow: 5px 5px 5px var(--orange);
+    padding-left: 1rem;
+    padding-right: 1rem;
 }
 
 .profile-container h4 {
