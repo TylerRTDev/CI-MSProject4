@@ -25,7 +25,7 @@
             <img src="/static/images/icons/vhs.png" alt="VHS Icon" class="category-icon mb-2">
         </div>
         <div class="featured-title-container">
-        <h2 class="text-center m-1 p-2">Featured Music</h2>
+            <h2 class="text-center m-1 p-2">Featured Music</h2>
         </div>
         <div class="row g-4">
             {% for product in featured_music %}
@@ -48,7 +48,7 @@
             {% endfor %}
         </div>
     </div>
-    <h5>For the music lovers, find featured and all other music here.</h5>
+    <h5 class="text-center p-4">For the music lovers, find featured and all other music here.</h5>
     <div class="text-center mt-4">
         <a href="{% url 'products:list' %}?category=music" class="btn-retro-hero">Browse Music</a>
     </div>
@@ -70,7 +70,7 @@
             {% endfor %}
         </div>
     </div>
-    <h5>All available media formats can be found here.</h5>
+    <h5 class="text-center p-4">All available media formats can be found here.</h5>
     <div class="text-center mt-4">
         <a href="{% url 'products:list' %}" class="btn-retro-hero">Browse Media</a>
     </div>
@@ -102,7 +102,7 @@
             {% endfor %}
         </div>
     </div>
-    <h5>If you want to support the RLM brand grab some of our exclusive items here.</h5>
+    <h5 class="text-center p-4">If you want to support the RLM brand grab some of our exclusive items here.</h5>
     <div class="text-center mt-4">
         <a href="{% url 'products:list' %}?category=clothing" class="btn-retro-hero">Browse Merch</a>
     </div>
