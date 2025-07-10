@@ -11,7 +11,7 @@
     {% for item in order.items.all %}
     <li class="list-group-item d-flex justify-content-between">
       <div>
-        {{ item.product.name }} {% if item.size %}<small>( {{ item.size }} )</small>{% endif %}
+        {{ item.product.name }} {% if item.size %}<small>| Size: ( {{ item.size }} )</small>{% endif %}
       </div>
       <div class="order-detail-quantity-price fw-bold">
         {{ item.quantity }} × £{{ item.price }}
