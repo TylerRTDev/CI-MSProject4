@@ -3,15 +3,15 @@
 {% block title %}Order Confirmation{% endblock %}
 
 {% block content %}
-<div class="container py-5">
-    <h2 class="mb-4 text-center">Thank You for Your Order!</h2>
-    <p><strong>Order Number:</strong> {{ order.order_number }}</p>
-    <p><strong>Order Status:</strong> {{ order.status }}</p>
+<div class="checkout-confirmation-container container py-5">
+    <h1 class="mb-4 text-center">Purchase Order</h1>
+    <h5><strong>Order Number:</strong> {{ order.order_number }}</h5>
+    <h5><strong>Order Status:</strong> {{ order.status|capfirst }}</h5>
 
     {% if order.guest_email %}
-        <p><strong>Email Confirmation:</strong> {{ order.guest_email }}</p>
+        <h5><strong>Email Confirmation:</strong> {{ order.guest_email }}</h5>
     {% endif %}
-    <p><strong>Order Total:</strong> ${{ order.total_amount }}</p>
-    <p class="mt-4">We'll be in touch soon regarding your shipment.</p>
+    <h5><strong>Order Total:</strong> £{{ order.total_amount }}</h5>
+    <p class="text-center fw-bold h5 mt-4">We'll be in touch soon regarding your shipment...</p>
 </div>
 {% endblock %}

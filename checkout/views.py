@@ -23,48 +23,6 @@ def checkout_view(request):
         return redirect('products:list')
 
     total = sum(item['quantity'] * item['price'] for item in cart.values())
-
-    # if request.method == 'POST':
-    #     form = GuestEmailForm(request.POST)
-    #     if form.is_valid():
-    #         guest_email = form.cleaned_data['email']
-            
-    #         if request.user.is_authenticated:
-    #             order = CheckoutOrder.objects.create(
-    #                 user=request.user,
-    #                 total_amount=total
-    #             )
-    #         else:
-    #             order = CheckoutOrder.objects.create(
-    #                 guest_email=guest_email,
-    #                 total_amount=total
-    #             )
-
-    #         for item in cart.values():
-    #             product = Product.objects.get(id=item['product_id'])
-
-    #             if product.stock < item['quantity']:
-    #                 messages.error(request, f"Not enough stock for {product.name}.")
-    #                 order.delete()
-    #                 return redirect('cart:view_cart')
-
-    #             CheckoutItem.objects.create(
-    #                 order=order,
-    #                 product=product,
-    #                 quantity=item['quantity'],
-    #                 price=item['price'],
-    #                 size=item.get('size', '')
-    #             )
-
-    #             product.stock -= item['quantity']
-    #             product.save()
-
-    #         request.session['cart'] = {}
-    #         request.session.modified = True
-    #         messages.success(request, "Order placed successfully!")
-    #         return redirect('checkout:order_confirmation', order_id=order.id)
-    # else:
-    #     form = GuestEmailForm()
     
     if request.method == 'POST':
         form = GuestCheckoutForm(request.POST)
@@ -114,6 +72,7 @@ def checkout_view(request):
 
             request.session['cart'] = {}
             request.session.modified = True
+            request.session['last_order_id'] = order.id
             messages.success(request, "Order placed successfully!")
             return redirect('checkout:payment', order_id=order.id)
     else:
@@ -227,7 +186,8 @@ def payment_view(request, order_id):
     return redirect(session.url, code=303)
     
 def order_success(request):
-    return render(request, 'checkout/order_success.html')
+    order_id = request.session.get('last_order_id')
+    return render(request, 'checkout/order_success.html', {'order_id': order_id})
 
 def order_confirmation(request, order_id):
     order = get_object_or_404(CheckoutOrder, id=order_id)

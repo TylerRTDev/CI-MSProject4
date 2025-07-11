@@ -3,13 +3,13 @@
 
 {% block content %}
 <div class="checkout-card p-4 shadow-sm rounded container py-5">
-    <h1 class="mb-4 text-retro">Checkout</h1>
+    <h1 class="mb-4 text-retro text-center">Checkout</h1>
 
     <ul class="list-group mb-4">
         {% for key, item in cart.items %}
         <li class="list-group-item d-flex justify-content-between align-items-center">
             <span>{{ item.name }}</span>
-            <span class="checkout-item-quantity-cost fw-bold">{{ item.quantity }} × £{{ item.price }}</span>
+            <span class="checkout-item-quantity-cost fw-bold">( {{ item.quantity }} ) × £{{ item.price }}</span>
         </li>
         {% endfor %}
     </ul>
@@ -28,7 +28,7 @@
                     <input type="tel" name="phone_number" placeholder="Optional">
 
                 <!-- Shipping Address -->
-                    <h4>Shipping Address</h4>
+                    <h4>Shipping Address...</h4>
                     <label>Street</label>
                     {{ form.shipping_address }}
                     <label>City</label>
@@ -37,7 +37,7 @@
                     {{ form.shipping_postcode }}
 
                 <!-- Billing Address -->
-                    <h4>Billing Address</h4>
+                    <h4>Billing Address...</h4>
                     <div class="checkout-billing-checkbox-container">
                         <label>Same as shipping?</label>
                         {{ form.same_as_shipping }}
