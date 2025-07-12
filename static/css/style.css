@@ -255,13 +255,32 @@ h1, h2, h3, h4 {
     -webkit-text-stroke-color: var(--brown);
 }
 
-.hero-subtitle-container {
-    background-color: var(--cream);
+.hero-subtitle-container, .category-section {
+    background-color: var(--peach);
     padding: 4rem;
     border: solid 3px var(--orange);
     border-radius: 100% 50%;
-    margin-bottom: 2rem;
+    margin-top: 4rem;
+    margin-bottom: 4rem;
     transition: 0.5s ease-in-out;
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.hero-subtitle-container::before, .category-section::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: url('/static/images/page-bg-img.jpg');
+    border-radius: 100% 50%;
+    opacity: 50%;
+    z-index: 0;
+    pointer-events: none;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 .featured-container h1, .hero-subtitle-container h1 {
@@ -286,7 +305,60 @@ h1, h2, h3, h4 {
     vertical-align: middle;
 }
 
-.featured-container:hover .featured-title-container, .category-container:hover .category-title-container, .media-type-container:hover .media-type-title-container, .hero-subtitle-container:hover {
+.featured-music-section {
+    background-color: var(--peach);
+    position: relative;
+    background-size: cover;
+    border-radius: 170% 245%;
+    background-position: center;
+    background-repeat: no-repeat;
+    border: solid 3px var(--brown);
+}
+
+.featured-clothing-section {
+    background-color: var(--peach);
+    position: relative;
+    background-size: cover;
+    border-radius: 245% 170%;
+    background-position: center;
+    background-repeat: no-repeat;
+    border: solid 3px var(--brown);
+}
+
+.featured-music-section::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: url('/static/images/cassettes-7645882_1920.jpg');
+    border-radius: 170% 245%;
+    opacity: 50%;
+    z-index: 0;
+    pointer-events: none;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.featured-clothing-section::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: url('/static/images/cabinet-1853504_1920.jpg');
+    border-radius: 245% 170%;
+    opacity: 50%;
+    z-index: 0;
+    pointer-events: none;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.featured-clothing-section > *, .featured-music-section > *, .category-section > *, .hero-subtitle-container > * {
+    position: relative;
+    z-index: 1;
+}
+
+.featured-container:hover .featured-title-container, .category-container:hover .category-title-container, .media-type-container:hover .media-type-title-container, .hero-subtitle-container {
     transition: 0.5s;
     box-shadow: 10px 10px 1px var(--orange);
 }
@@ -619,7 +691,7 @@ h1, h2, h3, h4 {
     box-shadow: 10px 10px 1px var(--orange);
 }
 
-.catalogue-description h5, .profile-info h5, .account-orders-subtitle h5, .featured-section h5, .featured-container h5, .category-section h5, .empty-basket h5, .success-container h5,.hero-subtitle-section h5, .checkout-confirmation-container p {
+.catalogue-description h5, .profile-info h5, .account-orders-subtitle h5, .featured-clothing-section h5, .featured-music-section h5, .featured-container h5, .category-section h5, .empty-basket h5, .success-container h5,.hero-subtitle-section h5, .checkout-confirmation-container p {
     color: var(--brown);
     font-weight: bold;
     text-shadow: 5px 5px 5px var(--orange);
