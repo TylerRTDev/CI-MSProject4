@@ -270,7 +270,7 @@ h1, h2, h3, h4 {
     background-repeat: no-repeat;
 }
 
-.featured-title-music-container, .featured-title-clothing-container, .category-title-container, .media-type-title-container, .catalogue-subtitle, .checkout-success-title-container {
+.featured-title-music-container, .featured-title-clothing-container, .category-title-container, .media-type-title-container,  .checkout-success-title-container {
     background-color: var(--peach);
     transition: 0.5s;
     border: solid 3px var(--orange);
@@ -284,7 +284,7 @@ h1, h2, h3, h4 {
     -webkit-text-stroke-color: var(--brown);
 }
 
-.hero-subtitle-container {
+.hero-subtitle-container, .catalogue-header-container {
     background-color: var(--peach);
     padding: 4rem;
     border: solid 3px var(--orange);
@@ -296,6 +296,7 @@ h1, h2, h3, h4 {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+    box-shadow: 10px 10px 1px var(--orange);
 }
 
 .category-section {
@@ -310,7 +311,7 @@ h1, h2, h3, h4 {
     background-repeat: no-repeat;
 }
 
-.hero-subtitle-container::before, .category-section::before {
+.hero-subtitle-container::before, .category-section::before, .catalogue-header-container::before {
     content: "";
     position: absolute;
     inset: 0;
@@ -408,7 +409,7 @@ h1, h2, h3, h4 {
     background-repeat: no-repeat;
 }
 
-.featured-clothing-section > *, .featured-music-section > *, .category-section > *, .hero-subtitle-container > * {
+.featured-clothing-section > *, .featured-music-section > *, .category-section > *, .hero-subtitle-container > *, .catalogue-header-container > * {
     position: relative;
     z-index: 1;
 }
@@ -740,10 +741,6 @@ h1, h2, h3, h4 {
     -webkit-text-fill-color: var(--orange); 
     -webkit-text-stroke-width: 1px;
     -webkit-text-stroke-color: var(--brown);
-}
-
-.catalogue-subtitle {
-    box-shadow: 10px 10px 1px var(--orange);
 }
 
 .catalogue-description h5, .profile-info h5, .account-orders-subtitle h5, .featured-clothing-section h5, .featured-music-section h5, .featured-container h5, .category-section h5, .empty-basket h5, .success-container h5,.hero-subtitle-section h5, .checkout-confirmation-container p {
