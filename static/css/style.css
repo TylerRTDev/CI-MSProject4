@@ -134,28 +134,15 @@ h1, h2, h3, h4 {
     z-index: -1000;
 }
 
-.hero-container {
-    background: url('/static/images/cassette-bg.jpg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    height: 75vh;
-    position: relative;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
 .hero-section{
-    /* background: url('/static/images/cassette-bg.jpg');
-    background-size: cover;
+    background: url('/static/images/fd4063aa-cde8-4431-b2b5-0a3826969c5d.png');
+    background-size: 100% 90%;
     background-position: center;
     background-repeat: no-repeat;
     height: 75vh;
     position: relative;
     box-shadow:
-    rgba(233, 163, 25, 0.495) 0px 5px,
+    /* rgba(233, 163, 25, 0.495) 0px 5px,
     rgba(233, 163, 25, 0.395) 0px 10px,
     rgba(233, 163, 25, 0.295) 0px 15px,
     rgba(233, 163, 25, 0.195) 0px 20px,
@@ -268,7 +255,16 @@ h1, h2, h3, h4 {
     -webkit-text-stroke-color: var(--brown);
 }
 
-.featured-container h1 {
+.hero-subtitle-container {
+    background-color: var(--cream);
+    padding: 4rem;
+    border: solid 3px var(--orange);
+    border-radius: 100% 50%;
+    margin-bottom: 2rem;
+    transition: 0.5s ease-in-out;
+}
+
+.featured-container h1, .hero-subtitle-container h1 {
     text-align: center;
     text-shadow: 5px 5px 5px var(--brown);
     -webkit-text-fill-color: var(--orange); 
@@ -290,7 +286,7 @@ h1, h2, h3, h4 {
     vertical-align: middle;
 }
 
-.featured-container:hover .featured-title-container, .category-container:hover .category-title-container, .media-type-container:hover .media-type-title-container {
+.featured-container:hover .featured-title-container, .category-container:hover .category-title-container, .media-type-container:hover .media-type-title-container, .hero-subtitle-container:hover {
     transition: 0.5s;
     box-shadow: 10px 10px 1px var(--orange);
 }
@@ -623,7 +619,7 @@ h1, h2, h3, h4 {
     box-shadow: 10px 10px 1px var(--orange);
 }
 
-.catalogue-description h5, .profile-info h5, .account-orders-subtitle h5, .featured-section h5, .featured-container h5, .category-section h5, .empty-basket h5, .success-container h5, .checkout-confirmation-container p {
+.catalogue-description h5, .profile-info h5, .account-orders-subtitle h5, .featured-section h5, .featured-container h5, .category-section h5, .empty-basket h5, .success-container h5,.hero-subtitle-section h5, .checkout-confirmation-container p {
     color: var(--brown);
     font-weight: bold;
     text-shadow: 5px 5px 5px var(--orange);
@@ -919,6 +915,18 @@ footer {
     justify-content: space-between;
     flex-direction: column;
 
+}
+
+.footer-text img {
+    width: 50px;
+    height: 50px;
+    vertical-align: middle;
+    transition: transform 1.5s ease-in-out;
+}
+
+.footer-text img:hover {
+    transform: scale(5.1);
+    transition: transform 0.7s ease-in-out;
 }
 
 .footer-text p {
