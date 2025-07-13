@@ -118,12 +118,12 @@ h1, h2, h3, h4 {
     left: 0;
     height: 100vh;
     width: 100vw;
-    background-image: url('/static/images/page-bg-img.jpg');
+    background-image: url('/static/images/record-store-925553_1920.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     z-index: -1000;
-    opacity: 65%;
+    opacity: 45%;
 }
 
 .dashboard-bg-container {
@@ -249,6 +249,7 @@ h1, h2, h3, h4 {
 .featured-title-music-container {
     background: url('/static/images/cassettes-7645882_1920.jpg');
     position: relative;
+    border: solid 3px var(--brown);
     background-size: 100% 100% 50% 100%;
     background-position: center;
     background-repeat: no-repeat;
@@ -257,6 +258,7 @@ h1, h2, h3, h4 {
 .featured-title-clothing-container {
     background: url('/static/images/cabinet-1853504_1920.jpg');
     position: relative;
+    border: solid 3px var(--brown);
     background-size: 100% 100% 50% 100%;
     background-position: center;
     background-repeat: no-repeat;
@@ -265,6 +267,7 @@ h1, h2, h3, h4 {
 .category-title-container {
     background: url('/static/images/record-store-925553_1920.jpg');
     position: relative;
+    border: solid 3px var(--orange);
     background-size: 100% 100% 50% 100%;
     background-position: center;
     background-repeat: no-repeat;
@@ -273,7 +276,6 @@ h1, h2, h3, h4 {
 .featured-title-music-container, .featured-title-clothing-container, .category-title-container, .media-type-title-container,  .checkout-success-title-container {
     background-color: var(--peach);
     transition: 0.5s;
-    border: solid 3px var(--orange);
     margin-bottom: 2rem;
 }
 
@@ -284,7 +286,7 @@ h1, h2, h3, h4 {
     -webkit-text-stroke-color: var(--brown);
 }
 
-.hero-subtitle-container, .catalogue-header-container {
+.catalogue-header-container {
     background-color: var(--peach);
     padding: 4rem;
     border: solid 3px var(--orange);
@@ -299,6 +301,21 @@ h1, h2, h3, h4 {
     box-shadow: 10px 10px 1px var(--orange);
 }
 
+.hero-subtitle-container {
+    background-color: var(--peach);
+    padding: 4rem;
+    border: solid 3px var(--peach);
+    border-radius: 100% 50%;
+    margin-top: 4rem;
+    margin-bottom: 4rem;
+    transition: 0.5s ease-in-out;
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    box-shadow: 10px 10px 1px var(--peach);
+}
+
 .category-section {
     background-color: var(--peach);
     position: relative;
@@ -309,6 +326,7 @@ h1, h2, h3, h4 {
     background-size: 100% 100% 50% 100%;
     background-position: center;
     background-repeat: no-repeat;
+    box-shadow: 10px 10px 1px var(--orange);
 }
 
 .hero-subtitle-container::before, .category-section::before, .catalogue-header-container::before {
@@ -325,12 +343,12 @@ h1, h2, h3, h4 {
     background-repeat: no-repeat;
 }
 
-.featured-container h1, .hero-subtitle-container h1 {
+.featured-container h2, .hero-subtitle-container h1 {
     text-align: center;
-    text-shadow: 5px 5px 5px var(--brown);
-    -webkit-text-fill-color: var(--orange); 
+    text-shadow: 5px 5px 5px var(--peach);
+    -webkit-text-fill-color: var(--brown); 
     -webkit-text-stroke-width: 1px;
-    -webkit-text-stroke-color: var(--brown);
+    -webkit-text-stroke-color: var(--cream);
     margin-top: 1rem;
 }
 
@@ -355,6 +373,7 @@ h1, h2, h3, h4 {
     background-position: center;
     background-repeat: no-repeat;
     border: solid 3px var(--brown);
+    box-shadow: 10px 10px 1px var(--brown);
 }
 
 .featured-clothing-section {
@@ -365,6 +384,7 @@ h1, h2, h3, h4 {
     background-position: center;
     background-repeat: no-repeat;
     border: solid 3px var(--brown);
+    box-shadow: 10px 10px 1px var(--brown);
 }
 
 .featured-music-section::before {
@@ -414,9 +434,14 @@ h1, h2, h3, h4 {
     z-index: 1;
 }
 
-.featured-music-section:hover .featured-title-music-container, .featured-clothing-section:hover .featured-title-clothing-container, .category-container:hover .category-title-container, .media-type-container:hover .media-type-title-container, .hero-subtitle-container {
+.category-container:hover .category-title-container, .media-type-container:hover .media-type-title-container{
     transition: 0.5s;
     box-shadow: 10px 10px 1px var(--orange);
+}
+
+.featured-music-section:hover .featured-title-music-container, .featured-clothing-section:hover .featured-title-clothing-container {
+    transition: 0.5s;
+    box-shadow: 10px 10px 1px var(--brown);
 }
 
 .back-button {
@@ -743,12 +768,21 @@ h1, h2, h3, h4 {
     -webkit-text-stroke-color: var(--brown);
 }
 
-.catalogue-description h5, .profile-info h5, .account-orders-subtitle h5, .featured-clothing-section h5, .featured-music-section h5, .featured-container h5, .category-section h5, .empty-basket h5, .success-container h5,.hero-subtitle-section h5, .checkout-confirmation-container p {
+.catalogue-description h5, .profile-info h5, .account-orders-subtitle h5, .featured-container h5, .category-section h5, .empty-basket h5, .success-container h5, .checkout-confirmation-container p {
     color: var(--brown);
     font-weight: bold;
     text-shadow: 5px 5px 5px var(--orange);
     padding-left: 1rem;
     padding-right: 1rem;
+}
+
+.hero-subtitle-section h5, .featured-clothing-section h5, .featured-music-section h5 {
+    color: var(--brown);
+    font-weight: bold;
+    text-shadow: 2px 2px 5px var(--peach);
+    padding-left: 1rem;
+    padding-right: 1rem;
+    text-align: center;
 }
 
 .checkout-confirmation-container h5 {
@@ -1023,13 +1057,15 @@ h1, h2, h3, h4 {
 }
 
 footer {
+    background: url('/static/images/page-bg-img.jpg');
+    background-size: cover;
     bottom: 0px;
-    background-color: var(--brown);
-    color: var(--cream);
+    color: white;
     text-align: center;
     padding: 1rem;
     margin: 0 auto;
-    border-top: solid 3px var(--orange);
+    border-top: solid 5px white;
+    opacity: 90%;
 }
 
 .footer-content {
@@ -1038,7 +1074,6 @@ footer {
     padding: 1rem;
     justify-content: space-between;
     flex-direction: column;
-
 }
 
 .footer-text img {
@@ -1056,7 +1091,7 @@ footer {
 .footer-text p {
     font-size: 1.2rem;
     letter-spacing: 2.5px;
-    color: var(--peach);
+    color: white;
 }
 
 .social-icons {
