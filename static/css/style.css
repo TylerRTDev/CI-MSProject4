@@ -118,11 +118,11 @@ h1, h2, h3, h4 {
 }
 
 .navbar-toggler:hover {
-    box-shadow: #E9A319 inset 8px 8px 2px;
+    box-shadow: rgba(0, 0, 0, 0.442) inset 8px 8px 2px;
     border-radius: 0;
-    border: var(--peach);
     transition: 1s ease-in;
     opacity: 100%;
+    
 }
 
 .background-container {
@@ -618,12 +618,7 @@ h1, h2, h3, h4 {
 
 .category-tile:hover {
     transform: scale(1.05);
-    box-shadow:
-    rgba(233, 163, 25, 0.495) 0px 5px,
-    rgba(233, 163, 25, 0.395) 0px 10px,
-    rgba(233, 163, 25, 0.295) 0px 15px,
-    rgba(233, 163, 25, 0.195) 0px 20px,
-    rgba(233, 163, 25, 0.1) 0px 25px;
+    box-shadow: rgba(0, 0, 0, 0.45) 0px 25px 20px -20px;
     transition: transform 0.5s ease-in-out, box-shadow 0.6s ease-in-out;
 }
 
