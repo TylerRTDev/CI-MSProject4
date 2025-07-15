@@ -3,40 +3,11 @@
 {% block title %}Order Confirmation{% endblock %}
 
 {% block content %}
-<section class="featured-section py-5">
+<section class="order-success-section py-5">
     <div class="success-container container mb-5 text-center">
         <h1 class="text-retro">🎉 Order Confirmed!</h1>
-        <h5 class="lead">Thank you for your purchase. A confirmation email has been sent.</h5>
-        <a href="{% url 'checkout:order_confirmation' order_id %}" class="btn btn-retro mt-4">View Order Details</a>
-    </div>
-    <div class="featured-container">
-        <div class="checkout-success-title-container">
-        <h2 class="text-center m-1 p-2">Thank you for your continued support!</h2>
-        </div>
-        <div class="row g-4">
-            {% for product in products %}
-            <div class="col-md-6 col-lg-3">
-                <div class="product-card">
-                    <img src="{{ product.images.first.image.url|default:'/static/images/stock-image.jpg' }}" 
-                        class="card-img-top" alt="{{ product.name }}">
-                    <div class="product-card-body">
-                        <div class="product-card-title">
-                            <h4>{{ product.name }}</h4>
-                        </div>
-                        <div class="product-card-description">
-                            <p> {{ product.description }}</p>
-                        </div>
-                        <p class="product-card-text fw-bold">£{{ product.price }}</p>
-                        <a href="{{ product.get_absolute_url }}" class="btn-retro">View Product</a>
-                    </div>
-                </div>
-            </div>
-            {% endfor %}
-        </div>
-    </div>
-    <h5 class="text-center p-4">If you want to support the RLM brand grab some of our exclusive items here.</h5>
-    <div class="text-center mt-4">
-        <a href="{% url 'products:list' %}?category=clothing" class="btn-retro-hero">Browse Merch</a>
+        <h5 class="lead">Thank you for your purchase and continued support!<br><br> A confirmation email has been sent...</h5>
+        <a href="{% url 'checkout:order_confirmation' order_id %}" class="btn btn-retro-hero mt-4">View Order Details</a>
     </div>
 </section>
 

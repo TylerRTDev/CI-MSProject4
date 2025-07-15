@@ -3,10 +3,10 @@
 
 :root {
     --black: #000000;
-    --brown: #A86523;
+    --brown: #a86523;
     --orange: #E9A319;
     --peach: #fad59a;
-    --cream: #FCEFCB;
+    --cream: #fcefcb;
     --text-color: #000000;
 }
 
@@ -402,6 +402,10 @@ h1, h2, h3, h4 {
     box-shadow: 10px 10px 8px var(--orange);
 }
 
+.order-success-section {
+    height: 100vh;
+}
+
 .featured-music-section::before {
     content: "";
     position: absolute;
@@ -765,7 +769,7 @@ h1, h2, h3, h4 {
     -webkit-text-stroke-color: var(--brown);
 }
 
-.profile-info h5, .featured-container h5, .success-container h5, .checkout-confirmation-container p {
+.profile-info h5, .featured-container h5, .success-container h5 {
     color: var(--brown);
     font-weight: bold;
     text-shadow: 5px 5px 5px var(--orange);
@@ -786,19 +790,19 @@ h1, h2, h3, h4 {
     color: var(--brown);
 }
 
-.no-orders-text-container {
+.no-orders-text-container, .empty-product-filter-container, .success-container {
     padding: 14rem;
 }
 
-.no-orders-text-container img, .empty-basket img {
+.no-orders-text-container img, .empty-basket img, .empty-product-filter-container img {
     width: 100px;
     height: 100px;
-    margin-bottom: 1rem;
-    box-shadow: inset 5px 5px 40px var(--cream);
+    /* box-shadow: inset 5px 5px 40px var(--cream); */
+    box-shadow: rgba(252, 239, 203, 0.17) 0px -23px 25px 0px inset, rgba(252, 239, 203, 0.15) 0px -36px 30px 0px inset, rgba(252, 239, 203, 0.1) 0px -79px 40px 0px inset, rgba(252, 239, 203, 0.06) 0px 2px 1px, rgba(252, 239, 203, 0.09) 0px 4px 2px, rgba(252, 239, 203, 0.09) 0px 8px 4px, rgba(252, 239, 203, 0.09) 0px 16px 8px, rgba(252, 239, 203, 0.09) 0px 32px 16px;
     border-radius: 30%;
 }
 
-.no-orders-text, .empty-basket h5, .empty-product-filter-container h5 {
+.no-orders-text, .empty-basket h5, .empty-product-filter-container h5, .success-container h5, .checkout-confirmation-container p {
     padding: 1rem;
     color: var(--brown);
     text-decoration: underline solid 3px var(--cream);
