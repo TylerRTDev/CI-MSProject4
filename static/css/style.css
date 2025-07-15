@@ -157,15 +157,10 @@ h1, h2, h3, h4 {
     background-size: 100% 90%;
     background-position: center;
     background-repeat: no-repeat;
-    height: 75vh;
+    height: 90vh;
     position: relative;
-    /* box-shadow:
-    rgba(233, 163, 25, 0.495) 0px 5px,
-    rgba(233, 163, 25, 0.395) 0px 10px,
-    rgba(233, 163, 25, 0.295) 0px 15px,
-    rgba(233, 163, 25, 0.195) 0px 20px,
-    rgba(233, 163, 25, 0.1) 0px 25px; */
 }
+
 
 .hero-title {
     font-size: 5.5rem;
@@ -176,16 +171,6 @@ h1, h2, h3, h4 {
     -webkit-text-fill-color: var(--peach);
     -webkit-text-stroke-width: 1px;
     -webkit-text-stroke-color: var(--orange);
-}
-
-.empty-product-filter-container h5 {
-    text-align: center;
-    color: var(--brown);
-    font-weight: bold;
-    margin-top: 1.5rem;
-    margin-bottom: 1.5rem;
-    padding: 1.5rem;
-    text-shadow: 3px 5px 5px var(--orange);
 }
 
 .back-btn-retro {
@@ -237,9 +222,29 @@ h1, h2, h3, h4 {
     animation: pulse 1s infinite;
 }
 
+@keyframes swipe-arrow {
+        0% {
+            transform: translateX(0);
+            opacity: 0.5;
+        }
+        60% {
+            transform: translateX(-10px);
+            opacity: 1;
+        }
+        100% {
+            transform: translateX(0);
+            opacity: 1;
+        }
+}
+
+.back-btn-retro:hover span {
+    display: inline-block;
+    animation: swipe-arrow 0.6s forwards;
+}
+
 .back-btn-retro:hover {
     background-color: var(--brown);
-    color: white;
+    color: var(--peach);
     transition: .5s;
     animation: pulse 1s infinite;
     border: 3px solid var(--brown);
@@ -573,12 +578,6 @@ h1, h2, h3, h4 {
 
 .card:hover, .product-card:hover {
     transform: translateY(-10px);
-    box-shadow:
-    rgba(233, 163, 25, 0.495) 0px 5px,
-    rgba(233, 163, 25, 0.395) 0px 10px,
-    rgba(233, 163, 25, 0.295) 0px 15px,
-    rgba(233, 163, 25, 0.195) 0px 20px,
-    rgba(233, 163, 25, 0.1) 0px 25px;
     transition: transform 0.5s ease-in-out, box-shadow 0.6s ease-in-out;
 }
 
@@ -760,12 +759,6 @@ h1, h2, h3, h4 {
     background-repeat: no-repeat;
     padding: 8rem;
     position: relative;
-    /* box-shadow:
-    rgba(233, 163, 25, 0.495) 0px 5px,
-    rgba(233, 163, 25, 0.395) 0px 10px,
-    rgba(233, 163, 25, 0.295) 0px 15px,
-    rgba(233, 163, 25, 0.195) 0px 20px,
-    rgba(233, 163, 25, 0.1) 0px 25px; */
 } 
 
 .profile-container h2 span, .catalogue-header h1, .catalogue-subtitle h3 {
@@ -777,7 +770,7 @@ h1, h2, h3, h4 {
     -webkit-text-stroke-color: var(--brown);
 }
 
-.profile-info h5, .account-orders-subtitle h5, .featured-container h5, .empty-basket h5, .success-container h5, .checkout-confirmation-container p {
+.profile-info h5, .featured-container h5, .success-container h5, .checkout-confirmation-container p {
     color: var(--brown);
     font-weight: bold;
     text-shadow: 5px 5px 5px var(--orange);
@@ -785,13 +778,36 @@ h1, h2, h3, h4 {
     padding-right: 1rem;
 }
 
-.featured-clothing-section h5, .featured-music-section h5 {
+.featured-clothing-section h5, .featured-music-section h5, .order-history h5 {
     color: var(--brown);
     font-weight: bold;
     text-shadow: 2px 2px 5px var(--cream);
     padding-left: 1rem;
     padding-right: 1rem;
     text-align: center;
+}
+
+.order-history .no-orders-text {
+    color: var(--brown);
+}
+
+.no-orders-text-container {
+    padding: 14rem;
+}
+
+.no-orders-text-container img, .empty-basket img {
+    width: 100px;
+    height: 100px;
+    margin-bottom: 1rem;
+    box-shadow: inset 5px 5px 40px var(--cream);
+    border-radius: 30%;
+}
+
+.no-orders-text, .empty-basket h5, .empty-product-filter-container h5 {
+    padding: 1rem;
+    color: var(--brown);
+    text-decoration: underline solid 3px var(--cream);
+    text-shadow: 2px 2px 5px var(--cream);
 }
 
 .hero-subtitle-section h5, .catalogue-description h5, .category-section h5 {
@@ -847,7 +863,6 @@ h1, h2, h3, h4 {
 .account-orders-title {
     padding-top: 1rem;
     padding-bottom: 0.5rem;
-    background-color: var(--peach);
     min-width: 350px;
     text-align: center;
     margin-bottom: 1rem;
@@ -928,6 +943,7 @@ h1, h2, h3, h4 {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    padding: 15rem;
 }
 
 .empty-product-filter {
@@ -953,8 +969,7 @@ h1, h2, h3, h4 {
     font-weight: bold;
 }
 
-.checkout-card ul li, .order-detail-container ul li
- {
+.checkout-card ul li, .order-detail-container ul li {
     border: none;
     border-bottom: 2px solid var(--brown);
     background: var(--cream);
