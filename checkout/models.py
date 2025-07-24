@@ -22,8 +22,8 @@ class CheckoutOrder(models.Model):
     shipping_city = models.CharField(max_length=50, null=True, blank=True)
     shipping_postcode = models.CharField(max_length=20, null=True, blank=True)
     billing_address = models.TextField(null=True, blank=True)
-    billing_city = models.CharField(null=True, blank=True)
-    billing_postcode = models.CharField(null=True, blank=True)
+    billing_city = models.CharField(max_length=20,null=True, blank=True)
+    billing_postcode = models.CharField(max_length=20,null=True, blank=True)
     
     def save(self, *args, **kwargs):
         if not self.order_number:

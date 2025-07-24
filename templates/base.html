@@ -17,13 +17,13 @@
         <!-- Navbar -->
         <nav class="navbar nav-link">
             <div class="container">
-                    <!-- Brand -->
-                    <a class="navbar-brand mx-auto" href="{% url 'core:home' %}">●RLM●</a>
+                <!-- Brand -->
+                <a class="navbar-brand mx-auto" href="{% url 'core:home' %}">●RLM●</a>
 
-                    <!-- Hamburger Button for Mobile -->
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
+                <!-- Hamburger Button for Mobile -->
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
                 
 
                 <!-- Nav Links -->
@@ -70,7 +70,16 @@
             {% for message in messages %}
                 <div class="toast show text-black shadow" style="background-color: #E9A319;" role="alert" aria-live="assertive" aria-atomic="true">
                     <div class="d-flex align-items-center">
+<<<<<<< HEAD
                         <div class="toast-body d-flex flex-column text-center fw-semibold">
+=======
+                        <div class="toast-body fw-semibold">
+                        {{ message }}
+                        {% if request.session.cart %}
+                            <a href="{% url 'cart:view_cart' %}" class="btn btn-sm btn-light ms-3">View Basket</a>
+                        {% endif %}
+                        </div>
+>>>>>>> 15680306323830239609cfe48c8fa552c70dfe83
                         <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
                             <div class="toast-text fw-bold h6 text-center pt-1 pb-2">
                                 {{ message }}

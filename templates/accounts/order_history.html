@@ -2,16 +2,16 @@
 {% block content %}
 <div class="order-history-container">
     <div class="back-button d-flex justify-content-end mb-1">
-      <a href="{% url 'accounts:profile' %}" class="back-btn-retro">
-      ← Back to Dashboard
-      </a>
-  </div>
+        <a href="{% url 'accounts:profile' %}" class="back-btn-retro">
+        <span> ←</span> Back to Dashboard
+        </a>
+    </div>
     <div class="order-history container py-5 ">
         <div class="account-orders-title">
-            <h2>Your Orders</h2>
+            <h1>Your Orders</h1>
         </div>
         <div class="account-orders-subtitle p-4">
-            <h5 class="text-center">View your past orders and their details.</h5>
+            <h5 class="text-center h4">View your past orders and their details</h5>
         </div>
         {% if orders %}
             <ul class="list-group">
@@ -27,7 +27,10 @@
             {% endfor %}
             </ul>
         {% else %}
-            <p>You haven't placed any orders yet.</p>
+        <div class="no-orders-text-container d-flex justify-content-center align-items-center flex-column">
+            <img src="/static/images/icons/empty-cart.png" alt="Empty order">
+            <h5 class="no-orders-text text-center">You haven't placed any orders yet...</h5>
+        </div>
         {% endif %}
     </div>
 </div>
