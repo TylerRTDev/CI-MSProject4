@@ -66,15 +66,17 @@
         <!-- Flash Messages -->
         <div class="container mt-3">
             {% if messages %}
-            <div class="toast-container position-fixed top-10 start-50 translate-middle-x p-3" style="z-index: 1100;">
+            <div class="toast-container position-fixed top-50 start-50 translate-middle" style="z-index: 1100;">
             {% for message in messages %}
                 <div class="toast show text-black shadow" style="background-color: #E9A319;" role="alert" aria-live="assertive" aria-atomic="true">
                     <div class="d-flex align-items-center">
-                        <div class="toast-body fw-semibold">
-                        {{ message }}
-                        <a href="{% url 'cart:view_cart' %}" class="btn btn-sm btn-light ms-3">View Basket</a>
-                        </div>
+                        <div class="toast-body d-flex flex-column text-center fw-semibold">
                         <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+                            <div class="toast-text fw-bold h6 text-center pt-1 pb-2">
+                                {{ message }}
+                            </div>
+                        <a href="{% url 'cart:view_cart' %}" class="btn-retro btn-sm btn-light">View Basket</a>
+                        </div>
                     </div>
                 </div>
             {% endfor %}

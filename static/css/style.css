@@ -803,6 +803,10 @@ h1, h2, h3, h4 {
     text-align: center;
 }
 
+.toast-text {
+    color: var(--brown);
+}
+
 .checkout-confirmation-container h5 {
     color: var(--brown);
     border-bottom: solid 3px var(--orange);
