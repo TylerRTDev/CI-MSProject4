@@ -59,7 +59,7 @@ h1, h2, h3, h4 {
 
 .navbar-nav .nav-link {
     color: var(--orange);
-    opacity: 35%;
+    opacity: 70%;
     font-family: 'Brexon', sans-serif;
     font-size: 1.5rem;
     transition: 0.3s;
@@ -404,8 +404,8 @@ section {
     box-shadow: 10px 10px 8px var(--orange);
 }
 
-.order-success-section, .profile-dashboard-container {
-    height: 100vh;
+.profile-dashboard-container {
+    height: 120vh;
 }
 
 .featured-music-section::before {
@@ -476,7 +476,7 @@ section {
     border-radius: 3px var(--brown);
 }
 
-.product-container, .cart-table-container, .checkout-confirmation-container, .order-history {
+.product-container, .cart-table-container, .checkout-confirmation-container, .order-history, .order-success-section {
     height: 100vh;
 }
 
@@ -810,17 +810,13 @@ section {
     text-shadow: 2px 2px 5px var(--cream);
 }
 
-.hero-subtitle-section h5, .catalogue-description h5, .category-section h5 {
+.hero-subtitle-section h5, .catalogue-description h5, .category-section h5, .toast-text {
     color: var(--cream);
     font-weight: bold;
     text-shadow: 2px 2px 5px var(--cream);
     padding-left: 1rem;
     padding-right: 1rem;
     text-align: center;
-}
-
-.toast-text {
-    color: var(--brown);
 }
 
 .checkout-confirmation-container h5 {
@@ -1173,6 +1169,7 @@ section {
     vertical-align: middle;
 }
 
+
 @media screen and (max-width: 480px) {
 
     .footer-content {
@@ -1192,5 +1189,31 @@ section {
         margin: 1rem;
     }
 }
+
+/* Mobile Small - 360px */
+@media (max-width: 359px) {
+  /* Optional: reserved for ultra-small devices */
+}
+
+/* Mobile - 360px+ */
+@media (min-width: 360px) and (max-width: 767px) {
+  /* Stack nav, reduce padding, etc. */
+}
+
+/* Tablet - 768px+ */
+@media (min-width: 768px) and (max-width: 1023px) {
+  /* Show nav bar links unless overridden */
+}
+
+/* Desktop - 1024px+ */
+@media (min-width: 1024px) and (max-width: 1439px) {
+  /* Adjust container widths */
+}
+
+/* Large desktop - 1440px+ */
+@media (min-width: 1440px) {
+  /* Keep spacious layout */
+}
+
 
 /* ========== End Responsive Font Scaling ========== */
