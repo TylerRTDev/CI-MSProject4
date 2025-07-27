@@ -15,7 +15,33 @@
     <body>
 
         <!-- Navbar -->
-        <nav class="navbar nav-link">
+         <nav class="navbar nav-link navbar-expand-md">
+            <div class="container-fluid">
+                <!-- Brand -->
+                <a class="navbar-brand mx-auto text-center" href="{% url 'core:home' %}">●RLM●</a>
+                
+                <!-- Toggler only visible below 800px -->
+                <button class="navbar-toggler d-md-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup">
+                <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Navbar items -->
+                <div class="collapse navbar-collapse justify-content-end ms-2 me-2" id="navbarNavAltMarkup">
+                    <div class="navbar-nav">
+                        <a class="nav-link nav-item" href="{% url 'products:list' %}">Products</a>
+                        <a class="nav-link nav-item" href="{% url 'cart:view_cart' %}">Cart</a>
+                        {% if user.is_authenticated %}
+                        <a class="nav-link nav-item" href="{% url 'accounts:profile' %}">Account</a>
+                        <a class="nav-link nav-item" href="{% url 'accounts:logout' %}">Logout</a>
+                        {% else %}
+                        <a class="nav-link nav-item" href="{% url 'accounts:login' %}">Login</a>
+                        <a class="nav-link nav-item" href="{% url 'accounts:register' %}">Register</a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </nav>
+        {% comment %} <nav class="navbar nav-link">
             <div class="container">
                 <!-- Brand -->
                 <a class="navbar-brand mx-auto" href="{% url 'core:home' %}">●RLM●</a>
@@ -59,24 +85,24 @@
                     </ul>
                 </div>
             </div>
-        </nav>
+        </nav> {% endcomment %}
 
         <div class="background-container"></div>
 
         <!-- Flash Messages -->
         <div class="container mt-3">
             {% if messages %}
-            <div class="toast-container position-fixed top-10 start-50 translate-middle-x p-3" style="z-index: 1100;">
+            <div class="toast-container position-fixed top-50 start-50 translate-middle" style="z-index: 1100;">
             {% for message in messages %}
                 <div class="toast show text-black shadow" style="background-color: #E9A319;" role="alert" aria-live="assertive" aria-atomic="true">
-                    <div class="d-flex align-items-center">
-                        <div class="toast-body fw-semibold">
-                        {{ message }}
-                        {% if request.session.cart %}
-                            <a href="{% url 'cart:view_cart' %}" class="btn btn-sm btn-light ms-3">View Basket</a>
-                        {% endif %}
-                        </div>
+                    <div class="d-flex justify-content-evenly align-items-center">
+                        <div class="toast-body d-flex flex-column text-center fw-semibold">
                         <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+                            <div class="toast-text fw-bold h6 text-center pt-1 pb-2">
+                                {{ message }}
+                            </div>
+                        <a href="{% url 'cart:view_cart' %}" class="btn-retro btn-sm btn-light">View Basket</a>
+                        </div>
                     </div>
                 </div>
             {% endfor %}
