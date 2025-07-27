@@ -10,9 +10,6 @@
         <div class="account-orders-title">
             <h1>Your Orders</h1>
         </div>
-        <div class="account-orders-subtitle p-4">
-            <h5 class="text-center h4">View your past orders and their details</h5>
-        </div>
         {% if orders %}
             <ul class="list-group">
             {% for order in orders %}
@@ -21,7 +18,7 @@
                 <strong>Order #{{ order.order_number }}</strong>{{ order.created_at|date:"M d, Y" }}
                 <br>
                 Total: £{{ order.total_amount }} | Status: {{ order.status|capfirst }}
-                    <a href="{% url 'accounts:order_detail' order.id %}" class="btn-retro">View Details</a>
+                    <a href="{% url 'accounts:order_detail' order.id %}" class="btn-retro">Details</a>
                 </div>
             </li>
             {% endfor %}

@@ -35,7 +35,7 @@
         </div>
         <div class="row g-4">
             {% for product in featured_music %}
-            <div class="col-md-6 col-lg-3">
+            <div class="product-card-container col-md-6 col-lg-3">
                 <div class="product-card">
                     <img src="{{ product.images.first.image.url|default:'/static/images/stock-image.jpg' }}" 
                         class="card-img-top" alt="{{ product.name }}">
@@ -89,7 +89,7 @@
         </div>
         <div class="row g-4">
             {% for product in featured_clothing %}
-            <div class="col-md-6 col-lg-3">
+            <div class="product-card-container col-md-6 col-lg-3">
                 <div class="product-card">
                     <img src="{{ product.images.first.image.url|default:'/static/images/stock-image.jpg' }}" 
                         class="card-img-top" alt="{{ product.name }}">
