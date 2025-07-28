@@ -10,9 +10,6 @@
     --text-color: #000000;
 }
 
-body > main {
-    flex: 1;
-}
 
 body {
     font-family: 'Kodchasan', sans-serif;
