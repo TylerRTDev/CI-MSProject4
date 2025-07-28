@@ -10,6 +10,10 @@
     --text-color: #000000;
 }
 
+body > main {
+    flex: 1;
+}
+
 body {
     font-family: 'Kodchasan', sans-serif;
     color: var(--text-color);
@@ -476,7 +480,7 @@ section {
     border-radius: 3px var(--brown);
 }
 
-.cart-table-container, .checkout-confirmation-container, .order-history, .order-success-section {
+.cart-table-container, .checkout-confirmation-container, .order-success-section {
     height: 100vh;
 }
 
@@ -861,9 +865,7 @@ section {
 }
 
 .account-orders-title {
-    padding-top: 1rem;
     padding-bottom: 0.5rem;
-    min-width: 350px;
     text-align: center;
     margin-bottom: 1rem;
     -webkit-text-fill-color: var(--orange); /* Will override color (regardless of order) */
@@ -963,6 +965,7 @@ section {
 
 .list-group {
     border-radius: 0px;
+    height: 100vh;
 }
 
 .list-group small {
@@ -981,6 +984,10 @@ section {
 
 .checkout-item-quantity-cost, .order-detail-quantity-price {
     color: var(--orange);
+}
+
+.order-history-container {
+    height: 100vh;
 }
 
 .order-history ul li {
@@ -1204,6 +1211,12 @@ section {
     .catalogue-header-container {
         padding: 2rem;
     }
+
+    .list-group-item div {
+        font-size: 0.6rem;
+        padding: 0.5rem;
+
+    }
     
     .update-btn-container button {
         font-size: 0.5rem;
@@ -1282,8 +1295,29 @@ section {
         font-size: 1.2rem;
     }
 
+    .back-btn-retro {
+        padding: 0.5rem;
+    }
+
+    .back-btn-retro span {
+        font-size: 0.8rem;
+    }
+
+    .back-button a {
+        font-size: 0.8rem;
+    }
+
     .order-history {
         font-size: 1.2rem;
+    }
+
+    .list-group-item {
+        font-size: 1rem;
+    }
+
+    .list-group-item a {
+        padding: 0.5rem 1rem;
+        font-size: 0.8rem;
     }
 
     .table {
