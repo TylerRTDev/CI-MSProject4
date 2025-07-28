@@ -649,8 +649,8 @@ section {
 .checkout-card {
     background-color: var(--cream);
     border: 3px solid var(--orange);
-    min-width: 350px;
-    width: 40%;
+    max-width: 500px;
+
 }
 
 .checkout-card h4 {
@@ -1173,6 +1173,18 @@ section {
     vertical-align: middle;
 }
 
+@media (max-width: 360px) {
+
+    .cart-table-container th, .cart-table-container td {
+        padding: 0;
+    }
+
+    .btn {
+        padding: 0;
+    }
+
+}
+
 
 @media (max-width: 390px) {
 
@@ -1274,6 +1286,10 @@ section {
         font-size: 1.2rem;
     }
 
+    .table {
+        vertical-align: middle;
+    }
+
     .cart-table-container {
         padding: 0;
     }
@@ -1281,10 +1297,6 @@ section {
     .cart-table-container th, .cart-table-container td {
         font-size: 0.5rem;
         padding: 0.4rem;
-    }
-
-    .footer-container {
-        bottom: -0;
     }
 
 }
