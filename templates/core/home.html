@@ -1,28 +1,43 @@
 {% extends 'base.html' %}
 {% load static %}
-{% block title %}Home - Real Legacy Media{% endblock %}
+{% block title %}Real Legacy Media{% endblock %}
 
 {% block content %}
 <div class="overlay"></div>
 <section class="hero-section d-flex align-items-center justify-content-center text-center">
     <div class="title-container">
-        <h1 class="display-1">Real Legacy Media</h1>
-        <div class="d-flex justify-content-center mt-3">
+        <h1 class="hero-title">Real Legacy Media</h1>
+        <div class="d-flex justify-content-center">
         <a href="{% url 'products:list' %}" class="btn-retro-hero">Browse Collection</a>
         </div>
     </div>
 </section>
 
-<section class="featured-section py-5">
+<section class="hero-subtitle-section text-center py-5">
+    <div class="hero-subtitle-container">
+            <h1>All your favourite music, in any format!</h1>
+            <p class="text-center">Welcome to Real Legacy Media, your one-stop shop for all things music! Whether you're a fan of vinyl, CDs, cassettes, or digital formats, we have something for every music lover. Explore our featured collections and discover the perfect addition to your music library.</p>
+            <div class="category-icons text-center mb-4">
+                <img src="/static/images/icons/cassette-tape.png" alt="Cassette Icon" class="category-icon mb-2">
+                <img src="/static/images/icons/compact-disk.png" alt="CD Icon" class="category-icon mb-2">
+                <img src="/static/images/icons/dvd-player.png" alt="DVD Icon" class="category-icon mb-2">
+                <img src="/static/images/icons/music-player.png" alt="Music Player Icon" class="category-icon mb-2">
+                <img src="/static/images/icons/vinyl.png" alt="Vinyl Icon" class="category-icon mb-2">
+                <img src="/static/images/icons/vhs.png" alt="VHS Icon" class="category-icon mb-2">
+            </div>
+        </div>
+</section>
+
+<section class="featured-music-section py-5">
     <div class="featured-container">
-        <div class="featured-title-container">
-        <h2 class="text-center m-4 p-2">Featured Picks</h2>
+        <div class="featured-title-music-container">
+            <h2 class="text-center m-1 p-2">Featured Music</h2>
         </div>
         <div class="row g-4">
-            {% for product in featured %}
-            <div class="col-md-6 col-lg-3">
+            {% for product in featured_music %}
+            <div class="product-card-container col-md-6 col-lg-3">
                 <div class="product-card">
-                    <img src="{{ product.images.first.image.url|default:'/static/images/logo-avatar.png' }}" 
+                    <img src="{{ product.images.first.image.url|default:'/static/images/stock-image.jpg' }}" 
                         class="card-img-top" alt="{{ product.name }}">
                     <div class="product-card-body">
                         <div class="product-card-title">
@@ -39,87 +54,63 @@
             {% endfor %}
         </div>
     </div>
+    <p class="featured-desc text-center p-4">For the music lovers, find featured and all other music here.</p>
+    <div class="text-center mt-4">
+        <a href="{% url 'products:list' %}?category=music" class="btn-retro-hero">Browse Music</a>
+    </div>
 </section>
 
 <section class="category-section py-5">
     <div class="category-container">
         <div class="category-title-container">
-            <h2 class="text-center p-2">Browse by Genre</h2>
-        </div>
-        <div class="m-4 row g-4 justify-content-center">
-            {% for genre in genres %}
-            <div class="col-6 col-md-4 col-lg-2">
-                <a href="#" class="category-tile text-center p-3 d-block rounded shadow-sm">
-                    <div class="category-icon mb-2">🎵</div>
-                    <strong>{{ genre.name }}</strong>
-                </a>
-            </div>
-            {% endfor %}
-        </div>
-    </div>
-</section>
-
-<section class="featured-section py-5">
-    <div class="featured-container">
-        <div class="featured-title-container">
-        <h2 class="text-center m-4 p-2">Featured Picks</h2>
-        </div>
-        <div class="row g-4">
-            {% for product in featured %}
-            <div class="col-md-6 col-lg-3">
-                <div class="card">
-                    <img src="{{ product.images.first.image.url|default:'/static/images/logo-avatar.png' }}" 
-                        class="card-img-top" alt="{{ product.name }}">
-                    <div class="card-body">
-                        <h5 class="card-title">{{ product.name }}</h5>
-                        <p class="card-text fw-bold">£{{ product.price }}</p>
-                        <a href="{{ product.get_absolute_url }}" class="btn-retro">View Product</a>
-                    </div>
-                </div>
-            </div>
-            {% endfor %}
-        </div>
-    </div>
-</section>
-
-<section class="media-type-section py-5">
-    <div class="media-type-container">
-        <div class="media-type-title-container">
-            <h2 class="text-center p-2">Browse by Media Type</h2>
+            <h2 class="text-center m-1 p-2">Media Formats</h2>
         </div>
         <div class="m-4 row g-4 justify-content-center">
             {% for type in media_types %}
-            <div class="col-6 col-md-4 col-lg-2">
-                <a href="#" class="category-tile text-center p-3 d-block rounded shadow-sm">
-                    <div class="category-icon mb-2">💽</div>
+            <div class="category-tile-container col-6 col-md-4 col-lg-4">
+                <a href="{% url 'products:list' %}?{% if current_genre %}genre={{ current_genre }}&{% endif %}{% if current_category %}category={{ current_category }}&{% endif %}media={{ type.slug }}" class="category-tile text-center p-3 d-block fw-bold">
+                    <div class="category-icon mb-2"><img src="/static/images/icons/media.png"></div>
                     <strong>{{ type.name }}</strong>
                 </a>
             </div>
             {% endfor %}
         </div>
     </div>
+    <p class="text-center p-4">All available media formats can be found here.</p>
+    <div class="text-center mt-4">
+        <a href="{% url 'products:list' %}" class="btn-retro-hero">Browse Media</a>
+    </div>
 </section>
 
-<section class="featured-section py-5">
+<section class="featured-clothing-section py-5">
     <div class="featured-container">
-        <div class="featured-title-container">
-        <h2 class="text-center m-4 p-2">Featured Picks</h2>
+        <div class="featured-title-clothing-container">
+            <h2 class="text-center m-1 p-2">Featured Merch</h2>
         </div>
         <div class="row g-4">
-            {% for product in featured %}
-            <div class="col-md-6 col-lg-3">
-                <div class="card">
-                    <img src="{{ product.images.first.image.url|default:'/static/images/logo-avatar.png' }}" 
+            {% for product in featured_clothing %}
+            <div class="product-card-container col-md-6 col-lg-3">
+                <div class="product-card">
+                    <img src="{{ product.images.first.image.url|default:'/static/images/stock-image.jpg' }}" 
                         class="card-img-top" alt="{{ product.name }}">
-                    <div class="card-body">
-                        <h5 class="card-title">{{ product.name }}</h5>
-                        <p class="card-text fw-bold">£{{ product.price }}</p>
+                    <div class="product-card-body">
+                        <div class="product-card-title">
+                            <h4>{{ product.name }}</h4>
+                        </div>
+                        <div class="product-card-description">
+                            <p> {{ product.description }}</p>
+                        </div>
+                        <p class="product-card-text fw-bold">£{{ product.price }}</p>
                         <a href="{{ product.get_absolute_url }}" class="btn-retro">View Product</a>
                     </div>
                 </div>
             </div>
             {% endfor %}
         </div>
+    </div>
+    <p class="featured-desc text-center p-4">If you want to support the RLM brand grab some of our exclusive items here.</p>
+    <div class="text-center mt-4">
+        <a href="{% url 'products:list' %}?category=clothing" class="btn-retro-hero">Browse Merch</a>
     </div>
 </section>
 

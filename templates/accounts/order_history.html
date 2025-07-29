@@ -1,26 +1,57 @@
 {% extends 'base.html' %}
 {% block content %}
-<div class="order-history-container">
-    <div class="order-history container py-5 ">
+    <div class="back-button d-flex justify-content-end mb-1">
+        <a href="{% url 'accounts:profile' %}" class="back-btn-retro">
+        <span> ←</span> Back to Dashboard
+        </a>
+    </div>
+    <div class="order-history container py-5">
         <div class="account-orders-title">
-            <h2>Your Orders</h2>
+            <h1>Your Orders</h1>
         </div>
-        {% if orders %}
+        <div class="text-center">
+            <nav aria-label="Order pagination">
+                <ul class="pagination justify-content-center">
+
+                {% if page_obj.has_previous %}
+                    <li class="page-item">
+                    <a class="page-link" href="?page={{ page_obj.previous_page_number }}">Previous</a>
+                    </li>
+                {% endif %}
+
+                {% for num in page_obj.paginator.page_range %}
+                    <li class="page-item {% if page_obj.number == num %}active{% endif %}">
+                    <a class="page-link page-num" href="?page={{ num }}">{{ num }}</a>
+                    </li>
+                {% endfor %}
+
+                {% if page_obj.has_next %}
+                    <li class="page-item">
+                    <a class="page-link" href="?page={{ page_obj.next_page_number }}">Next</a>
+                    </li>
+                {% endif %}
+
+                </ul>
+            </nav>
+        </div>
+        {% if page_obj.object_list %}
             <ul class="list-group">
-            {% for order in orders %}
-                <li class="list-group-item p-4">
-                    <div class="d-flex justify-content-end justify-content-between align-items-center">
-                <strong>Order #{{ order.order_number }}</strong>{{ order.created_at|date:"M d, Y" }}
-                <br>
-                Total: £{{ order.total_amount }} | Status: {{ order.status }}
-                    <a href="{% url 'accounts:order_detail' order.id %}" class="btn-retro">View Details</a>
-                </div>
-            </li>
-            {% endfor %}
+                {% for order in page_obj.object_list %}
+                    <li class="list-group-item p-2">
+                        <div class="d-flex justify-content-end justify-content-between align-items-center">
+                    <strong>Order #{{ order.order_number }}</strong>{{ order.created_at|date:"M d, Y" }}
+                    <br>
+                    Total: £{{ order.total_amount }} | Status: {{ order.status|capfirst }}
+                        <a href="{% url 'accounts:order_detail' order.id %}" class="btn-retro">Details</a>
+                    </div>
+                </li>
+                {% endfor %}
             </ul>
         {% else %}
-            <p>You haven't placed any orders yet.</p>
+            <div class="no-orders-text-container d-flex justify-content-center align-items-center flex-column">
+                <img src="/static/images/icons/empty-cart.png" alt="Empty order">
+                <h5 class="no-orders-text text-center">No orders yet...</h5>
+            </div>
         {% endif %}
     </div>
-</div>
 {% endblock %}

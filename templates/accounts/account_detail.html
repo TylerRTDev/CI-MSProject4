@@ -2,6 +2,11 @@
 {% block title %}Account Details{% endblock %}
 {% block content %}
 <div class="account-container container py-5">
+  <div class="back-button d-flex justify-content-end mb-4">
+      <a href="{% url 'accounts:profile' %}" class="back-btn-retro">
+      <span> ←</span> Back to Dashboard
+      </a>
+  </div>
   <div class="form-title-container">
     <h2>Update Account Info</h2>
   </div>
@@ -9,7 +14,7 @@
    <div class="form-container">
     <form method="post">
       <div class="form-title mb-2">
-        <h4>Your Account Details</h4>
+        <h4>Account Details</h4>
       </div>
     {% csrf_token %}
     {{ profile_form.as_p }}
@@ -26,7 +31,7 @@
   <div class="form-container">
       <form method="post">
         <div class="form-title mb-2">
-          <h4>Update Your Password</h4>
+          <h4>Update Password</h4>
         </div>
         {% csrf_token %}
         {{ password_form.as_p }}

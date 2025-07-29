@@ -3,8 +3,8 @@
 
 {% block content %}
 <section class="py-5">
-    <div class="table-container container">
-        <h2 class="mb-4 text-center">Your Cart</h2>
+    <div class="cart-table-container container">
+        <h1 class="mb-4 text-center">Shopping Cart</h1>
 
         {% if cart_items %}
         <table class="table">
@@ -29,15 +29,14 @@
                             {% csrf_token %}
                             <input type="hidden" name="item_id" value="{{ item.id }}">
                             <div class="update-btn-container">
-                                <input type="number" name="quantity" value="{{ item.quantity }}" min="1" max="99" class="form-control form-control-sm me-2" style="width: 80px;">
+                                <input type="number" name="quantity" value="{{ item.quantity }}" min="1" max="99" class="form-control form-control-sm me-2" style="width: 40px;">
                                 <button type="submit" class="ml-1 btn btn-sm btn-outline-primary">Update</button>
                             </div>
                         </form>
                     </td>
                     <td class="cart-total">£{{ item.subtotal }}</td>
-                    <div class="remove-btn-container">
-                        
-                        <td>
+                    <div>
+                        <td class="remove-btn-container">
                             <a href="{% url 'cart:remove_from_cart' item.id %}" class="btn btn-sm btn-outline-danger">Remove</a>
                         </td>
                     </div>
@@ -59,13 +58,17 @@
                 <div class="text-end mt-3">
                     <h4>Total: <strong>£{{ total }}</strong></h4>
                 </div>
-                <button type="submit" class="btn btn-success btn-lg">
+                <button type="submit" class="btn-retro-hero">
                     Proceed to Checkout
                 </button>
             </form>
         </div>
         {% else %}
-        <p>Your cart is empty.</p>
+        <div class="empty-basket text-center mt-5">
+            <img src="/static/images/icons/empty-cart.png" alt="Empty Cart">
+            <h5 class="text-center p-4 fw-bold">Your cart is empty...</h5>
+            <a href="{% url 'products:list' %}" class="btn-retro-hero">Browse Products</a>
+        </div>            
         {% endif %}
     </div>
 </section>

@@ -1,0 +1,19 @@
+🎉 THANK YOU FOR YOUR ORDER, {{ order.full_name|default:"Valued Customer" }}! 🎉
+
+We're thrilled you've chosen Real Legacy Media.
+
+🛒 Here's what you've ordered:
+
+{% for item in order.checkoutitem_set.all %}
+- {{ item.quantity }} × {{ item.product.name }} — £{{ item.price|floatformat:2 }}
+{% endfor %}
+
+💳 Order Number: {{ order.order_number }}  
+💰 Total Paid: £{{ order.total_amount|floatformat:2 }}
+
+We'll notify you as soon as your items ship.  
+Keep an eye on your inbox for tracking updates.
+
+Thanks again for supporting physical media and analog culture.  
+The Real Legacy Media Team  
+https://reallegacymedia.com

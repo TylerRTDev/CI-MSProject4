@@ -1,20 +1,25 @@
 {% extends 'base.html' %}
 {% block content %}
-<div class="container py-5">
+<div class="order-detail-container container py-5">
+  <div class="back-button d-flex justify-content-end mb-4">
+      <a href="{% url 'accounts:order_history' %}" class="back-btn-retro">
+      <span> ←</span> Back to Orders
+      </a>
+  </div>
   <h2>Order #{{ order.order_number }}</h2>
   <p><strong>Date:</strong> {{ order.created_at|date:"M d, Y" }}</p>
-  <p><strong>Status:</strong> {{ order.status }}</p>
-  <p><strong>Total:</strong> ${{ order.total_amount }}</p>
+  <p><strong>Status:</strong> {{ order.status|capfirst }}</p>
+  <p><strong>Total:</strong> £{{ order.total_amount }}</p>
 
   <h4 class="mt-4">Items</h4>
   <ul class="list-group">
     {% for item in order.items.all %}
     <li class="list-group-item d-flex justify-content-between">
       <div>
-        {{ item.product.name }} {% if item.size %}<small>({{ item.size }})</small>{% endif %}
+        {{ item.product.name }} {% if item.size %}<small>| Size: ( {{ item.size }} )</small>{% endif %}
       </div>
-      <div>
-        {{ item.quantity }} × ${{ item.price }}
+      <div class="order-detail-quantity-price fw-bold">
+        {{ item.quantity }} × £{{ item.price }}
       </div>
     </li>
     {% endfor %}

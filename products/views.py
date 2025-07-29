@@ -1,26 +1,31 @@
 from django.shortcuts import render, redirect
-from .models import Product, Genre, MediaType, ProductVariant
+from django.core.paginator import Paginator
+from .models import Product, Genre, MediaType
 from django.shortcuts import get_object_or_404
 from django.contrib import messages
-
-def product_list(request):
-    products = Product.objects.all()
-    genres = Genre.objects.all()
-    media_types = MediaType.objects.all()
-
-    return render(request, 'products/list.html', {
-        'products': products,
-        'genres': genres,
-        'media_types': media_types,
-    })
-
 from .models import Product, Genre, MediaType, Category
+
+
+# def product_list(request):
+#     products = Product.objects.all()
+#     genres = Genre.objects.all()
+#     media_types = MediaType.objects.all()
+
+#     return render(request, 'products/list.html', {
+#         'products': products,
+#         'genres': genres,
+#         'media_types': media_types,
+#     })
 
 def product_list(request):
     genre_slug = request.GET.get('genre')
     media_type_id = request.GET.get('mediaId')
     category_slug = request.GET.get('category')
     media_slug = request.GET.get('media')
+    query = request.GET.get('q')
+    
+    if query:
+        products = products.filter(name__icontains=query)
 
     products = Product.objects.all()
 
@@ -36,11 +41,16 @@ def product_list(request):
     if media_slug:
         products = products.filter(media_type__slug=media_slug)
 
+    paginator = Paginator(products, 12)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+    
     genres = Genre.objects.all()
     media_types = MediaType.objects.all()
     categories = Category.objects.all()
 
     return render(request, 'products/list.html', {
+        'page_obj': page_obj,
         'products': products,
         'genres': genres,
         'media_types': media_types,

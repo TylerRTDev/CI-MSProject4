@@ -1,4 +1,5 @@
 from django.contrib import messages
+from django.core.paginator import Paginator
 from django.shortcuts import render, redirect
 from django.http import Http404
 from django.contrib.auth.decorators import login_required
@@ -7,7 +8,7 @@ from django.contrib.auth.forms import UserCreationForm, AuthenticationForm, Pass
 from django.contrib.auth import update_session_auth_hash
 from django.contrib.auth import login, logout
 from django.contrib.auth.decorators import login_required
-from checkout.models import CheckoutOrder
+from checkout.models import CheckoutOrder, CheckoutItem
 
 def register_view(request):
     if request.method == 'POST':
@@ -41,7 +42,14 @@ def profile_view(request):
 @login_required
 def order_history_view(request):
     orders = CheckoutOrder.objects.filter(user=request.user).order_by('-created_at')
-    return render(request, 'accounts/order_history.html', {'orders': orders})
+    paginator = Paginator(orders, 5)  # Show 5 orders per page
+
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+    return render(request, 'accounts/order_history.html', {
+        'orders': orders,
+        'page_obj': page_obj
+    })
 
 @login_required
 def order_detail_view(request, order_id):

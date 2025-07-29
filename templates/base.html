@@ -15,15 +15,46 @@
     <body>
 
         <!-- Navbar -->
-        <nav class="navbar nav-link">
-            <div class="container">
-                    <!-- Brand -->
-                    <a class="navbar-brand mx-auto" href="{% url 'core:home' %}">●RLM●</a>
+        <nav class="navbar nav-link navbar-expand-md">
+            <div class="container-fluid">
+                <!-- Brand -->
+                <a class="navbar-brand mx-auto text-center" href="{% url 'core:home' %}">●RLM●</a>
+                
+                <!-- Toggler only visible below 800px -->
+                <button class="navbar-toggler d-md-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup">
+                <span class="navbar-toggler-icon"></span>
+                </button>
 
-                    <!-- Hamburger Button for Mobile -->
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
+                {% comment %} <form class="d-flex" role="search" method="GET" action="{% url 'products:list' %}">
+                    <input class="form-control me-2" type="search" name="q" placeholder="Search products..." aria-label="Search">
+                    <button class="btn btn-outline-light" type="submit">Search</button>
+                </form> {% endcomment %}
+
+                <!-- Navbar items -->
+                <div class="collapse navbar-collapse justify-content-end ms-2 me-2" id="navbarNavAltMarkup">
+                    <div class="navbar-nav">
+                        <a class="nav-link nav-item" href="{% url 'products:list' %}">Products</a>
+                        <a class="nav-link nav-item" href="{% url 'cart:view_cart' %}">Cart</a>
+                        {% if user.is_authenticated %}
+                        <a class="nav-link nav-item" href="{% url 'accounts:profile' %}">Account</a>
+                        <a class="nav-link nav-item" href="{% url 'accounts:logout' %}">Logout</a>
+                        {% else %}
+                        <a class="nav-link nav-item" href="{% url 'accounts:login' %}">Login</a>
+                        <a class="nav-link nav-item" href="{% url 'accounts:register' %}">Register</a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </nav>
+        {% comment %} <nav class="navbar nav-link">
+            <div class="container">
+                <!-- Brand -->
+                <a class="navbar-brand mx-auto" href="{% url 'core:home' %}">●RLM●</a>
+
+                <!-- Hamburger Button for Mobile -->
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
                 
 
                 <!-- Nav Links -->
@@ -59,22 +90,24 @@
                     </ul>
                 </div>
             </div>
-        </nav>
+        </nav> {% endcomment %}
 
         <div class="background-container"></div>
 
         <!-- Flash Messages -->
         <div class="container mt-3">
             {% if messages %}
-            <div class="toast-container position-fixed top-10 start-50 translate-middle-x p-3" style="z-index: 1100;">
+            <div class="toast-container position-fixed top-50 start-50 translate-middle" style="z-index: 1100;">
             {% for message in messages %}
                 <div class="toast show text-black shadow" style="background-color: #E9A319;" role="alert" aria-live="assertive" aria-atomic="true">
-                    <div class="d-flex align-items-center">
-                        <div class="toast-body fw-semibold">
-                        {{ message }}
-                        <a href="{% url 'cart:view_cart' %}" class="btn btn-sm btn-light ms-3">View Basket</a>
-                        </div>
+                    <div class="d-flex justify-content-evenly align-items-center">
+                        <div class="toast-body d-flex flex-column text-center fw-semibold">
                         <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+                            <div class="toast-text fw-bold h6 text-center pt-1 pb-2">
+                                {{ message }}
+                            </div>
+                        <a href="{% url 'cart:view_cart' %}" class="btn-retro btn-sm btn-light">View Basket</a>
+                        </div>
                     </div>
                 </div>
             {% endfor %}
@@ -88,8 +121,26 @@
         </main>
 
         <!-- Footer -->
-        <footer class="bg-dark text-white text-center py-3">
-            <small>&copy; 2025 Real Legacy Media. All rights reserved.</small>
+        <footer class="footer-container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <a class="navbar-brand mx-auto" href="{% url 'core:home' %}">●RLM●</a>
+                    <p>Real Legacy Media © 2025. All rights reserved.</p>
+                </div>
+                <div class="footer-links mt-1 mb-2">
+                    <div class="social-icons">
+                        <a href="https://www.facebook.com/profile.php?id=61570549830925" target="_blank" rel="noopener"><img src="/static/images/icons/facebook.svg" alt="Facebook"></a>
+                        <a href="https://x.com/TylerRTDev" target="_blank" rel="noopener"><img src="/static/images/icons/x-social.svg" alt="Twitter"></a>
+                        <a href="https://www.instagram.com/tylerrtdev/" target="_blank" rel="noopener"><img src="/static/images/icons/instagram.svg" alt="Instagram"></a>
+                        <a href="https://www.youtube.com" target="_blank" rel="noopener"><img src="/static/images/icons/youtube.svg" alt="YouTube"></a>
+                        <a href="https://github.com/TylerRTDev" target="_blank" rel="noopener"><img src="/static/images/icons/github-svgrepo-com.svg" alt="Git-Hub"></a>
+                    </div>
+                </div>
+                <div class="footer-text">
+                    <a href="https://rtdev-profiles.netlify.app/"><img src="/static/images/logo-avatar.png"></a>
+                    <p>- Built by TylerRTDev -</p>
+                </div>
+            </div>
         </footer>
 
         <!-- Bootstrap JS -->
@@ -97,7 +148,6 @@
 
         <!-- Custom JS -->
         <script src="{% static 'js/script.js' %}"></script>
-        {% comment %} <script src="https://js.stripe.com/v3/"></script> {% endcomment %}
 
         {% block extra_js %}{% endblock %}
     </body>

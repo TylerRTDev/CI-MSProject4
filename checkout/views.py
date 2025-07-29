@@ -2,6 +2,8 @@ import stripe
 import os
 from dotenv import load_dotenv
 from django.conf import settings
+from django.core.mail import send_mail
+from django.template.loader import render_to_string
 from django.urls import reverse
 from django.views.decorators.csrf import csrf_exempt
 from django.http import JsonResponse, HttpResponseBadRequest
@@ -23,48 +25,6 @@ def checkout_view(request):
         return redirect('products:list')
 
     total = sum(item['quantity'] * item['price'] for item in cart.values())
-
-    # if request.method == 'POST':
-    #     form = GuestEmailForm(request.POST)
-    #     if form.is_valid():
-    #         guest_email = form.cleaned_data['email']
-            
-    #         if request.user.is_authenticated:
-    #             order = CheckoutOrder.objects.create(
-    #                 user=request.user,
-    #                 total_amount=total
-    #             )
-    #         else:
-    #             order = CheckoutOrder.objects.create(
-    #                 guest_email=guest_email,
-    #                 total_amount=total
-    #             )
-
-    #         for item in cart.values():
-    #             product = Product.objects.get(id=item['product_id'])
-
-    #             if product.stock < item['quantity']:
-    #                 messages.error(request, f"Not enough stock for {product.name}.")
-    #                 order.delete()
-    #                 return redirect('cart:view_cart')
-
-    #             CheckoutItem.objects.create(
-    #                 order=order,
-    #                 product=product,
-    #                 quantity=item['quantity'],
-    #                 price=item['price'],
-    #                 size=item.get('size', '')
-    #             )
-
-    #             product.stock -= item['quantity']
-    #             product.save()
-
-    #         request.session['cart'] = {}
-    #         request.session.modified = True
-    #         messages.success(request, "Order placed successfully!")
-    #         return redirect('checkout:order_confirmation', order_id=order.id)
-    # else:
-    #     form = GuestEmailForm()
     
     if request.method == 'POST':
         form = GuestCheckoutForm(request.POST)
@@ -111,13 +71,27 @@ def checkout_view(request):
 
                 product.stock -= item['quantity']
                 product.save()
+                
+            email_subject = f"Order Confirmation - Order #{order.order_number}"
+            email_message = render_to_string('checkout/email/order_confirmation_email.html', {
+                'order': order,
+                'site_name': 'Real Legacy Media',
+            })
+
+            send_mail(
+                email_subject,
+                email_message,
+                settings.DEFAULT_FROM_EMAIL,
+                [order.guest_email or order.user.email],
+            )
 
             request.session['cart'] = {}
             request.session.modified = True
+            request.session['last_order_id'] = order.id
             messages.success(request, "Order placed successfully!")
             return redirect('checkout:payment', order_id=order.id)
     else:
-        form = GuestCheckoutForm()
+        form = GuestCheckoutForm()    
 
     return render(request, 'checkout/checkout.html', {
         'form': form,
@@ -227,7 +201,8 @@ def payment_view(request, order_id):
     return redirect(session.url, code=303)
     
 def order_success(request):
-    return render(request, 'checkout/order_success.html')
+    order_id = request.session.get('last_order_id')
+    return render(request, 'checkout/order_success.html', {'order_id': order_id})
 
 def order_confirmation(request, order_id):
     order = get_object_or_404(CheckoutOrder, id=order_id)
