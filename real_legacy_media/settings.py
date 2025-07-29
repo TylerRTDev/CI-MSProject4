@@ -42,8 +42,6 @@ DEFAULT_FROM_EMAIL = 'noreply@reallegacymedia.com'
 DEBUG = True
 
 ALLOWED_HOSTS = ['ci-msproject4.onrender.com', 'localhost', '127.0.0.1']
-# ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', '127.0.0.1:8000').split(',')
-
 
 # Application definition
 
