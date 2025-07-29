@@ -662,7 +662,6 @@ section {
 .form-title-container {
     padding-top: 1rem;
     padding-bottom: 0.5rem;
-    background-color: var(--peach);
     text-align: center;
     min-width: 350px;
     width: 40%;
@@ -692,6 +691,7 @@ section {
     display: flex;
     flex-direction: column;
     border: solid 3px var(--orange);
+    border-radius: 15px;
     background-color: var(--cream);
     padding: 2rem;
     box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
@@ -743,6 +743,7 @@ section {
     background-position: center;
     background-repeat: no-repeat;
     border: solid 3px var(--orange);
+    border-radius: 15px;
     margin: 2rem auto;
     min-width: 340px;
     max-width: 1000px;
@@ -993,14 +994,14 @@ section {
     --bs-pagination-focus-color: none;
 }
 
-.page-link {
+.pagination .page-link {
     background-color: transparent;
-    color: var(--cream);
+    color: var(--brown);
     border-radius: 100%;
     border: none;
 }
 
-.page-link.hover, .page-link.focus {
+.pagination .page-link.hover, .page-link.focus {
     pointer-events: none;
     background-color: transparent;
     color: var(--brown);
@@ -1009,7 +1010,7 @@ section {
     transition: none;
 }
 
-.page-item {
+.pagination .page-item {
     background-color: var(--peach);
     border-bottom: solid 3px var(--brown);
     border-radius: 10px;
@@ -1017,12 +1018,19 @@ section {
     font-weight: bold;
 }
 
-.page-item.active .page-link {
+.pagination .page-item.active .page-link {
     background-color: transparent; /* or your custom color */
     border-color: var(--orange);
-    color: var(--brown);
+    color: var(--orange);
     border-radius: 100%;
     border: none;
+}
+
+.pagination .page-num {
+    color: var(--brown);
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    padding-top: 0;
 }
 
 .order-history-container {
@@ -1076,7 +1084,7 @@ section {
     background-color: var(--cream)
 }
 
-.btn {
+.table .btn {
     border: none;
 }
 
@@ -1461,6 +1469,7 @@ section {
         font-size: 1.2rem;
     }
 
+
     .product-card-title h4 {
         font-size: 1.5rem;
         letter-spacing: 0.5px;
@@ -1484,6 +1493,12 @@ section {
 
     .order-success-section {
         margin-bottom: 0;
+    }
+
+    .list-group-item a {
+        font-size: 1rem;
+        padding: 0.5rem 1rem;
+        border-bottom: solid 3px var(--brown);
     }
 
     .empty-basket {
