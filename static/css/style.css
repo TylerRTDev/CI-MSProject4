@@ -64,7 +64,7 @@ h1, h2, h3, h4 {
     font-family: 'Brexon', sans-serif;
     font-size: 1.5rem;
     transition: 0.3s;
-    letter-spacing: -5px;
+    letter-spacing: -2px;
 }
 
 .nav-link:hover {
@@ -792,7 +792,7 @@ section {
     color: var(--brown);
 }
 
-.no-orders-text-container, .empty-product-filter-container, .success-container {
+.empty-product-filter-container, .success-container {
     padding: 14rem;
 }
 
@@ -962,7 +962,6 @@ section {
 
 .list-group {
     border-radius: 0px;
-    height: 100vh;
 }
 
 .list-group small {
@@ -983,6 +982,46 @@ section {
     color: var(--orange);
 }
 
+.pagination {
+    --bs-pagination-hover-color: var(--brown);
+    --bs-pagination-hover-bg: none;
+    --bs-pagination-hover-border-color: none;
+    --bs-pagination-border-color: none;
+    --bs-pagination-focus-bg: none;
+    --bs-pagination-focus-box-shadow: none;
+    --bs-pagination-focus-color: none;
+}
+
+.page-link {
+    background-color: transparent;
+    color: var(--cream);
+    border-radius: 100%;
+    border: none;
+}
+
+.page-link.hover, .page-link.focus {
+    pointer-events: none;
+    background-color: transparent;
+    color: var(--brown);
+    box-shadow: none;
+    transform: none;
+    transition: none;
+}
+
+.order-history .page-item {
+    background-color: var(--peach);
+    border-radius: 10px;
+    font-weight: bold;    
+}
+
+.page-item.active .page-link {
+    background-color: transparent; /* or your custom color */
+    border-color: var(--orange);
+    color: var(--brown);
+    border-radius: 100%;
+    border: none;
+}
+
 .order-history-container {
     height: 100vh;
 }
@@ -996,7 +1035,7 @@ section {
     color: var(--brown);
 }
 
-.order-history ul li:hover {
+.order-history .list-group .list-group-item:hover {
     transform: scale(1.05);
     box-shadow: 1px 7px 30px var(--cream);
 }
@@ -1226,6 +1265,16 @@ section {
     .remove-btn-container a {
         font-size: 0.5rem;
     }
+
+    .success-container h5 {
+        font-size: 1rem;
+    }
+
+    .success-container .btn-retro-hero {
+        font-size: 1rem;
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
 }
 
 /* Mobile Small - 480px */
@@ -1308,6 +1357,10 @@ section {
         font-size: 1.2rem;
     }
 
+    .no-orders-text {
+        font-size: 1.2rem;
+    }
+
     .list-group-item {
         font-size: 1rem;
     }
@@ -1371,8 +1424,12 @@ section {
     }
 
     .success-container {
-        padding: 5rem;
+        padding: 1rem;
         margin: 0;
+    }
+
+    .success-container h1 {
+        font-size: 1.9rem;
     }
 
     .product-info-container {
@@ -1420,10 +1477,6 @@ section {
 
     .order-success-section {
         margin-bottom: 0;
-    }
-
-    .order-success-section h1 {
-        font-size: 2rem;
     }
 
     .empty-basket {
