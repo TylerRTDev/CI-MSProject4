@@ -577,7 +577,7 @@ section {
 
 .card {
     border: 0px solid var(--brown);
-    border-radius: 0px;
+    border-radius: 15px;
     background-color: var(--cream);
     padding: 1rem;
     margin: 1rem;

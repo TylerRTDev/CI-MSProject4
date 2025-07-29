@@ -25,6 +25,11 @@
                 <span class="navbar-toggler-icon"></span>
                 </button>
 
+                {% comment %} <form class="d-flex" role="search" method="GET" action="{% url 'products:list' %}">
+                    <input class="form-control me-2" type="search" name="q" placeholder="Search products..." aria-label="Search">
+                    <button class="btn btn-outline-light" type="submit">Search</button>
+                </form> {% endcomment %}
+
                 <!-- Navbar items -->
                 <div class="collapse navbar-collapse justify-content-end ms-2 me-2" id="navbarNavAltMarkup">
                     <div class="navbar-nav">

@@ -22,6 +22,10 @@ def product_list(request):
     media_type_id = request.GET.get('mediaId')
     category_slug = request.GET.get('category')
     media_slug = request.GET.get('media')
+    query = request.GET.get('q')
+    
+    if query:
+        products = products.filter(name__icontains=query)
 
     products = Product.objects.all()
 
