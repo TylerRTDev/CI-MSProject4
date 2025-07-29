@@ -27,6 +27,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-z+2k2!t4daab(h97nufo3$q*#2i4c%e9sfe+md!w9m#+&u5&%@'
 STRIPE_SECRET_KEY = os.getenv('STRIPE_SECRET_KEY')
 STRIPE_PUBLISHABLE_KEY = os.getenv('STRIPE_PUBLISHABLE_KEY')
+# Email backend for development
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+# Use console backend for dev, switch to SMTP for production
+DEFAULT_FROM_EMAIL = 'noreply@reallegacymedia.com'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True

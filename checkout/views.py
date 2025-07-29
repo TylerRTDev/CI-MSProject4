@@ -2,6 +2,8 @@ import stripe
 import os
 from dotenv import load_dotenv
 from django.conf import settings
+from django.core.mail import send_mail
+from django.template.loader import render_to_string
 from django.urls import reverse
 from django.views.decorators.csrf import csrf_exempt
 from django.http import JsonResponse, HttpResponseBadRequest
@@ -69,6 +71,19 @@ def checkout_view(request):
 
                 product.stock -= item['quantity']
                 product.save()
+                
+            subject = f"Order Confirmation - Order #{order.order_number}"
+            message = render_to_string('checkout/email/order_confirmation_email.html', {
+                'order': order,
+                'site_name': 'Real Legacy Media',
+            })
+
+            send_mail(
+                subject,
+                message,
+                settings.DEFAULT_FROM_EMAIL,
+                [order.guest_email or order.user.email],
+            )
 
             request.session['cart'] = {}
             request.session.modified = True
@@ -76,7 +91,7 @@ def checkout_view(request):
             messages.success(request, "Order placed successfully!")
             return redirect('checkout:payment', order_id=order.id)
     else:
-        form = GuestCheckoutForm()
+        form = GuestCheckoutForm()    
 
     return render(request, 'checkout/checkout.html', {
         'form': form,

@@ -1,0 +1,11 @@
+Hi {{ order.full_name|default:"Customer" }},
+
+Thank you for your order with {{ site_name }}!
+
+Your order number is: {{ order.order_number }}
+Order total: £{{ order.total_amount }}
+
+We'll be in touch once your order has shipped.
+
+Thanks again,  
+The {{ site_name }} Team
