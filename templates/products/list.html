@@ -127,19 +127,19 @@
         <ul class="pagination pagination-retro">
         {% if page_obj.has_previous %}
             <li class="page-item">
-            <a class="page-link" href="?{% if request.GET.genre %}genre={{ request.GET.genre }}&{% endif %}{% if request.GET.media %}media={{ request.GET.media }}&{% endif %}page={{ page_obj.previous_page_number }}">Previous</a>
+            <a class="page-link" href="?page={{ page_obj.previous_page_number }}&{{ request.GET.urlencode|safe|cut:'page='|cut:'&page=' }}">Previous</a>
             </li>
         {% endif %}
 
         {% for num in page_obj.paginator.page_range %}
             <li class="page-item {% if num == page_obj.number %}active{% endif %}">
-            <a class="page-link page-num" href="?{% if request.GET.genre %}genre={{ request.GET.genre }}&{% endif %}{% if request.GET.media %}media={{ request.GET.media }}&{% endif %}page={{ num }}">{{ num }}</a>
+            <a class="page-link page-num" href="??page={{ num }}&{{ request.GET.urlencode|safe|cut:'page='|cut:'&page=' }}">{{ num }}</a>
             </li>
         {% endfor %}
 
         {% if page_obj.has_next %}
             <li class="page-item">
-            <a class="page-link" href="?{% if request.GET.genre %}genre={{ request.GET.genre }}&{% endif %}{% if request.GET.media %}media={{ request.GET.media }}&{% endif %}page={{ page_obj.next_page_number }}">Next</a>
+            <a class="page-link" href="?page={{ page_obj.next_page_number }}&{{ request.GET.urlencode|safe|cut:'page='|cut:'&page=' }}">Next</a>
             </li>
         {% endif %}
         </ul>

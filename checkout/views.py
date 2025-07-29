@@ -72,15 +72,15 @@ def checkout_view(request):
                 product.stock -= item['quantity']
                 product.save()
                 
-            subject = f"Order Confirmation - Order #{order.order_number}"
-            message = render_to_string('checkout/email/order_confirmation_email.html', {
+            email_subject = f"Order Confirmation - Order #{order.order_number}"
+            email_message = render_to_string('checkout/email/order_confirmation_email.html', {
                 'order': order,
                 'site_name': 'Real Legacy Media',
             })
 
             send_mail(
-                subject,
-                message,
+                email_subject,
+                email_message,
                 settings.DEFAULT_FROM_EMAIL,
                 [order.guest_email or order.user.email],
             )
