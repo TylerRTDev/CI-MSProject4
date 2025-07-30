@@ -50,7 +50,7 @@
                     {{ form.billing_postcode }}
 
                     <label for="confirm" class="form-label">Confirm Order Total:</label>
-                    <p>£{{ total }}</p>
+                    <p>£{{ total|floatformat:2 }}</p>
 
                 <button type="submit" id="checkout-button" class="btn-retro-hero">Place Order</button>
             </div>
