@@ -21,8 +21,8 @@
                 <a class="navbar-brand mx-auto text-center" href="{% url 'core:home' %}">●RLM●</a>
                 
                 <!-- Toggler only visible below 800px -->
-                <button class="navbar-toggler d-md-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup">
-                <span class="navbar-toggler-icon"></span>
+                <button class="navbar-toggler d-md-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
                 </button>
 
                 {% comment %} <form class="d-flex" role="search" method="GET" action="{% url 'products:list' %}">
@@ -31,7 +31,7 @@
                 </form> {% endcomment %}
 
                 <!-- Navbar items -->
-                <div class="collapse navbar-collapse justify-content-end ms-2 me-2" id="navbarNavAltMarkup">
+                <div class="collapse navbar-collapse justify-content-end ms-2 me-2" id="navbarNav">
                     <div class="navbar-nav">
                         <a class="nav-link nav-item" href="{% url 'products:list' %}">Products</a>
                         <a class="nav-link nav-item" href="{% url 'cart:view_cart' %}">Cart</a>
@@ -106,7 +106,9 @@
                             <div class="toast-text fw-bold h6 text-center pt-1 pb-2">
                                 {{ message }}
                             </div>
+                        {% if message.tags == "added_to_cart" %}
                         <a href="{% url 'cart:view_cart' %}" class="btn-retro btn-sm btn-light">View Basket</a>
+                        {% endif %}
                         </div>
                     </div>
                 </div>

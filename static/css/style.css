@@ -19,7 +19,6 @@ body {
 
 h1, h2, h3, h4 {
     font-family: 'Brexon', sans-serif;
-    color: var(--brown);
 }
 
 .nav-container {
@@ -69,7 +68,6 @@ h1, h2, h3, h4 {
 
 .nav-link:hover {
     opacity: 100%;
-    color: var(--brown);
     text-decoration: none;
     transition: 0.5s;
     letter-spacing: 0px;
@@ -112,7 +110,7 @@ h1, h2, h3, h4 {
 
 .navbar-toggler {
     border: none;
-    background-color: none ;
+    color: inherit;
     border-radius: 0;
     opacity: 50%;
     transition: 0.8s ease-in-out;
@@ -123,7 +121,7 @@ h1, h2, h3, h4 {
     border-radius: 0;
     transition: 1s ease-in;
     opacity: 100%;
-    
+    color: inherit;
 }
 
 .background-container {
@@ -1088,7 +1086,7 @@ section {
     border: none;
 }
 
-.cart-table-container h4 {
+.cart-table-container h3 {
     color: var(--orange);
     letter-spacing: 2px;
     padding: 1rem;
