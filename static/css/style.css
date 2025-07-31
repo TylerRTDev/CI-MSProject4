@@ -1288,6 +1288,14 @@ section {
 
 /* Mobile Small - 480px */
 @media (max-width: 480px) {
+
+    .login-container h1, .register-container h1 {
+        font-size: 2rem;
+    }
+
+    .form-title h3, .register-container h3 {
+        font-size: 1.8rem;
+    }
     
     section {
         margin-bottom: 1rem;
@@ -1506,13 +1514,13 @@ section {
 }
 
 @media (min-width: 769px) {
-  .navbar-toggler {
-    display: none !important;
-  }
+    .navbar-toggler {
+        display: none !important;
+    }
 
-  .navbar-collapse {
-    display: flex !important;
-  }
+    .navbar-collapse {
+        display: flex !important;
+    }
 }
 
 @media (max-width: 1024px) {
@@ -1542,10 +1550,10 @@ section {
 /* Desktop - 1024px+ */
 @media (min-width: 1024px) and (max-width: 1439px) {
   /* Adjust container widths */
-  .container {
-    max-width: 1200px;
-    padding: 0 20px;
-  }
+    .container {
+        max-width: 1200px;
+        padding: 0 20px;
+    }
 }
 
 /* ========== End Responsive Font Scaling ========== */
