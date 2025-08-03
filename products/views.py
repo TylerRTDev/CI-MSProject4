@@ -5,18 +5,6 @@ from django.shortcuts import get_object_or_404
 from django.contrib import messages
 from .models import Product, Genre, MediaType, Category
 
-
-# def product_list(request):
-#     products = Product.objects.all()
-#     genres = Genre.objects.all()
-#     media_types = MediaType.objects.all()
-
-#     return render(request, 'products/list.html', {
-#         'products': products,
-#         'genres': genres,
-#         'media_types': media_types,
-#     })
-
 def product_list(request):
     genre_slug = request.GET.get('genre')
     media_type_id = request.GET.get('mediaId')
@@ -27,7 +15,7 @@ def product_list(request):
     if query:
         products = products.filter(name__icontains=query)
 
-    products = Product.objects.all()
+    products = Product.objects.all().order_by('-created_at')
 
     if genre_slug:
         products = products.filter(genre__slug=genre_slug)
