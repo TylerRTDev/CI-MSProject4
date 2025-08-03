@@ -60,6 +60,8 @@ class Product(models.Model):
     is_limited_edition = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
     
+    def __str__(self):
+        return self.name
     
     def get_absolute_url(self):
         return reverse('products:detail', kwargs={'slug': self.slug})
