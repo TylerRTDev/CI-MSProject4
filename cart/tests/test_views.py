@@ -80,3 +80,37 @@ class AddToCartViewTest(TestCase):
         )
         self.assertEqual(response.status_code, 302)
         self.assertRedirects(response, reverse('products:detail', args=[self.product.slug]))
+        
+class RemoveFromCartViewTest(TestCase):
+    def setUp(self):
+        self.category = Category.objects.create(name="Vinyl")
+        self.product = Product.objects.create(
+            name="Test Vinyl",
+            slug="test-vinyl",
+            category=self.category,
+            price=Decimal("14.99"),
+            stock=5
+        )
+
+        session = self.client.session
+        session['cart'] = {
+            str(self.product.id): {
+                'quantity': 2,
+                'price': str(self.product.price),
+                'name': self.product.name
+            }
+        }
+        session.save()
+
+    def test_remove_product_from_cart(self):
+        response = self.client.get(reverse('cart:remove_from_cart', args=[self.product.id]))
+        self.assertRedirects(response, reverse('cart:view_cart'))
+        cart = self.client.session.get('cart', {})
+        self.assertNotIn(str(self.product.id), cart)
+
+    def test_remove_nonexistent_product_does_not_error(self):
+        response = self.client.get(reverse('cart:remove_from_cart', args=[999]))
+        self.assertRedirects(response, reverse('cart:view_cart'))
+        cart = self.client.session.get('cart', {})
+        self.assertEqual(len(cart), 1)  # original item still there
+
