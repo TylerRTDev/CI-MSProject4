@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.shortcuts import redirect
+from decimal import Decimal
 from django.views.decorators.http import require_POST
 
 
@@ -9,14 +10,17 @@ def view_cart(request):
     total = 0
 
     for key, item in cart.items():
-        subtotal = item['quantity'] * item['price']
+        price = Decimal(item['price'])
+        quantity = item['quantity']
+        subtotal = quantity * price
         total += subtotal
+        
         cart_items.append({
             'id': key,
             'name': item['name'],
             'size': item.get('size', None),
-            'quantity': item['quantity'],
-            'price': item['price'],
+            'quantity': quantity,
+            'price': price,
             'subtotal': subtotal,
         })
 
