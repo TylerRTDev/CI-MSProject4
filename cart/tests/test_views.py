@@ -114,3 +114,56 @@ class RemoveFromCartViewTest(TestCase):
         cart = self.client.session.get('cart', {})
         self.assertEqual(len(cart), 1)  # original item still there
 
+class ViewCartContextTest(TestCase):
+    def setUp(self):
+        self.category = Category.objects.create(name="Vinyl")
+        self.product1 = Product.objects.create(
+            name="Album A",
+            slug="album-a",
+            category=self.category,
+            price=Decimal("9.99"),
+            stock=5
+        )
+        self.product2 = Product.objects.create(
+            name="Album B",
+            slug="album-b",
+            category=self.category,
+            price=Decimal("14.50"),
+            stock=3
+        )
+
+        session = self.client.session
+        session['cart'] = {
+            str(self.product1.id): {
+                'quantity': 2,
+                'price': str(self.product1.price),
+                'name': self.product1.name
+            },
+            str(self.product2.id): {
+                'quantity': 1,
+                'price': str(self.product2.price),
+                'name': self.product2.name
+            }
+        }
+        session.save()
+
+    def test_cart_view_context_totals(self):
+        response = self.client.get(reverse('cart:view_cart'))
+        self.assertEqual(response.status_code, 200)
+        cart_items = response.context['cart_items']
+        total = response.context['total']
+
+        self.assertEqual(len(cart_items), 2)
+
+        item1 = next(item for item in cart_items if item['id'] == str(self.product1.id))
+        item2 = next(item for item in cart_items if item['id'] == str(self.product2.id))
+
+        self.assertEqual(item1['quantity'], 2)
+        self.assertEqual(item1['price'], self.product1.price)
+        self.assertEqual(item1['subtotal'], Decimal("19.98"))
+
+        self.assertEqual(item2['quantity'], 1)
+        self.assertEqual(item2['price'], self.product2.price)
+        self.assertEqual(item2['subtotal'], Decimal("14.50"))
+
+        self.assertEqual(total, Decimal("34.48"))
