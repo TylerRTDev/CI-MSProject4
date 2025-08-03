@@ -41,3 +41,42 @@ class CartViewTest(TestCase):
         self.assertRedirects(response, reverse('cart:view_cart'))
         updated_cart = self.client.session['cart']
         self.assertNotIn(str(self.product.id), updated_cart)
+        
+class AddToCartViewTest(TestCase):
+    def setUp(self):
+        self.category = Category.objects.create(name="Vinyl")
+        self.product = Product.objects.create(
+            name="Test Vinyl",
+            slug="test-vinyl",
+            category=self.category,
+            price=Decimal('14.99'),
+            stock=10
+        )
+
+    def test_add_to_cart_initial(self):
+        response = self.client.post(
+            reverse('products:add_to_cart', args=[self.product.id]),
+            data={'quantity': 1}
+        )
+        self.assertRedirects(response, reverse('products:detail', args=[self.product.slug]))
+        cart = self.client.session['cart']
+        self.assertIn(str(self.product.id), cart)
+        self.assertEqual(cart[str(self.product.id)]['quantity'], 1)
+
+    def test_add_to_cart_duplicate(self):
+        # First add
+        self.client.post(reverse('products:add_to_cart', args=[self.product.id]), data={'quantity': 1})
+
+        # Add again
+        self.client.post(reverse('products:add_to_cart', args=[self.product.id]), data={'quantity': 2})
+
+        cart = self.client.session['cart']
+        self.assertEqual(cart[str(self.product.id)]['quantity'], 3)
+
+    def test_add_to_cart_redirect(self):
+        response = self.client.post(
+            reverse('products:add_to_cart', args=[self.product.id]),
+            data={'quantity': 1}
+        )
+        self.assertEqual(response.status_code, 302)
+        self.assertRedirects(response, reverse('products:detail', args=[self.product.slug]))
