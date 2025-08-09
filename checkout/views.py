@@ -1,5 +1,6 @@
 import stripe
 import os
+from decimal import Decimal
 from dotenv import load_dotenv
 from django.conf import settings
 from django.core.mail import send_mail
@@ -24,9 +25,10 @@ def checkout_view(request):
         messages.error(request, "Your cart is empty.")
         return redirect('products:list')
 
-    total = sum(item['quantity'] * item['price'] for item in cart.values())
+    total = sum(item['quantity'] * Decimal(item['price']) for item in cart.values())
     
     if request.method == 'POST':
+        print("POST data received:", request.POST)
         form = GuestCheckoutForm(request.POST)
         if form.is_valid():
             data = form.cleaned_data
@@ -39,59 +41,24 @@ def checkout_view(request):
                 billing_address = data['shipping_address']
                 billing_city = data['shipping_city']
                 billing_postcode = data['shipping_postcode']
-
-            order = CheckoutOrder.objects.create(
-                user=request.user if request.user.is_authenticated else None,
-                guest_email=data['email'],
-                full_name=data['full_name'],
-                shipping_address=data['shipping_address'],
-                shipping_city=data['shipping_city'],
-                shipping_postcode=data['shipping_postcode'],
-                billing_address=billing_address,
-                billing_city=billing_city,
-                billing_postcode=billing_postcode,
-                total_amount=total,
-            )
-
-            for item in cart.values():
-                product = Product.objects.get(id=item['product_id'])
-
-                if product.stock < item['quantity']:
-                    messages.error(request, f"Not enough stock for {product.name}.")
-                    order.delete()
-                    return redirect('cart:view_cart')
-
-                CheckoutItem.objects.create(
-                    order=order,
-                    product=product,
-                    quantity=item['quantity'],
-                    price=item['price'],
-                    size=item.get('size', '')
-                )
-
-                product.stock -= item['quantity']
-                product.save()
                 
-            email_subject = f"Order Confirmation - Order #{order.order_number}"
-            email_message = render_to_string('checkout/email/order_confirmation_email.html', {
-                'order': order,
-                'site_name': 'Real Legacy Media',
-            })
+            request.session['checkout_data'] = {
+                'guest_email': data['email'],
+                'full_name': data['full_name'],
+                'shipping_address': data['shipping_address'],
+                'shipping_city': data['shipping_city'],
+                'shipping_postcode': data['shipping_postcode'],
+                'billing_address': billing_address,
+                'billing_city': billing_city,
+                'billing_postcode': billing_postcode,
+                'cart': cart,
+                'total': str(total),
+            }
+            
+            return redirect('checkout:create_checkout_session')
 
-            send_mail(
-                email_subject,
-                email_message,
-                settings.DEFAULT_FROM_EMAIL,
-                [order.guest_email or order.user.email],
-            )
-
-            request.session['cart'] = {}
-            request.session.modified = True
-            request.session['last_order_id'] = order.id
-            messages.success(request, "Order placed successfully!")
-            return redirect('checkout:payment', order_id=order.id)
     else:
-        form = GuestCheckoutForm()    
+        form = GuestCheckoutForm()
 
     return render(request, 'checkout/checkout.html', {
         'form': form,
@@ -112,35 +79,17 @@ def guest_email_view(request):
         'form': form
     })
     
+@csrf_exempt    
 def create_checkout_session(request):
-    cart = request.session.get('cart', {})
-    if not cart:
-        return HttpResponseBadRequest("Cart is empty")
-
-    line_items = []
-    for item in cart.values():
-        line_items.append({
-            'price_data': {
-                'currency': 'gbp',
-                'product_data': {
-                    'name': item['name'],
-                },
-                'unit_amount': int(float(item['price']) * 100),
-            },
-            'quantity': item['quantity'],
-        })
-
-    session = stripe.checkout.Session.create(
-        payment_method_types=['card'],
-        line_items=line_items,
-        mode='payment',
-        success_url=request.build_absolute_uri('/checkout/success/'),
-        cancel_url=request.build_absolute_uri('/cart/'),
-    )
-
-    return JsonResponse({'id': session.id})
+    if not request.session.session_key:
+        request.session.save()
+    session_key = request.session.session_key
+    print(f"Session Key: {session_key}")
     
-def create_checkout_session(request):
+    checkout_data = request.session.get('checkout_data')
+    if not checkout_data:
+        return HttpResponseBadRequest("Missing checkout data")
+    
     cart = request.session.get('cart', {})
     if not cart:
         return HttpResponseBadRequest("Cart is empty")
@@ -162,8 +111,21 @@ def create_checkout_session(request):
         payment_method_types=['card'],
         line_items=line_items,
         mode='payment',
-        success_url=request.build_absolute_uri('/checkout/success/'),
+        success_url=request.build_absolute_uri('/checkout/success/?session_id={CHECKOUT_SESSION_ID}'),
         cancel_url=request.build_absolute_uri('/cart/'),
+        metadata={
+            'session_key': session_key,
+            'is_auth': '1' if request.user.is_authenticated else '0',
+            'user_id': str(request.user.id) if request.user.is_authenticated else '',
+            'guest_email': checkout_data.get('guest_email'),
+            'full_name': checkout_data.get('full_name'),
+            'shipping_address': checkout_data.get('shipping_address'),
+            'shipping_city': checkout_data.get('shipping_city'),
+            'shipping_postcode': checkout_data.get('shipping_postcode'),
+            'billing_address': checkout_data.get('billing_address'),
+            'billing_city': checkout_data.get('billing_city'),
+            'billing_postcode': checkout_data.get('billing_postcode'),
+        }
     )
 
     return JsonResponse({'id': session.id})
@@ -178,7 +140,7 @@ def payment_view(request, order_id):
         payment_method_types=['card'],
         line_items=[{
             'price_data': {
-                'currency': 'usd',
+                'currency': 'gbp',
                 'product_data': {
                     'name': f'Order #{order.order_number}',
                 },
@@ -201,8 +163,12 @@ def payment_view(request, order_id):
     return redirect(session.url, code=303)
     
 def order_success(request):
-    order_id = request.session.get('last_order_id')
-    return render(request, 'checkout/order_success.html', {'order_id': order_id})
+    session_id = request.GET.get('session_id')
+    if not session_id:
+        messages.error(request, "No session ID provided.")
+        return redirect('checkout:checkout')
+    order = CheckoutOrder.objects.filter(stripe_session_id=session_id).first()
+    return render(request, 'checkout/order_success.html', {'order_id': order})
 
 def order_confirmation(request, order_id):
     order = get_object_or_404(CheckoutOrder, id=order_id)

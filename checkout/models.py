@@ -24,6 +24,7 @@ class CheckoutOrder(models.Model):
     billing_address = models.TextField(null=True, blank=True)
     billing_city = models.CharField(max_length=20,null=True, blank=True)
     billing_postcode = models.CharField(max_length=20,null=True, blank=True)
+    stripe_session_id = models.CharField(max_length=255, unique=True, null=True, blank=True)
     
     def save(self, *args, **kwargs):
         if not self.order_number:

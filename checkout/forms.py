@@ -41,8 +41,6 @@ class GuestEmailForm(forms.Form):
                 raise forms.ValidationError("Please complete all billing fields or check the box to copy shipping address.")
         return cleaned_data
     
-from django import forms
-
 class GuestCheckoutForm(forms.Form):
     email = forms.EmailField(label="Email")
     full_name = forms.CharField(max_length=100)
