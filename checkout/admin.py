@@ -1,9 +1,5 @@
 from django.contrib import admin
-from .models import CheckoutOrder, CheckoutItem
-
-from django.contrib import admin
-from .models import CheckoutOrder, CheckoutItem
-
+from .models import CheckoutOrder
 @admin.register(CheckoutOrder)
 class CheckoutOrderAdmin(admin.ModelAdmin):
     list_display = ('id', 'order_number', 'user', 'guest_email', 'total_amount', 'status', 'created_at')

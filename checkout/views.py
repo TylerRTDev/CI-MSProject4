@@ -1,20 +1,16 @@
 import stripe
-import os
-from dotenv import load_dotenv
+import json
 from django.conf import settings
-from django.core.mail import send_mail
-from django.template.loader import render_to_string
 from django.urls import reverse
 from django.views.decorators.csrf import csrf_exempt
-from django.http import JsonResponse, HttpResponseBadRequest
+from django.views.decorators.http import require_POST
+from django.http import JsonResponse, HttpResponse
 from django.shortcuts import render, redirect
-from django.shortcuts import get_object_or_404
 from django.contrib import messages
-from django.core.validators import validate_email
-from django.core.exceptions import ValidationError
-from .forms import OrderForm, GuestCheckoutForm, GuestEmailForm
+from .forms import GuestCheckoutForm, GuestEmailForm
 from .models import CheckoutOrder, CheckoutItem
 from products.models import Product
+from django.contrib.auth import get_user_model
 
 stripe.api_key = settings.STRIPE_SECRET_KEY
 
@@ -29,69 +25,7 @@ def checkout_view(request):
     if request.method == 'POST':
         form = GuestCheckoutForm(request.POST)
         if form.is_valid():
-            data = form.cleaned_data
-
-            billing_address = data['billing_address']
-            billing_city = data['billing_city']
-            billing_postcode = data['billing_postcode']
-
-            if data.get('same_as_shipping'):
-                billing_address = data['shipping_address']
-                billing_city = data['shipping_city']
-                billing_postcode = data['shipping_postcode']
-
-            order = CheckoutOrder.objects.create(
-                user=request.user if request.user.is_authenticated else None,
-                guest_email=data['email'],
-                full_name=data['full_name'],
-                shipping_address=data['shipping_address'],
-                shipping_city=data['shipping_city'],
-                shipping_postcode=data['shipping_postcode'],
-                billing_address=billing_address,
-                billing_city=billing_city,
-                billing_postcode=billing_postcode,
-                total_amount=total,
-            )
-
-            for item in cart.values():
-                product = Product.objects.get(id=item['product_id'])
-
-                if product.stock < item['quantity']:
-                    messages.error(request, f"Not enough stock for {product.name}.")
-                    order.delete()
-                    return redirect('cart:view_cart')
-
-                CheckoutItem.objects.create(
-                    order=order,
-                    product=product,
-                    quantity=item['quantity'],
-                    price=item['price'],
-                    size=item.get('size', '')
-                )
-
-                product.stock -= item['quantity']
-                product.save()
-                
-            email_subject = f"Order Confirmation - Order #{order.order_number}"
-            email_message = render_to_string('checkout/email/order_confirmation_email.html', {
-                'order': order,
-                'site_name': 'Real Legacy Media',
-            })
-
-            send_mail(
-                email_subject,
-                email_message,
-                settings.DEFAULT_FROM_EMAIL,
-                [order.guest_email or order.user.email],
-            )
-
-            request.session['cart'] = {}
-            request.session.modified = True
-            request.session['last_order_id'] = order.id
-            messages.success(request, "Order placed successfully!")
-            return redirect('checkout:payment', order_id=order.id)
-    else:
-        form = GuestCheckoutForm()    
+            pass
 
     return render(request, 'checkout/checkout.html', {
         'form': form,
@@ -111,11 +45,20 @@ def guest_email_view(request):
     return render(request, 'checkout/guest_email.html', {
         'form': form
     })
-        
+
+
+@require_POST
+@csrf_exempt
 def create_checkout_session(request):
     cart = request.session.get('cart', {})
     if not cart:
-        return HttpResponseBadRequest("Cart is empty")
+        return JsonResponse({'error': 'Cart is empty'}, status=400)
+    
+    form = GuestCheckoutForm(request.POST)
+    if not form.is_valid():
+        return JsonResponse({'error': 'Invalid form data'}, status=400)
+    
+    data = form.cleaned_data
 
     line_items = []
     for item in cart.values():
@@ -129,53 +72,118 @@ def create_checkout_session(request):
             },
             'quantity': item['quantity'],
         })
-
-    session = stripe.checkout.Session.create(
-        payment_method_types=['card'],
-        line_items=line_items,
-        mode='payment',
-        success_url=request.build_absolute_uri('/checkout/success/'),
-        cancel_url=request.build_absolute_uri('/cart/'),
-    )
-
-    return JsonResponse({'id': session.id})
-
-@csrf_exempt
-def payment_view(request, order_id):
-    order = get_object_or_404(CheckoutOrder, id=order_id)
-
-    amount_cents = int(order.total_amount * 100)
-
-    session = stripe.checkout.Session.create(
-        payment_method_types=['card'],
-        line_items=[{
-            'price_data': {
-                'currency': 'usd',
-                'product_data': {
-                    'name': f'Order #{order.order_number}',
-                },
-                'unit_amount': amount_cents,
-            },
-            'quantity': 1,
-        }],
-        mode='payment',
-        success_url=request.build_absolute_uri(
-            reverse('checkout:order_success')
-        ),
-        cancel_url=request.build_absolute_uri(
-            reverse('checkout:checkout')
-        ),
-        metadata={
-            'order_id': order.id
-        }
-    )
-
-    return redirect(session.url, code=303)
     
+    metadata = {
+        'user_id': request.user.id if request.user.is_authenticated else '', # Store user ID if authenticated
+        'full_name': data['full_name'],
+        'shipping_address': data['shipping_address'],
+        'shipping_city': data['shipping_city'],
+        'shipping_postcode': data['shipping_postcode'],
+        'billing_address': data['billing_address'] if not data.get('same_as_shipping') else data['shipping_address'],
+        'billing_city': data['billing_city'] if not data.get('same_as_shipping') else data['shipping_city'],
+        'billing_postcode': data['billing_postcode'] if not data.get('same_as_shipping') else data['shipping_postcode'],
+        'cart': json.dumps(cart),
+    }
+    
+    try:
+        session = stripe.checkout.Session.create(
+            payment_method_types=['card'],
+            line_items=line_items,
+            mode='payment',
+            success_url=request.build_absolute_uri(reverse('checkout:order_success')) + '?session_id={CHECKOUT_SESSION_ID}',
+            cancel_url=request.build_absolute_uri(reverse('checkout:checkout')),
+            metadata=metadata,
+        )
+    except Exception as e:
+        return JsonResponse({'error': str(e)}, status=500)
+    
+    return JsonResponse({'id': session.id})
+    
+@csrf_exempt
+def stripe_webhook(request):
+    payload = request.body
+    sig_header = request.META.get('HTTP_STRIPE_SIGNATURE')
+    endpoint_secret = settings.STRIPE_WEBHOOK_SECRET
+
+    try:
+        event = stripe.Webhook.construct_event(
+            payload, sig_header, endpoint_secret
+        )
+    except (ValueError, stripe.error.SignatureVerificationError):
+        return HttpResponse(status=400)
+
+    if event['type'] == 'checkout.session.completed':
+        session = event['data']['object']
+        metadata = session.get('metadata', {})
+
+        # Prevent duplicate order creation
+        if CheckoutOrder.objects.filter(order_session=session.id).exists():
+            return JsonResponse({'status': 'Order already exists'}, status=200)
+        
+        User = get_user_model()
+
+        user = None
+        user_id = metadata.get('user_id')
+        if user_id:
+            try:
+                user = User.objects.get(id=user_id)
+            except User.DoesNotExist:
+                pass
+
+        # Create the order
+        order = CheckoutOrder.objects.create(
+            user=user,
+            order_session=session.id,
+            guest_email=metadata.get('guest_email'),
+            full_name=metadata.get('full_name'),
+            shipping_address=metadata.get('shipping_address'),
+            shipping_city=metadata.get('shipping_city'),
+            shipping_postcode=metadata.get('shipping_postcode'),
+            billing_address=metadata.get('billing_address'),
+            billing_city=metadata.get('billing_city'),
+            billing_postcode=metadata.get('billing_postcode'),
+            total_amount=session['amount_total'] / 100,
+        )
+
+        # Create order items from cart
+        try:
+            cart_data = json.loads(metadata.get('cart', '{}'))
+            for item in cart_data.values():
+                product = Product.objects.get(id=item['product_id'])
+                CheckoutItem.objects.create(
+                    order=order,
+                    product=product,
+                    quantity=item['quantity'],
+                    price=item['price'],
+                    size=item.get('size', '')
+                )
+                product.stock -= item['quantity']
+                product.save()
+        except Exception as e:
+            return JsonResponse({'error': f'Item processing failed: {str(e)}'}, status=500)
+
+    return JsonResponse({'status': 'success'}, status=200)
+
 def order_success(request):
-    order_id = request.session.get('last_order_id')
-    return render(request, 'checkout/order_success.html', {'order_id': order_id})
+    session_id = request.GET.get('session_id')
+    
+    if not session_id:
+        return redirect('products:list')
+        
+    order = CheckoutOrder.objects.filter(order_session=session_id).first()
+    
+    if not order:
+        return render(request, 'core/404.html', status=404)
+    
+    request.session['cart'] = {}  # Clear the cart after successful order
+    request.session.modified = True  # Mark session as modified to save changes
+    
+    return render(request, 'checkout/order_success.html', {'order': order})
 
 def order_confirmation(request, order_id):
-    order = get_object_or_404(CheckoutOrder, id=order_id)
+    order = CheckoutOrder.objects.filter(order_session=order_id).first()
+    
+    if not order:
+        return render(request, 'core/404.html', status=404)
+    
     return render(request, 'checkout/confirmation.html', {'order': order})
