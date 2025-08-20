@@ -15,7 +15,7 @@
     </ul>
 
     <div class="form-container-checkout">
-        <form method="post">
+        <form id="checkout-form" method="post">
             {% csrf_token %}
             <div class="row g-3">
 
@@ -58,20 +58,27 @@
     </div>
     <script src="https://js.stripe.com/v3/"></script>
     <script>
-        const stripe = Stripe("{{ stripe_secret_key }}");
+        document.getElementById("checkout-form").addEventListener("submit", async function (e) {
+            e.preventDefault();
 
-        document.getElementById("checkout-button").addEventListener("click", function () {
-            fetch("{% url 'checkout:create_checkout_session' %}", {
+            const formData = new FormData(this);
+
+            const response = await fetch("{% url 'checkout:create_checkout_session' %}", {
                 method: "POST",
+                body: formData,
                 headers: {
                     'X-CSRFToken': '{{ csrf_token }}'
                 }
-            })
-            .then(response => response.json())
-            .then(data => {
-                return stripe.redirectToCheckout({ sessionId: data.id });
-            })
-            .catch(error => console.error('Error:', error));
+            });
+
+            const data = await response.json();
+
+            if (data.id) {
+                const stripe = Stripe("{{ stripe_secret_key }}");
+                stripe.redirectToCheckout({ sessionId: data.id });
+            } else {
+                alert(data.error || "An error occurred while processing your order.");
+            }
         });
     </script>
 </div>

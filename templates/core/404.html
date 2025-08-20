@@ -1,0 +1,20 @@
+{% extends 'core/home.html' %}
+{% load static %}
+
+{% block title %}404 - Page Not Found{% endblock %}
+
+{% block content %}
+<div class="container min-vh-100 d-flex align-items-center justify-content-center">
+    <div class="text-center">
+        <h1 class="display-1 fw-bold">404</h1>
+        <h2 class="fs-3 mb-3">Page Not Found</h2>
+        <p class="lead mb-4">Sorry, we couldn't find the page you're looking for.</p>
+        <div class="mb-4">
+            <img src="{% static 'core/images/404.svg' %}" alt="404 Illustration" class="img-fluid" style="max-width: 300px;">
+        </div>
+        <a href="{% url 'core:home' %}" class="btn btn-primary">
+            <i class="fas fa-home me-2"></i>Return Home
+        </a>
+    </div>
+</div>
+{% endblock %}

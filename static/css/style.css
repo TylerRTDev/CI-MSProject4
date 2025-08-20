@@ -1022,6 +1022,10 @@ section {
     height: 100vh;
 }
 
+.order-history.container.py-5 {
+    height: 100vh;
+}
+
 .order-history .list-group .list-group-item {
     border: none;
     border-bottom: 5px solid var(--brown);
@@ -1049,6 +1053,10 @@ section {
     padding: 0.5rem;
     margin: 0;
     border-bottom: solid 1px var(--brown);
+}
+
+.no-orders-text-container.d-flex.justify-content-center.align-items-center.flex-column{
+    margin-top: 15rem;
 }
 
 .cart-table-container thead th {

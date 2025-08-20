@@ -7,7 +7,7 @@
     <div class="success-container container mb-5 text-center">
         <h1 class="text-retro">🎉 Order Confirmed!</h1>
         <h5 class="lead">Thank you for your purchase and continued support!<br><br> A confirmation email has been sent...</h5>
-        <a href="{% url 'checkout:order_confirmation' order_id %}" class="btn-retro-hero mt-4">View Order Details</a>
+        <a href="{% url 'checkout:order_confirmation' order.order_session %}" class="btn-retro-hero mt-4">View Order Details</a>
     </div>
 </section>
 

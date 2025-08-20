@@ -37,7 +37,7 @@
         {% if page_obj.object_list %}
             <ul class="list-group">
                 {% for order in page_obj.object_list %}
-                    <li class="list-group-item p-2">
+                <li class="list-group-item p-2">
                         <div class="d-flex justify-content-end justify-content-between align-items-center">
                     <strong>Order #{{ order.order_number }}</strong>{{ order.created_at|date:"M d, Y" }}
                     <br>
