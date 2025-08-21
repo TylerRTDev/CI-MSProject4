@@ -11,6 +11,7 @@ from .forms import GuestCheckoutForm, GuestEmailForm
 from .models import CheckoutOrder, CheckoutItem
 from products.models import Product
 from django.contrib.auth import get_user_model
+from decimal import Decimal
 
 stripe.api_key = settings.STRIPE_SECRET_KEY
 
@@ -20,11 +21,14 @@ def checkout_view(request):
         messages.error(request, "Your cart is empty.")
         return redirect('products:list')
 
-    total = sum(item['quantity'] * item['price'] for item in cart.values())
+    total = sum(item['quantity'] * Decimal(item['price']) for item in cart.values())
+    
+    form = GuestCheckoutForm()
     
     if request.method == 'POST':
-        form = GuestCheckoutForm(request.POST)
+        form = GuestCheckoutForm(request.POST or None)
         if form.is_valid():
+            data = form.cleaned_data
             pass
 
     return render(request, 'checkout/checkout.html', {
