@@ -22,3 +22,7 @@ class AccountsViewTest(TestCase):
     def test_update_email_view_redirects(self):
         response = self.client.get(reverse('accounts:update_email'))
         self.assertEqual(response.status_code, 302)
+
+    def test_add_to_cart_redirects(self):
+        response = self.client.get(reverse('products:detail', args=[1]))
+        self.assertEqual(response.status_code, 302)
