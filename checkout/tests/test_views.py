@@ -149,3 +149,9 @@ class CheckoutViewTests(TestCase):
         response = self.client.get(reverse('checkout:order_confirmation', args=[order.order_session]))
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, order.email)
+    
+    def test_order_confirmation_view_returns_404_for_invalid_order(self):
+        invalid_order_id = 'nonexistent_session_id'
+        response = self.client.get(reverse('checkout:order_confirmation', args=[invalid_order_id]))
+        self.assertEqual(response.status_code, 404)
+        self.assertTemplateUsed(response, 'core/404.html')
