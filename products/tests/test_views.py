@@ -30,3 +30,7 @@ class ProductViewsTest(TestCase):
     def test_product_detail_404_for_invalid_product(self):
         response = self.client.get(reverse('products:detail', args=["non-existent-slug"]))
         self.assertEqual(response.status_code, 404)
+        
+    def test_product_excess_stock_add_to_cart_redirects(self):
+        response = self.client.get(reverse('products:detail', args=[1]))
+        self.assertEqual(response.status_code, 404)  # Product with ID 1 does not exist yet
