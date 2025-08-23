@@ -23,3 +23,26 @@ class CheckoutOrderModelTest(TestCase):
     def test_order_number_is_generated_on_save(self):
         self.assertIsNotNone(self.order.order_number)
         self.assertTrue(CheckoutOrder.objects.filter(order_number=self.order.order_number).exists())
+
+class CheckoutItemModelTest(TestCase):
+    def setUp(self):
+        self.order = CheckoutOrder.objects.create(
+            email='itemcheckout@example.com',
+            full_name='Guest User',
+            total_amount=Decimal('0.00')
+        )
+        self.product = Product.objects.create(
+            name='Checkout Product',
+            description='Test checkout product',
+            price=Decimal('25.00'),
+            stock=10
+        )
+        self.item = CheckoutItem.objects.create(
+            order=self.order,
+            product=self.product,
+            quantity=2,
+            price=Decimal('25.00')
+        )
+
+    def test_get_subtotal(self):
+        self.assertEqual(self.item.get_subtotal(), Decimal('50.00'))
