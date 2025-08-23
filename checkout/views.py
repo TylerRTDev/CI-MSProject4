@@ -80,7 +80,7 @@ def create_checkout_session(request):
     
     metadata = {
         'user_id': request.user.id if request.user.is_authenticated else '', # Store user ID if authenticated
-        'guest_email': request.session.get('guest_email', ''),
+        'email': request.session.get('email') or data['email'],
         'guest_full_name': data['full_name'],
         'full_name': data['full_name'],
         'shipping_address': data['shipping_address'],
@@ -131,9 +131,12 @@ def stripe_webhook(request):
 
         user = None
         user_id = metadata.get('user_id')
+        email = metadata.get('email')
+        
         if user_id:
             try:
                 user = User.objects.get(id=user_id)
+                email = user.email
             except User.DoesNotExist:
                 pass
 
@@ -141,7 +144,7 @@ def stripe_webhook(request):
         order = CheckoutOrder.objects.create(
             user=user,
             order_session=session['id'],
-            guest_email=metadata.get('guest_email'),
+            email=email,
             full_name=metadata.get('full_name'),
             shipping_address=metadata.get('shipping_address'),
             shipping_city=metadata.get('shipping_city'),

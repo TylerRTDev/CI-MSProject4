@@ -12,7 +12,7 @@ class CheckoutOrder(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
     order_session = models.CharField(max_length=255, unique=True, blank=True, null=True)
     order_number = models.CharField(max_length=5, unique=True, blank=True, null=True)
-    guest_email = models.EmailField(blank=True, null=True)
+    email = models.EmailField(blank=True, null=True)
     city = models.CharField(max_length=50, null=True, blank=True)
     postcode = models.CharField(max_length=20, null=True, blank=True)
     total_amount = models.DecimalField(max_digits=10, decimal_places=2)
