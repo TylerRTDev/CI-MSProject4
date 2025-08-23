@@ -2,22 +2,151 @@ from django.test import TestCase, Client
 from django.urls import reverse
 from django.contrib.auth.models import User
 from unittest.mock import patch
-from checkout.models import CheckoutOrder
-from decimal import Decimal
+from django.conf import settings
+from django.contrib.auth import get_user_model
+import uuid
 
 class CheckoutViewTests(TestCase):
     def setUp(self):
         self.client = Client()
-        self.user = User.objects.create_user(username='testuser', password='password123')
+        unique_username = f"testuser_{uuid.uuid4().hex[:6]}"
+        self.user = User.objects.create_user(username=unique_username, password='password123')
         self.cart_data = {
-            '1': {'quantity': 2, 'price': '10.00'},
-            '2': {'quantity': 1, 'price': '20.00'}
+            '1': {
+                'name': 'Test Product 1',
+                'quantity': 2,
+                'price': '10.00',
+                'size': 'M'
+            },
+            '2': {
+                'name': 'Test Product 2',
+                'quantity': 1,
+                'price': '20.00'
+                # 'size' is optional (Omitted for this item)
+            }
         }
+        
         session = self.client.session
         session['cart'] = self.cart_data
         session.save()
+        
+        self.valid_form_data = {
+            'email': 'test-email2@gmail.com',
+            'full_name': 'Tyler K',
+            'phone_number': '77700000',
+            'shipping_address': '123 Fake Street',
+            'shipping_city': 'Liverpool',
+            'shipping_postcode': 'L1 0AP',
+            'billing_address': '123 Fake Street',
+            'billing_city': 'Liverpool',
+            'billing_postcode': 'L1 0AP',
+        }
 
     def test_checkout_view_get(self):
         response = self.client.get(reverse('checkout:checkout'))
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'checkout/checkout.html')
+
+    def test_checkout_view_redirects_if_cart_empty(self):
+            session = self.client.session
+            session['cart'] = {}
+            session.save()
+            response = self.client.get(reverse('checkout:checkout'))
+            self.assertEqual(response.status_code, 302)
+    
+    def test_create_checkout_session_returns_200(self):
+        response = self.client.post(self.url, data=self.valid_form_data)
+        self.assertEqual(response.status_code, 200)
+        self.assertIn('id', response.json())  # Stripe session ID
+                    
+    @patch('checkout.views.stripe.checkout.Session.create')
+    def test_create_checkout_session_as_user(self, mock_stripe_create):
+        mock_stripe_create.return_value = {'id': 'cs_test_mocked123'}
+
+        # Set up cart data in session
+        session = self.client.session
+        session['cart'] = {
+            '1': {
+                'product_id': 1,
+                'quantity': 2,
+                'size': 'M',
+                'name': 'Test Product 1',
+                'price': '10.00',
+            },
+            '2': {
+                'product_id': 2,
+                'quantity': 1,
+                'size': None,
+                'name': 'Test Product 2',
+                'price': '20.00',
+            },
+        }
+        # print("Session cart data:", session.get('cart'))  # before save()
+        # print("Session key:", session.session_key)
+        session.save()
+
+        form_data = {
+            'email': 'test-email2@gmail.com',
+            'full_name': 'Tyler K',
+            'phone_number': '77700000',
+            'shipping_address': '123 Fake Street',
+            'shipping_city': 'Liverpool',
+            'shipping_postcode': 'L1 0AP',
+            'billing_address': '123 Fake Street',
+            'billing_city': 'Liverpool',
+            'billing_postcode': 'L1 0AP',
+        }
+        
+        self.client.cookies.load({settings.SESSION_COOKIE_NAME: session.session_key})
+
+        response = self.client.post(
+            reverse('checkout:create_checkout_session'),
+            data=form_data,
+        )
+
+        self.assertEqual(response.status_code, 200)
+        self.assertIn('id', response.json())
+        mock_stripe_create.assert_called_once()
+    
+    # @patch('checkout.views.stripe.Webhook.construct_event')
+    # def test_webhook_creates_order(self, mock_construct_event):
+    #     mock_event = {
+    #         'type': 'checkout.session.completed',
+    #         'data': {
+    #             'object': {
+    #                 'id': 'cs_test_999',
+    #                 'amount_total': 4000,
+    #                 'metadata': {'user_id': str(self.user.id), 'cart': '{}'},
+    #                 'customer_email': 'guest@example.com',
+    #                 'shipping_details': {'name': 'Guest User', 'address': {'city': 'London', 'postal_code': 'E1 6AN'}}
+    #             }
+    #         }
+    #     }
+    #     mock_construct_event.return_value = mock_event
+    #     response = self.client.post(reverse('checkout:stripe_webhook'), content_type='application/json')
+    #     self.assertEqual(response.status_code, 200)
+    #     self.assertTrue(CheckoutOrder.objects.filter(order_session='cs_test_999').exists())
+
+    # def test_order_success_view(self):
+    #     order = CheckoutOrder.objects.create(
+    #         order_session='cs_test_abc123',
+    #         total_amount=Decimal('40.00'),
+    #         full_name='User',
+    #         guest_email='user@example.com'
+    #     )
+    #     response = self.client.get(reverse('checkout:order_success') + f'?session_id={order.order_session}')
+    #     self.assertEqual(response.status_code, 200)
+    #     self.assertContains(response, 'Order Confirmed')
+
+    # def test_order_confirmation_view(self):
+    #     order = CheckoutOrder.objects.create(
+    #         order_session='cs_test_abc123',
+    #         total_amount=Decimal('40.00'),
+    #         full_name='User',
+    #         guest_email='user@example.com',
+    #         user=self.user
+    #     )
+    #     self.client.force_login(self.user)
+    #     response = self.client.get(reverse('checkout:order_confirmation', args=[order.order_session]))
+    #     self.assertEqual(response.status_code, 200)
+    #     self.assertContains(response, order.full_name)

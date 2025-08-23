@@ -44,12 +44,12 @@ class GuestEmailForm(forms.Form):
 from django import forms
 
 class GuestCheckoutForm(forms.Form):
-    email = forms.EmailField(label="Email")
-    full_name = forms.CharField(max_length=100)
+    email = forms.EmailField(label="Email", required=True)
+    full_name = forms.CharField(max_length=100, required=True)
 
-    shipping_address = forms.CharField(widget=forms.Textarea(attrs={'rows': 2}))
-    shipping_city = forms.CharField(max_length=50)
-    shipping_postcode = forms.CharField(max_length=20)
+    shipping_address = forms.CharField(widget=forms.Textarea(attrs={'rows': 2}), required=True)
+    shipping_city = forms.CharField(max_length=50, required=True)
+    shipping_postcode = forms.CharField(max_length=20, required=True)
 
     same_as_shipping = forms.BooleanField(
         required=False,
@@ -57,9 +57,9 @@ class GuestCheckoutForm(forms.Form):
         label="Billing address same as shipping"
     )
 
-    billing_address = forms.CharField(widget=forms.Textarea(attrs={'rows': 2}), required=False)
-    billing_city = forms.CharField(max_length=50, required=False)
-    billing_postcode = forms.CharField(max_length=20, required=False)
+    billing_address = forms.CharField(widget=forms.Textarea(attrs={'rows': 2}), required=True)
+    billing_city = forms.CharField(max_length=50, required=True)
+    billing_postcode = forms.CharField(max_length=20, required=True)
 
     def clean(self):
         cleaned_data = super().clean()

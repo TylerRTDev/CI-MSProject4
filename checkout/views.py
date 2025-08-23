@@ -26,7 +26,7 @@ def checkout_view(request):
     form = GuestCheckoutForm()
     
     if request.method == 'POST':
-        form = GuestCheckoutForm(request.POST or None)
+        form = GuestCheckoutForm(request.POST)
         if form.is_valid():
             data = form.cleaned_data
             pass
@@ -60,6 +60,7 @@ def create_checkout_session(request):
     
     form = GuestCheckoutForm(request.POST)
     if not form.is_valid():
+        print("FORM ERRORS:", form.errors)
         return JsonResponse({'error': 'Invalid form data'}, status=400)
     
     data = form.cleaned_data
@@ -79,6 +80,8 @@ def create_checkout_session(request):
     
     metadata = {
         'user_id': request.user.id if request.user.is_authenticated else '', # Store user ID if authenticated
+        'guest_email': request.session.get('guest_email', ''),
+        'guest_full_name': data['full_name'],
         'full_name': data['full_name'],
         'shipping_address': data['shipping_address'],
         'shipping_city': data['shipping_city'],
@@ -88,6 +91,8 @@ def create_checkout_session(request):
         'billing_postcode': data['billing_postcode'] if not data.get('same_as_shipping') else data['shipping_postcode'],
         'cart': json.dumps(cart),
     }
+    
+    print("RAW POST:", request.POST)
     
     try:
         session = stripe.checkout.Session.create(
@@ -101,7 +106,7 @@ def create_checkout_session(request):
     except Exception as e:
         return JsonResponse({'error': str(e)}, status=500)
     
-    return JsonResponse({'id': session.id})
+    return JsonResponse({'id': session['id']})
     
 @csrf_exempt
 def stripe_webhook(request):
