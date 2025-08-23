@@ -1,9 +1,9 @@
 from django.test import TestCase, Client
 from django.urls import reverse
 from django.contrib.auth.models import User
+from checkout.models import CheckoutOrder, CheckoutItem
 from unittest.mock import patch
 from django.conf import settings
-from django.contrib.auth import get_user_model
 import uuid
 
 class CheckoutViewTests(TestCase):
@@ -107,24 +107,24 @@ class CheckoutViewTests(TestCase):
         self.assertIn('id', response.json())
         mock_stripe_create.assert_called_once()
     
-    # @patch('checkout.views.stripe.Webhook.construct_event')
-    # def test_webhook_creates_order(self, mock_construct_event):
-    #     mock_event = {
-    #         'type': 'checkout.session.completed',
-    #         'data': {
-    #             'object': {
-    #                 'id': 'cs_test_999',
-    #                 'amount_total': 4000,
-    #                 'metadata': {'user_id': str(self.user.id), 'cart': '{}'},
-    #                 'customer_email': 'guest@example.com',
-    #                 'shipping_details': {'name': 'Guest User', 'address': {'city': 'London', 'postal_code': 'E1 6AN'}}
-    #             }
-    #         }
-    #     }
-    #     mock_construct_event.return_value = mock_event
-    #     response = self.client.post(reverse('checkout:stripe_webhook'), content_type='application/json')
-    #     self.assertEqual(response.status_code, 200)
-    #     self.assertTrue(CheckoutOrder.objects.filter(order_session='cs_test_999').exists())
+    @patch('checkout.views.stripe.Webhook.construct_event')
+    def test_webhook_creates_order(self, mock_construct_event):
+        mock_event = {
+            'type': 'checkout.session.completed',
+            'data': {
+                'object': {
+                    'id': 'cs_test_999',
+                    'amount_total': 4000,
+                    'metadata': {'user_id': str(self.user.id), 'cart': '{}'},
+                    'email': 'guest@example.com',
+                    'shipping_details': {'name': 'Guest User', 'address': {'city': 'London', 'postal_code': 'E1 6AN'}}
+                }
+            }
+        }
+        mock_construct_event.return_value = mock_event
+        response = self.client.post(reverse('checkout:stripe_webhook'), content_type='application/json')
+        self.assertEqual(response.status_code, 200)
+        self.assertTrue(CheckoutOrder.objects.filter(order_session='cs_test_999').exists())
 
     # def test_order_success_view(self):
     #     order = CheckoutOrder.objects.create(

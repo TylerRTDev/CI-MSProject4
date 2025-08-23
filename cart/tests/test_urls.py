@@ -17,5 +17,5 @@ class CartUrlsTest(SimpleTestCase):
         self.assertEqual(resolve(url).func, views.update_cart_quantity)
     
     def test_clear_cart_url_resolves(self):
-        url = reverse('clear_cart')
+        url = reverse('cart:clear_cart')
         self.assertEqual(resolve(url).func, views.clear_cart)

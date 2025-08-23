@@ -151,18 +151,13 @@ class ViewCartContextTest(TestCase):
         self.assertEqual(response.status_code, 200)
         cart_items = response.context['cart_items']
         total = response.context['total']
-
         self.assertEqual(len(cart_items), 2)
-
         item1 = next(item for item in cart_items if item['id'] == str(self.product1.id))
         item2 = next(item for item in cart_items if item['id'] == str(self.product2.id))
-
         self.assertEqual(item1['quantity'], 2)
         self.assertEqual(item1['price'], self.product1.price)
         self.assertEqual(item1['subtotal'], Decimal("19.98"))
-
         self.assertEqual(item2['quantity'], 1)
         self.assertEqual(item2['price'], self.product2.price)
         self.assertEqual(item2['subtotal'], Decimal("14.50"))
-
         self.assertEqual(total, Decimal("34.48"))

@@ -91,9 +91,7 @@ def create_checkout_session(request):
         'billing_postcode': data['billing_postcode'] if not data.get('same_as_shipping') else data['shipping_postcode'],
         'cart': json.dumps(cart),
     }
-    
-    print("RAW POST:", request.POST)
-    
+        
     try:
         session = stripe.checkout.Session.create(
             payment_method_types=['card'],
@@ -126,7 +124,7 @@ def stripe_webhook(request):
         metadata = session.get('metadata', {})
 
         # Prevent duplicate order creation
-        if CheckoutOrder.objects.filter(order_session=session.id).exists():
+        if CheckoutOrder.objects.filter(order_session=session['id']).exists():
             return JsonResponse({'status': 'Order already exists'}, status=200)
         
         User = get_user_model()
@@ -142,7 +140,7 @@ def stripe_webhook(request):
         # Create the order
         order = CheckoutOrder.objects.create(
             user=user,
-            order_session=session.id,
+            order_session=session['id'],
             guest_email=metadata.get('guest_email'),
             full_name=metadata.get('full_name'),
             shipping_address=metadata.get('shipping_address'),

@@ -88,7 +88,6 @@ def add_to_cart(request, product_id):
 
         request.session['cart'] = cart
         request.session.modified = True
-        print(f"Your Basket: {request.session['cart']}")
         # Display a success message in terminal
         messages.success(request, f"'{product.name}' has been added to your basket.")
         return redirect('products:detail', slug=product.slug)
