@@ -1,7 +1,6 @@
 from django.test import TestCase
 from django.urls import reverse
 from products.models import Product, Category
-from django.contrib.auth.models import User
 from decimal import Decimal
 
 class CartViewTest(TestCase):
