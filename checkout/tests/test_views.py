@@ -4,6 +4,7 @@ from django.contrib.auth.models import User
 from checkout.models import CheckoutOrder, CheckoutItem
 from unittest.mock import patch
 from django.conf import settings
+from decimal import Decimal
 import uuid
 
 class CheckoutViewTests(TestCase):
@@ -126,16 +127,16 @@ class CheckoutViewTests(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertTrue(CheckoutOrder.objects.filter(order_session='cs_test_999').exists())
 
-    # def test_order_success_view(self):
-    #     order = CheckoutOrder.objects.create(
-    #         order_session='cs_test_abc123',
-    #         total_amount=Decimal('40.00'),
-    #         full_name='User',
-    #         guest_email='user@example.com'
-    #     )
-    #     response = self.client.get(reverse('checkout:order_success') + f'?session_id={order.order_session}')
-    #     self.assertEqual(response.status_code, 200)
-    #     self.assertContains(response, 'Order Confirmed')
+    def test_order_success_view(self):
+        order = CheckoutOrder.objects.create(
+            order_session='cs_test_abc123',
+            total_amount=Decimal('40.00'),
+            full_name='User',
+            guest_email='user@example.com'
+        )
+        response = self.client.get(reverse('checkout:order_success') + f'?session_id={order.order_session}')
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, 'Order Confirmed')
 
     # def test_order_confirmation_view(self):
     #     order = CheckoutOrder.objects.create(
