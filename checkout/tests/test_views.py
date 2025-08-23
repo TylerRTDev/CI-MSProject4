@@ -92,9 +92,10 @@ class CheckoutViewTests(TestCase):
             'shipping_address': '123 Fake Street',
             'shipping_city': 'Liverpool',
             'shipping_postcode': 'L1 0AP',
-            'billing_address': '123 Fake Street',
-            'billing_city': 'Liverpool',
-            'billing_postcode': 'L1 0AP',
+            'billing_address': '321 Fake Street',
+            'billing_city': 'London',
+            'billing_postcode': 'L5 5AP',
+            'same_as_shipping': False
         }
         
         self.client.cookies.load({settings.SESSION_COOKIE_NAME: session.session_key})
@@ -155,3 +156,53 @@ class CheckoutViewTests(TestCase):
         response = self.client.get(reverse('checkout:order_confirmation', args=[invalid_order_id]))
         self.assertEqual(response.status_code, 404)
         self.assertTemplateUsed(response, 'core/404.html')
+    
+    def test_stripe_webhook_invalid_signature_returns_400(self):
+        payload = '{"id": "evt_test_invalid", "object": "event"}'
+        sig_header = 'invalid_signature'
+
+        with patch('stripe.Webhook.construct_event') as mock_construct_event:
+            mock_construct_event.side_effect = ValueError("Invalid payload")
+
+            response = self.client.post(
+                reverse('checkout:stripe_webhook'),
+                data=payload,
+                content_type='application/json',
+                **{'HTTP_STRIPE_SIGNATURE': sig_header}
+            )
+
+        self.assertEqual(response.status_code, 400)
+    
+    @patch('checkout.views.stripe.checkout.Session.create')
+    def test_checkout_session_creation_exception_returns_500(self, mock_create_session):
+        mock_create_session.side_effect = Exception("Stripe API failed")
+
+        session = self.client.session
+        session['cart'] = {
+            '1': {'name': 'Test Product', 'quantity': 1, 'price': '10.00'}
+        }
+        session.save()
+
+        form_data = {
+            'email': 'test-email2@gmail.com',
+            'full_name': 'Tyler K',
+            'phone_number': '77700000',
+            'shipping_address': '123 Fake Street',
+            'shipping_city': 'Liverpool',
+            'shipping_postcode': 'L1 0AP',
+            'billing_address': '123 Fake Street',
+            'billing_city': 'Liverpool',
+            'billing_postcode': 'L1 0AP',
+            'same_as_shipping': 'on',
+        }
+
+        response = self.client.post(
+            reverse('checkout:create_checkout_session'),
+            data=form_data
+        )
+
+        self.assertEqual(response.status_code, 500)
+        self.assertIn('error', response.json())
+        self.assertEqual(response.json()['error'], "Stripe API failed")
+    
+    
