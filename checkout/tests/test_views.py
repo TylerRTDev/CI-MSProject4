@@ -82,8 +82,6 @@ class CheckoutViewTests(TestCase):
                 'price': '20.00',
             },
         }
-        # print("Session cart data:", session.get('cart'))  # before save()
-        # print("Session key:", session.session_key)
         session.save()
 
         form_data = {
