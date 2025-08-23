@@ -112,6 +112,15 @@ class RemoveFromCartViewTest(TestCase):
         self.assertRedirects(response, reverse('cart:view_cart'))
         cart = self.client.session.get('cart', {})
         self.assertEqual(len(cart), 1)  # original item still there
+    
+    def test_remove_from_cart_redirects(self):
+        session = self.client.session
+        session['cart'] = {'1': {'quantity': 1, 'price': '10.00'}}
+        session.save()
+
+        response = self.client.get(reverse('cart:remove_from_cart', args=['1']))
+        self.assertEqual(response.status_code, 302)
+        self.assertRedirects(response, reverse('cart:view_cart'))
 
 class ViewCartContextTest(TestCase):
     def setUp(self):
@@ -161,3 +170,4 @@ class ViewCartContextTest(TestCase):
         self.assertEqual(item2['price'], self.product2.price)
         self.assertEqual(item2['subtotal'], Decimal("14.50"))
         self.assertEqual(total, Decimal("34.48"))
+        
