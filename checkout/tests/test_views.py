@@ -9,6 +9,7 @@ import uuid
 class CheckoutViewTests(TestCase):
     def setUp(self):
         self.client = Client()
+        self.url = reverse('checkout:create_checkout_session')
         unique_username = f"testuser_{uuid.uuid4().hex[:6]}"
         self.user = User.objects.create_user(username=unique_username, password='password123')
         self.cart_data = {
