@@ -14,3 +14,11 @@ class AccountsViewTest(TestCase):
         self.client.login(username='testuser', password='pass1234')
         response = self.client.get(reverse('accounts:profile'))
         self.assertEqual(response.status_code, 302)
+    
+    def test_logout_view_redirects(self):
+        response = self.client.get(reverse('accounts:logout'))
+        self.assertEqual(response.status_code, 302)
+    
+    def test_update_email_view_redirects(self):
+        response = self.client.get(reverse('accounts:update_email'))
+        self.assertEqual(response.status_code, 302)
