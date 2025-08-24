@@ -53,14 +53,27 @@ class AccountsViewTest(TestCase):
         response = self.client.get(reverse('accounts:change_password'))
         self.assertEqual(response.status_code, 302)
     
-    def test_change_password_view_success(self):
-        self.client.login(username='testuser', password='pass1234')
-        response = self.client.post(reverse('accounts:change_password'), {
+    def test_account_detail_view_post_change_password_valid(self):
+        self.client.force_login(self.user)
+        post_data = {
+            'change_password': '',
             'old_password': 'pass1234',
-            'new_password1': 'newpass456',
-            'new_password2': 'newpass456'
-        })
-        self.assertEqual(response.status_code, 302)
+            'new_password1': 'NewPass1234!',
+            'new_password2': 'NewPass1234!',
+        }
+        response = self.client.post(reverse('accounts:account_detail'), post_data)
+        self.assertRedirects(response, reverse('accounts:account_detail'))
+    
+    def test_account_detail_view_post_change_password_invalid(self):
+        self.client.force_login(self.user)
+        post_data = {
+            'change_password': '',
+            'old_password': 'wrongpass',
+            'new_password1': 'short',
+            'new_password2': 'short',
+        }
+        response = self.client.post(reverse('accounts:account_detail'), post_data)
+        self.assertRedirects(response, reverse('accounts:account_detail'))
     
     def test_logout_view_redirects(self):
         response = self.client.get(reverse('accounts:logout'))
@@ -78,3 +91,24 @@ class AccountsViewTest(TestCase):
         self.client.login(username='testuser', password='pass1234')
         response = self.client.get(reverse('accounts:account_detail'))
         self.assertEqual(response.status_code, 302)
+    
+    def test_account_detail_view_get(self):
+        self.client.force_login(self.user)
+        response = self.client.get(reverse('accounts:account_detail'))
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'accounts/account_detail.html')
+        self.assertIn('profile_form', response.context)
+        self.assertIn('password_form', response.context)
+    
+    def test_account_detail_view_post_update_profile_valid(self):
+        self.client.force_login(self.user)
+        post_data = {
+            'update_profile': '',
+            'username': 'newusername',
+            'email': 'newemail@example.com',
+            'old_password': 'pass1234',
+            'new_password1': 'NewPass1234!',
+            'new_password2': 'NewPass1234!',
+        }
+        response = self.client.post(reverse('accounts:account_detail'), post_data)
+        self.assertRedirects(response, reverse('accounts:account_detail'))
