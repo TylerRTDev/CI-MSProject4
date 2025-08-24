@@ -55,14 +55,9 @@ class CheckoutViewTests(TestCase):
             session.save()
             response = self.client.get(reverse('checkout:checkout'))
             self.assertEqual(response.status_code, 302)
-    
-    def test_create_checkout_session_returns_200(self):
-        response = self.client.post(self.url, data=self.valid_form_data)
-        self.assertEqual(response.status_code, 200)
-        self.assertIn('id', response.json())  # Stripe session ID
-                    
+                        
     @patch('checkout.views.stripe.checkout.Session.create')
-    def test_create_checkout_session_as_user(self, mock_stripe_create):
+    def test_create_checkout_session_as_user_returns_200(self, mock_stripe_create):
         mock_stripe_create.return_value = {'id': 'cs_test_mocked123'}
 
         # Set up cart data in session
