@@ -8,7 +8,7 @@ from django.contrib.auth.forms import UserCreationForm, AuthenticationForm, Pass
 from django.contrib.auth import update_session_auth_hash
 from django.contrib.auth import login, logout
 from django.contrib.auth.decorators import login_required
-from checkout.models import CheckoutOrder, CheckoutItem
+from checkout.models import CheckoutOrder
 
 def register_view(request):
     if request.method == 'POST':
