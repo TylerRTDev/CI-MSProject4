@@ -94,7 +94,7 @@ def account_detail_view(request):
     if request.method == 'POST':
         if 'update_profile' in request.POST:
             profile_form = AccountUpdateForm(request.POST, instance=user)
-            if profile_form.is_valid() and password_form.is_valid():
+            if profile_form.is_valid():
                 profile_form.save()
             update_session_auth_hash(request, user)
             messages.success(request, "Your details were updated successfully.")
@@ -113,4 +113,4 @@ def account_detail_view(request):
     return render(request, 'accounts/account_detail.html', {
         'profile_form': profile_form,
         'password_form': password_form
-    })
+    }) 
