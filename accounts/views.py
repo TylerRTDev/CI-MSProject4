@@ -16,7 +16,7 @@ def register_view(request):
         if form.is_valid():
             user = form.save()
             login(request, user)
-            return redirect('core:home')
+            return redirect('accounts:account_detail')
     else:
         form = UserCreationForm()
     return render(request, 'accounts/register.html', {'form': form})
@@ -26,7 +26,7 @@ def login_view(request):
         form = AuthenticationForm(request, data=request.POST)
         if form.is_valid():
             login(request, form.get_user())
-            return redirect('core:home')
+            return redirect('accounts:account_detail')
     else:
         form = AuthenticationForm()
     return render(request, 'accounts/login.html', {'form': form})
@@ -89,6 +89,8 @@ def change_password_view(request):
 def account_detail_view(request):
     user = request.user
     profile_form = AccountUpdateForm(instance=user)
+    if request.method == 'GET' and not user.email:
+        messages.warning(request, "Please add an email address to complete your account.")
     password_form = PasswordChangeForm(user)
     
     if request.method == 'POST':

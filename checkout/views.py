@@ -30,6 +30,15 @@ def checkout_view(request):
         if form.is_valid():
             data = form.cleaned_data
             pass
+        else:
+            if request.user.is_authenticated:
+                initial = {
+                    'email': request.user.email,
+                    'full_name': f"{request.user.first_name} {request.user.last_name}",
+                }
+                form = GuestCheckoutForm(initial=initial)
+            else:
+                form = GuestCheckoutForm()
 
     return render(request, 'checkout/checkout.html', {
         'form': form,
@@ -99,6 +108,7 @@ def create_checkout_session(request):
             mode='payment',
             success_url=request.build_absolute_uri(reverse('checkout:order_success')) + '?session_id={CHECKOUT_SESSION_ID}',
             cancel_url=request.build_absolute_uri(reverse('checkout:checkout')),
+            customer_email=data['email'],
             metadata=metadata,
         )
     except Exception as e:
@@ -136,9 +146,8 @@ def stripe_webhook(request):
         if user_id:
             try:
                 user = User.objects.get(id=user_id)
-                email = user.email
             except User.DoesNotExist:
-                pass
+                user = None
 
         # Create the order
         order = CheckoutOrder.objects.create(

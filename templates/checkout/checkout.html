@@ -9,7 +9,7 @@
         {% for key, item in cart.items %}
         <li class="list-group-item d-flex justify-content-between align-items-center">
             <span>{{ item.name }}</span>
-            <span class="checkout-item-quantity-cost fw-bold">( {{ item.quantity }} ) × £{{ item.price }}</span>
+            <span class="checkout-item-quantity-cost fw-bold">( {{ item.quantity }} ) × £{{ item.price|floatformat:2 }}</span>
         </li>
         {% endfor %}
     </ul>

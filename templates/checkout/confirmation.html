@@ -9,10 +9,6 @@
     <h5><strong>Order Number:</strong> {{ order.order_number }}</h5>
     <h5><strong>Order Date:</strong> {{ order.created_at|date:"F j, Y" }}, {{ order.created_at|time:"H:i" }}</h5>
     <h5><strong>Order Status:</strong> {{ order.status|capfirst }}</h5>
-
-    {% comment %} {% if order.email %}
-        <h5><strong>Email:</strong> {{ order.email }}</h5>
-    {% endif %} {% endcomment %}
     <h5><strong>Order Total:</strong> £{{ order.total_amount }}</h5>
     <p class="text-center fw-bold h4 mt-4">We'll be in touch soon regarding your shipment...</p>
 </div>
