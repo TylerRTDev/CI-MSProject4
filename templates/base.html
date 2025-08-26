@@ -25,11 +25,6 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
-                {% comment %} <form class="d-flex" role="search" method="GET" action="{% url 'products:list' %}">
-                    <input class="form-control me-2" type="search" name="q" placeholder="Search products..." aria-label="Search">
-                    <button class="btn btn-outline-light" type="submit">Search</button>
-                </form> {% endcomment %}
-
                 <!-- Navbar items -->
                 <div class="collapse navbar-collapse justify-content-end ms-2 me-2" id="navbarNav">
                     <div class="navbar-nav">
@@ -46,52 +41,7 @@
                 </div>
             </div>
         </nav>
-        {% comment %} <nav class="navbar nav-link">
-            <div class="container">
-                <!-- Brand -->
-                <a class="navbar-brand mx-auto" href="{% url 'core:home' %}">●RLM●</a>
-
-                <!-- Hamburger Button for Mobile -->
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                
-
-                <!-- Nav Links -->
-                <div class="navbar-open collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav">
-                        {% if user.is_authenticated %}
-                            <li class="nav-item">
-                            <a class="nav-link" href="{% url 'products:list' %}">Shop</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="{% url 'cart:view_cart' %}">Cart</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="{% url 'accounts:profile' %}">Account</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="{% url 'accounts:logout' %}">Logout</a>
-                            </li>
-                            {% else %}
-                            <li class="nav-item">
-                            <a class="nav-link" href="{% url 'products:list' %}">Shop</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="{% url 'cart:view_cart' %}">Cart</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="{% url 'accounts:login' %}">Login</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="{% url 'accounts:register' %}">Register</a>
-                            </li>
-                        {% endif %}
-                    </ul>
-                </div>
-            </div>
-        </nav> {% endcomment %}
-
+        <!-- Background Container -->
         <div class="background-container"></div>
 
         <!-- Flash Messages -->
@@ -106,9 +56,9 @@
                             <div class="toast-text fw-bold h6 text-center pt-1 pb-2">
                                 {{ message }}
                             </div>
-                        {% if message.tags == "added_to_cart" %}
-                        <a href="{% url 'cart:view_cart' %}" class="btn-retro btn-sm btn-light">View Basket</a>
-                        {% endif %}
+                            {% if 'added_to_cart' in message.tags %}
+                            <a href="{% url 'cart:view_cart' %}" class="btn-retro btn-sm btn-light">View Basket</a>
+                            {% endif %}
                         </div>
                     </div>
                 </div>
