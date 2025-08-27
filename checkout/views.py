@@ -76,9 +76,10 @@ def create_checkout_session(request):
 
     line_items = []
     cart_with_ids = {}
-    for item in cart.values():
-        # item['product_id'] = product_id  # Add ID to each item
-        # cart_with_ids[product_id] = item
+    
+    for product_id, item in cart.items():
+        item['product_id'] = product_id  # Add ID to each item
+        cart_with_ids[product_id] = item
         
         line_items.append({
             'price_data': {
