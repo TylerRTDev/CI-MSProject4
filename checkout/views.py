@@ -75,7 +75,11 @@ def create_checkout_session(request):
     data = form.cleaned_data
 
     line_items = []
+    cart_with_ids = {}
     for item in cart.values():
+        # item['product_id'] = product_id  # Add ID to each item
+        # cart_with_ids[product_id] = item
+        
         line_items.append({
             'price_data': {
                 'currency': 'gbp',
@@ -98,7 +102,7 @@ def create_checkout_session(request):
         'billing_address': data['billing_address'] if not data.get('same_as_shipping') else data['shipping_address'],
         'billing_city': data['billing_city'] if not data.get('same_as_shipping') else data['shipping_city'],
         'billing_postcode': data['billing_postcode'] if not data.get('same_as_shipping') else data['shipping_postcode'],
-        'cart': json.dumps(cart),
+        'cart': json.dumps(cart_with_ids),  # Store cart details as JSON string
     }
         
     try:
