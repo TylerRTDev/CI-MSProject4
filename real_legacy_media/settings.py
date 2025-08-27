@@ -45,6 +45,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['ci-msproject4.onrender.com', 'localhost', '127.0.0.1']
 
+SECURE_REFERRER_POLICY = None
+
 # Application definition
 
 INSTALLED_APPS = [
