@@ -10,7 +10,6 @@
     --text-color: #000000;
 }
 
-
 body {
     font-family: 'Kodchasan', sans-serif;
     color: var(--text-color);
@@ -493,7 +492,7 @@ section {
     -webkit-text-stroke-color: var(--brown);
 }
 
-.product-info-container p {
+.product-info-container p, .error-not-found-text {
     padding-left: auto;
     color: var(--orange);
     letter-spacing: 1px;
@@ -661,6 +660,13 @@ section {
 }
 
 .form-title-container h2, .cart-table-container h1, .order-detail-container h2, .order-detail-container h4, .login-container h1, .register-container h1, .checkout-card h1, .checkout-confirmation-container h1, .success-container h1 {
+    text-shadow: 5px 5px 5px var(--brown);
+    -webkit-text-fill-color: var(--orange);
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: var(--brown);
+}
+
+.main-error-container div h1 {
     text-shadow: 5px 5px 5px var(--brown);
     -webkit-text-fill-color: var(--orange);
     -webkit-text-stroke-width: 1px;

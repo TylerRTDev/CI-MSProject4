@@ -13,3 +13,6 @@ def home(request):
         'featured_clothing': featured_clothing,
         'featured_music': featured_music,
     })
+
+def custom_404_view(request, exception):
+    return render(request, 'core/404.html', status=404)
