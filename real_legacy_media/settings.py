@@ -43,7 +43,7 @@ DEFAULT_FROM_EMAIL = 'noreply@reallegacymedia.com'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['ci-msproject4.onrender.com', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['ci-msproject4.onrender.com', 'localhost', '127.0.0.1', 'rlm-testing.onrender.com', 'reallegacymedia.onrender.com']
 
 SECURE_REFERRER_POLICY = None
 
