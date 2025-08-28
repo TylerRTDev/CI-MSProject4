@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Kodchasan&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Brexon&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Sigmar+One&display=swap');
 
 :root {
     --black: #000000;
@@ -17,7 +18,7 @@ body {
 }
 
 h1, h2, h3, h4 {
-    font-family: 'Brexon', sans-serif;
+    font-family: 'Brexon', 'Sigmar One', sans-serif;
 }
 
 .nav-container {
@@ -59,7 +60,7 @@ h1, h2, h3, h4 {
 .navbar-nav .nav-link {
     color: var(--orange);
     opacity: 70%;
-    font-family: 'Brexon', sans-serif;
+    font-family: 'Brexon', 'Sigmar One', sans-serif;
     font-size: 1.5rem;
     transition: 0.3s;
     letter-spacing: -2px;
@@ -84,7 +85,7 @@ h1, h2, h3, h4 {
 }
 
 .navbar-brand {
-    font-family: Brexon, sans-serif;
+    font-family: 'Brexon', 'Sigmar One', sans-serif;
     text-shadow: #E9A319 6px 6px 2px;
     font-size: 2rem;
     transition: 0.5s ease-in;
@@ -536,7 +537,7 @@ section {
 }
 
 .product-card-title {
-    font-family: 'Brexon', serif;
+    font-family: 'Brexon', 'Sigmar One', serif;
     color: var(--brown);
     letter-spacing: 2px;
     text-shadow: 5px 5px 5px var(--brown);
@@ -574,7 +575,7 @@ section {
 }
 
 .card-title {
-    font-family: 'Brexon', serif;
+    font-family: 'Brexon', 'Sigmar One', serif;
     color: var(--brown);
     letter-spacing: -1px;
     text-shadow: 5px 5px 5px var(--brown);
@@ -627,7 +628,7 @@ section {
 }
 
 .text-retro {
-    font-family: 'Brexon', sans-serif;
+    font-family: 'Brexon', 'Sigmar One', sans-serif;
     font-size: 2rem;
     color: var(--brown);
 }
@@ -1123,7 +1124,7 @@ section {
 }
 
 .success-container h1 {
-    font-family: Brexon, sans-serif;
+    font-family: 'Brexon', 'Sigmar One', sans-serif;
     text-shadow: #E9A319 6px 6px 2px;
     font-size: 3rem;
     transition: 0.5s ease-in;
@@ -1134,7 +1135,7 @@ section {
 
 .checkout-success-title-container h2 {
     letter-spacing: 2px;
-    font-family: Brexon, sans-serif;
+    font-family: 'Brexon', 'Sigmar One', sans-serif;
     text-shadow: #E9A319 6px 6px 2px;
     transition: 0.5s ease-in;
     -webkit-text-fill-color: var(--peach);
