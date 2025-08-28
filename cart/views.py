@@ -51,7 +51,7 @@ def update_cart_quantity(request):
 
     if item_id in cart:
         # Extract base product_id in case item_id includes size (e.g., "42_M")
-        product_id = cart[item_id]['product_id']
+        product_id = cart[item_id].get('product_id', item_id)
         product = get_object_or_404(Product, id=product_id)
         
         if quantity > product.stock:
