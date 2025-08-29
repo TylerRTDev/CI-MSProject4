@@ -27,7 +27,7 @@ urlpatterns = [
     path('cart/', include('cart.urls', namespace='cart')),
     path('checkout/', include('checkout.urls', namespace='checkout')),
     path('accounts/', include('accounts.urls')),
-]
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 handler404 = core_views.custom_404_view
 

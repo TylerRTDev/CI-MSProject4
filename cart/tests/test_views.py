@@ -40,6 +40,31 @@ class CartViewTest(TestCase):
         self.assertRedirects(response, reverse('cart:view_cart'))
         updated_cart = self.client.session['cart']
         self.assertNotIn(str(self.product.id), updated_cart)
+    
+    def test_update_cart_exceeds_stock(self):
+        session = self.client.session
+        session['cart'] = {
+            str(self.product.id): {
+                'product_id': self.product.id,
+                'quantity': 2,
+                'size': None,
+                'name': self.product.name,
+                'price': float(self.product.price),
+            }
+        }
+        session.save()
+
+        url = reverse('cart:update_cart')
+        response = self.client.post(url, {
+            'item_id': str(self.product.id),
+            'quantity': 15,
+        }, follow=True)
+
+        self.assertContains(response, "Only 10 units of")
+        self.assertEqual(
+            self.client.session['cart'][str(self.product.id)]['quantity'],
+            2
+        )
         
 class AddToCartViewTest(TestCase):
     def setUp(self):
