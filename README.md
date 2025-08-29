@@ -37,17 +37,66 @@ Music is timeless—but the way people discover and purchase it is constantly ev
 
 ---
 
-## 🎯 Objectives
+## 🎯 Project Objectives
 
-This project is designed to meet both business and technical goals. Your objectives as a developer or stakeholder are to:
+The goal of Real Legacy Media is to build a robust, full-stack e-commerce platform using Django that celebrates the enduring legacy of music across physical formats. The site aims to combine functionality with a retro-modern aesthetic that resonates with both seasoned collectors and new fans alike.
 
-* Deploy a full-featured e-commerce app using Django
-* Implement secure user authentication and profile management
-* Enable browsing, filtering, and purchasing of media in multiple formats
-* Support a clean admin interface with CRUD functionality for products and orders
-* Prioritise responsive design, accessible navigation, and strong visual identity
+Core objectives include:
+
+* Providing a mobile-first, responsive storefront for browsing and buying media
+* Supporting user authentication, including profile management and order history
+* Offering product filtering, sorting, and search tools to enhance discoverability
+* Enabling secure checkout with Stripe integration and guest checkout support
+* Highlighting curated collections and media types (vinyl, CD, digital, merch)
+* Creating a clean, retro-inspired UI that reflects the spirit of legacy music
+* Ensuring scalability for future additions such as reviews, wishlists, or forums
+
+Ultimately, this project blends modern development practices with timeless cultural value—positioning Real Legacy Media as a go-to destination for music media shopping online.
 
 ---
+
+## 🎯 Target Audience
+
+Real Legacy Media is designed for music lovers, collectors, and nostalgic audiences who value the tangible experience of physical media in a digital age. The platform caters to individuals aged 25–60 who appreciate vinyl records, CDs, and limited-edition merchandise tied to classic and contemporary music culture. This includes:
+
+* Collectors seeking rare pressings or exclusive drops
+* Audiophiles who prefer high-fidelity analog formats
+
+* Fans of specific genres or eras looking for curated selections
+
+* Gifting audiences interested in unique, meaningful music-based gifts
+
+* Casual listeners transitioning into deeper music appreciation
+
+The platform also appeals to shoppers who want a personalized and aesthetic experience—one that feels premium, retro-inspired, and aligned with the timelessness of music.
+
+---
+
+## 🎨 Design Choices
+
+The visual identity of Real Legacy Media is rooted in a retro-modern aesthetic that pays homage to the golden age of physical music formats while remaining accessible and relevant for today’s digital users.
+
+The color palette combines warm, earthy tones with vintage appeal:
+
+* #A86523 (brown) evokes classic record sleeves and aged materials
+
+* #E9A319 (orange) and #FAD59A (peach) add nostalgic vibrance reminiscent of 70s–90s design motifs
+
+* #FCEFCB (cream) softens the interface with a mellow background warmth
+
+* #000000 (black) is used for text and contrast, grounding the aesthetic in simplicity and readability
+
+This palette creates a clean, inviting visual hierarchy that avoids clutter and encourages browsing. Typography choices favor blocky, geometric fonts reminiscent of vintage album covers and arcade-era displays, while layouts are grid-based and responsive — designed to scale smoothly across breakpoints (mobile, tablet, desktop).
+
+Additional design principles include:
+
+Minimalist structure: White space and strong section divisions prioritize focus and readability
+
+Functional retro: Elements like badges, buttons, and cards carry subtle nods to older interfaces but are built with modern CSS and UX patterns
+
+Consistent theming: Every UI element—from product cards to navigation bars—uses a cohesive visual style to reinforce brand identity
+
+Together, these design choices create a shopping experience that feels nostalgic yet modern, appealing to users who value both the past and present of music culture.
 
 ## 👥 User Stories
 
@@ -103,8 +152,8 @@ To run this project locally, follow the steps below. These instructions assume y
 1. **Clone the repository**
 
 ```bash
-git clone https://github.com/your-username/real-legacy-media.git
-cd real-legacy-media
+git clone https://github.com/TylerRTDev/CI-MSProject4.git
+cd CI-MSProject4
 ```
 
 2. **Create and activate a virtual environment**
@@ -127,6 +176,7 @@ pip install -r requirements.txt
 SECRET_KEY=your_django_secret_key
 STRIPE_PUBLISHABLE_KEY=your_stripe_test_key
 STRIPE_SECRET_KEY=your_stripe_secret_key
+STRIPE_WEBHOOK_SECRET=your_webhook_secret_key
 DEBUG=True
 ```
 
