@@ -3,7 +3,7 @@
 ## 🔗 Live Project
 
 - 🌍 Live Site: [Real Legacy Media](https://reallegacymedia-prod.onrender.com)
-- 💻 GitHub Repo: [Full Stack E-Commerce Wensbite](https://github.com/TylerRTDev/CI-MSProject4)
+- 💻 GitHub Repo: [Full Stack E-Commerce Website Project](https://github.com/TylerRTDev/CI-MSProject4)
 
 ## Table of Contents
 
@@ -14,16 +14,27 @@
 - [👥 User Goals](#-user-goals)
 - [💡 User Value](#-user-value)
 - [🎨 Design Choices](#-design-choices)
+  - [Colour Scheme](#colour-scheme)
   - [🗂️ Wireframes/Designs](#️-wireframesdesigns)
   - [🔤 Typography](#-typography)
 - [👥 User Stories](#-user-stories)
+  - [🎧 As a Music Fan (Site Visitor)](#-as-a-music-fan-site-visitor)
+  - [🛒 As a Returning Customer](#-as-a-returning-customer)
+  - [🧑‍💼 As a Site Admin](#-as-a-site-admin)
 - [🌟 Key Features](#-key-features)
 - [📊 Entity Relationship Diagram (ERD)](#-entity-relationship-diagram-erd)
-- [🧱 Tables & Fields](#-tables--fields)
-- [🚀 Getting Started](#-getting-started)
+- [🗂️ Database Schema](#️-database-schema)
 - [🛠️ Technologies Used](#️-technologies-used)
+  - [💻 Backend](#-backend)
+  - [🎨 Frontend](#-frontend)
+  - [🧾 Payments & Accounts](#-payments--accounts)
+  - [⚙️ Tooling & Deployment](#️-tooling--deployment)
 - [📚 Usage Instructions](#-usage-instructions)
+- [🚀 Getting Started](#-getting-started)
 - [🚀 Deployment](#-deployment)
+  - [📂 Version Control](#-version-control)
+  - [🛠 Local Deployment](#-local-deployment)
+  - [☁️ Render Deployment](#️-render-deployment)
 - [🐞 Known Issues & Future Improvements](#-known-issues--future-improvements)
 
 
@@ -41,7 +52,7 @@ Designed to feel like a record store reimagined for the web, Real Legacy Media s
 Music is timeless—but the way people discover and purchase it is constantly evolving. Real Legacy Media taps into the resurgence of physical music formats, while offering the convenience of a modern online storefront. The project was born from a desire to:
 
 * Blend the nostalgic appeal of record shops with modern UX/UI practices
-* Create a community-focused platform that supports browsing, reviewing, and collecting
+* Create a community-focused platform that supports browsing and collecting
 * Provide admin-level control without compromising frontend design or user experience
 
 ---
@@ -94,23 +105,32 @@ The platform also appeals to shoppers who want a personalized and aesthetic expe
 
 ## 💡 User Value
 
-- 🎵 **Diverse product formats** — Users can shop vinyl, CDs, and digital media with clear format labeling and filtering.
-![Media Formats](./static/images)
+- 🎵 **Diverse product formats** — Users can shop vinyl, CDs, and digital media with clear format labeling and filtering as well as site merchandise.
+![Media Formats](./static/images/document_files/diverse-products.png)
 
 - 📱 **Mobile-first design** — The entire shopping experience is optimized for small screens, ensuring accessibility on the go.
-![Mobile View](./static/images)
+![Responsively Mobile View](./static/images/document_files/mobile-optimisation.png)
+[Responsivly App](https://responsively.app/)
+![Media Queries For Responsive Design](./static/images/document_files/css-styling-moblie-resolutions.png)
 
 - 🛒 **Session-based cart** — Cart contents persist between visits for logged-in users, enabling easy product tracking.
-![User Cart](./static/images)
+![User Cart](./static/images/document_files/user-cart.png)
 
 - 💳 **Secure Stripe checkout** — Users complete purchases through Stripe’s trusted payment gateway with minimal friction.
-![Stripe Payment](./static/images)
+![Stripe Checkout](./static/images/document_files/stripe-checkout.png)
+![Stripe Payment Processing](./static/images/document_files/stripe-checkout-processing.png)
+![Stripe Transaction](./static/images/document_files/stripe-transaction-complete.png)
 
 - 📦 **Order tracking** — Users receive confirmation and status updates, and can access their past orders from their profile.
-![Order Confirmation](./static/images)
+![Order History](./static/images/document_files/order-history.png)
+![Order Tracking](./static/images/document_files/order-tracking.png)
+
 
 - 🧾 **Simple account management** — Profiles are easy to edit and allow storage of personal preferences and delivery details.
-![Admin Dashboard](./static/images)
+![Admin Dashboard](./static/images/document_files/admin-dashboard.png)
+![Admin Dashboard](./static/images/document_files/admin-dashboard-order.png)
+![Admin Dashboard](./static/images/document_files/admin-dashboard-product-catalogue.png)
+![Admin Dashboard](./static/images/document_files/admin-dashboard-genre.png)
 
 
 > These features collectively support a user experience that’s fast, flexible, and aligned with the expectations of modern online shoppers — especially those passionate about curated physical media.
@@ -209,13 +229,13 @@ Product For Sale
 
 The typography for Real Legacy Media was chosen to evoke a blend of retro style and modern readability — reflecting the brand’s focus on nostalgic physical media with a contemporary digital experience.
 
-#### 🎵 Headings: `Brexon`
+#### Headings: `Brexon`
 Brexon is a bold, geometric typeface used for headings, titles, and product names. Its sharp angles and blocky proportions convey a vintage poster feel, aligning with the brand’s retro music aesthetic. This choice reinforces the site's strong visual identity and helps key sections stand out.
 
-#### 📱 Headings (Mobile Fallback): `Sigmar One`
+#### Headings (Mobile Fallback): `Sigmar One`
 On mobile devices where `Brexon` may not load reliably, the site falls back to **Sigmar One**, a rounded display font. While visually distinct, it retains the playful, expressive energy of the brand and maintains visual hierarchy on smaller screens and aligns with the initial blocky/vintage style Brexon provides.
 
-#### 🪄 Body Text: `Kodchasan`
+#### Body Text: `Kodchasan`
 Kodchasan - Used for product descriptions, is a clean, sans-serif font optimized for readability across screen sizes. It complements Brexon without competing with it, and provides a neutral, friendly tone for paragraphs, product descriptions, and UI elements.
 
 Both fonts are used in **black** for maximum legibility against the site’s light and peach-toned backgrounds.
@@ -278,82 +298,99 @@ The Real Legacy Media platform is structured using Django’s ORM and a fully no
 
 This ERD supports scalability, modular development, and seamless payment workflows, while maintaining clean separation of user data, catalog logic, and transactional records.
 
+## 🗂️ Database Schema
 
-## 🧱 Tables & Fields
+### User
+(Django built-in model)
 
-| Entity           | Field           | Type                  | Key | FK to        | Notes/Constraints                     |
-|------------------|------------------|------------------------|-----|--------------|--------------------------------------|
-| **Profile**       | user             | OneToOneField          | FK  | User.id      | on_delete=CASCADE, unique            |
-|                  | phone            | CharField              |     |              | blank=True                           |
-|                  | address          | TextField              |     |              | blank=True                           |
-|                  | city             | CharField              |     |              | blank=True                           |
-|                  | country          | CharField              |     |              | blank=True                           |
-|                  | date_of_birth    | DateField              |     |              | null=True, blank=True                |
-|                  | favorite_genre   | CharField              |     |              | blank=True                           |
-|                  | created_at       | DateTimeField          |     |              | auto_now_add=True                    |
-| **Genre**         | name             | CharField              |     |              |                                      |
-|                  | slug             | SlugField              |     |              | unique=True                          |
-| **MediaType**     | name             | CharField              |     |              |                                      |
-|                  | slug             | SlugField              |     |              | unique=True                          |
-| **Category**      | name             | CharField              |     |              |                                      |
-|                  | slug             | SlugField              |     |              | unique=True                          |
-| **Product**       | name             | CharField              |     |              |                                      |
-|                  | slug             | SlugField              |     |              | unique=True                          |
-|                  | description      | TextField              |     |              |                                      |
-|                  | price            | DecimalField(10,2)     |     |              |                                      |
-|                  | original_price   | DecimalField(10,2)     |     |              | nullable                             |
-|                  | stock            | PositiveIntegerField   |     |              |                                      |
-|                  | is_featured      | BooleanField           |     |              |                                      |
-|                  | created_at       | DateTimeField          |     |              | auto_now_add=True                    |
-|                  | updated_at       | DateTimeField          |     |              | auto_now=True                        |
-|                  | genre            | ForeignKey             | FK  | Genre.id     | on_delete=SET_NULL, null=True        |
-|                  | media_type       | ForeignKey             | FK  | MediaType.id | on_delete=SET_NULL, null=True        |
-|                  | category         | ForeignKey             | FK  | Category.id  | on_delete=SET_NULL, null=True        |
-| **ProductImage**  | product          | ForeignKey             | FK  | Product.id   | on_delete=CASCADE                    |
-|                  | image            | ImageField             |     |              |                                      |
-|                  | alt_text         | CharField              |     |              | blank=True                           |
-|                  | is_main          | BooleanField           |     |              |                                      |
-|                  | order            | PositiveIntegerField   |     |              |                                      |
-| **CartItem**      | user             | ForeignKey             | FK  | User.id      | on_delete=CASCADE                    |
-|                  | product          | ForeignKey             | FK  | Product.id   | on_delete=CASCADE                    |
-|                  | quantity         | PositiveIntegerField   |     |              | default=1                            |
-| **Order**         | user             | ForeignKey             | FK  | User.id      | on_delete=CASCADE, nullable          |
-|                  | email            | EmailField             |     |              | nullable                             |
-|                  | address          | TextField              |     |              | nullable                             |
-|                  | city             | CharField              |     |              | nullable                             |
-|                  | postcode         | CharField              |     |              | nullable                             |
-|                  | total_amount     | DecimalField(10,2)     |     |              |                                      |
-|                  | status           | CharField              |     |              | choices=[Pending, Shipped, Delivered]|
-|                  | created_at       | DateTimeField          |     |              | auto_now_add=True                    |
-| **OrderItem**     | order            | ForeignKey             | FK  | Order.id     | on_delete=CASCADE                    |
-|                  | product          | ForeignKey             | FK  | Product.id   | on_delete=CASCADE                    |
-|                  | quantity         | PositiveIntegerField   |     |              |                                      |
-|                  | price            | DecimalField(10,2)     |     |              |                                      |
-| **CheckoutOrder** | user             | ForeignKey             | FK  | User.id      | on_delete=CASCADE, nullable          |
-|                  | order_session    | CharField              |     |              | unique=True, nullable                |
-|                  | order_number     | CharField              |     |              | unique=True, nullable                |
-|                  | email            | EmailField             |     |              | nullable                             |
-|                  | full_name        | CharField              |     |              |                                      |
-|                  | city             | CharField              |     |              | nullable                             |
-|                  | postcode         | CharField              |     |              | nullable                             |
-|                  | total_amount     | DecimalField(10,2)     |     |              |                                      |
-|                  | status           | CharField              |     |              | choices=[pending, shipped, delivered]|
-|                  | created_at       | DateTimeField          |     |              | auto_now_add=True                    |
+| Field      | Type       | Notes          |
+|------------|------------|----------------|
+| id         | AutoField  | Primary key    |
+| username   | CharField  | Unique         |
+| email      | EmailField | Required       |
+| password   | CharField  | Hashed         |
 
-> The following table represents the project’s Entity Relationship Diagram (ERD) in tabular form, outlining all models, fields, keys, and relationships used in the Real Legacy Media database schema.
+### Profile
+(One-to-one with User)
 
+| Field            | Type         | Notes                        |
+|------------------|--------------|------------------------------|
+| id               | AutoField    | Primary key                 |
+| user             | OneToOne     | FK to User                  |
+| phone            | CharField    | Optional                    |
+| address          | TextField    | Optional                    |
+| city             | CharField    | Optional                    |
+| country          | CharField    | Optional                    |
+| date_of_birth    | DateField    | Optional                    |
+| favorite_genre   | CharField    | Optional                    |
+| created_at       | DateTime     | auto_now_add                |
 
-## 🚀 Getting Started
+### Product
 
-To run this project locally, follow the steps below. These instructions assume you're using Python 3.10+ and have `pip` and `git` installed.
+| Field           | Type                 | Notes                                 |
+|-----------------|----------------------|----------------------------------------|
+| id              | AutoField            | Primary key                            |
+| name            | CharField            |                                        |
+| slug            | SlugField            | Unique URL-safe name                   |
+| description     | TextField            |                                        |
+| price           | DecimalField(10,2)   |                                        |
+| original_price  | DecimalField(10,2)   | Optional (for sale tracking)           |
+| stock           | PositiveIntegerField |                                        |
+| is_featured     | BooleanField         |                                        |
+| created_at      | DateTimeField        | auto_now_add                           |
+| updated_at      | DateTimeField        | auto_now                               |
+| genre           | ForeignKey → Genre   | Optional, SET_NULL                     |
+| media_type      | ForeignKey → MediaType | Optional, SET_NULL                  |
+| category        | ForeignKey → Category | Optional, SET_NULL                  |
 
-### 🔧 Prerequisites
+### Genre / MediaType / Category (shared structure)
 
-* Python 3.10+
-* pip
-* Git
-* Virtual environment tool (e.g., `venv` or `virtualenv`)
-* \[Optional] PostgreSQL for production use
+| Field   | Type       | Notes      |
+|---------|------------|------------|
+| id      | AutoField  | Primary key |
+| name    | CharField  |            |
+| slug    | SlugField  | Unique      |
+
+### CartItem
+
+| Field     | Type                 | Notes                      |
+|-----------|----------------------|-----------------------------|
+| id        | AutoField            | Primary key                 |
+| user      | ForeignKey → User    | on_delete=CASCADE           |
+| product   | ForeignKey → Product | on_delete=CASCADE           |
+| quantity  | PositiveIntegerField | default=1                   |
+
+### CheckoutOrder
+
+| Field          | Type                 | Notes                                 |
+|----------------|----------------------|----------------------------------------|
+| id             | AutoField            | Primary key                            |
+| user           | ForeignKey → User    | Optional                               |
+| order_session  | CharField            | Stripe session ID, unique              |
+| order_number   | CharField            | Unique order reference                 |
+| email          | EmailField           |                                        |
+| full_name      | CharField            |                                        |
+| city           | CharField            | Optional                               |
+| postcode       | CharField            | Optional                               |
+| total_amount   | DecimalField(10,2)   |                                        |
+| status         | CharField            | Choices: pending, shipped, delivered   |
+| created_at     | DateTimeField        | auto_now_add                           |
+
+### Order
+
+| Field        | Type                  | Notes                                  |
+|--------------|-----------------------|----------------------------------------|
+| id           | AutoField             | Primary key                             |
+| user         | ForeignKey → User     | Optional (nullable)                     |
+| email        | EmailField            | Optional                                |
+| address      | TextField             | Optional                                |
+| city         | CharField             | Optional                                |
+| postcode     | CharField             | Optional                                |
+| total_amount | DecimalField(10,2)    |                                         |
+| status       | CharField             | Choices: Pending, Shipped, Delivered    |
+| created_at   | DateTimeField         | auto_now_add                            |
+
+> The following tables represents the project’s Entity Relationship Diagram (ERD) in tabular form, outlining all models, fields, keys, and relationships used in the Real Legacy Media database schema.
 
 ## 🛠️ Technologies Used
 
@@ -409,24 +446,24 @@ To run this project locally, follow the steps below. These instructions assume y
 
 ---
 
+## 🚀 Getting Started
 
-### 🚀 Deployment
+To run this project locally, follow the steps below. These instructions assume you're using Python 3.10+ and have `pip` and `git` installed.
 
-The app is deployed to [Render](https://render.com/) with the following setup:
+### 🔧 Prerequisites
 
-* **Web Server**: Gunicorn (or `manage.py runserver` for dev)
-* **Environment Variables**: Managed via `.env` (in development) and dashboard settings in Render
-* **Database**: SQLite
-* **Static/Media Files**:
+* Python 3.10+
+* pip
+* Git
+* Virtual environment tool (e.g., `venv` or `virtualenv`)
+* \[Optional] PostgreSQL for production use
 
-  ```bash
-  python manage.py collectstatic
-  ```
-* **Domains & HTTPS**: Use Render’s domain setup or custom domain configuration for production readiness
-
----
 
 ## 🚀 Deployment
+
+Real Legacy Media was deployed using Render, with a production-ready Django backend. Static and media files are handled via WhiteNoise and collected using Django’s `collectstatic` command. Environment variables, database configuration, and Stripe integration were securely managed through the Render dashboard.
+
+The live site is fully responsive and optimized for performance across devices.
 
 ### 📂 Version Control
 
@@ -491,6 +528,28 @@ python manage.py runserver
 ```
 
 Visit `http://127.0.0.1:8000/` in your browser to view the site.
+
+### Static and Media Files Setup for Cloud Deployment
+
+When deploying to cloud platforms like Render, proper configuration of static and media files is crucial for your Django application to function correctly.
+
+* **Static Files Collection**:
+  Before deployment, Django needs to collect all static files into a single directory. This ensures that your CSS, JavaScript, and other static assets are properly served.
+
+  ```bash
+  python manage.py collectstatic
+  ```
+
+  This command will:
+  - Gather all static files from your applications
+  - Copy them to a designated directory (usually 'staticfiles')
+  - Make them accessible to your cloud platform's static file serving system
+
+* **Important Notes**:
+  - Ensure `STATIC_ROOT` is properly configured in your settings.py
+  - Verify that `STATIC_URL` points to the correct path
+  - Keep in mind that most cloud platforms have ephemeral filesystems
+For Cloud Deployment (on Render in this instance)
 
 ---
 

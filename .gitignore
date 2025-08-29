@@ -1,4 +1,5 @@
 .env
+/staticfiles
 myenv/pyvenv.cfg
 myenv/Lib/site-packages/pip/__init__.py
 myenv/Lib/site-packages/pip/__main__.py
@@ -8086,3 +8087,21 @@ myenv/Lib/site-packages/coverage-7.10.5.dist-info/licenses/LICENSE.txt
 myenv/Scripts/coverage-3.12.exe
 myenv/Scripts/coverage.exe
 myenv/Scripts/coverage3.exe
+staticfiles/css/style.css
+staticfiles/css/style.css
+staticfiles/css/style.css
+staticfiles/css/style.css
+staticfiles/images/document_files/admin-dashboard-genre.png
+staticfiles/images/document_files/admin-dashboard-order.png
+staticfiles/images/document_files/admin-dashboard-product-catalogue.png
+staticfiles/images/document_files/admin-dashboard.png
+staticfiles/images/document_files/css-styling-moblie-resolutions.png
+staticfiles/images/document_files/diverse-products.png
+staticfiles/images/document_files/mobile-optimisation.png
+staticfiles/images/document_files/order-history.png
+staticfiles/images/document_files/order-tracking.png
+staticfiles/images/document_files/stripe-checkout-processing.png
+staticfiles/images/document_files/stripe-checkout-purchase-order.png
+staticfiles/images/document_files/stripe-checkout.png
+staticfiles/images/document_files/stripe-transaction-complete.png
+staticfiles/images/document_files/user-cart.png

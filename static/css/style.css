@@ -1235,7 +1235,6 @@ section {
 
 }
 
-
 @media (max-width: 390px) {
 
     .hero-title {
@@ -1284,7 +1283,6 @@ section {
     }
 }
 
-/* Mobile Small - 480px */
 @media (max-width: 480px) {
 
     .login-container h1, .register-container h1 {
@@ -1545,7 +1543,6 @@ section {
     }
 }
 
-/* Desktop - 1024px+ */
 @media (min-width: 1024px) and (max-width: 1439px) {
   /* Adjust container widths */
     .container {
