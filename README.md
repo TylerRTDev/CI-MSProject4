@@ -529,6 +529,29 @@ python manage.py runserver
 
 Visit `http://127.0.0.1:8000/` in your browser to view the site.
 
+## 💳 Stripe Webhook & CLI Setup
+
+The Real Legacy Media checkout flow uses Stripe webhooks to confirm successful payments before creating orders. When a checkout session is completed, Stripe sends a `checkout.session.completed` event to a secure webhook endpoint (`/stripe/webhook/`).
+
+This endpoint is implemented in Django and verifies the event’s authenticity using Stripe’s webhook signing secret. Once verified, a corresponding `CheckoutOrder` entry is created in the database — ensuring that only fully confirmed and paid transactions are recorded.
+
+During development, the Stripe CLI was used to forward events to the local server and retrieve the signing secret. The following command was used:
+
+```bash
+stripe listen --forward-to localhost:8000/stripe/webhook/
+```
+
+### Stripe Webhook Setup
+
+In your Stripe Dashboard:
+
+- Navigate to **Developers → Webhooks**
+- Click **“+ Add endpoint”**
+- Set your endpoint URL (e.g. `https://yourdomain.com/stripe/webhook/`)
+- Under **"Events to send"**, select:
+  - `checkout.session.completed` ✅ (required for order confirmation)
+  - *(Optional)*: Add other events like `payment_intent.succeeded` or `charge.failed` if needed later
+
 ### Static and Media Files Setup for Cloud Deployment
 
 When deploying to cloud platforms like Render, proper configuration of static and media files is crucial for your Django application to function correctly.

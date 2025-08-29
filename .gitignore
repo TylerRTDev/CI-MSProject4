@@ -1,5 +1,5 @@
 .env
-/staticfiles
+/staticfiles/
 myenv/pyvenv.cfg
 myenv/Lib/site-packages/pip/__init__.py
 myenv/Lib/site-packages/pip/__main__.py
@@ -8105,3 +8105,16 @@ staticfiles/images/document_files/stripe-checkout-purchase-order.png
 staticfiles/images/document_files/stripe-checkout.png
 staticfiles/images/document_files/stripe-transaction-complete.png
 staticfiles/images/document_files/user-cart.png
+myenv/Lib/site-packages/pycodestyle.py
+myenv/Lib/site-packages/__pycache__/pycodestyle.cpython-312.pyc
+myenv/Lib/site-packages/pycodestyle-2.14.0.dist-info/entry_points.txt
+myenv/Lib/site-packages/pycodestyle-2.14.0.dist-info/INSTALLER
+myenv/Lib/site-packages/pycodestyle-2.14.0.dist-info/LICENSE
+myenv/Lib/site-packages/pycodestyle-2.14.0.dist-info/METADATA
+myenv/Lib/site-packages/pycodestyle-2.14.0.dist-info/RECORD
+myenv/Lib/site-packages/pycodestyle-2.14.0.dist-info/REQUESTED
+myenv/Lib/site-packages/pycodestyle-2.14.0.dist-info/top_level.txt
+myenv/Lib/site-packages/pycodestyle-2.14.0.dist-info/WHEEL
+myenv/Scripts/pycodestyle.exe
+staticfiles/css/style.css
+staticfiles/css/style.css

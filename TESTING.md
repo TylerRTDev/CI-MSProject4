@@ -53,8 +53,8 @@ Tested at breakpoints **360, 390, 768, 1024, 1440+** with Chrome DevTools and ph
 
 | Device         | Browser | Layout | Key Notes                                       |
 | -------------- | ------- | ------ | ----------------------------------------------- |
-| iPhone 13      | Safari  | ✅      | Navbar collapses; cards stack; CTA spacing OK   |
-| Pixel 7        | Chrome  | ✅      | Filters collapse; pagination is finger‑friendly |
+| iPhone 12 Pro       | Safari  | ✅      | Navbar collapses; cards stack; CTA spacing OK   |
+| Galaxy S20        | Chrome  | ✅      | Filters collapse; pagination is finger‑friendly |
 | iPad Air       | Safari  | ✅      | Two‑column layout; checkout forms comfortable   |
 | MacBook Pro    | Chrome  | ✅      | 3–4 column grids; hover states; sticky header   |
 | Windows Laptop | Edge    | ✅      | Consistent spacing and typography               |
@@ -70,8 +70,17 @@ Tested at breakpoints **360, 390, 768, 1024, 1440+** with Chrome DevTools and ph
 
 ## Code Validation
 
-* **HTML**: W3C Markup Validator — no blocking errors.
-* **CSS**: W3C Jigsaw — passed (minor vendor prefix warnings ignored).
+* **HTML**: [W3C Markup Validator](https://validator.w3.org/nu/) — no blocking errors.
+![HTML Validation](./static/images/document_files/html-validator.png)
+
+* **CSS**: [W3C CSS Validator](https://jigsaw.w3.org/css-validator/) — passed (minor vendor prefix warnings ignored).
+![CSS Validation](./static/images/document_files)
+
+* **JavaScript**: Validated using JSLint.
+![JavaScript Validation](./static/images/document_files/jslint-validator.png)
+
+During testing, minor JavaScript warnings were identified related to inconsistent use of single (`'`) and double (`"`) quotes. These did not affect functionality or cause runtime errors, but were flagged by the linter and browser DevTools as stylistic inconsistencies. To maintain code quality and consistency, a single quote style was adopted and enforced using Prettier, ensuring a clean and readable JavaScript codebase.
+
 * **Python**: `flake8` — no critical issues; line length kept ≤ 88 where practical.
 * **Django**: `python manage.py check` — OK.
 
@@ -142,6 +151,9 @@ All automated tests live under each app’s `tests/` package. Below is a grouped
 | `test_remove_nonexistent_product_does_not_error` | Remove nonexistent product does not error | Views  | ✅ Passed |
 | `test_remove_from_cart_redirects`                | Remove from cart redirects                | Views  | ✅ Passed |
 | `test_cart_view_context_totals`                  | Cart view context totals                  | Views  | ✅ Passed |
+| `test_update_cart_exceeds_stock`                  | Cart view context totals                  | Views  | ✅ Passed |
+| `test_add_to_cart_exceeds_stock`                  | Cart view context totals                  | Views  | ✅ Passed |
+
 
 #### `checkout`
 
@@ -210,18 +222,15 @@ coverage run manage.py test
 coverage report -m
 ```
 
-> **Note:** `accounts` coverage was raised substantially by adding view tests for `login_view`, `order_history_view`, `order_detail_view`, `change_password_view`, and `account_detail_view`.
-
-
 | App       | Files | Statements | Miss | Coverage |
 | --------- | ----: | ---------: | ---: | -------: |
-| accounts  |     — |          — |    — |        — |
-| cart      |     — |          — |    — |        — |
-| checkout  |     — |          — |    — |        — |
-| core      |     — |          — |    — |        — |
-| orders    |     — |          — |    — |        — |
-| products  |     — |          — |    — |        — |
-| **TOTAL** |     — |          — |    — |        — |
+| accounts  |     14 |          236 |    28 |        88% |
+| cart      |     12 |          212 |    44 |        79% |
+| checkout  |     21 |          396 |    47 |        88% |
+| core      |     7 |          20 |    5 |        75% |
+| orders    |     11 |          78 |    0 |        100% |
+| products  |     17 |          243 |    39 |        84% |
+| **TOTAL** |     82 |          1243 |    174 |        86% |
 
 ## Bug Tracking & Resolutions
 

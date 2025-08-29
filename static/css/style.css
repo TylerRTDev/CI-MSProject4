@@ -258,7 +258,7 @@ section {
     background: url('/static/images/cassettes-colour.jpg');
     position: relative;
     border: solid 3px var(--orange);
-    background-size: 100% 100% 50% 100%;
+    background-size: 100%;
     background-position: center;
     background-repeat: no-repeat;
 }
@@ -267,7 +267,7 @@ section {
     background: url('/static/images/merch-image.jpg');
     position: relative;
     border: solid 3px var(--orange);
-    background-size: 100% 100% 50% 100%;
+    background-size: 100%;
     background-position: center;
     background-repeat: no-repeat;
 }
@@ -276,7 +276,7 @@ section {
     background: url('/static/images/bg-image.jpg');
     position: relative;
     border: solid 3px var(--orange);
-    background-size: 100% 100% 50% 100%;
+    background-size: 100%;
     background-position: center;
     background-repeat: no-repeat;
 }
@@ -337,7 +337,7 @@ section {
     position: relative;
     border: solid 3px var(--orange);
     border-radius: 100% 50%;
-    background-size: 100% 100% 50% 100%;
+    background-size: 100%;
     background-position: center;
     background-repeat: no-repeat;
     box-shadow: 10px 10px 8px var(--orange);
