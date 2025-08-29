@@ -64,15 +64,22 @@ def add_to_cart(request, product_id):
 
         product = get_object_or_404(Product, id=product_id)
         
-        if quantity > product.stock:
-            messages.error(request, f"Only {product.stock} units available for {product.name}.")
-            return redirect('products:detail', slug=product.slug)
-
         cart = request.session.get('cart', {})
 
         key = f"{product_id}"
         if size:
             key = f"{product_id}_{size.lower()}"
+        
+        # Check total desired quantity including existing cart contents
+        existing_quantity = cart.get(key, {}).get('quantity', 0)
+        total_requested = existing_quantity + quantity
+
+        if total_requested > product.stock:
+            messages.error(
+                request,
+                f"You already have {existing_quantity} in your basket. Only {product.stock} units available for {product.name}."
+            )
+            return redirect('products:detail', slug=product.slug)
 
         # Update or add to cart
         if key in cart:

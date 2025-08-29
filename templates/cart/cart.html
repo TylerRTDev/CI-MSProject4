@@ -29,7 +29,7 @@
                             {% csrf_token %}
                             <input type="hidden" name="item_id" value="{{ item.id }}">
                             <div class="update-btn-container">
-                                <input type="number" name="quantity" value="{{ item.quantity }}" min="1" max="99" class="form-control form-control-sm me-2" style="width: 40px;">
+                                <input type="number" name="quantity" value="{{ item.quantity }}" min="1" max="99" class="form-control form-control-sm me-2" style="width: 50px;">
                                 <button type="submit" class="ml-1 btn btn-sm btn-outline-primary">Update</button>
                             </div>
                         </form>
