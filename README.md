@@ -1,4 +1,4 @@
-# 🎵 Real Legacy Media - All your favourite music in any format
+# 🎵 Real Legacy Media - All Your Favourite Music In Any Format...
 
 ## 🔗 Live Project
 
@@ -9,18 +9,20 @@
 
 - [📦 Project Overview](#-project-overview)
 - [💡 Rationale](#-rationale)
-- [🎯 Objectives](#-objectives)
+- [🎯 Project Objectives](#-project-objectives)
+- [🎯 Target Audience](#-target-audience)
+- [🎨 Design Choices](#-design-choices)
+  - [🗂️ Wireframes/Designs](#️-wireframesdesigns)
+  - [🔤 Typography](#-typography)
 - [👥 User Stories](#-user-stories)
 - [🌟 Key Features](#-key-features)
+- [📊 Entity Relationship Diagram (ERD)](#-entity-relationship-diagram-erd)
+- [🧱 Tables & Fields](#-tables--fields)
 - [🚀 Getting Started](#-getting-started)
-- [🛠️ Technologies Used](#-technologies-used)
+- [🛠️ Technologies Used](#️-technologies-used)
 - [📚 Usage Instructions](#-usage-instructions)
 - [🧪 Testing and Deployment](#-testing-and-deployment)
-- [🤝 Contributing](#-contributing)
-- [🙏 Credits and Acknowledgements](#-credits-and-acknowledgements)
-- [📄 License](#-license)
 - [🐞 Known Issues & Future Improvements](#-known-issues--future-improvements)
-- [📷 Screenshots](#-screenshots)
 
 
 
@@ -77,9 +79,48 @@ The platform also appeals to shoppers who want a personalized and aesthetic expe
 
 ---
 
+## 👥 User Goals
+
+- Browse and discover music products by genre, media type, or category
+- Add products to their cart and adjust quantities as needed
+- Purchase items securely using a fast and seamless checkout flow
+- Track their orders and view past purchase history
+- Navigate the site smoothly across both desktop and mobile devices
+- Enjoy a visually rich, retro-inspired experience without compromising usability
+
+---
+
+## 💡 User Value
+
+- 🎵 **Diverse product formats** — Users can shop vinyl, CDs, and digital media with clear format labeling and filtering.
+![Desktop Homepage](./static/images/document_files/homepage-wireframe-1440px.png)
+
+- 📱 **Mobile-first design** — The entire shopping experience is optimized for small screens, ensuring accessibility on the go.
+![Desktop Homepage](./static/images/document_files/homepage-wireframe-1440px.png)
+
+- 🛒 **Session-based cart** — Cart contents persist between visits for logged-in users, enabling easy product tracking.
+![Desktop Homepage](./static/images/document_files/homepage-wireframe-1440px.png)
+
+- 💳 **Secure Stripe checkout** — Users complete purchases through Stripe’s trusted payment gateway with minimal friction.
+![Desktop Homepage](./static/images/document_files/homepage-wireframe-1440px.png)
+
+- 📦 **Order tracking** — Users receive confirmation and status updates, and can access their past orders from their profile.
+![Desktop Homepage](./static/images/document_files/homepage-wireframe-1440px.png)
+
+- ⚡ **Fast, intuitive UI** — UI components are designed for minimal load times and responsive feedback for all actions.
+![Desktop Homepage](./static/images/document_files/homepage-wireframe-1440px.png)
+
+- 🧾 **Simple account management** — Profiles are easy to edit and allow storage of personal preferences and delivery details.
+![Desktop Homepage](./static/images/document_files/homepage-wireframe-1440px.png)
+
+
+> These features collectively support a user experience that’s fast, flexible, and aligned with the expectations of modern online shoppers — especially those passionate about curated physical media.
+
+---
+
 ## 🎨 Design Choices
 
-The visual identity of Real Legacy Media is rooted in a retro-modern aesthetic that pays homage to the golden age of physical music formats while remaining accessible and relevant for today’s digital users.
+The visual identity of Real Legacy Media is rooted in a retro aesthetic with some modern elements that pays homage to the golden age of physical music formats while remaining accessible and relevant for today’s digital users.
 
 ### Colour Scheme
 
@@ -97,9 +138,8 @@ This palette creates a clean, inviting visual hierarchy that avoids clutter and 
 
 Additional design principles include:
 
-Functional retro: Elements like badges, buttons, and cards carry subtle nods to older interfaces but are built with modern CSS and UX patterns
-
-Consistent theming: Every UI element—from product cards to navigation bars—uses a cohesive visual style to reinforce brand identity
+* Functional retro: Elements like badges, buttons, and cards carry subtle nods to older interfaces but are built with modern CSS and UX patterns
+* Consistent theming: Every UI element—from product cards to navigation bars—uses a cohesive visual style to reinforce brand identity
 
 Together, these design choices create a shopping experience that feels nostalgic yet modern, appealing to users who value both the past and present of music culture.
 
