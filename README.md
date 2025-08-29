@@ -11,6 +11,8 @@
 - [💡 Rationale](#-rationale)
 - [🎯 Project Objectives](#-project-objectives)
 - [🎯 Target Audience](#-target-audience)
+- [👥 User Goals](#-user-goals)
+- [💡 User Value](#-user-value)
 - [🎨 Design Choices](#-design-choices)
   - [🗂️ Wireframes/Designs](#️-wireframesdesigns)
   - [🔤 Typography](#-typography)
@@ -21,7 +23,7 @@
 - [🚀 Getting Started](#-getting-started)
 - [🛠️ Technologies Used](#️-technologies-used)
 - [📚 Usage Instructions](#-usage-instructions)
-- [🧪 Testing and Deployment](#-testing-and-deployment)
+- [🚀 Deployment](#-deployment)
 - [🐞 Known Issues & Future Improvements](#-known-issues--future-improvements)
 
 
@@ -93,25 +95,22 @@ The platform also appeals to shoppers who want a personalized and aesthetic expe
 ## 💡 User Value
 
 - 🎵 **Diverse product formats** — Users can shop vinyl, CDs, and digital media with clear format labeling and filtering.
-![Desktop Homepage](./static/images/document_files/homepage-wireframe-1440px.png)
+![Media Formats](./static/images)
 
 - 📱 **Mobile-first design** — The entire shopping experience is optimized for small screens, ensuring accessibility on the go.
-![Desktop Homepage](./static/images/document_files/homepage-wireframe-1440px.png)
+![Mobile View](./static/images)
 
 - 🛒 **Session-based cart** — Cart contents persist between visits for logged-in users, enabling easy product tracking.
-![Desktop Homepage](./static/images/document_files/homepage-wireframe-1440px.png)
+![User Cart](./static/images)
 
 - 💳 **Secure Stripe checkout** — Users complete purchases through Stripe’s trusted payment gateway with minimal friction.
-![Desktop Homepage](./static/images/document_files/homepage-wireframe-1440px.png)
+![Stripe Payment](./static/images)
 
 - 📦 **Order tracking** — Users receive confirmation and status updates, and can access their past orders from their profile.
-![Desktop Homepage](./static/images/document_files/homepage-wireframe-1440px.png)
-
-- ⚡ **Fast, intuitive UI** — UI components are designed for minimal load times and responsive feedback for all actions.
-![Desktop Homepage](./static/images/document_files/homepage-wireframe-1440px.png)
+![Order Confirmation](./static/images)
 
 - 🧾 **Simple account management** — Profiles are easy to edit and allow storage of personal preferences and delivery details.
-![Desktop Homepage](./static/images/document_files/homepage-wireframe-1440px.png)
+![Admin Dashboard](./static/images)
 
 
 > These features collectively support a user experience that’s fast, flexible, and aligned with the expectations of modern online shoppers — especially those passionate about curated physical media.
@@ -213,7 +212,7 @@ The typography for Real Legacy Media was chosen to evoke a blend of retro style 
 #### 🎵 Headings: `Brexon`
 Brexon is a bold, geometric typeface used for headings, titles, and product names. Its sharp angles and blocky proportions convey a vintage poster feel, aligning with the brand’s retro music aesthetic. This choice reinforces the site's strong visual identity and helps key sections stand out.
 
-### 📱 Headings (Mobile Fallback): `Sigmar One`
+#### 📱 Headings (Mobile Fallback): `Sigmar One`
 On mobile devices where `Brexon` may not load reliably, the site falls back to **Sigmar One**, a rounded display font. While visually distinct, it retains the playful, expressive energy of the brand and maintains visual hierarchy on smaller screens and aligns with the initial blocky/vintage style Brexon provides.
 
 #### 🪄 Body Text: `Kodchasan`
@@ -227,24 +226,27 @@ Both fonts are used in **black** for maximum legibility against the site’s lig
 
 ### 🎧 As a Music Fan (Site Visitor):
 
-* You can browse music by genre, artist, or format.
-* You can preview albums or tracks (if previews are enabled).
-* You can view product details including images, pricing, and stock status.
-* You can create an account to track orders and manage your information.
+* I want to register for an account and create a unqie username. 
+* I want to browse music by genre or format.
+* I want to view product details including images, pricing, and stock status.
+* I want to track orders and manage information.
+* I want to purchase items securely so I can receive my music without issues.
 
 ### 🛒 As a Returning Customer:
 
-* You can log in to view your past orders.
-* You can easily reorder previously purchased items.
-* You can update your password and profile information.
-* You can save favorite items to a wishlist (planned feature).
+* I want to log in and view my order history.
+* I want to track my previous/existing orders.
+* I want to make purchases with existing account information. 
+* I want to update my password and profile information.
 
 ### 🧑‍💼 As a Site Admin:
 
-* You can manage product listings, images, and stock levels.
-* You can add and edit categories, genres, or media types.
-* You can view and update customer orders and shipping details.
-* You can mark items as "Featured" or "Limited Edition."
+* I want to manage product listings, images, and stock levels.
+* I want to add and edit categories, genres, or media types.
+* I want to view and update customer orders and shipping details.
+* I want to mark items as "Featured".
+* I want to update exising order status from 'Pending' to 'Shipped' to 'Delivered'
+* I want to create new admin users, managing permissions and access.
 
 ---
 
@@ -353,75 +355,25 @@ To run this project locally, follow the steps below. These instructions assume y
 * Virtual environment tool (e.g., `venv` or `virtualenv`)
 * \[Optional] PostgreSQL for production use
 
-### 📦 Installation Steps
-
-1. **Clone the repository**
-
-```bash
-git clone https://github.com/TylerRTDev/CI-MSProject4.git
-cd CI-MSProject4
-```
-
-2. **Create and activate a virtual environment**
-
-```bash
-python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
-```
-
-3. **Install dependencies**
-
-```bash
-pip install -r requirements.txt
-```
-
-4. **Set up environment variables**
-   Create a `.env` file in the root directory with the following keys:
-
-```
-SECRET_KEY=your_django_secret_key
-STRIPE_PUBLISHABLE_KEY=your_stripe_test_key
-STRIPE_SECRET_KEY=your_stripe_secret_key
-STRIPE_WEBHOOK_SECRET=your_webhook_secret_key
-DEBUG=True
-```
-
-5. **Apply database migrations**
-
-```bash
-python manage.py migrate
-```
-
-6. **Create a superuser for admin access**
-
-```bash
-python manage.py createsuperuser
-```
-
-7. **Run the development server**
-
-```bash
-python manage.py runserver
-```
-
-Visit `http://127.0.0.1:8000/` in your browser to view the site.
-
----
-
 ## 🛠️ Technologies Used
 
 ### 💻 Backend
 
 * Django 4.x (Python Web Framework)
 * SQLite (default development DB)
-* PostgreSQL (recommended for production)
 * Python Decouple (for environment variable management)
+* JavaScript
+* dotenv (Manage env variables)
+
 
 ### 🎨 Frontend
 
 * Django Templates
+* HTML & CSS
 * Bootstrap 5 (Responsive CSS Framework)
 * Custom CSS and JavaScript enhancements
+* Render (Cloud Deployment)
+
 
 ### 🧾 Payments & Accounts
 
@@ -446,7 +398,7 @@ Visit `http://127.0.0.1:8000/` in your browser to view the site.
 * **Add to Cart**: Choose the format or size, then add the item to your cart.
 * **Checkout**: Review cart items and complete payment securely via Stripe.
 * **Order History**: Log in to view all your past purchases and order details.
-* **Profile Management**: Update your personal details, address, and contact info.
+* **Profile Management**: Update your personal contact info.
 
 ### For Admins
 
@@ -457,27 +409,6 @@ Visit `http://127.0.0.1:8000/` in your browser to view the site.
 
 ---
 
-## 🧪 Testing and Deployment
-
-### ✅ Testing
-
-Testing includes both automated and manual verification across key user workflows.
-
-* **Unit Tests**: Run with Django’s built-in test suite:
-
-```bash
-python manage.py test
-```
-
-* **Manual Testing**: Performed on:
-
-  * User registration and login
-  * Cart interactions (add/update/remove)
-  * Order placement and confirmation
-  * Admin views and CRUD operations
-  * Mobile and tablet responsiveness
-
-> Using tools like Postman for API endpoint validation or pytest for extended test coverage.
 
 ### 🚀 Deployment
 
@@ -485,13 +416,126 @@ The app is deployed to [Render](https://render.com/) with the following setup:
 
 * **Web Server**: Gunicorn (or `manage.py runserver` for dev)
 * **Environment Variables**: Managed via `.env` (in development) and dashboard settings in Render
-* **Database**: SQLite in development; PostgreSQL or other production-ready DB recommended
+* **Database**: SQLite
 * **Static/Media Files**:
 
   ```bash
   python manage.py collectstatic
   ```
 * **Domains & HTTPS**: Use Render’s domain setup or custom domain configuration for production readiness
+
+---
+
+## 🚀 Deployment
+
+### 📂 Version Control
+
+All development was tracked using Git with regular commits and branch usage.  
+The full project history is available via the public [GitHub repository](https://github.com/TylerRTDev/CI-MSProject4).
+
+### 🛠 Local Deployment
+To run the project locally:
+
+1. **Clone the repository**
+
+```bash
+git clone https://github.com/TylerRTDev/CI-MSProject4.git
+cd CI-MSProject4
+```
+
+2. **Create and activate a virtual environment**
+
+```Powershell
+python -m venv venv
+venv\Scripts\activate
+```
+
+3. **Install dependencies**
+
+```bash
+pip install -r requirements.txt
+```
+
+4. **Set up environment variables**
+   Create a `.env` file in the root directory with the following keys:
+
+```
+  DATABASE_URL=database_endpoint
+  SECRET_KEY=your_django_secret_key
+  STRIPE_PUBLISHABLE_KEY=your_stripe_test_key
+  STRIPE_SECRET_KEY=your_stripe_secret_key
+  STRIPE_WEBHOOK_SECRET=your_webhook_secret_key
+```
+
+In your `settings.py` file:
+
+Set `DEBUG` to `True` for local developement `False` for deployment to production
+
+
+5. **Apply database migrations**
+
+```bash
+python manage.py migrate
+```
+
+6. **Create a superuser for admin access**
+
+```bash
+python manage.py createsuperuser
+```
+
+7. **Run the development server**
+
+```bash
+python manage.py runserver
+```
+
+Visit `http://127.0.0.1:8000/` in your browser to view the site.
+
+---
+
+### ☁️ Render Deployment
+
+Render is a cloud hosting platform that allows you to deploy full-stack web applications easily. Below are beginner-friendly steps to deploy your Django app using Render.
+
+#### 📦 Prerequisites
+- A free Render account (sign up at [render.com](https://render.com))
+- A GitHub repository with your project pushed and accessible
+- Your `requirements.txt`, and `Procfile` in the root of the repo
+
+#### 🚀 Step-by-step Guide
+1. **Log into [Render](https://render.com)** and click on **"New Web Service"**.
+2. **Connect your GitHub account** and select your CI-MSProject4 repository.
+3. **Fill out the deploy settings**:
+   - **Name:** Give your app a name (e.g., `reallegacymedia-prod`)
+   - **Environment:** Set to `Python 3`
+   - **Build Command:** *Leave blank*
+   - **Start Command:** `gunicorn your-app-name.wsgi:application`
+
+> For the Start Command the name of the app will be in your `settings.py` file.
+
+4. **Set the environment variables** under the "Environment" tab:
+```
+ALLOWED_HOSTS=your-app-name.onrender.com
+DATABASE_URL=database_endpoint
+SECRET_KEY=your_django_secret_key
+STRIPE_PUBLISHABLE_KEY=your_stripe_test_key
+STRIPE_SECRET_KEY=your_stripe_secret_key
+STRIPE_WEBHOOK_SECRET=your_webhook_secret_key
+```
+
+5. **Ensure your repo includes:**
+   - `requirements.txt` (all dependencies)
+   - `Procfile` (optional but useful for flexibility)
+
+Example `Procfile`:
+```
+web: gunicorn `your-django-app-name`.wsgi:application
+```
+
+6. Click **Create Web Service** – Render will build and deploy your app.
+
+> Once deployed, you will be given a live URL like `https://your-app-name.onrender.com`
 
 ---
 
