@@ -76,6 +76,8 @@ The platform also appeals to shoppers who want a personalized and aesthetic expe
 
 The visual identity of Real Legacy Media is rooted in a retro-modern aesthetic that pays homage to the golden age of physical music formats while remaining accessible and relevant for today’s digital users.
 
+### Colour Scheme
+
 The color palette combines warm, earthy tones with vintage appeal:
 
 * #A86523 (brown) evokes classic record sleeves and aged materials
@@ -90,13 +92,91 @@ This palette creates a clean, inviting visual hierarchy that avoids clutter and 
 
 Additional design principles include:
 
-Minimalist structure: White space and strong section divisions prioritize focus and readability
-
 Functional retro: Elements like badges, buttons, and cards carry subtle nods to older interfaces but are built with modern CSS and UX patterns
 
 Consistent theming: Every UI element—from product cards to navigation bars—uses a cohesive visual style to reinforce brand identity
 
 Together, these design choices create a shopping experience that feels nostalgic yet modern, appealing to users who value both the past and present of music culture.
+
+### 🗂️ Wireframes/Designs
+
+The wireframes for Real Legacy Media were created with a **mobile-first design strategy** in mind. These initial concepts focused on structuring core user flows — such as browsing products, navigating categories, and completing checkout — on small screens first, ensuring a responsive and accessible experience across all devices.
+
+Each wireframe served as a foundational blueprint that guided the visual hierarchy, layout decisions, and component placement in the final UI. While the designs evolved through iteration and styling, the wireframes played a key role in shaping the overall structure and functionality of the finished site.
+
+<details>
+<summary>Wireframes</summary>
+<br>
+
+#### Homepage
+Desktop - 1440px
+![Desktop Homepage](./static/images/document_files/homepage-wireframe-1440px.png)
+
+Tablet - 768px
+![Tablet Homepage](./static/images/document_files/homepage-wireframe-768px.png)
+
+Mobile - 360px
+![Mobile Homepage](./static/images/document_files/homepage-wireframe-360px.png)
+
+#### Login & Register
+Account Login Form
+![Login Form](./static/images/document_files/login-wireframe.png)
+
+Account Registration Form
+![Registration Form](./static/images/document_files/register-wireframe.png)
+
+#### User Account
+Account Dashboard
+![Account Dashboard](./static/images/document_files/dashboard-wireframe.png)
+
+User Account Details
+![Account Details](./static/images/document_files/account-details-wireframe.png)
+
+User Order History
+![Account Order History](./static/images/document_files/order-history-wireframe.png)
+
+User Order Details
+![Account Order Details](./static/images/document_files/order-details-wireframe.png)
+
+#### Checkout
+Checkout Order Form
+![Checkout Form](./static/images/document_files/checkout-wireframe.png)
+
+#### Cart
+Populated Cart
+![Cart/Basket](./static/images/document_files/cart-wireframe.png)
+
+Empty Cart
+![Cart/Basket](./static/images/document_files/empty-basket-wireframe.png)
+
+#### Product List
+Product Catalogue
+![Product Catalogue](./static/images/document_files/catalogue-wireframe.png)
+
+Product For Sale
+![Product Item](./static/images/document_files/product-page-wireframe.png)
+
+
+</details>
+
+---
+
+### 🔤 Typography
+
+The typography for Real Legacy Media was chosen to evoke a blend of retro style and modern readability — reflecting the brand’s focus on nostalgic physical media with a contemporary digital experience.
+
+#### 🎵 Headings: `Brexon`
+Brexon is a bold, geometric typeface used for headings, titles, and product names. Its sharp angles and blocky proportions convey a vintage poster feel, aligning with the brand’s retro music aesthetic. This choice reinforces the site's strong visual identity and helps key sections stand out.
+
+### 📱 Headings (Mobile Fallback): `Sigmar One`
+On mobile devices where `Brexon` may not load reliably, the site falls back to **Sigmar One**, a rounded display font. While visually distinct, it retains the playful, expressive energy of the brand and maintains visual hierarchy on smaller screens and aligns with the initial blocky/vintage style Brexon provides.
+
+#### 🪄 Body Text: `Kodchasan`
+Kodchasan - Used for product descriptions, is a clean, sans-serif font optimized for readability across screen sizes. It complements Brexon without competing with it, and provides a neutral, friendly tone for paragraphs, product descriptions, and UI elements.
+
+Both fonts are used in **black** for maximum legibility against the site’s light and peach-toned backgrounds.
+
+> Overall, the typography supports a cohesive user experience by balancing style with functionality — bold enough to make an impression, clear enough to shop with ease.
 
 ## 👥 User Stories
 
@@ -134,6 +214,87 @@ Together, these design choices create a shopping experience that feels nostalgic
 * **Admin Dashboard**: Fully featured backend interface for managing products, orders, users, and site content.
 
 ---
+
+## 📊 Entity Relationship Diagram (ERD)
+
+The Real Legacy Media platform is structured using Django’s ORM and a fully normalized relational database. The schema is designed to support a digital storefront for physical and digital music products, with support for user management, cart handling, order processing, and Stripe-integrated checkout.
+
+- **User Profiles:** Django’s built-in `User` model is extended via a `Profile` model using a one-to-one relationship. Profiles store personal information like address, country, contact number, date of birth, and musical preferences (`favorite_genre`).
+
+- **Product Catalog:** Products are organized by `Category`, and also linked to a `Genre` (e.g., hip-hop, classical) and `MediaType` (e.g., vinyl, CD, digital download). Each `Product` includes price, stock level, sale information, and timestamp metadata. Associated images are stored in the `ProductImage` model, allowing for ordering and main image designation.
+
+- **Shopping Cart:** The `CartItem` model acts as a many-to-many join between `User` and `Product`, storing the quantity selected. This allows users to maintain a session-based or persistent cart before purchasing.
+
+- **Orders:** Once a user checks out, their items are stored in an `Order` model which tracks shipping details, status, and order totals. Each product purchased is saved in the related `OrderItem` model, capturing the quantity and price at the time of sale.
+
+- **Checkout (Stripe Integration):** Stripe-driven payments are tracked using the `CheckoutOrder` model. This includes an `order_session` (Stripe session ID), a unique `order_number`, and a record of the user's name, email, address, total paid, and payment status. This model allows full decoupling of order creation from payment confirmation, improving payment integrity and security.
+
+This ERD supports scalability, modular development, and seamless payment workflows, while maintaining clean separation of user data, catalog logic, and transactional records.
+
+
+## 🧱 Tables & Fields
+
+| Entity           | Field           | Type                  | Key | FK to        | Notes/Constraints                     |
+|------------------|------------------|------------------------|-----|--------------|--------------------------------------|
+| **Profile**       | user             | OneToOneField          | FK  | User.id      | on_delete=CASCADE, unique            |
+|                  | phone            | CharField              |     |              | blank=True                           |
+|                  | address          | TextField              |     |              | blank=True                           |
+|                  | city             | CharField              |     |              | blank=True                           |
+|                  | country          | CharField              |     |              | blank=True                           |
+|                  | date_of_birth    | DateField              |     |              | null=True, blank=True                |
+|                  | favorite_genre   | CharField              |     |              | blank=True                           |
+|                  | created_at       | DateTimeField          |     |              | auto_now_add=True                    |
+| **Genre**         | name             | CharField              |     |              |                                      |
+|                  | slug             | SlugField              |     |              | unique=True                          |
+| **MediaType**     | name             | CharField              |     |              |                                      |
+|                  | slug             | SlugField              |     |              | unique=True                          |
+| **Category**      | name             | CharField              |     |              |                                      |
+|                  | slug             | SlugField              |     |              | unique=True                          |
+| **Product**       | name             | CharField              |     |              |                                      |
+|                  | slug             | SlugField              |     |              | unique=True                          |
+|                  | description      | TextField              |     |              |                                      |
+|                  | price            | DecimalField(10,2)     |     |              |                                      |
+|                  | original_price   | DecimalField(10,2)     |     |              | nullable                             |
+|                  | stock            | PositiveIntegerField   |     |              |                                      |
+|                  | is_featured      | BooleanField           |     |              |                                      |
+|                  | created_at       | DateTimeField          |     |              | auto_now_add=True                    |
+|                  | updated_at       | DateTimeField          |     |              | auto_now=True                        |
+|                  | genre            | ForeignKey             | FK  | Genre.id     | on_delete=SET_NULL, null=True        |
+|                  | media_type       | ForeignKey             | FK  | MediaType.id | on_delete=SET_NULL, null=True        |
+|                  | category         | ForeignKey             | FK  | Category.id  | on_delete=SET_NULL, null=True        |
+| **ProductImage**  | product          | ForeignKey             | FK  | Product.id   | on_delete=CASCADE                    |
+|                  | image            | ImageField             |     |              |                                      |
+|                  | alt_text         | CharField              |     |              | blank=True                           |
+|                  | is_main          | BooleanField           |     |              |                                      |
+|                  | order            | PositiveIntegerField   |     |              |                                      |
+| **CartItem**      | user             | ForeignKey             | FK  | User.id      | on_delete=CASCADE                    |
+|                  | product          | ForeignKey             | FK  | Product.id   | on_delete=CASCADE                    |
+|                  | quantity         | PositiveIntegerField   |     |              | default=1                            |
+| **Order**         | user             | ForeignKey             | FK  | User.id      | on_delete=CASCADE, nullable          |
+|                  | email            | EmailField             |     |              | nullable                             |
+|                  | address          | TextField              |     |              | nullable                             |
+|                  | city             | CharField              |     |              | nullable                             |
+|                  | postcode         | CharField              |     |              | nullable                             |
+|                  | total_amount     | DecimalField(10,2)     |     |              |                                      |
+|                  | status           | CharField              |     |              | choices=[Pending, Shipped, Delivered]|
+|                  | created_at       | DateTimeField          |     |              | auto_now_add=True                    |
+| **OrderItem**     | order            | ForeignKey             | FK  | Order.id     | on_delete=CASCADE                    |
+|                  | product          | ForeignKey             | FK  | Product.id   | on_delete=CASCADE                    |
+|                  | quantity         | PositiveIntegerField   |     |              |                                      |
+|                  | price            | DecimalField(10,2)     |     |              |                                      |
+| **CheckoutOrder** | user             | ForeignKey             | FK  | User.id      | on_delete=CASCADE, nullable          |
+|                  | order_session    | CharField              |     |              | unique=True, nullable                |
+|                  | order_number     | CharField              |     |              | unique=True, nullable                |
+|                  | email            | EmailField             |     |              | nullable                             |
+|                  | full_name        | CharField              |     |              |                                      |
+|                  | city             | CharField              |     |              | nullable                             |
+|                  | postcode         | CharField              |     |              | nullable                             |
+|                  | total_amount     | DecimalField(10,2)     |     |              |                                      |
+|                  | status           | CharField              |     |              | choices=[pending, shipped, delivered]|
+|                  | created_at       | DateTimeField          |     |              | auto_now_add=True                    |
+
+> The following table represents the project’s Entity Relationship Diagram (ERD) in tabular form, outlining all models, fields, keys, and relationships used in the Real Legacy Media database schema.
+
 
 ## 🚀 Getting Started
 
