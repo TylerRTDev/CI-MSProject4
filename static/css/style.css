@@ -292,6 +292,10 @@ section {
     -webkit-text-stroke-color: var(--brown);
 }
 
+span.badge.bg-warning.text-dark.p-2.me-2 {
+    margin: 0.5rem;
+}
+
 .catalogue-header-container {
     background-color: var(--orange);
     padding: 4rem;
@@ -781,7 +785,7 @@ section {
 }
 
 .empty-product-filter-container, .success-container {
-    padding: 14rem;
+    padding-top: 2rem;
 }
 
 .no-orders-text-container img, .empty-basket img, .empty-product-filter-container img {
