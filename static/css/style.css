@@ -1,5 +1,4 @@
 @import url('https://fonts.googleapis.com/css2?family=Kodchasan&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Brexon&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Sigmar+One&display=swap');
 
 :root {
@@ -494,7 +493,6 @@ section {
 }
 
 .product-info-container p, .error-not-found-text {
-    padding-left: auto;
     color: var(--orange);
     letter-spacing: 1px;
 }
@@ -555,7 +553,6 @@ section {
 }
 
 .product-card-text {
-    padding-left: auto;
     color: var(--orange);
     letter-spacing: 1px;
 }
@@ -688,7 +685,6 @@ section {
     padding: 2rem;
     box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
     margin-top: 2rem;
-    align-items: left;
     min-width: 350px;
     width: 40%;
 }
@@ -702,7 +698,6 @@ section {
 .form-container form span {
     display: flex;
     font-style: italic;
-    font-weight: small;
     font-size: 85%;
     color: red;
 }
@@ -1144,7 +1139,7 @@ section {
 }
 
 .confirmation-message {
-    background-color: none;
+    background-color: rgba(255, 255, 255, 0);
 }
 
 .footer-container {
