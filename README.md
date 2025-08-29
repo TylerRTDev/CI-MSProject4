@@ -1,4 +1,9 @@
-# 🎵 Real Legacy Media
+# 🎵 Real Legacy Media - All your favourite music in any format
+
+## 🔗 Live Project
+
+- 🌍 Live Site: [Real Legacy Media](https://reallegacymedia-prod.onrender.com)
+- 💻 GitHub Repo: [Full Stack E-Commerce Wensbite](https://github.com/TylerRTDev/CI-MSProject4)
 
 ## Table of Contents
 
