@@ -1,6 +1,4 @@
 .env
-/staticfiles/
-/static/
 myenv/pyvenv.cfg
 myenv/Lib/site-packages/pip/__init__.py
 myenv/Lib/site-packages/pip/__main__.py
