@@ -1,4 +1,5 @@
 # 🎵 Real Legacy Media - All Your Favourite Music In Any Format...
+![Landing Page View](./static/images/document_files/website-mockup-hero-section.png)
 
 ## 🔗 Live Project
 
@@ -390,6 +391,23 @@ This ERD supports scalability, modular development, and seamless payment workflo
 | status       | CharField             | Choices: Pending, Shipped, Delivered    |
 | created_at   | DateTimeField         | auto_now_add                            |
 
+### Summary Table of Relationships
+
+| Model     | Related Model | Type        | Description                           |
+| --------- | ------------- | ----------- | ------------------------------------- |
+| User      | Profile       | One-to-One  | Extends base user info                |
+| User      | CartItem      | One-to-Many | Stores user's cart entries            |
+| User      | Order         | One-to-Many | Tracks user’s completed purchases     |
+| User      | CheckoutOrder | One-to-Many | Stripe-driven session/order tracking  |
+| Product   | ProductImage  | One-to-Many | Each product can have multiple images |
+| Product   | Genre         | Many-to-One | Category of music (e.g., Rock, Jazz)  |
+| Product   | MediaType     | Many-to-One | Format (Vinyl, CD, Digital)           |
+| Product   | Category      | Many-to-One | Main grouping/filtering category      |
+| Order     | OrderItem     | One-to-Many | Line items per order                  |
+| OrderItem | Product       | Many-to-One | Each item is for one specific product |
+| CartItem  | Product       | Many-to-One | Each cart item relates to one product |
+
+
 > The following tables represents the project’s Entity Relationship Diagram (ERD) in tabular form, outlining all models, fields, keys, and relationships used in the Real Legacy Media database schema.
 
 ## 🛠️ Technologies Used
@@ -547,7 +565,7 @@ In your Stripe Dashboard:
 
 - Navigate to **Developers → Webhooks**
 - Click **“+ Add endpoint”**
-- Set your endpoint URL (e.g. `https://yourdomain.com/stripe/webhook/`)
+- Set your endpoint URL (e.g. `https://yourdomain.com/checkout/webhook/`)
 - Under **"Events to send"**, select:
   - `checkout.session.completed` ✅ (required for order confirmation)
   - *(Optional)*: Add other events like `payment_intent.succeeded` or `charge.failed` if needed later
@@ -591,8 +609,20 @@ Render is a cloud hosting platform that allows you to deploy full-stack web appl
 3. **Fill out the deploy settings**:
    - **Name:** Give your app a name (e.g., `reallegacymedia-prod`)
    - **Environment:** Set to `Python 3`
-   - **Build Command:** *Leave blank*
+   - **Build Command:** `build.sh`
    - **Start Command:** `gunicorn your-app-name.wsgi:application`
+
+The `build.sh` file contains the 2 following commands:
+
+This will install all required packages for the project:
+```bash
+pip install -r requirements.txt
+```
+
+This will compress your static files:
+```bash
+python manage.py collectstatic --noinput
+```
 
 > For the Start Command the name of the app will be in your `settings.py` file.
 

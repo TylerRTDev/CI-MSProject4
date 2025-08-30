@@ -74,14 +74,14 @@ Tested at breakpoints **360, 390, 768, 1024, 1440+** with Chrome DevTools and ph
 ![HTML Validation](./static/images/document_files/html-validator.png)
 
 * **CSS**: [W3C CSS Validator](https://jigsaw.w3.org/css-validator/) — passed (minor vendor prefix warnings ignored).
-![CSS Validation](./static/images/document_files)
+![CSS Validation](./static/images/document_files/css-validation.png)
 
 * **JavaScript**: Validated using JSLint.
 ![JavaScript Validation](./static/images/document_files/jslint-validator.png)
 
 During testing, minor JavaScript warnings were identified related to inconsistent use of single (`'`) and double (`"`) quotes. These did not affect functionality or cause runtime errors, but were flagged by the linter and browser DevTools as stylistic inconsistencies. To maintain code quality and consistency, a single quote style was adopted and enforced using Prettier, ensuring a clean and readable JavaScript codebase.
 
-* **Python**: `flake8` — no critical issues; line length kept ≤ 88 where practical.
+* **Python**: `pycodestyle` — no critical issues; line length kept ≤ 88 where practical.
 * **Django**: `python manage.py check` — OK.
 
 ## Manual Testing Matrix
@@ -100,6 +100,45 @@ During testing, minor JavaScript warnings were identified related to inconsisten
 | Order History       | Visit order history & detail              | Lists past orders; detail displays items   | ✅ Passed                          |
 | Account Update      | Change profile info                       | Updated fields saved and shown             | ✅ Passed                          |
 | Change Password     | Submit old + new password                 | Redirect with success; can login with new  | ✅ Passed                          |
+
+## JavaScript Functional Testing
+
+### 1. Toast Message Auto-Dismiss
+
+**Functionality:**  
+Toast messages are displayed after user actions such as adding items to the cart or submitting forms. These messages are styled to appear at the top of the screen and automatically fade out after a few seconds.
+
+**Tested Behavior:**
+- Toast appears when triggered by Django messages.
+- Toast auto-dismisses after the expected timeout (e.g. 3 seconds).
+- Manual dismissal also works via the close button.
+- Only one toast displays at a time; new messages replace old ones.
+
+**Test Method:**
+- Triggered various actions that invoke success/warning messages.
+- Observed timing and transition using browser DevTools and direct user interaction.
+
+---
+
+### 2. `id_same_as_shipping` Checkbox Functionality
+
+**Functionality:**  
+This checkbox allows users to autofill the billing address fields with their shipping address.
+
+**Tested Behavior:**
+- When checked, all billing fields are filled with values from shipping fields.
+- When unchecked, billing fields are cleared/reset (or re-editable).
+- Fields remain editable after autofill in case changes are needed.
+- Edge cases such as blank shipping fields do not break the script.
+
+**Test Method:**
+- Manually filled shipping address fields, toggled the checkbox, and observed billing field behavior.
+- Verified DOM changes using DevTools and form submissions.
+
+---
+
+These scripts were tested across both desktop and mobile views to ensure consistent behavior.
+
 
 ## Automated Tests
 
@@ -242,23 +281,41 @@ coverage report -m
 | Renamed `order_number` → `order_session` broke lookups         | Code and tests referenced old field                       | Renamed everywhere; updated fixtures/tests                                         | ✅ Resolved |
 | Guest email field inconsistency                                | `guest_email` vs `email`                                  | Unified to `email` on `CheckoutOrder`; updated email tests                         | ✅ Resolved |
 | Accounts coverage initially 38%                                | Missing tests for several views                           | Added tests for login, order history/detail, change password, account detail       | ✅ Resolved |
+| Website CSS styling not loading once deployed to prod          | /staticfiles/ added to gitignore                          | Added build.sh file to incorporate collectstatic python command with prod start command          | ✅ Resolved |
 
 ## Deployment & Environment Testing
 
-* **Environments:** Local dev & production (Django). Static files collected with `collectstatic` and served from the configured storage.
+Testing was done locally (localhost) and using Render via testing & production environments (Django). Static files collected with `collectstatic` and served from the configured storage.
+
+### Render (Cloud Deployment Testing)
+![Render Deployment Testing](./static/images/document_files/render-cloud-deployment.png)
+
+### Local Host Testing
+![Local Testing](./static/images/document_files/local-host-testing.png)
+
+
 * **Environment Variables:**
 
-  * `SECRET_KEY`, `DEBUG`, `ALLOWED_HOSTS`
+  * `SECRET_KEY`, `DATABASE_URL`, `ALLOWED_HOSTS`
   * `STRIPE_PUBLIC_KEY`, `STRIPE_SECRET_KEY`, `STRIPE_WEBHOOK_SECRET`
-  * Email backend settings for order confirmations
 * **Stripe Flow:**
 
   1. Create Checkout Session → redirect to Stripe.
   2. On success, Stripe sends webhook (`checkout.session.completed`).
   3. Webhook handler verifies signature and creates the order from the session.
+
+  ![Local CLI Logs](./static/images/document_files/local-cli-checkout-flow.png)
+
 * **Tests executed against deployment:**
 
-  * Placed a test order in Stripe test mode and verified webhook → order creation → confirmation email → order history visibility.
+  * Placed a test order in Stripe test mode and verified webhook → order creation → confirmation → order history visibility.
+  ![Stripe Completed Checkout Session](./static/images/document_files/stripe-checkout-session.png)
+  ![Order Confirmation](./static/images/document_files/order-confirmation.png)
+  ![Order History](./static/images/document_files/order-history.png)
+  
+  
+
+See [README](./README.md) for more information on deployment.
 
 ## Conclusion
 

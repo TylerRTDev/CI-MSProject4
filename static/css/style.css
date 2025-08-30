@@ -464,7 +464,7 @@ span.badge.bg-warning.text-dark.p-2.me-2 {
     border-color: var(--brown);
 }
 
-.cart-table-container, .checkout-confirmation-container, .order-success-section {
+.checkout-confirmation-container, .order-success-section {
     height: 100vh;
 }
 
