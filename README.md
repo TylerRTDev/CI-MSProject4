@@ -562,8 +562,9 @@ This endpoint is implemented in Django and verifies the event’s authenticity u
 During development, the Stripe CLI was used to forward events to the local server and retrieve the signing secret. The following command was used:
 
 ```bash
-stripe listen --forward-to localhost:8000/stripe/webhook/
+stripe listen --forward-to localhost:8000/checkout/webhook/
 ```
+> This will reveal you `stripe_webhook_secret`
 
 ### Stripe Webhook Setup
 
@@ -668,6 +669,13 @@ While the core features of Real Legacy Media are fully functional, the following
 * 🧑‍🤝‍🧑 **Subscriptions & Rewards**: Membership plans, exclusive drops, and subscriber perks.
 * 🔍 **Enhanced Search & Filtering**: More granular filtering by artist, format, price range.
 * 📱 **Progressive Web App Support**: For an installable, app-like experience.
+
+## 👤 Author and Contact
+
+Created by **Tyler Kerr**  
+📧 GitHub: [TylerRTDev](https://github.com/TylerRTDev)  
+🌍 Portfolio: [https://tkdev-portfolio.netlify.app/](https://tkdev-portfolio.netlify.app/)  
+📫 Contact via [Instagram](https://www.instagram.com/tylerrtdev/) or [X/Twitter](https://x.com/TylerRTDev)
 
 If you're interested in contributing to these features, see the Contributing section.
 
