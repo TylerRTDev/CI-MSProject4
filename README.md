@@ -8,6 +8,8 @@
 
 ## Table of Contents
 
+## Table of Contents
+
 - [📦 Project Overview](#-project-overview)
 - [💡 Rationale](#-rationale)
 - [🎯 Project Objectives](#-project-objectives)
@@ -16,7 +18,7 @@
 - [💡 User Value](#-user-value)
 - [🎨 Design Choices](#-design-choices)
   - [Colour Scheme](#colour-scheme)
-  - [🗂️ Wireframes/Designs](#️-wireframesdesigns)
+  - [🗂️ Wireframes/Designs](#%EF%B8%8F-wireframesdesigns)
   - [🔤 Typography](#-typography)
 - [👥 User Stories](#-user-stories)
   - [🎧 As a Music Fan (Site Visitor)](#-as-a-music-fan-site-visitor)
@@ -24,20 +26,24 @@
   - [🧑‍💼 As a Site Admin](#-as-a-site-admin)
 - [🌟 Key Features](#-key-features)
 - [📊 Entity Relationship Diagram (ERD)](#-entity-relationship-diagram-erd)
-- [🗂️ Database Schema](#️-database-schema)
-- [🛠️ Technologies Used](#️-technologies-used)
+- [🗂️ Database Schema](#%EF%B8%8F-database-schema)
+  - [Summary Table of Relationships](#summary-table-of-relationships)
+- [🛠️ Technologies Used](#%EF%B8%8F-technologies-used)
   - [💻 Backend](#-backend)
   - [🎨 Frontend](#-frontend)
   - [🧾 Payments & Accounts](#-payments--accounts)
-  - [⚙️ Tooling & Deployment](#️-tooling--deployment)
+  - [⚙️ Tooling & Deployment](#%EF%B8%8F-tooling--deployment)
 - [📚 Usage Instructions](#-usage-instructions)
+  - [For Shoppers](#for-shoppers)
+  - [For Admins](#for-admins)
 - [🚀 Getting Started](#-getting-started)
+  - [🔧 Prerequisites](#-prerequisites)
 - [🚀 Deployment](#-deployment)
   - [📂 Version Control](#-version-control)
   - [🛠 Local Deployment](#-local-deployment)
-  - [☁️ Render Deployment](#️-render-deployment)
+  - [💳 Stripe Webhook & CLI Setup](#-stripe-webhook--cli-setup)
+  - [☁️ Render Deployment](#%EF%B8%8F-render-deployment)
 - [🐞 Known Issues & Future Improvements](#-known-issues--future-improvements)
-
 
 
 ## 📦 Project Overview
